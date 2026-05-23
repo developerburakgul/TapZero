@@ -68,6 +68,8 @@ struct Dependencies {
         container.register(RemoteConfigManager.self, service: RemoteConfigManager(
             service: MockRemoteConfigService(values: [RemoteConfigKey.minAppVersion.rawValue: "26.3.0"])
         ))
+        // Game
+        container.register(GameManager.self, service: GameManager(service: MockGameService()))
     }
 
     private static func registerFirebaseServices(container: DependencyContainer) {
@@ -94,6 +96,8 @@ struct Dependencies {
         // RemoteConfig
         let remoteConfigManager = RemoteConfigManager(service: FirebaseRemoteConfigService())
         container.register(RemoteConfigManager.self, service: remoteConfigManager)
+        // Game
+        container.register(GameManager.self, service: GameManager(service: FirebaseGameService()))
     }
 }
 
@@ -114,6 +118,7 @@ class DevPreview {
     let languageManager: LanguageManager
     let eventManager: EventManager
     let networkMonitor: NetworkMonitorManager
+    let gameManager: GameManager
 
     init() {
         // Preview'larda @Injected'ın çalışabilmesi için shared'ı set et
@@ -126,6 +131,7 @@ class DevPreview {
         self.languageManager = dependencies.container.resolve(LanguageManager.self)!
         self.eventManager = dependencies.container.resolve(EventManager.self)!
         self.networkMonitor = dependencies.container.resolve(NetworkMonitorManager.self)!
+        self.gameManager = dependencies.container.resolve(GameManager.self)!
         // swiftlint:enable force_unwrapping
     }
 

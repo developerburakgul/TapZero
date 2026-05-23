@@ -16,6 +16,7 @@ struct UserModel: Codable, Sendable {
     let didCompleteOnboarding: Bool
     let profileColorHex: String?
     let profileImageURL: String?
+    let updatedAt: Date?
 
     init(
         userId: String,
@@ -27,7 +28,8 @@ struct UserModel: Codable, Sendable {
         lastSignInDate: Date? = nil,
         didCompleteOnboarding: Bool = false,
         profileColorHex: String? = nil,
-        profileImageURL: String? = nil
+        profileImageURL: String? = nil,
+        updatedAt: Date? = nil
     ) {
         self.userId = userId
         self.email = email
@@ -39,6 +41,7 @@ struct UserModel: Codable, Sendable {
         self.didCompleteOnboarding = didCompleteOnboarding
         self.profileColorHex = profileColorHex
         self.profileImageURL = profileImageURL
+        self.updatedAt = updatedAt
     }
 
     init(auth: UserAuthInfo, creationVersion: String? = nil, displayName: String = "") {
@@ -52,6 +55,7 @@ struct UserModel: Codable, Sendable {
         self.didCompleteOnboarding = false
         self.profileColorHex = nil
         self.profileImageURL = nil
+        self.updatedAt = nil
     }
 
     init(from decoder: Decoder) throws {
@@ -66,19 +70,21 @@ struct UserModel: Codable, Sendable {
         didCompleteOnboarding = try container.decode(Bool.self, forKey: .didCompleteOnboarding)
         profileColorHex = try container.decodeIfPresent(String.self, forKey: .profileColorHex)
         profileImageURL = try container.decodeIfPresent(String.self, forKey: .profileImageURL)
+        updatedAt = try container.decodeIfPresent(Date.self, forKey: .updatedAt)
     }
 
     enum CodingKeys: String, CodingKey {
-        case userId = "user_id"
+        case userId
         case email
-        case displayName = "display_name"
-        case isAnonymous = "is_anonymous"
-        case creationDate = "creation_date"
-        case creationVersion = "creation_version"
-        case lastSignInDate = "last_sign_in_date"
-        case didCompleteOnboarding = "did_complete_onboarding"
-        case profileColorHex = "profile_color_hex"
-        case profileImageURL = "profile_image_url"
+        case displayName = "name"
+        case isAnonymous
+        case creationDate = "createdAt"
+        case creationVersion
+        case lastSignInDate
+        case didCompleteOnboarding = "onboardingDone"
+        case profileColorHex
+        case profileImageURL = "avatar"
+        case updatedAt
     }
 
     @MainActor var profileColorCalculated: Color {
