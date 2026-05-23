@@ -1,0 +1,14 @@
+//
+//  HomeViewModel+Configure.swift
+//  Created by __Username__ on __Date__
+//
+
+import Foundation
+
+// MARK: - Configure
+extension HomeViewModel {
+
+    func configure() {
+
+    }
+}

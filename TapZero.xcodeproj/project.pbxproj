@@ -1,0 +1,682 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2365113B2FBBCFF700B216AA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2365113A2FBBCFF700B216AA /* KeychainAccess */; };
+		2365115F2FBBD87800B216AA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2365115E2FBBD87800B216AA /* GoogleSignIn */; };
+		236511612FBBD87800B216AA /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 236511602FBBD87800B216AA /* GoogleSignInSwift */; };
+		236511A72FBC930500B216AA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 236511A62FBC930500B216AA /* FirebaseStorage */; };
+		236511A92FBC930B00B216AA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 236511A82FBC930B00B216AA /* FirebaseCrashlytics */; };
+		236511CC2FBCBADB00B216AA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 236511CB2FBCBADB00B216AA /* FirebaseAnalytics */; };
+		AA000301F640A000009966A5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA000201F640A000009966A5 /* FirebaseAuth */; };
+		AA000501F640A000009966A5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA000401F640A000009966A5 /* FirebaseCore */; };
+		AA000801F640A100009966A5 /* SignInAppleAsync in Frameworks */ = {isa = PBXBuildFile; productRef = AA000701F640A100009966A5 /* SignInAppleAsync */; };
+		BB000101F7E00000009966A5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BB000201F7E00000009966A5 /* FirebaseFirestore */; };
+		BB000301F7E00000009966A5 /* SwiftfulFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BB000401F7E00000009966A5 /* SwiftfulFirestore */; };
+		BE9A3C01F6B3ABC00D57FC20 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = BE9A3B01F6B3ABC00D57FC20 /* FirebaseRemoteConfig */; };
+		CC000101F8C00000009966A5 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = CC000201F8C00000009966A5 /* UIComponents */; };
+		DD733D01F5F5D1C0009966A5 /* DependencyContainer in Frameworks */ = {isa = PBXBuildFile; productRef = DD733C01F5F5D1C0009966A5 /* DependencyContainer */; };
+		DD733F01F5F5D1C0009966A5 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DD733E01F5F5D1C0009966A5 /* DynamicColor */; };
+		DD735401F5F673F0009966A5 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = DD735301F5F673F0009966A5 /* SwiftfulRouting */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2330F5BE2F9BA18C003E1D48 /* TapZero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapZero.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		236511B32FBCA55300B216AA /* Exceptions for "TapZero" folder in "TapZero" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2330F5BD2F9BA18C003E1D48 /* TapZero */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2330F5C02F9BA18C003E1D48 /* TapZero */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				236511B32FBCA55300B216AA /* Exceptions for "TapZero" folder in "TapZero" target */,
+			);
+			path = TapZero;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2330F5BB2F9BA18C003E1D48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000301F640A000009966A5 /* FirebaseAuth in Frameworks */,
+				AA000501F640A000009966A5 /* FirebaseCore in Frameworks */,
+				AA000801F640A100009966A5 /* SignInAppleAsync in Frameworks */,
+				BB000101F7E00000009966A5 /* FirebaseFirestore in Frameworks */,
+				2365113B2FBBCFF700B216AA /* KeychainAccess in Frameworks */,
+				236511612FBBD87800B216AA /* GoogleSignInSwift in Frameworks */,
+				2365115F2FBBD87800B216AA /* GoogleSignIn in Frameworks */,
+				BB000301F7E00000009966A5 /* SwiftfulFirestore in Frameworks */,
+				BE9A3C01F6B3ABC00D57FC20 /* FirebaseRemoteConfig in Frameworks */,
+				CC000101F8C00000009966A5 /* UIComponents in Frameworks */,
+				236511CC2FBCBADB00B216AA /* FirebaseAnalytics in Frameworks */,
+				DD733D01F5F5D1C0009966A5 /* DependencyContainer in Frameworks */,
+				236511A72FBC930500B216AA /* FirebaseStorage in Frameworks */,
+				236511A92FBC930B00B216AA /* FirebaseCrashlytics in Frameworks */,
+				DD733F01F5F5D1C0009966A5 /* DynamicColor in Frameworks */,
+				DD735401F5F673F0009966A5 /* SwiftfulRouting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2330F5B52F9BA18C003E1D48 = {
+			isa = PBXGroup;
+			children = (
+				2330F5C02F9BA18C003E1D48 /* TapZero */,
+				236511A52FBC930500B216AA /* Frameworks */,
+				2330F5BF2F9BA18C003E1D48 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2330F5BF2F9BA18C003E1D48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2330F5BE2F9BA18C003E1D48 /* TapZero.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		236511A52FBC930500B216AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2330F5BD2F9BA18C003E1D48 /* TapZero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2330F5C92F9BA18F003E1D48 /* Build configuration list for PBXNativeTarget "TapZero" */;
+			buildPhases = (
+				2330F5BA2F9BA18C003E1D48 /* Sources */,
+				2330F5BB2F9BA18C003E1D48 /* Frameworks */,
+				2330F5BC2F9BA18C003E1D48 /* Resources */,
+				236511AA2FBC96E800B216AA /* Upload dSYM to Crashlytics */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2330F5C02F9BA18C003E1D48 /* TapZero */,
+			);
+			name = TapZero;
+			packageProductDependencies = (
+				AA000201F640A000009966A5 /* FirebaseAuth */,
+				AA000401F640A000009966A5 /* FirebaseCore */,
+				AA000701F640A100009966A5 /* SignInAppleAsync */,
+				BB000201F7E00000009966A5 /* FirebaseFirestore */,
+				BB000401F7E00000009966A5 /* SwiftfulFirestore */,
+				BE9A3B01F6B3ABC00D57FC20 /* FirebaseRemoteConfig */,
+				CC000201F8C00000009966A5 /* UIComponents */,
+				DD733C01F5F5D1C0009966A5 /* DependencyContainer */,
+				DD733E01F5F5D1C0009966A5 /* DynamicColor */,
+				DD735301F5F673F0009966A5 /* SwiftfulRouting */,
+				2365113A2FBBCFF700B216AA /* KeychainAccess */,
+				2365115E2FBBD87800B216AA /* GoogleSignIn */,
+				236511602FBBD87800B216AA /* GoogleSignInSwift */,
+				236511A62FBC930500B216AA /* FirebaseStorage */,
+				236511A82FBC930B00B216AA /* FirebaseCrashlytics */,
+				236511CB2FBCBADB00B216AA /* FirebaseAnalytics */,
+			);
+			productName = TapZero;
+			productReference = 2330F5BE2F9BA18C003E1D48 /* TapZero.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2330F5B62F9BA18C003E1D48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					2330F5BD2F9BA18C003E1D48 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 2330F5B92F9BA18C003E1D48 /* Build configuration list for PBXProject "TapZero" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2330F5B52F9BA18C003E1D48;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DD733B01F5F5D1C0009966A5 /* XCRemoteSwiftPackageReference "BurakKit" */,
+				DD735201F5F673F0009966A5 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AA000601F640A100009966A5 /* XCRemoteSwiftPackageReference "SignInAppleAsync" */,
+				BB000501F7E00000009966A5 /* XCRemoteSwiftPackageReference "SwiftfulFirestore" */,
+				236511392FBBCFF700B216AA /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				2365115D2FBBD87800B216AA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2330F5BF2F9BA18C003E1D48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2330F5BD2F9BA18C003E1D48 /* TapZero */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2330F5BC2F9BA18C003E1D48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		236511AA2FBC96E800B216AA /* Upload dSYM to Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME} ",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist ",
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Upload dSYM to Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "  if [ \"${CONFIGURATION}\" != \"Release\" ]; then\n      echo \"Skipping dSYM upload for ${CONFIGURATION} build\"\n      exit 0                                  \n  fi                                                                                                                                                                      \n                                                                                                                                                                          \n  \"${BUILD_DIR%/Build/*}/SourcePackages/artifacts/firebase-ios-sdk/FirebaseCrashlytics/run\" \n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2330F5BA2F9BA18C003E1D48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2330F5C72F9BA18F003E1D48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG DEV $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2330F5C82F9BA18F003E1D48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2330F5CA2F9BA18F003E1D48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TapZero/TapZero.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapZero/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BurakGul.TapZero-Dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2330F5CB2F9BA18F003E1D48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TapZero/TapZero.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapZero/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BurakGul.TapZero;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2330F5CC2F9BA18F003E1D48 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG MOCK $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Mock;
+		};
+		2330F5CD2F9BA18F003E1D48 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TapZero/TapZero.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZBYGRL25JU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapZero/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BurakGul.TapZero-Mock";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Mock;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2330F5B92F9BA18C003E1D48 /* Build configuration list for PBXProject "TapZero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2330F5C72F9BA18F003E1D48 /* Debug */,
+				2330F5CC2F9BA18F003E1D48 /* Mock */,
+				2330F5C82F9BA18F003E1D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2330F5C92F9BA18F003E1D48 /* Build configuration list for PBXNativeTarget "TapZero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2330F5CA2F9BA18F003E1D48 /* Debug */,
+				2330F5CD2F9BA18F003E1D48 /* Mock */,
+				2330F5CB2F9BA18F003E1D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		236511392FBBCFF700B216AA /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+		2365115D2FBBD87800B216AA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.4.0;
+			};
+		};
+		AA000601F640A100009966A5 /* XCRemoteSwiftPackageReference "SignInAppleAsync" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SignInAppleAsync.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		BB000501F7E00000009966A5 /* XCRemoteSwiftPackageReference "SwiftfulFirestore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulFirestore.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+		DD733B01F5F5D1C0009966A5 /* XCRemoteSwiftPackageReference "BurakKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/developerburakgul/BurakKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		DD735201F5F673F0009966A5 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2365113A2FBBCFF700B216AA /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 236511392FBBCFF700B216AA /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		2365115E2FBBD87800B216AA /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2365115D2FBBD87800B216AA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		236511602FBBD87800B216AA /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2365115D2FBBD87800B216AA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		236511A62FBC930500B216AA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		236511A82FBC930B00B216AA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		236511CB2FBCBADB00B216AA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AA000201F640A000009966A5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AA000401F640A000009966A5 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		AA000701F640A100009966A5 /* SignInAppleAsync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000601F640A100009966A5 /* XCRemoteSwiftPackageReference "SignInAppleAsync" */;
+			productName = SignInAppleAsync;
+		};
+		BB000201F7E00000009966A5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		BB000401F7E00000009966A5 /* SwiftfulFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB000501F7E00000009966A5 /* XCRemoteSwiftPackageReference "SwiftfulFirestore" */;
+			productName = SwiftfulFirestore;
+		};
+		BE9A3B01F6B3ABC00D57FC20 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA000101F640A000009966A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		CC000201F8C00000009966A5 /* UIComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD733B01F5F5D1C0009966A5 /* XCRemoteSwiftPackageReference "BurakKit" */;
+			productName = UIComponents;
+		};
+		DD733C01F5F5D1C0009966A5 /* DependencyContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD733B01F5F5D1C0009966A5 /* XCRemoteSwiftPackageReference "BurakKit" */;
+			productName = DependencyContainer;
+		};
+		DD733E01F5F5D1C0009966A5 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD733B01F5F5D1C0009966A5 /* XCRemoteSwiftPackageReference "BurakKit" */;
+			productName = DynamicColor;
+		};
+		DD735301F5F673F0009966A5 /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD735201F5F673F0009966A5 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2330F5B62F9BA18C003E1D48 /* Project object */;
+}

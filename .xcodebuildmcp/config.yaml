@@ -1,0 +1,16 @@
+schemaVersion: 1
+
+enabledWorkflows:
+  - simulator
+  - simulator-management
+  - debugging
+  - ui-automation
+  - project-discovery
+  - swift-package
+  - session-management
+  - utilities
+
+sessionDefaults:
+  projectPath: "./TapZero.xcodeproj"
+  scheme: "Mock-TapZero"
+  simulatorName: "iPhone 16"

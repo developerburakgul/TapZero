@@ -1,0 +1,2253 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "": {},
+    "·": {},
+    "9:41": {},
+    "common.error.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خطأ"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erreur"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Errore"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "エラー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오류"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hata"
+          }
+        }
+      }
+    },
+    "common.ok": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حسناً"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceptar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
+          }
+        }
+      }
+    },
+    "createAccount.apple": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة مع Apple"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Apple fortfahren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue with Apple"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar con Apple"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer avec Apple"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua con Apple"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appleで続ける"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple로 계속하기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar com Apple"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple ile Devam Et"
+          }
+        }
+      }
+    },
+    "createAccount.email": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة بالبريد الإلكتروني"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit E-Mail fortfahren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue with Email"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar con correo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer avec e-mail"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua con Email"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールで続ける"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이메일로 계속하기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar com Email"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-posta ile Devam Et"
+          }
+        }
+      }
+    },
+    "createAccount.google": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة مع Google"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Google fortfahren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue with Google"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar con Google"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer avec Google"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua con Google"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Googleで続ける"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google로 계속하기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar com Google"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google ile Devam Et"
+          }
+        }
+      }
+    },
+    "createAccount.guest": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة كضيف"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als Gast fortfahren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue as guest"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar como invitado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer en tant qu'invité"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua come ospite"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゲストとして続ける"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "게스트로 계속하기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar como convidado"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misafir olarak devam et"
+          }
+        }
+      }
+    },
+    "createAccount.signInSubtitle": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سجّل الدخول للوصول إلى حسابك."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melde dich an, um auf dein Konto zuzugreifen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in to access your account."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inicia sesión para acceder a tu cuenta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connectez-vous pour accéder à votre compte."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accedi per accedere al tuo account."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウントにアクセスするにはサインインしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정에 접근하려면 로그인하세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faça login para acessar sua conta."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabına erişmek için giriş yap."
+          }
+        }
+      }
+    },
+    "createAccount.signInTitle": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تسجيل الدخول"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign In"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar sesión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se connecter"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accedi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サインイン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "로그인"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş Yap"
+          }
+        }
+      }
+    },
+    "createAccount.subtitle": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنشئ حسابًا لحفظ بياناتك ومزامنتها عبر الأجهزة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erstellen Sie ein Konto, um Ihre Daten zu sichern und geräteübergreifend zu synchronisieren."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create an account to save your data and sync across devices."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crea una cuenta para guardar tus datos y sincronizar entre dispositivos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Créez un compte pour sauvegarder vos données et synchroniser entre appareils."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crea un account per salvare i tuoi dati e sincronizzarli tra i dispositivi."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "データを保存してデバイス間で同期するためにアカウントを作成してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "데이터를 저장하고 기기 간 동기화하려면 계정을 만드세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crie uma conta para salvar seus dados e sincronizar entre dispositivos."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilerini kaydetmek ve cihazlar arası senkronize etmek için hesap oluştur."
+          }
+        }
+      }
+    },
+    "createAccount.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنشئ حسابك"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konto erstellen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create your account"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crea tu cuenta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Créez votre compte"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crea il tuo account"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウントを作成"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정 만들기"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crie sua conta"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesabını oluştur"
+          }
+        }
+      }
+    },
+    "emailAuth.email.placeholder": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "البريد الإلكتروني" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "E-Mail" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Email" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Correo" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "E-mail" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Email" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "メールアドレス" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "이메일" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Email" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "E-posta" }
+        }
+      }
+    },
+    "emailAuth.password.placeholder": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "كلمة المرور" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Passwort" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Password" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Contraseña" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Mot de passe" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Password" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "パスワード" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "비밀번호" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Senha" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Şifre" }
+        }
+      }
+    },
+    "emailAuth.signIn.button": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "تسجيل الدخول" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Anmelden" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Sign In" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Iniciar sesión" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Se connecter" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Accedi" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "サインイン" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "로그인" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Entrar" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Giriş Yap" }
+        }
+      }
+    },
+    "emailAuth.signIn.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "مرحبًا بعودتك" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Willkommen zurück" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Welcome Back" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Bienvenido de nuevo" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Bon retour" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Bentornato" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "おかえりなさい" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "다시 오신 것을 환영합니다" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Bem-vindo de volta" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Tekrar Hoş Geldin" }
+        }
+      }
+    },
+    "emailAuth.signUp.button": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "إنشاء حساب" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Konto erstellen" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Create Account" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Crear cuenta" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Créer un compte" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Crea Account" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "アカウント作成" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "계정 만들기" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Criar Conta" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Hesap Oluştur" }
+        }
+      }
+    },
+    "emailAuth.signUp.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "إنشاء حساب" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Konto erstellen" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Create Account" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Crear cuenta" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Créer un compte" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Crea Account" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "アカウント作成" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "계정 만들기" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Criar Conta" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Hesap Oluştur" }
+        }
+      }
+    },
+    "emailAuth.switchToSignIn": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "لديك حساب بالفعل؟ سجّل الدخول" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Bereits ein Konto? Anmelden" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Already have an account? Sign In" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "¿Ya tienes cuenta? Inicia sesión" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Déjà un compte ? Se connecter" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Hai già un account? Accedi" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "アカウントをお持ちですか？サインイン" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "이미 계정이 있으신가요? 로그인" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Já tem uma conta? Entrar" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Zaten hesabın var mı? Giriş Yap" }
+        }
+      }
+    },
+    "emailAuth.switchToSignUp": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "ليس لديك حساب؟ سجّل الآن" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Kein Konto? Registrieren" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Don't have an account? Sign Up" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "¿No tienes cuenta? Regístrate" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Pas de compte ? S'inscrire" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Non hai un account? Registrati" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "アカウントをお持ちでないですか？登録" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "계정이 없으신가요? 가입하기" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Não tem uma conta? Cadastre-se" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Hesabın yok mu? Kayıt Ol" }
+        }
+      }
+    },
+    "favorites.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "المفضلة" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Favoriten" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Favorites" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Favoritos" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Favoris" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Preferiti" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "お気に入り" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "즐겨찾기" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Favoritos" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Favoriler" }
+        }
+      }
+    },
+    "forceUpdate.button": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "تحديث الآن" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Jetzt aktualisieren" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Update Now" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Actualizar ahora" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Mettre à jour maintenant" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Aggiorna ora" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "今すぐアップデート" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "지금 업데이트" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Atualizar Agora" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Şimdi Güncelle" }
+        }
+      }
+    },
+    "forceUpdate.currentVersion": {
+      "extractionState": "stale",
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "الإصدار الحالي" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Aktuelle Version" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Current Version" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Versión actual" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Version actuelle" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Versione attuale" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "現在のバージョン" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "현재 버전" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Versão Atual" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Mevcut Sürüm" }
+        }
+      }
+    },
+    "forceUpdate.message": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "يتوفر إصدار جديد.\nقم بالتحديث الآن للحصول على أفضل تجربة." }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Eine neue Version ist verfügbar. Aktualisiere jetzt für das beste Erlebnis." }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "A new version is available.\nUpdate now for the best experience." }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Una nueva versión está disponible.\nActualiza ahora para la mejor experiencia." }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Une nouvelle version est disponible.\nMettez à jour pour la meilleure expérience." }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "È disponibile una nuova versione.\nAggiorna ora per la migliore esperienza." }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "新しいバージョンが利用可能です。\n最高の体験のために今すぐアップデートしてください。" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "새 버전이 있습니다.\n최상의 경험을 위해 지금 업데이트하세요." }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Uma nova versão está disponível.\nAtualize agora para a melhor experiência." }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Yeni bir sürüm mevcut.\nEn iyi deneyim için şimdi güncelle." }
+        }
+      }
+    },
+    "forceUpdate.requiredVersion": {
+      "extractionState": "stale",
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "الإصدار المطلوب" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Erforderliche Version" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Required Version" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Versión requerida" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Version requise" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Versione richiesta" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "必要なバージョン" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "필요한 버전" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Versão Necessária" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Gereken Sürüm" }
+        }
+      }
+    },
+    "forceUpdate.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "التحديث مطلوب" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Update erforderlich" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Update Required" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Actualización requerida" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Mise à jour requise" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Aggiornamento richiesto" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "アップデートが必要です" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "업데이트 필요" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Atualização Necessária" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Güncelleme Gerekli" }
+        }
+      }
+    },
+    "home.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "الرئيسية" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Startseite" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Home" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Inicio" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Accueil" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Home" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "ホーム" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "홈" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Início" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Ana Sayfa" }
+        }
+      }
+    },
+    "networkStatus.message": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "يرجى التحقق من اتصالك والمحاولة مرة أخرى." }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut." }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "Please check your connection and try again." }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Por favor, verifica tu conexión e inténtalo de nuevo." }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Veuillez vérifier votre connexion et réessayer." }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Controlla la connessione e riprova." }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "接続を確認してもう一度お試しください。" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "연결을 확인하고 다시 시도해 주세요." }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Verifique sua conexão e tente novamente." }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "Lütfen bağlantınızı kontrol edin ve tekrar deneyin." }
+        }
+      }
+    },
+    "networkStatus.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": { "state": "translated", "value": "لا يوجد اتصال بالإنترنت" }
+        },
+        "de": {
+          "stringUnit": { "state": "translated", "value": "Keine Internetverbindung" }
+        },
+        "en": {
+          "stringUnit": { "state": "translated", "value": "No Internet Connection" }
+        },
+        "es": {
+          "stringUnit": { "state": "translated", "value": "Sin conexión a Internet" }
+        },
+        "fr": {
+          "stringUnit": { "state": "translated", "value": "Aucune connexion Internet" }
+        },
+        "it": {
+          "stringUnit": { "state": "translated", "value": "Nessuna connessione Internet" }
+        },
+        "ja": {
+          "stringUnit": { "state": "translated", "value": "インターネット接続がありません" }
+        },
+        "ko": {
+          "stringUnit": { "state": "translated", "value": "인터넷 연결 없음" }
+        },
+        "pt-BR": {
+          "stringUnit": { "state": "translated", "value": "Sem Conexão com a Internet" }
+        },
+        "tr": {
+          "stringUnit": { "state": "translated", "value": "İnternet Bağlantısı Yok" }
+        }
+      }
+    },
+    "now": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الآن" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Jetzt" } },
+        "en": { "stringUnit": { "state": "translated", "value": "now" } },
+        "es": { "stringUnit": { "state": "translated", "value": "ahora" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "maint." } },
+        "it": { "stringUnit": { "state": "translated", "value": "ora" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "今" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "지금" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "agora" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "şimdi" } }
+      }
+    },
+    "onboarding.continue": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "متابعة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Weiter" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Continue" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Continuar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Continuer" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Continua" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "続ける" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "계속" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Continuar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Devam Et" } }
+      }
+    },
+    "onboarding.getStarted.button": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ابدأ" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Loslegen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Get Started" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Comenzar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Commencer" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Inizia" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "始める" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "시작하기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Começar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Başla" } }
+      }
+    },
+    "onboarding.getStarted.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "كل شيء جاهز. أنشئ حسابك وابدأ الاستكشاف." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Alles ist bereit. Erstellen Sie Ihr Konto und legen Sie los." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Everything is set up. Create your account and start exploring." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Todo está listo. Crea tu cuenta y comienza a explorar." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Tout est prêt. Créez votre compte et commencez à explorer." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Tutto pronto. Crea il tuo account e inizia a esplorare." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "準備は完了です。アカウントを作成して探索を始めましょう。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "모든 준비가 완료되었습니다. 계정을 만들고 탐색을 시작하세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Tudo pronto. Crie sua conta e comece a explorar." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Her şey hazır. Hesabını oluştur ve keşfetmeye başla." } }
+      }
+    },
+    "onboarding.getStarted.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "أنت جاهز!" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Sie sind bereit!" } },
+        "en": { "stringUnit": { "state": "translated", "value": "You're all set!" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¡Todo listo!" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Vous êtes prêt !" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Tutto pronto!" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "準備完了！" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "준비 완료!" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Tudo pronto!" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Hazırsın!" } }
+      }
+    },
+    "onboarding.name.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "هذه هي الطريقة التي ستظهر بها في لوحة المتصدرين." } },
+        "de": { "stringUnit": { "state": "translated", "value": "So werden Sie in der Bestenliste angezeigt." } },
+        "en": { "stringUnit": { "state": "translated", "value": "This is how you'll appear on the leaderboard." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Así aparecerás en la clasificación." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "C'est ainsi que vous apparaîtrez dans le classement." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Così apparirai nella classifica." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "リーダーボードに表示される名前です。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "리더보드에 이 이름으로 표시됩니다." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "É assim que você aparecerá no ranking." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sıralamada bu şekilde görüneceksiniz." } }
+      }
+    },
+    "onboarding.name.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ما هو\nاسمك؟" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Wie heißen\nSie?" } },
+        "en": { "stringUnit": { "state": "translated", "value": "What's\nyour name?" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¿Cómo te\nllamas?" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Comment vous\nappellez-vous ?" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Come ti\nchiami?" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "お名前は\n何ですか？" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "이름이\n무엇인가요?" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Qual é\no seu nome?" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Adınız\nnedir?" } }
+      }
+    },
+    "onboarding.notification.enable": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تفعيل الإشعارات" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Benachrichtigungen aktivieren" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Enable notifications" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Activar notificaciones" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Activer les notifications" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Attiva le notifiche" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "通知を有効にする" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "알림 활성화" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ativar notificações" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Bildirimleri etkinleştir" } }
+      }
+    },
+    "onboarding.notification.enabled": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الإشعارات مفعّلة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Benachrichtigungen sind aktiviert" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Notifications are enabled" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Notificaciones activadas" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Notifications activées" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Notifiche attivate" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "通知が有効です" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "알림이 활성화되었습니다" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Notificações ativadas" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Bildirimler etkinleştirildi" } }
+      }
+    },
+    "onboarding.notification.mock.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "لديك شيء جديد!" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Du hast etwas Neues!" } },
+        "en": { "stringUnit": { "state": "translated", "value": "You have something new!" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¡Tienes algo nuevo!" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Vous avez quelque chose de nouveau !" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Hai qualcosa di nuovo!" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "新着があります！" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "새로운 소식이 있습니다!" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Você tem algo novo!" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Yeni bir şeyin var!" } }
+      }
+    },
+    "onboarding.notification.mock.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "de": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "en": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "es": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "it": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "TemplateApp" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "TemplateApp" } }
+      }
+    },
+    "onboarding.notification.skip": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ليس الآن" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Jetzt nicht" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Not now" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Ahora no" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Pas maintenant" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Non ora" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "今はしない" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "나중에" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Agora não" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Şimdi değil" } }
+      }
+    },
+    "onboarding.notification.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "فعّل الإشعارات لتبقى على اطلاع بالأخبار والعروض والتحديثات المهمة." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Aktivieren Sie Benachrichtigungen, um über Neuigkeiten, Angebote und wichtige Updates informiert zu bleiben." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Enable notifications to stay updated on news, offers, and important updates." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Activa las notificaciones para mantenerte al día con novedades, ofertas y actualizaciones importantes." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Activez les notifications pour rester informé des nouveautés, offres et mises à jour importantes." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Attiva le notifiche per restare aggiornato su novità, offerte e aggiornamenti importanti." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ニュース、オファー、重要なアップデートの通知を受け取りましょう。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "뉴스, 혜택 및 중요한 업데이트를 받으려면 알림을 활성화하세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ative as notificações para ficar por dentro de novidades, ofertas e atualizações importantes." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Haberler, teklifler ve önemli güncellemelerden haberdar olmak için bildirimleri etkinleştirin." } }
+      }
+    },
+    "onboarding.notification.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "لا تفوّت الأشياء المهمة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Verpassen Sie nichts Wichtiges" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Don't miss out on the important things" } },
+        "es": { "stringUnit": { "state": "translated", "value": "No te pierdas lo importante" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Ne manquez rien d'important" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Non perderti le cose importanti" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "大切なことを見逃さないで" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "중요한 것을 놓치지 마세요" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Não perca o que é importante" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Önemli şeyleri kaçırma" } }
+      }
+    },
+    "onboarding.photo.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "اختياري" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Optional" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Optional" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Opcional" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Facultatif" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Facoltativo" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "任意" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "선택사항" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Opcional" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "İsteğe bağlı" } }
+      }
+    },
+    "onboarding.photo.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "أضف صورة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Foto hinzufügen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Add a photo" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Añadir una foto" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Ajouter une photo" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Aggiungi una foto" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "写真を追加" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "사진 추가" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Adicionar uma foto" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Fotoğraf ekle" } }
+      }
+    },
+    "onboarding.skip": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تخطي الآن" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Vorerst überspringen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Skip for now" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Omitir por ahora" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Passer pour l'instant" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Salta per ora" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "今はスキップ" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "지금은 건너뛰기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Pular por enquanto" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Şimdilik atla" } }
+      }
+    },
+    "onboarding.stepIndicator %lld %lld": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الخطوة %1$lld من %2$lld" } },
+        "de": { "stringUnit": { "state": "translated", "value": "SCHRITT %1$lld VON %2$lld" } },
+        "en": { "stringUnit": { "state": "translated", "value": "STEP %1$lld OF %2$lld" } },
+        "es": { "stringUnit": { "state": "translated", "value": "PASO %1$lld DE %2$lld" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "ÉTAPE %1$lld SUR %2$lld" } },
+        "it": { "stringUnit": { "state": "translated", "value": "PASSO %1$lld DI %2$lld" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ステップ %1$lld / %2$lld" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "%1$lld단계 / %2$lld" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "PASSO %1$lld DE %2$lld" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "ADIM %1$lld / %2$lld" } }
+      }
+    },
+    "settings.about": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حول" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Über" } },
+        "en": { "stringUnit": { "state": "translated", "value": "About" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Acerca de" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "À propos" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Informazioni" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アプリについて" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "정보" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Sobre" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Hakkında" } }
+      }
+    },
+    "settings.account": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الحساب" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Konto" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Account" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Cuenta" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Compte" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Account" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アカウント" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "계정" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Conta" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Hesap" } }
+      }
+    },
+    "settings.appearance": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "المظهر" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Erscheinungsbild" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Appearance" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Apariencia" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Apparence" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Aspetto" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "外観" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "모드" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Aparência" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Görünüm" } }
+      }
+    },
+    "settings.appSettings": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "إعدادات التطبيق" } },
+        "de": { "stringUnit": { "state": "translated", "value": "App-Einstellungen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "App Settings" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Ajustes de la app" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Paramètres de l'app" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Impostazioni App" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アプリ設定" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "앱 설정" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Configurações do App" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Uygulama Ayarları" } }
+      }
+    },
+    "settings.cancel": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "إلغاء" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Abbrechen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Cancel" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Cancelar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Annuler" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Annulla" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "キャンセル" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "취소" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Cancelar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "İptal" } }
+      }
+    },
+    "settings.deleteAccount": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف الحساب" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Konto löschen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete Account" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Eliminar cuenta" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer le compte" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Elimina Account" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アカウントを削除" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "계정 삭제" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir Conta" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Hesabımı Sil" } }
+      }
+    },
+    "settings.deleteAccount.alert.confirm": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Löschen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Eliminar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Elimina" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "削除" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "삭제" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sil" } }
+      }
+    },
+    "settings.deleteAccount.alert.message": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "سيتم حذف جميع بياناتك نهائيًا. لا يمكن التراجع عن هذا الإجراء." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Alle deine Daten werden dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden." } },
+        "en": { "stringUnit": { "state": "translated", "value": "All your data will be permanently deleted. This action cannot be undone." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Todos tus datos se eliminarán permanentemente. Esta acción no se puede deshacer." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Toutes vos données seront définitivement supprimées. Cette action est irréversible." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Tutti i tuoi dati verranno eliminati in modo permanente. Questa azione non può essere annullata." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "すべてのデータが完全に削除されます。この操作は元に戻せません。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "모든 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Todos os seus dados serão excluídos permanentemente. Esta ação não pode ser desfeita." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Tüm verilerin kalıcı olarak silinecek. Bu işlem geri alınamaz." } }
+      }
+    },
+    "settings.deleteAccount.alert.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف الحساب؟" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Konto löschen?" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete Account?" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¿Eliminar cuenta?" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer le compte ?" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Eliminare l'account?" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アカウントを削除しますか？" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "계정을 삭제하시겠습니까?" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir Conta?" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Hesabını silmek istediğine emin misin?" } }
+      }
+    },
+    "settings.deleteData": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف بياناتي" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Meine Daten löschen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete My Data" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Eliminar mis datos" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer mes données" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Elimina i miei dati" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "データを削除" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "내 데이터 삭제" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir Meus Dados" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Verilerimi Sil" } }
+      }
+    },
+    "settings.deleteData.alert.confirm": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Löschen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Eliminar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Elimina" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "削除" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "삭제" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sil" } }
+      }
+    },
+    "settings.deleteData.alert.message": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "سيتم حذف جميع بياناتك نهائيًا. لا يمكن التراجع عن هذا الإجراء." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Alle deine Daten werden dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden." } },
+        "en": { "stringUnit": { "state": "translated", "value": "All your data will be permanently deleted. This action cannot be undone." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Todos tus datos se eliminarán permanentemente. Esta acción no se puede deshacer." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Toutes vos données seront définitivement supprimées. Cette action est irréversible." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Tutti i tuoi dati verranno eliminati in modo permanente. Questa azione non può essere annullata." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "すべてのデータが完全に削除されます。この操作は元に戻せません。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "모든 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Todos os seus dados serão excluídos permanentemente. Esta ação não pode ser desfeita." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Tüm verilerin kalıcı olarak silinecek. Bu işlem geri alınamaz." } }
+      }
+    },
+    "settings.deleteData.alert.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "حذف البيانات؟" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Daten löschen?" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Delete Data?" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¿Eliminar datos?" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Supprimer les données ?" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Eliminare i dati?" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "データを削除しますか？" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "데이터를 삭제하시겠습니까?" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Excluir Dados?" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Verilerini silmek istediğine emin misin?" } }
+      }
+    },
+    "settings.guest": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ضيف" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Gast" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Guest" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Invitado" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Invité" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Ospite" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ゲスト" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "게스트" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Convidado" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Misafir" } }
+      }
+    },
+    "settings.language": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "اللغة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Sprache" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Language" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Idioma" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Langue" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Lingua" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "言語" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "언어" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Idioma" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Dil" } }
+      }
+    },
+    "settings.notifications": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الإشعارات" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Benachrichtigungen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Notifications" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Notificaciones" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Notifications" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Notifiche" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "通知" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "알림" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Notificações" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Bildirimler" } }
+      }
+    },
+    "settings.notifications.askLater": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "اسأل لاحقًا" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Später fragen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Ask Later" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Preguntar después" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Demander plus tard" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Chiedi dopo" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "後で確認" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "나중에 묻기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Perguntar Depois" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sonra Sor" } }
+      }
+    },
+    "settings.notifications.disabled": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "معطّلة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Deaktiviert" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Disabled" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Desactivadas" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Désactivées" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Disattivate" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "無効" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "비활성화" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Desativadas" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Kapalı" } }
+      }
+    },
+    "settings.notifications.enabled": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "مفعّلة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Aktiviert" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Enabled" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Activadas" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Activées" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Attivate" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "有効" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "활성화" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ativadas" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Açık" } }
+      }
+    },
+    "settings.notifications.footer": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "اضغط للإدارة من الإعدادات." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Tippen Sie hier, um in den Einstellungen zu verwalten." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Tap to manage in Settings." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Toca para gestionar en Ajustes." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Appuyez pour gérer dans les Réglages." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Tocca per gestire nelle Impostazioni." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "設定で管理するにはタップしてください。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "설정에서 관리하려면 탭하세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Toque para gerenciar nas Configurações." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Ayarlardan yönetmek için dokun." } }
+      }
+    },
+    "settings.notifications.goToSettings": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الذهاب إلى الإعدادات" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Zu den Einstellungen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Go to Settings" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Ir a Ajustes" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Ouvrir les Réglages" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Vai alle Impostazioni" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "設定を開く" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "설정으로 이동" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ir para Configurações" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Ayarlar'a Git" } }
+      }
+    },
+    "settings.notifications.settingsPath": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "انتقل إلى الإعدادات > الإشعارات" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Einstellungen > Mitteilungen öffnen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Go to Settings > Notifications" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Ir a Ajustes > Notificaciones" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Accédez à Réglages > Notifications" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Vai su Impostazioni > Notifiche" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "設定 > 通知 に移動" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "설정 > 알림으로 이동" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Vá para Configurações > Notificações" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Ayarlar > Bildirimler'e gidin" } }
+      }
+    },
+    "settings.privacyPolicy": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "سياسة الخصوصية" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Datenschutzrichtlinie" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Privacy Policy" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Política de Privacidad" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Politique de confidentialité" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Informativa sulla Privacy" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "プライバシーポリシー" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "개인정보 처리방침" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Política de Privacidade" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Gizlilik Politikası" } }
+      }
+    },
+    "settings.rateApp": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تقييم التطبيق" } },
+        "de": { "stringUnit": { "state": "translated", "value": "App bewerten" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Rate App" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Valorar App" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Noter l'app" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Valuta l'App" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アプリを評価" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "앱 평가" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Avaliar App" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Uygulamayı Değerlendir" } }
+      }
+    },
+    "settings.shareApp": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "مشاركة التطبيق" } },
+        "de": { "stringUnit": { "state": "translated", "value": "App teilen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Share App" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Compartir App" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Partager l'app" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Condividi l'App" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アプリを共有" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "앱 공유" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Compartilhar App" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Uygulamayı Paylaş" } }
+      }
+    },
+    "settings.signIn": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الدخول" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Anmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign In" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Iniciar sesión" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se connecter" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Accedi" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインイン" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그인" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Entrar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Giriş Yap" } }
+      }
+    },
+    "settings.signInWithApple": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الدخول مع Apple" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Mit Apple anmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign in with Apple" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Iniciar sesión con Apple" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se connecter avec Apple" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Accedi con Apple" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "Appleでサインイン" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "Apple로 로그인" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Entrar com Apple" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Apple ile Giriş Yap" } }
+      }
+    },
+    "settings.signInWithGoogle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الدخول مع Google" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Mit Google anmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign in with Google" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Iniciar sesión con Google" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se connecter avec Google" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Accedi con Google" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "Googleでサインイン" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "Google로 로그인" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Entrar com Google" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Google ile Giriş Yap" } }
+      }
+    },
+    "settings.signOut": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الخروج" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Abmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign Out" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Cerrar sesión" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se déconnecter" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Esci" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインアウト" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그아웃" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Sair" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Çıkış Yap" } }
+      }
+    },
+    "settings.signOut.alert.confirm": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الخروج" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Abmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign Out" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Cerrar sesión" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se déconnecter" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Esci" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインアウト" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그아웃" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Sair" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Çıkış Yap" } }
+      }
+    },
+    "settings.signOut.alert.message": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "هل أنت متأكد أنك تريد تسجيل الخروج؟" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Möchtest du dich wirklich abmelden?" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Are you sure you want to sign out?" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¿Estás seguro de que quieres cerrar sesión?" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Êtes-vous sûr de vouloir vous déconnecter ?" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Sei sicuro di voler uscire?" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインアウトしてもよろしいですか？" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그아웃하시겠습니까?" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Tem certeza que deseja sair?" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Çıkış yapmak istediğine emin misin?" } }
+      }
+    },
+    "settings.signOut.alert.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الخروج؟" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Abmelden?" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign Out?" } },
+        "es": { "stringUnit": { "state": "translated", "value": "¿Cerrar sesión?" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se déconnecter ?" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Uscire?" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインアウトしますか？" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그아웃하시겠습니까?" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Sair?" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Çıkış yapmak istiyor musun?" } }
+      }
+    },
+    "settings.signUp": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "إنشاء حساب" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Registrieren" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign Up" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Registrarse" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "S'inscrire" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Registrati" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "登録" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "가입하기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Cadastrar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Kayıt Ol" } }
+      }
+    },
+    "settings.termsOfService": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "شروط الخدمة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Nutzungsbedingungen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Terms of Service" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Términos de Servicio" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Conditions d'utilisation" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Termini di Servizio" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "利用規約" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "서비스 이용약관" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Termos de Serviço" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Kullanım Koşulları" } }
+      }
+    },
+    "settings.theme.dark": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "داكن" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Dunkel" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Dark" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Oscuro" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Sombre" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Scuro" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ダーク" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "다크" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Escuro" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Koyu" } }
+      }
+    },
+    "settings.theme.light": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "فاتح" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Hell" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Light" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Claro" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Clair" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Chiaro" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ライト" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "라이트" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Claro" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Açık" } }
+      }
+    },
+    "settings.theme.system": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "النظام" } },
+        "de": { "stringUnit": { "state": "translated", "value": "System" } },
+        "en": { "stringUnit": { "state": "translated", "value": "System" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Sistema" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Système" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Sistema" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "システム" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "시스템" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Sistema" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sistem" } }
+      }
+    },
+    "settings.version": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الإصدار" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Version" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Version" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Versión" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Version" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Versione" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "バージョン" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "버전" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Versão" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Sürüm" } }
+      }
+    },
+    "splash.forceUpdate.button": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تحديث" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Aktualisieren" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Update" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Actualizar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Mettre à jour" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Aggiorna" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アップデート" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "업데이트" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Atualizar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Güncelle" } }
+      }
+    },
+    "splash.forceUpdate.message": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "يرجى التحديث إلى أحدث إصدار لمتابعة استخدام التطبيق." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Bitte aktualisieren Sie auf die neueste Version, um die App weiter nutzen zu können." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Please update to the latest version to continue using the app." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Por favor, actualice a la última versión para seguir usando la aplicación." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Veuillez mettre à jour vers la dernière version pour continuer à utiliser l'application." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Aggiorna all'ultima versione per continuare a utilizzare l'app." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アプリを引き続き使用するには最新バージョンにアップデートしてください。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "앱을 계속 사용하려면 최신 버전으로 업데이트해 주세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Atualize para a versão mais recente para continuar usando o app." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Uygulamayı kullanmaya devam etmek için lütfen son sürüme güncelleyin." } }
+      }
+    },
+    "splash.forceUpdate.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "التحديث مطلوب" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Update erforderlich" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Update Required" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Actualización requerida" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Mise à jour requise" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Aggiornamento richiesto" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "アップデートが必要です" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "업데이트 필요" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Atualização Necessária" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Güncelleme Gerekli" } }
+      }
+    },
+    "tabbar.favorites": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "المفضلة" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Favoriten" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Favorites" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Favoritos" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Favoris" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Preferiti" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "お気に入り" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "즐겨찾기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Favoritos" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Favoriler" } }
+      }
+    },
+    "tabbar.home": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الرئيسية" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Startseite" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Home" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Inicio" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Accueil" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Home" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "ホーム" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "홈" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Início" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Ana Sayfa" } }
+      }
+    },
+    "tabbar.settings": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "الإعدادات" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Einstellungen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Settings" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Ajustes" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Réglages" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Impostazioni" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "設定" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "설정" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Configurações" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Ayarlar" } }
+      }
+    },
+    "TemplateApp": {},
+    "v%@": {},
+    "welcome.signIn": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تسجيل الدخول" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Anmelden" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign In" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Iniciar sesión" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Se connecter" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Accedi" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "サインイン" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "로그인" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Entrar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Giriş Yap" } }
+      }
+    },
+    "welcome.start": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ابدأ" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Loslegen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Get Started" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Empezar" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Commencer" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Inizia" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "始める" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "시작하기" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Começar" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Başla" } }
+      }
+    },
+    "welcome.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "سجّل الدخول لمتابعة من حيث توقفت، أو ابدأ من جديد." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Melde dich an, um dort weiterzumachen, wo du aufgehört hast, oder starte neu." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Sign in to pick up where you left off, or start fresh." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Inicia sesión para continuar donde lo dejaste o empieza de nuevo." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Connectez-vous pour reprendre là où vous en étiez, ou recommencez." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Accedi per riprendere da dove eri rimasto o ricomincia da capo." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "前回の続きからサインインするか、新しく始めましょう。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "이전에 하던 작업을 이어가려면 로그인하거나 새로 시작하세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Faça login para continuar de onde parou ou comece do zero." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Kaldığın yerden devam etmek için giriş yap veya yeniden başla." } }
+      }
+    },
+    "welcome.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "مرحبًا بعودتك" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Willkommen zurück" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Welcome Back" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Bienvenido de nuevo" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Bon retour" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Bentornato" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "おかえりなさい" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "다시 오신 것을 환영합니다" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Bem-vindo de volta" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Tekrar Hoş Geldin" } }
+      }
+    },
+    "onboarding.intro1.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "مرحبًا في TemplateApp" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Willkommen bei TemplateApp" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Welcome to TemplateApp" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Bienvenido a TemplateApp" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Bienvenue sur TemplateApp" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Benvenuto in TemplateApp" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "TemplateAppへようこそ" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "TemplateApp에 오신 것을 환영합니다" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Bem-vindo ao TemplateApp" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "TemplateApp'e Hoş Geldin" } }
+      }
+    },
+    "onboarding.intro1.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "اكتشف كل ما تحتاجه في مكان واحد." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Entdecke alles, was du brauchst, an einem Ort." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Discover everything you need, all in one place." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Descubre todo lo que necesitas en un solo lugar." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Découvrez tout ce dont vous avez besoin, au même endroit." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Scopri tutto ciò di cui hai bisogno, in un unico posto." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "必要なものをすべて一か所で見つけましょう。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "필요한 모든 것을 한곳에서 발견하세요." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Descubra tudo o que você precisa em um só lugar." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "İhtiyacın olan her şeyi tek bir yerde keşfet." } }
+      }
+    },
+    "onboarding.intro2.title": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ميزات قوية" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Leistungsstarke Funktionen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Powerful Features" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Funciones Potentes" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Fonctionnalités Puissantes" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Funzionalità Potenti" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "パワフルな機能" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "강력한 기능" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Recursos Poderosos" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Güçlü Özellikler" } }
+      }
+    },
+    "onboarding.intro2.subtitle": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "مصمّم بالأدوات التي تحتاجها للنجاح." } },
+        "de": { "stringUnit": { "state": "translated", "value": "Mit den Werkzeugen gebaut, die du zum Erfolg brauchst." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Built with the tools you need to succeed." } },
+        "es": { "stringUnit": { "state": "translated", "value": "Creado con las herramientas que necesitas para triunfar." } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Conçu avec les outils dont vous avez besoin pour réussir." } },
+        "it": { "stringUnit": { "state": "translated", "value": "Progettato con gli strumenti necessari per il successo." } },
+        "ja": { "stringUnit": { "state": "translated", "value": "成功に必要なツールを備えています。" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "성공에 필요한 도구로 만들어졌습니다." } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Criado com as ferramentas que você precisa para ter sucesso." } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Başarın için ihtiyacın olan araçlarla tasarlandı." } }
+      }
+    },
+    "onboarding.intro2.card1": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "آمن وخاص" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Sicher & Privat" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Secure & Private" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Seguro y Privado" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Sécurisé et Privé" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Sicuro e Privato" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "安全でプライベート" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "안전하고 프라이빗" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Seguro e Privado" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Güvenli ve Gizli" } }
+      }
+    },
+    "onboarding.intro2.card2": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "ذكي وبديهي" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Intelligent & Intuitiv" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Smart & Intuitive" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Inteligente e Intuitivo" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Intelligent et Intuitif" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Intelligente e Intuitivo" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "スマートで直感的" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "스마트하고 직관적" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Inteligente e Intuitivo" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "Akıllı ve Sezgisel" } }
+      }
+    },
+    "onboarding.intro2.card3": {
+      "localizations": {
+        "ar": { "stringUnit": { "state": "translated", "value": "تتبع تقدمك" } },
+        "de": { "stringUnit": { "state": "translated", "value": "Verfolge deinen Fortschritt" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Track Your Progress" } },
+        "es": { "stringUnit": { "state": "translated", "value": "Sigue tu Progreso" } },
+        "fr": { "stringUnit": { "state": "translated", "value": "Suivez vos Progrès" } },
+        "it": { "stringUnit": { "state": "translated", "value": "Monitora i tuoi Progressi" } },
+        "ja": { "stringUnit": { "state": "translated", "value": "進捗を追跡" } },
+        "ko": { "stringUnit": { "state": "translated", "value": "진행 상황 추적" } },
+        "pt-BR": { "stringUnit": { "state": "translated", "value": "Acompanhe seu Progresso" } },
+        "tr": { "stringUnit": { "state": "translated", "value": "İlerlemenizi Takip Edin" } }
+      }
+    }
+  },
+  "version": "1.1"
+}

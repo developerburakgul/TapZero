@@ -1,0 +1,51 @@
+.claude/settings.local.json
+
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.moved-aside
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods (kullanılmasa bile)
+Pods/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# OS files
+.DS_Store
+*.swp
+*~
+._*
+Thumbs.db
+
+# App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Secrets & credentials
+*.xcconfig
+!**/SharedConfigs/*.xcconfig
+.env
+.env.*
+GoogleService-Info*.plist
+
+# Archives
+*.xcarchive
