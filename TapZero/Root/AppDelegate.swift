@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseCore
 import Foundation
+import GoogleSignIn
 import KeychainAccess
 import SwiftUI
 import UserNotifications
@@ -34,6 +35,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         switch config {
         case .dev, .prod:
             Self.clearStateIfReinstalled()
+            if let clientID = FirebaseApp.app()?.options.clientID {
+                GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
+            }
         case .mock:
             break
         }
