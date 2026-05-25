@@ -1,29 +1,26 @@
 //
 //  SplashScreen.swift
-//  Created by __Username__ on __Date__
+//  TapZero
 //
 
-import Combine
 import SwiftfulRouting
 import SwiftUI
 
 struct SplashScreen: View {
     // MARK: - Private properties
+
     private let constants = Constants()
 
     // MARK: - Observed properties
+
     @StateObject var viewModel: SplashViewModel
 
     // MARK: - Animation States
-    @State private var animateGradient: Bool = false
-    @State private var logoScale: CGFloat = 0.6
-    @State private var logoOpacity: Double = 0
-    @State private var titleOpacity: Double = 0
-    @State private var titleOffset: CGFloat = 20
-    @State private var shimmerOffset: CGFloat = -200
-    @State private var dotIndex: Int = 0
 
-    private let dotTimer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
+    @State private var logoOpacity: Double = 0
+    @State private var logoScale: CGFloat = 0.85
+    @State private var titleOpacity: Double = 0
+    @State private var taglineOpacity: Double = 0
 
     var body: some View {
         contentView
@@ -41,91 +38,78 @@ struct SplashScreen: View {
 
     private var contentView: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    TapZeroDesign.Splash.gradientStart,
-                    TapZeroDesign.Splash.gradientMid,
-                    TapZeroDesign.Splash.gradientEnd
-                ],
-                startPoint: animateGradient ? .topLeading : .bottomLeading,
-                endPoint: animateGradient ? .bottomTrailing : .topTrailing
-            )
-            .ignoresSafeArea()
+            TapZeroDesign.Background.primary
+                .ignoresSafeArea()
 
-            VStack(spacing: 20) {
-                Spacer()
+            VStack(spacing: 0) {
                 logoView
+                    .padding(.bottom, 28)
+
                 titleView
-                Spacer()
-                loadingDotsView
+
+                taglineView
+                    .padding(.top, 10)
             }
         }
         .onAppear(perform: startAnimations)
     }
 
+    // MARK: - Logo (concentric rings + dot)
+
     private var logoView: some View {
-        Image(systemName: "app.fill")
-            .font(.system(size: 72))
-            .foregroundStyle(.white.opacity(0.9))
-            .scaleEffect(logoScale)
-            .opacity(logoOpacity)
+        ZStack {
+            // Outer ring
+            Circle()
+                .stroke(TapZeroDesign.Foreground.primary, lineWidth: 1.5)
+                .frame(width: 86, height: 86)
+
+            // Inner ring
+            Circle()
+                .stroke(TapZeroDesign.Foreground.primary.opacity(0.35), lineWidth: 1.5)
+                .frame(width: 50, height: 50)
+
+            // Dot at top
+            Circle()
+                .fill(TapZeroDesign.Foreground.primary)
+                .frame(width: 8, height: 8)
+                .offset(y: -43)
+        }
+        .opacity(logoOpacity)
+        .scaleEffect(logoScale)
     }
+
+    // MARK: - Title
 
     private var titleView: some View {
         Text("TapZero")
-            .font(.system(size: 28, weight: .bold, design: .rounded))
-            .foregroundStyle(.white)
+            .font(TapZeroTypography.Display.brandLogo)
+            .tracking(-1.6)
+            .foregroundStyle(TapZeroDesign.Foreground.primary)
             .opacity(titleOpacity)
-            .offset(y: titleOffset)
-            .overlay(
-                Rectangle()
-                    .fill(
-                        LinearGradient(
-                            colors: [.clear, .white.opacity(0.3), .clear],
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                    )
-                    .frame(width: 80)
-                    .offset(x: shimmerOffset)
-                    .mask(
-                        Text("TapZero")
-                            .font(.system(size: 28, weight: .bold, design: .rounded))
-                    )
-            )
     }
 
-    private var loadingDotsView: some View {
-        HStack(spacing: 8) {
-            ForEach(0..<3, id: \.self) { index in
-                Circle()
-                    .fill(.white)
-                    .frame(width: 8, height: 8)
-                    .opacity(dotIndex == index ? 1.0 : 0.3)
-                    .scaleEffect(dotIndex == index ? 1.3 : 1.0)
-                    .animation(.easeInOut(duration: 0.3), value: dotIndex)
-            }
-        }
-        .padding(.bottom, 48)
-        .onReceive(dotTimer) { _ in
-            dotIndex = (dotIndex + 1) % 3
-        }
+    // MARK: - Tagline
+
+    private var taglineView: some View {
+        Text("Feel the time.")
+            .font(TapZeroTypography.Body.cardLabel)
+            .tracking(-0.1)
+            .foregroundStyle(TapZeroDesign.Foreground.secondary)
+            .opacity(taglineOpacity)
     }
+
+    // MARK: - Animations
 
     private func startAnimations() {
-        withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
-            animateGradient = true
-        }
-        withAnimation(.spring(response: 0.8, dampingFraction: 0.6).delay(0.2)) {
-            logoScale = 1.0
+        withAnimation(.easeOut(duration: 0.7).delay(0.1)) {
             logoOpacity = 1.0
+            logoScale = 1.0
         }
-        withAnimation(.easeOut(duration: 0.6).delay(0.5)) {
+        withAnimation(.easeOut(duration: 0.5).delay(0.4)) {
             titleOpacity = 1.0
-            titleOffset = 0
         }
-        withAnimation(.linear(duration: 2).repeatForever(autoreverses: false).delay(1.0)) {
-            shimmerOffset = 200
+        withAnimation(.easeOut(duration: 0.5).delay(0.6)) {
+            taglineOpacity = 1.0
         }
     }
 }
