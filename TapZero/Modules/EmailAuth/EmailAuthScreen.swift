@@ -26,7 +26,6 @@ struct EmailAuthScreen: View {
             headerSection
             formSection
             submitButton
-            toggleModeButton
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)

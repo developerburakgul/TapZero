@@ -53,7 +53,7 @@ extension CreateAccountViewModel {
     func didTapEmail() {
         sendEvent(type: .tappedEmail)
         let config = ResizableSheetConfig(
-            detents: [.medium, .large],
+            detents: [.medium],
             dragIndicator: .visible
         )
         router.showScreen(.sheetConfig(config: config)) { router in
