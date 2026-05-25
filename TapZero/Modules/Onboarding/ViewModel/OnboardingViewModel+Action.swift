@@ -34,7 +34,18 @@ extension OnboardingViewModel {
         currentStep -= 1
     }
 
+    func resetIntroCards() {
+        introStepTwo.binding.currentCard = 0
+    }
+
     func onIntroContinue() {
+        // IntroStepTwo has sub-cards — advance card first, then page
+        if currentStep == 2,
+           introStepTwo.binding.currentCard < FeatureCard.allCases.count - 1 {
+            introStepTwo.binding.currentCard += 1
+            return
+        }
+
         sendEvent(type: .completedStep(step: currentStep))
         if currentStep < 3 {
             currentStep += 1

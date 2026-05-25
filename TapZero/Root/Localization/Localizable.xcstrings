@@ -6153,7 +6153,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose how many seconds — anywhere from 1 to 30."
+            "value": "Pick how many seconds you want to feel — anywhere from 1 to 30."
           }
         }
       }
@@ -6173,7 +6173,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The screen goes blank. No clock. No counter."
+            "value": "The screen goes blank. No clock, no counter. Tap when it feels right."
           }
         }
       }
@@ -6193,7 +6193,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The closer to the target, the higher you score."
+            "value": "The closer you are to zero, the better your score. Can you feel time perfectly?"
           }
         }
       }

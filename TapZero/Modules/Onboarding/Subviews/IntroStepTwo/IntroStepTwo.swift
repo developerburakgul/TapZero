@@ -10,127 +10,140 @@ extension OnboardingScreen {
         @Binding var binding: IntroStepTwoEntity.Binding
         let config: IntroStepTwoEntity.Config
 
-        @State private var headerOpacity: Double = 0
-        @State private var cardStates: [Bool] = [false, false, false]
+        static let cardCount = FeatureCard.allCases.count
 
         var body: some View {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(spacing: 0) {
                 headerSection
-                stepsSection
-                Spacer()
+                cardView
+                    .frame(maxHeight: .infinity)
             }
-            .padding(.horizontal, 28)
-            .padding(.top, 12)
-            .onAppear { startAnimations() }
         }
 
         // MARK: - Header
 
         private var headerSection: some View {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(config.title)
-                    .font(TapZeroTypography.Heading.pageHeader)
-                    .tracking(-0.9)
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+            Text(config.title)
+                .font(TapZeroTypography.Heading.pageHeader)
+                .tracking(-0.9)
+                .foregroundStyle(TapZeroDesign.Foreground.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 28)
+                .padding(.top, 12)
+        }
 
-                Text(config.subtitle)
+        // MARK: - Card
+
+        private var cardView: some View {
+            let card = FeatureCard.allCases[binding.currentCard]
+
+            return VStack(spacing: 0) {
+                Text(card.captionKey)
                     .font(TapZeroTypography.Body.primary)
                     .tracking(-0.1)
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
                     .lineSpacing(4)
-            }
-            .opacity(headerOpacity)
-        }
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 28)
+                    .padding(.top, 12)
+                    .animation(.easeInOut(duration: 0.3), value: binding.currentCard)
 
-        // MARK: - Steps
+                Spacer()
 
-        private var stepsSection: some View {
-            VStack(spacing: 10) {
-                stepCard(
-                    number: "1",
-                    title: TextKey.Onboarding.howStep1Title,
-                    body: TextKey.Onboarding.howStep1Body,
-                    index: 0
-                )
-                stepCard(
-                    number: "2",
-                    title: TextKey.Onboarding.howStep2Title,
-                    body: TextKey.Onboarding.howStep2Body,
-                    index: 1
-                )
-                stepCard(
-                    number: "3",
-                    title: TextKey.Onboarding.howStep3Title,
-                    body: TextKey.Onboarding.howStep3Body,
-                    index: 2
-                )
-            }
-            .padding(.top, 28)
-        }
-
-        private func stepCard(
-            number: String,
-            title: LocalizedStringKey,
-            body: LocalizedStringKey,
-            index: Int
-        ) -> some View {
-            HStack(alignment: .top, spacing: 16) {
-                Text(number)
-                    .font(.system(size: 14, weight: .bold))
-                    .tracking(-0.2)
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
-                    .frame(width: 32, height: 32)
-                    .background(
-                        Circle()
-                            .fill(TapZeroDesign.Background.primary)
-                            .overlay(
-                                Circle()
-                                    .stroke(TapZeroDesign.Hairline.default, lineWidth: 1)
-                            )
-                    )
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(title)
-                        .font(.system(size: 16, weight: .bold))
-                        .tracking(-0.3)
-                        .foregroundStyle(TapZeroDesign.Foreground.primary)
-
-                    Text(body)
-                        .font(TapZeroTypography.Body.hint)
-                        .tracking(-0.1)
-                        .foregroundStyle(TapZeroDesign.Foreground.secondary)
-                        .lineSpacing(3)
+                PhoneMockupView(width: 240) {
+                    // TODO: Her kart için gerçek app ekranı eklenecek
+                    card.placeholder
                 }
-                .padding(.top, 3)
-            }
-            .padding(.horizontal, 18)
-            .padding(.vertical, 16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(TapZeroDesign.Background.card)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
-            .overlay(
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(TapZeroDesign.Hairline.default, lineWidth: 0.5)
-            )
-            .opacity(cardStates[index] ? 1 : 0)
-            .offset(y: cardStates[index] ? 0 : 30)
-        }
-
-        // MARK: - Animation
-
-        private func startAnimations() {
-            withAnimation(.easeOut(duration: 0.4)) {
-                headerOpacity = 1
-            }
-            for i in 0..<3 {
-                withAnimation(.spring(duration: 0.5, bounce: 0.3).delay(0.2 + Double(i) * 0.12)) {
-                    cardStates[i] = true
-                }
+                .animation(.easeInOut(duration: 0.3), value: binding.currentCard)
             }
         }
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.binding == rhs.binding && lhs.config == rhs.config
+        }
+    }
+}
+
+// MARK: - Feature Card Data
+
+@MainActor
+enum FeatureCard: String, CaseIterable, Identifiable {
+    case pickTarget
+    case gameplay
+    case score
+
+    var id: String { rawValue }
+
+    var captionKey: LocalizedStringKey {
+        switch self {
+        case .pickTarget: TextKey.Onboarding.howStep1Body
+        case .gameplay: TextKey.Onboarding.howStep2Body
+        case .score: TextKey.Onboarding.howStep3Body
+        }
+    }
+
+    // Placeholder — app ekranları hazır olunca gerçek content ile değiştirilecek
+    @ViewBuilder
+    var placeholder: some View {
+        switch self {
+        case .pickTarget:
+            placeholderPickTarget
+        case .gameplay:
+            placeholderGameplay
+        case .score:
+            placeholderScore
+        }
+    }
+
+    private var placeholderPickTarget: some View {
+        VStack(spacing: 16) {
+            Spacer().frame(height: 40)
+            Text("5")
+                .font(.system(size: 72, weight: .bold, design: .rounded))
+                .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.12))
+            Text("seconds")
+                .font(TapZeroTypography.Caption.subtitle)
+                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+            Spacer()
+        }
+    }
+
+    private var placeholderGameplay: some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Circle()
+                .stroke(TapZeroDesign.Foreground.primary.opacity(0.06), lineWidth: 2)
+                .frame(width: 100, height: 100)
+                .overlay(
+                    Circle()
+                        .fill(TapZeroDesign.Foreground.primary.opacity(0.04))
+                        .frame(width: 40, height: 40)
+                )
+            Text("tap")
+                .font(TapZeroTypography.Caption.subtitle)
+                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+            Spacer()
+        }
+    }
+
+    private var placeholderScore: some View {
+        VStack(spacing: 12) {
+            Spacer().frame(height: 40)
+            Text("0.03")
+                .font(.system(size: 48, weight: .bold, design: .rounded))
+                .foregroundStyle(TapZeroDesign.Status.good.opacity(0.2))
+            Text("seconds off")
+                .font(TapZeroTypography.Caption.subtitle)
+                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(TapZeroDesign.Status.good.opacity(0.06))
+                .frame(width: 120, height: 32)
+                .overlay(
+                    Text("Perfect!")
+                        .font(TapZeroTypography.Caption.small)
+                        .foregroundStyle(TapZeroDesign.Status.good.opacity(0.3))
+                )
+            Spacer()
         }
     }
 }

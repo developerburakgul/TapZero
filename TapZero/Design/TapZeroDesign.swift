@@ -8,6 +8,7 @@ import SwiftUI
 import UIKit
 
 // Uygulama genelinde kullanılan renk tanımları
+
 enum TapZeroDesign {
     // MARK: - System — iOS sistem renkleri, değiştirilmemeli
 

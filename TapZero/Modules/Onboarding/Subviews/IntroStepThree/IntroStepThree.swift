@@ -50,19 +50,11 @@ extension OnboardingScreen {
         // MARK: - Header
 
         private var headerSection: some View {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(config.title)
-                    .font(TapZeroTypography.Heading.pageHeader)
-                    .tracking(-0.9)
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
-
-                Text(config.subtitle)
-                    .font(TapZeroTypography.Body.primary)
-                    .tracking(-0.1)
-                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
-                    .lineSpacing(4)
-            }
-            .opacity(headerOpacity)
+            Text(config.title)
+                .font(TapZeroTypography.Heading.pageHeader)
+                .tracking(-0.9)
+                .foregroundStyle(TapZeroDesign.Foreground.primary)
+                .opacity(headerOpacity)
         }
 
         // MARK: - Podium

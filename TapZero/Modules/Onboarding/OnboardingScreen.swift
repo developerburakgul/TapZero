@@ -49,28 +49,22 @@ struct OnboardingScreen: View {
 
     // MARK: - Intro Pager
 
+    private var introPageBinding: Binding<Int> {
+        Binding(
+            get: { viewModel.introPageIndex },
+            set: {
+                viewModel.introPageIndex = $0
+                viewModel.resetIntroCards()
+            }
+        )
+    }
+
     private var introPageView: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 58)
 
-            TabView(selection: $viewModel.introPageIndex) {
-                IntroStepOne(
-                    binding: $viewModel.introStepOne.binding,
-                    config: viewModel.introStepOne.config
-                )
-                .tag(0)
-
-                IntroStepTwo(
-                    binding: $viewModel.introStepTwo.binding,
-                    config: viewModel.introStepTwo.config
-                )
-                .tag(1)
-
-                IntroStepThree(
-                    binding: $viewModel.introStepThree.binding,
-                    config: viewModel.introStepThree.config
-                )
-                .tag(2)
+            TabView(selection: introPageBinding) {
+                introPages
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
 
@@ -81,6 +75,27 @@ struct OnboardingScreen: View {
                 viewModel.onIntroContinue()
             }
         }
+    }
+
+    @ViewBuilder
+    private var introPages: some View {
+        IntroStepOne(
+            binding: $viewModel.introStepOne.binding,
+            config: viewModel.introStepOne.config
+        )
+        .tag(0)
+
+        IntroStepTwo(
+            binding: $viewModel.introStepTwo.binding,
+            config: viewModel.introStepTwo.config
+        )
+        .tag(1)
+
+        IntroStepThree(
+            binding: $viewModel.introStepThree.binding,
+            config: viewModel.introStepThree.config
+        )
+        .tag(2)
     }
 
     // MARK: - Data Steps
