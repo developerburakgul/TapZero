@@ -46,6 +46,7 @@ Thumbs.db
 .env
 .env.*
 GoogleService-Info*.plist
+TapZero/GoogleServicePLists/
 
 # Archives
 *.xcarchive
