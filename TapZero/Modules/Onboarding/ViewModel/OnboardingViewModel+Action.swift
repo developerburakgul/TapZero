@@ -34,40 +34,33 @@ extension OnboardingViewModel {
         currentStep -= 1
     }
 
-    func onIntroStepOneAction(_ action: OnboardingScreen.IntroStepOne.Action) {
-        switch action {
-        case .didTapContinue:
-            sendEvent(type: .completedStep(step: 1))
-            currentStep = 2
-        }
-    }
-
-    func onIntroStepTwoAction(_ action: OnboardingScreen.IntroStepTwo.Action) {
-        switch action {
-        case .didTapContinue:
-            sendEvent(type: .completedStep(step: 2))
-            currentStep = 3
+    func onIntroContinue() {
+        sendEvent(type: .completedStep(step: currentStep))
+        if currentStep < 3 {
+            currentStep += 1
+        } else {
+            currentStep = 4
         }
     }
 
     func onStepOneAction(_ action: OnboardingScreen.NameStep.Action) {
         switch action {
         case .didTapContinue:
-            sendEvent(type: .completedStep(step: 3))
+            sendEvent(type: .completedStep(step: 4))
             let name = nameStep.binding.inputText.trimmingCharacters(in: .whitespaces)
             photoStep.binding.initial = String(name.prefix(1)).uppercased()
-            currentStep = 4
+            currentStep = 5
         }
     }
 
     func onStepTwoAction(_ action: OnboardingScreen.PhotoStep.Action) {
         switch action {
         case .didTapContinue:
-            sendEvent(type: .completedStep(step: 4))
+            sendEvent(type: .completedStep(step: 5))
             Task { await moveToNotificationStep() }
         case .didTapSkip:
             sendEvent(type: .tappedSkipPhoto)
-            sendEvent(type: .completedStep(step: 4))
+            sendEvent(type: .completedStep(step: 5))
             Task { await moveToNotificationStep() }
         case .didTapCamera:
             showPhotoPicker = true
@@ -84,16 +77,16 @@ extension OnboardingViewModel {
                 let granted = await requestNotificationPermission()
                 notificationStep.binding.permissionGranted = granted
                 sendEvent(type: .completedNotificationPermission(granted: granted))
-                sendEvent(type: .completedStep(step: 5))
-                currentStep = 6
+                sendEvent(type: .completedStep(step: 6))
+                currentStep = 7
             }
         case .didTapSkip:
             sendEvent(type: .tappedSkipNotification)
-            sendEvent(type: .completedStep(step: 5))
-            currentStep = 6
+            sendEvent(type: .completedStep(step: 6))
+            currentStep = 7
         case .didTapContinue:
-            sendEvent(type: .completedStep(step: 5))
-            currentStep = 6
+            sendEvent(type: .completedStep(step: 6))
+            currentStep = 7
         }
     }
 
@@ -101,7 +94,7 @@ extension OnboardingViewModel {
         switch action {
         case .didTapStart:
             sendEvent(type: .tappedGetStarted)
-            sendEvent(type: .completedStep(step: 6))
+            sendEvent(type: .completedStep(step: 7))
             sendEvent(type: .completedAll)
             completeOnboarding()
         }
@@ -110,7 +103,7 @@ extension OnboardingViewModel {
     private func moveToNotificationStep() async {
         let settings = await UNUserNotificationCenter.current().notificationSettings()
         notificationStep.binding.permissionGranted = settings.authorizationStatus == .authorized
-        currentStep = 5
+        currentStep = 6
     }
 
     private func requestNotificationPermission() async -> Bool {

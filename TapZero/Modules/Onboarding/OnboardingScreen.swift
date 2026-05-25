@@ -9,9 +9,11 @@ import SwiftUI
 
 struct OnboardingScreen: View {
     // MARK: - Private properties
+
     private let constants = Constants()
 
     // MARK: - Observed properties
+
     @StateObject var viewModel: OnboardingViewModel
 
     var body: some View {
@@ -37,56 +39,88 @@ struct OnboardingScreen: View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                if !viewModel.isIntroStep {
-                    StepHeader(
-                        currentStep: viewModel.dataStepIndex,
-                        totalSteps: viewModel.dataStepCount,
-                        showBack: viewModel.dataStepIndex > 1,
-                        onBack: viewModel.onBackPressed
-                    )
-                }
-
-                stepContent
-                    .frame(maxHeight: .infinity)
+            if viewModel.isIntroStep {
+                introPageView
+            } else {
+                dataStepView
             }
         }
     }
 
+    // MARK: - Intro Pager
+
+    private var introPageView: some View {
+        VStack(spacing: 0) {
+            Spacer().frame(height: 58)
+
+            TabView(selection: $viewModel.introPageIndex) {
+                IntroStepOne(
+                    binding: $viewModel.introStepOne.binding,
+                    config: viewModel.introStepOne.config
+                )
+                .tag(0)
+
+                IntroStepTwo(
+                    binding: $viewModel.introStepTwo.binding,
+                    config: viewModel.introStepTwo.config
+                )
+                .tag(1)
+
+                IntroStepThree(
+                    binding: $viewModel.introStepThree.binding,
+                    config: viewModel.introStepThree.config
+                )
+                .tag(2)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+
+            IntroFooter(
+                index: viewModel.introPageIndex,
+                ctaLabel: viewModel.introCtaLabel
+            ) {
+                viewModel.onIntroContinue()
+            }
+        }
+    }
+
+    // MARK: - Data Steps
+
+    private var dataStepView: some View {
+        VStack(spacing: 0) {
+            StepHeader(
+                currentStep: viewModel.dataStepIndex,
+                totalSteps: viewModel.dataStepCount,
+                showBack: viewModel.dataStepIndex > 1,
+                onBack: viewModel.onBackPressed
+            )
+
+            dataStepContent
+                .frame(maxHeight: .infinity)
+        }
+    }
+
     @ViewBuilder
-    private var stepContent: some View {
+    private var dataStepContent: some View {
         switch viewModel.currentStep {
-        case 1:
-            IntroStepOne(
-                binding: $viewModel.introStepOne.binding,
-                config: viewModel.introStepOne.config,
-                onAction: viewModel.onIntroStepOneAction
-            )
-        case 2:
-            IntroStepTwo(
-                binding: $viewModel.introStepTwo.binding,
-                config: viewModel.introStepTwo.config,
-                onAction: viewModel.onIntroStepTwoAction
-            )
-        case 3:
+        case 4:
             NameStep(
                 binding: $viewModel.nameStep.binding,
                 config: viewModel.nameStep.config,
                 onAction: viewModel.onStepOneAction
             )
-        case 4:
+        case 5:
             PhotoStep(
                 binding: $viewModel.photoStep.binding,
                 config: viewModel.photoStep.config,
                 onAction: viewModel.onStepTwoAction
             )
-        case 5:
+        case 6:
             NotificationStep(
                 binding: $viewModel.notificationStep.binding,
                 config: viewModel.notificationStep.config,
                 onAction: viewModel.onStepThreeAction
             )
-        case 6:
+        case 7:
             GetStartedStep(
                 binding: $viewModel.getStartedStep.binding,
                 config: viewModel.getStartedStep.config,

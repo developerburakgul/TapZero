@@ -14,7 +14,7 @@ final class OnboardingViewModel: ObservableObject {
     var didAppearOnce: Bool = false
     let router: Router
     let entity: OnboardingEntity
-    let totalSteps = 6
+    let totalSteps = 7
 
     // MARK: - Managers
     @Injected private(set) var userManager: UserManager
@@ -41,6 +41,13 @@ final class OnboardingViewModel: ObservableObject {
         config: .init(
             title: TextKey.Onboarding.intro2Title,
             subtitle: TextKey.Onboarding.intro2Subtitle
+        )
+    )
+    @Published var introStepThree: OnboardingScreen.IntroStepThreeEntity = .init(
+        binding: .init(),
+        config: .init(
+            title: TextKey.Onboarding.intro3Title,
+            subtitle: TextKey.Onboarding.intro3Subtitle
         )
     )
     @Published var nameStep: OnboardingScreen.NameStepEntity = .init(
@@ -93,14 +100,25 @@ extension OnboardingViewModel {
     }
 
     var isIntroStep: Bool {
-        currentStep <= 2
+        currentStep <= 3
+    }
+
+    var introPageIndex: Int {
+        get { currentStep - 1 }
+        set { currentStep = newValue + 1 }
+    }
+
+    var introCtaLabel: LocalizedStringKey {
+        introPageIndex == 2
+            ? TextKey.Onboarding.getStartedButton
+            : TextKey.Onboarding.continueButton
     }
 
     var dataStepIndex: Int {
-        currentStep - 2
+        currentStep - 3
     }
 
     var dataStepCount: Int {
-        totalSteps - 2
+        totalSteps - 3
     }
 }

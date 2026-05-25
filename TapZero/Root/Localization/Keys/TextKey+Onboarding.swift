@@ -17,6 +17,17 @@ extension TextKey {
         // Intro 2
         static let intro2Title: LocalizedStringKey = "onboarding.intro2.title"
         static let intro2Subtitle: LocalizedStringKey = "onboarding.intro2.subtitle"
+        static let howStep1Title: LocalizedStringKey = "onboarding.intro2.step1.title"
+        static let howStep1Body: LocalizedStringKey = "onboarding.intro2.step1.body"
+        static let howStep2Title: LocalizedStringKey = "onboarding.intro2.step2.title"
+        static let howStep2Body: LocalizedStringKey = "onboarding.intro2.step2.body"
+        static let howStep3Title: LocalizedStringKey = "onboarding.intro2.step3.title"
+        static let howStep3Body: LocalizedStringKey = "onboarding.intro2.step3.body"
+
+        // Intro 3
+        static let intro3Title: LocalizedStringKey = "onboarding.intro3.title"
+        static let intro3Subtitle: LocalizedStringKey = "onboarding.intro3.subtitle"
+        static let yourSpotWaiting: LocalizedStringKey = "onboarding.intro3.yourSpot"
 
         // Step 1: Name
         static let nameTitle: LocalizedStringKey = "onboarding.name.title"
