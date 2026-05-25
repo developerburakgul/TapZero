@@ -11,12 +11,16 @@ extension CreateAccountViewModel {
 
     func signInWithApple() async {
         do {
-            let result = try await authManager.signInApple()
+            let result = try await authManager.signInApple(requireExistingAccount: entity.isSignIn)
             try await userManager.logIn(auth: result.user, isNewUser: result.isNewUser, displayName: entity.displayName)
-            try? await userManager.markOnboardingCompleteForCurrentUser()
+            if !entity.isSignIn {
+                try? await userManager.markOnboardingCompleteForCurrentUser()
+            }
             keychainManager.set(true, forKey: SecureStorageKey.hasCompletedOnboardingBefore)
             sendEvent(type: .completedSignIn(provider: "apple"))
             completeSignIn()
+        } catch is AuthManager.AuthError {
+            showAccountNotFoundError()
         } catch {
             crashReporter.record(error: error)
             sendEvent(type: .failedSignIn(provider: "apple", error: error.localizedDescription))
@@ -26,12 +30,16 @@ extension CreateAccountViewModel {
 
     func signInWithGoogle() async {
         do {
-            let result = try await authManager.signInGoogle()
+            let result = try await authManager.signInGoogle(requireExistingAccount: entity.isSignIn)
             try await userManager.logIn(auth: result.user, isNewUser: result.isNewUser, displayName: entity.displayName)
-            try? await userManager.markOnboardingCompleteForCurrentUser()
+            if !entity.isSignIn {
+                try? await userManager.markOnboardingCompleteForCurrentUser()
+            }
             keychainManager.set(true, forKey: SecureStorageKey.hasCompletedOnboardingBefore)
             sendEvent(type: .completedSignIn(provider: "google"))
             completeSignIn()
+        } catch is AuthManager.AuthError {
+            showAccountNotFoundError()
         } catch {
             crashReporter.record(error: error)
             sendEvent(type: .failedSignIn(provider: "google", error: error.localizedDescription))
@@ -41,6 +49,7 @@ extension CreateAccountViewModel {
 
     func completeAsGuest() {
         Task {
+            try? await userManager.updateDisplayName(entity.displayName)
             try? await userManager.markOnboardingCompleteForCurrentUser()
             keychainManager.set(true, forKey: SecureStorageKey.hasCompletedOnboardingBefore)
             completeSignIn()
@@ -53,8 +62,10 @@ extension CreateAccountViewModel {
             onComplete()
         } else if entity.dismissOnComplete {
             router.dismissScreen()
-        } else {
+        } else if userManager.currentUser?.didCompleteOnboarding == true {
             navigateToTabbar()
+        } else {
+            navigateToOnboarding()
         }
     }
 }

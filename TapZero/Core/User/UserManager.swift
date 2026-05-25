@@ -38,12 +38,12 @@ final class UserManager: ObservableObject {
             let user = UserModel(auth: auth, creationVersion: creationVersion, displayName: displayName)
             try await remote.saveUser(user: user)
         }
-        addCurrentUserListener(userId: auth.uid)
+        await addCurrentUserListener(userId: auth.uid)
     }
 
     // MARK: - Listener
 
-    private func addCurrentUserListener(userId: String) {
+    private func addCurrentUserListener(userId: String) async {
         currentUserListenerTask?.cancel()
         currentUserListenerTask = Task {
             do {
@@ -54,6 +54,20 @@ final class UserManager: ObservableObject {
             } catch {
                 // Stream ended or error
             }
+        }
+
+        // Wait for first user document with timeout
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+                for await user in await self.$currentUser.values where user != nil {
+                    return
+                }
+            }
+            group.addTask {
+                try? await Task.sleep(for: .seconds(3))
+            }
+            await group.next()
+            group.cancelAll()
         }
     }
 
@@ -66,6 +80,13 @@ final class UserManager: ObservableObject {
     func markOnboardingCompleteForCurrentUser() async throws {
         guard let userId = currentUser?.userId else { return }
         try await remote.markOnboardingCompleted(userId: userId)
+    }
+
+    // MARK: - Display Name
+
+    func updateDisplayName(_ name: String) async throws {
+        guard let userId = currentUser?.userId, !name.isEmpty else { return }
+        try await remote.updateDisplayName(userId: userId, name: name)
     }
 
     // MARK: - Profile Image

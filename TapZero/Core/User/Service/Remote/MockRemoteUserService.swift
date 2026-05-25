@@ -34,6 +34,22 @@ class MockRemoteUserService: RemoteUserServiceProtocol {
         )
     }
 
+    func updateDisplayName(userId: String, name: String) async throws {
+        guard let user = currentUser, user.userId == userId else { return }
+        currentUser = UserModel(
+            userId: user.userId,
+            email: user.email,
+            displayName: name,
+            isAnonymous: user.isAnonymous,
+            creationDate: user.creationDate,
+            creationVersion: user.creationVersion,
+            lastSignInDate: user.lastSignInDate,
+            didCompleteOnboarding: user.didCompleteOnboarding,
+            profileColorHex: user.profileColorHex,
+            profileImageURL: user.profileImageURL
+        )
+    }
+
     func updateProfileImageURL(userId: String, url: String?) async throws {
         guard let user = currentUser, user.userId == userId else { return }
         currentUser = UserModel(

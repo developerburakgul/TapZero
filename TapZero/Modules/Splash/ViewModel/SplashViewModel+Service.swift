@@ -25,16 +25,13 @@ extension SplashViewModel {
         )
     }
 
-    func loadExistingUser(retryCount: Int = 0) async {
-        let maxRetry = 3
+    func loadExistingUser() async {
         guard let auth = authManager.auth else { return }
         do {
             try await userManager.logIn(auth: auth, isNewUser: false)
         } catch {
             crashReporter.record(error: error)
-            guard retryCount < maxRetry else { return }
-            try? await Task.sleep(for: .seconds(5))
-            await loadExistingUser(retryCount: retryCount + 1)
+            userLoadFailed = true
         }
     }
 

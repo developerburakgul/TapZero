@@ -15,5 +15,7 @@ extension TextKey {
         static let google: LocalizedStringKey = "createAccount.google"
         static let email: LocalizedStringKey = "createAccount.email"
         static let guest: LocalizedStringKey = "createAccount.guest"
+
+        static var accountNotFound: String { TextKey.localized("createAccount.accountNotFound") }
     }
 }

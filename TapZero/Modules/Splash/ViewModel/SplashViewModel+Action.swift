@@ -85,7 +85,9 @@ extension SplashViewModel {
     // MARK: - Navigation
 
     private func navigateAfterSplash() async {
-        if authManager.auth != nil, userManager.currentUser?.didCompleteOnboarding == true {
+        if authManager.auth != nil, userLoadFailed {
+            showLoadFailedAlert()
+        } else if authManager.auth != nil, userManager.currentUser?.didCompleteOnboarding == true {
             navigateToTabbar()
         } else if authManager.auth != nil {
             navigateToOnboarding()
@@ -94,6 +96,23 @@ extension SplashViewModel {
         } else {
             await signInAnonymouslyAndNavigate()
         }
+    }
+
+    private func showLoadFailedAlert() {
+        router.showAlert(
+            alert: AnyAlert(
+                title: TextKey.Common.errorTitle,
+                subtitle: TextKey.Common.loadFailed
+            ) {
+                Button(TextKey.Common.retry) {
+                    Task {
+                        self.userLoadFailed = false
+                        await self.loadExistingUser()
+                        await self.navigateAfterSplash()
+                    }
+                }
+            }
+        )
     }
 
     func navigateToTabbar() {

@@ -23,6 +23,13 @@ struct FirebaseRemoteUserService: RemoteUserServiceProtocol {
         try await usersCollection.updateDocument(id: userId, dict: dict)
     }
 
+    func updateDisplayName(userId: String, name: String) async throws {
+        let dict: [String: Any] = [
+            UserModel.CodingKeys.displayName.rawValue: name
+        ]
+        try await usersCollection.updateDocument(id: userId, dict: dict)
+    }
+
     func updateProfileImageURL(userId: String, url: String?) async throws {
         let dict: [String: Any?] = [
             UserModel.CodingKeys.profileImageURL.rawValue: url

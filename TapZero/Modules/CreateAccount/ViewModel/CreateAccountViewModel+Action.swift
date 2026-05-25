@@ -82,6 +82,17 @@ extension CreateAccountViewModel {
         )
     }
 
+    func showAccountNotFoundError() {
+        router.showAlert(
+            alert: AnyAlert(
+                title: TextKey.Common.errorTitle,
+                subtitle: TextKey.CreateAccount.accountNotFound
+            ) {
+                Button(TextKey.Common.ok, role: .cancel) {}
+            }
+        )
+    }
+
     // MARK: - Navigation
 
     func navigateToTabbar() {
@@ -89,6 +100,14 @@ extension CreateAccountViewModel {
         router.showModule(.identity, id: "tabbar") { _ in
             RouterView(addNavigationStack: false) { router in
                 TabbarBuilder.build(router: router, entity: entity)
+            }
+        }
+    }
+
+    func navigateToOnboarding() {
+        router.showModule(.identity, id: "onboarding") { _ in
+            RouterView(addNavigationStack: true) { router in
+                OnboardingBuilder.build(router: router)
             }
         }
     }

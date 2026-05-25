@@ -5,8 +5,10 @@
 //  Created by Burak Gül on 9.03.2026.
 //
 
+import FirebaseAuth
 import FirebaseCore
 import Foundation
+import KeychainAccess
 import SwiftUI
 import UserNotifications
 
@@ -28,6 +30,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         #endif
 
         config.configure()
+
+        switch config {
+        case .dev, .prod:
+            Self.clearStateIfReinstalled()
+        case .mock:
+            break
+        }
+
         dependencies = Dependencies(config: config)
         Dependencies.shared = dependencies
 
@@ -64,6 +74,22 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
            let url = URL(string: urlString) {
             Dependencies.shared.container.resolve(DeepLinkManager.self)?.handleURL(url)
         }
+    }
+}
+
+// MARK: - Reinstall Detection
+extension AppDelegate {
+    /// iOS Keychain persists across app deletion. On first launch after reinstall,
+    /// clear stale Firebase Auth tokens and app keychain data.
+    static func clearStateIfReinstalled() {
+        let defaults = UserDefaults.standard
+        let key = AppConstants.hasLaunchedBeforeKey
+
+        guard !defaults.bool(forKey: key) else { return }
+
+        try? Auth.auth().signOut()
+        try? Keychain(service: AppConstants.keychainService).removeAll()
+        defaults.set(true, forKey: key)
     }
 }
 

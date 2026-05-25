@@ -47,16 +47,28 @@ final class AuthManager: ObservableObject {
         return result
     }
 
-    func signInApple() async throws -> (user: UserAuthInfo, isNewUser: Bool) {
+    func signInApple(requireExistingAccount: Bool = false) async throws -> (user: UserAuthInfo, isNewUser: Bool) {
         defer { addAuthListener() }
         let result = try await service.signInApple()
+
+        if requireExistingAccount, result.isNewUser {
+            try? await service.deleteAccount()
+            throw AuthError.accountNotFound
+        }
+
         self.auth = result.user
         return result
     }
 
-    func signInGoogle() async throws -> (user: UserAuthInfo, isNewUser: Bool) {
+    func signInGoogle(requireExistingAccount: Bool = false) async throws -> (user: UserAuthInfo, isNewUser: Bool) {
         defer { addAuthListener() }
         let result = try await service.signInGoogle()
+
+        if requireExistingAccount, result.isNewUser {
+            try? await service.deleteAccount()
+            throw AuthError.accountNotFound
+        }
+
         self.auth = result.user
         return result
     }
@@ -89,5 +101,6 @@ final class AuthManager: ObservableObject {
 
     enum AuthError: LocalizedError {
         case notSignedIn
+        case accountNotFound
     }
 }

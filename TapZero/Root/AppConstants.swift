@@ -18,6 +18,9 @@ enum AppConstants {
     // MARK: - Keychain
     static let keychainService = "com.tapzero.keychain"
 
+    // MARK: - UserDefaults
+    static let hasLaunchedBeforeKey = "hasLaunchedBefore"
+
     // MARK: - Storage
     static let imageContentType = "image/jpeg"
     static let profileImagePath = "users/%@/profile.jpg"
