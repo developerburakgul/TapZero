@@ -1,6 +1,6 @@
 //
 //  TapZeroDesign.swift
-//  Created by __Username__ on __Date__
+//  TapZero
 //
 
 import DynamicColor
@@ -124,74 +124,253 @@ enum TapZeroDesign {
     // MARK: - Background
 
     enum Background {
-        @DynamicColor(systemColor: UIColor.systemBackground)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N50, hexDark: TapZeroPalette.Neutral.N900)
         static var primary: Color
 
-        @DynamicColor(systemColor: UIColor.secondarySystemBackground)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N250, hexDark: TapZeroPalette.Neutral.N820)
         static var secondary: Color
 
-        @DynamicColor(systemColor: UIColor.tertiarySystemBackground)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N150, hexDark: TapZeroPalette.Neutral.N800)
         static var tertiary: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N0, hexDark: TapZeroPalette.Neutral.N840)
+        static var card: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N100, hexDark: TapZeroPalette.Neutral.N860)
+        static var surface: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N300, hexDark: TapZeroPalette.Neutral.N750)
+        static var disabled: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N0, hexDark: TapZeroPalette.Neutral.N880)
+        static var settings: Color
     }
 
     // MARK: - Foreground
 
     enum Foreground {
-        @DynamicColor(systemColor: UIColor.label)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N900, hexDark: TapZeroPalette.Neutral.N50)
         static var primary: Color
 
-        @DynamicColor(systemColor: UIColor.secondaryLabel)
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N600),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.6)
+        )
         static var secondary: Color
 
-        @DynamicColor(systemColor: UIColor.tertiaryLabel)
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N500),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.35)
+        )
         static var tertiary: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N700),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.7)
+        )
+        static var muted: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N400, hexDark: TapZeroPalette.Neutral.N600)
+        static var disabled: Color
     }
 
     // MARK: - Accent
 
     enum Accent {
-        @DynamicColor(hexLight: TapZeroPalette.Blue.B500, hexDark: TapZeroPalette.Blue.B400)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N900, hexDark: TapZeroPalette.Neutral.N50)
         static var primary: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Indigo.I500, hexDark: TapZeroPalette.Indigo.I400)
+        @DynamicColor(hexLight: TapZeroPalette.Green.G600, hexDark: TapZeroPalette.Green.G600)
         static var secondary: Color
+    }
+
+    // MARK: - Hairline
+
+    enum Hairline {
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.08),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.08)
+        )
+        static var `default`: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.05),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.05)
+        )
+        static var subtle: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.10),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.10)
+        )
+        static var medium: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.15),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.15)
+        )
+        static var strong: Color
+    }
+
+    // MARK: - Button
+
+    enum Button {
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N900, hexDark: TapZeroPalette.Neutral.N50)
+        static var primaryBackground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N50, hexDark: TapZeroPalette.Neutral.N900)
+        static var primaryForeground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N300, hexDark: TapZeroPalette.Neutral.N750)
+        static var disabledBackground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N400, hexDark: TapZeroPalette.Neutral.N600)
+        static var disabledForeground: Color
+    }
+
+    // MARK: - SegmentedControl
+
+    enum SegmentedControl {
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N250, hexDark: TapZeroPalette.Neutral.N820)
+        static var background: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N900, hexDark: TapZeroPalette.Neutral.N50)
+        static var activeBackground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N50, hexDark: TapZeroPalette.Neutral.N900)
+        static var activeForeground: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N600),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.6)
+        )
+        static var inactiveForeground: Color
+    }
+
+    // MARK: - Glass
+
+    enum Glass {
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N0).withAlphaComponent(0.5),
+            uiColorDark: UIColor(hex: "#787880").withAlphaComponent(0.28)
+        )
+        static var pill: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.92),
+            uiColorDark: UIColor(hex: "#141416").withAlphaComponent(0.78)
+        )
+        static var tabBar: Color
+    }
+
+    // MARK: - Status
+
+    enum Status {
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var good: Color
+
+        @DynamicColor(hex: TapZeroPalette.Yellow.Y500)
+        static var warn: Color
+
+        @DynamicColor(hex: TapZeroPalette.Red.R500)
+        static var bad: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Green.G50, hexDark: TapZeroPalette.Green.G900)
+        static var goodSoft: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Red.R50, hexDark: TapZeroPalette.Red.R900)
+        static var badSoft: Color
+    }
+
+    // MARK: - Medal
+
+    enum Medal {
+        @DynamicColor(hex: TapZeroPalette.Yellow.Y400)
+        static var gold: Color
+
+        @DynamicColor(hex: TapZeroPalette.Yellow.Y600)
+        static var goldAccent: Color
+
+        @DynamicColor(hex: TapZeroPalette.Silver.SV400)
+        static var silver: Color
+
+        @DynamicColor(hex: TapZeroPalette.Bronze.BZ500)
+        static var bronze: Color
+    }
+
+    // MARK: - Score
+
+    enum Score {
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N0, hexDark: TapZeroPalette.Neutral.N840)
+        static var cardBackground: Color
+
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var perfectAccent: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Green.G50, hexDark: TapZeroPalette.Green.G900)
+        static var goodBackground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Red.R50, hexDark: TapZeroPalette.Red.R900)
+        static var badBackground: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.06),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.06)
+        )
+        static var neutralBackground: Color
+    }
+
+    // MARK: - Toggle
+
+    enum Toggle {
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var on: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.15),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.18)
+        )
+        static var offTrack: Color
+
+        @DynamicColor(hex: TapZeroPalette.Neutral.N0)
+        static var thumb: Color
     }
 
     // MARK: - Force Update
 
     enum ForceUpdate {
-        @DynamicColor(hexLight: TapZeroPalette.Red.R500, hexDark: TapZeroPalette.Orange.O400)
+        @DynamicColor(hexLight: TapZeroPalette.Red.R500, hexDark: TapZeroPalette.Red.R500)
         static var icon: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Red.R300, hexDark: TapZeroPalette.Orange.O900)
+        @DynamicColor(hexLight: TapZeroPalette.Red.R50, hexDark: TapZeroPalette.Red.R900)
         static var iconBackground: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Red.R500, hexDark: TapZeroPalette.Red.R400)
+        @DynamicColor(hex: TapZeroPalette.Red.R500)
         static var currentVersion: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Green.G500, hexDark: TapZeroPalette.Green.G400)
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
         static var requiredVersion: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Red.R200, hexDark: TapZeroPalette.Neutral.N800)
+        @DynamicColor(hexLight: TapZeroPalette.Red.R50, hexDark: TapZeroPalette.Neutral.N800)
         static var sheetGradientStart: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Red.R300, hexDark: TapZeroPalette.Orange.O900)
+        @DynamicColor(hexLight: TapZeroPalette.Red.R50, hexDark: TapZeroPalette.Red.R900)
         static var sheetGradientEnd: Color
     }
 
     // MARK: - Network Status
 
     enum NetworkStatus {
-        @DynamicColor(hexLight: TapZeroPalette.Orange.O500, hexDark: TapZeroPalette.Orange.O400)
+        @DynamicColor(hex: TapZeroPalette.Yellow.Y500)
         static var icon: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Orange.O100, hexDark: TapZeroPalette.Orange.O900)
+        @DynamicColor(hexLight: TapZeroPalette.Yellow.Y400, hexDark: TapZeroPalette.Yellow.Y600)
         static var iconBackground: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Orange.O50, hexDark: TapZeroPalette.Neutral.N800)
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N100, hexDark: TapZeroPalette.Neutral.N800)
         static var sheetGradientStart: Color
 
-        @DynamicColor(hexLight: TapZeroPalette.Orange.O300, hexDark: TapZeroPalette.Orange.O900)
+        @DynamicColor(hexLight: TapZeroPalette.Yellow.Y400, hexDark: TapZeroPalette.Yellow.Y600)
         static var sheetGradientEnd: Color
     }
 
@@ -201,10 +380,10 @@ enum TapZeroDesign {
         @DynamicColor(hex: TapZeroPalette.Neutral.N900)
         static var gradientStart: Color
 
-        @DynamicColor(hex: TapZeroPalette.Neutral.N800)
+        @DynamicColor(hex: TapZeroPalette.Neutral.N840)
         static var gradientMid: Color
 
-        @DynamicColor(hex: TapZeroPalette.Neutral.N700)
+        @DynamicColor(hex: TapZeroPalette.Neutral.N800)
         static var gradientEnd: Color
     }
 }
