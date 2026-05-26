@@ -123,6 +123,11 @@ struct OnboardingScreen: View {
                 config: viewModel.nameStep.config,
                 onAction: viewModel.onStepOneAction
             )
+            .task(id: viewModel.nameStep.binding.inputText) {
+                try? await Task.sleep(for: .seconds(1))
+                guard !Task.isCancelled else { return }
+                viewModel.validateName()
+            }
         case 5:
             PhotoStep(
                 binding: $viewModel.photoStep.binding,

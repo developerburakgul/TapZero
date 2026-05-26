@@ -2232,6 +2232,26 @@
         }
       }
     },
+    "onboarding.name.minLength": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At least 2 characters"
+          }
+        }
+      }
+    },
+    "onboarding.name.maxLength": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum 75 characters"
+          }
+        }
+      }
+    },
     "onboarding.name.subtitle": {
       "localizations": {
         "ar": {

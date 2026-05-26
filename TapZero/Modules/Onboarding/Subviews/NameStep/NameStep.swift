@@ -39,13 +39,39 @@ extension OnboardingScreen {
 
         private var nameField: some View {
             VStack(alignment: .leading, spacing: 6) {
-                TextField("", text: $binding.inputText)
-                    .font(TapZeroTypography.Heading.h1)
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+                HStack(spacing: 8) {
+                    TextField("", text: $binding.inputText, axis: .vertical)
+                        .font(TapZeroTypography.Heading.h1)
+                        .foregroundStyle(TapZeroDesign.Foreground.primary)
+
+                    switch binding.validation {
+                    case .idle:
+                        EmptyView()
+                    case .invalid:
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(TapZeroDesign.Status.bad)
+                    case .valid:
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundStyle(TapZeroDesign.Status.good)
+                    }
+                }
 
                 Rectangle()
                     .fill(TapZeroDesign.Foreground.tertiary)
                     .frame(height: 1)
+
+                switch binding.validation {
+                case .invalid(.tooShort):
+                    Text(TextKey.Onboarding.nameMinLength)
+                        .font(TapZeroTypography.Caption.subtitle)
+                        .foregroundStyle(TapZeroDesign.Status.bad)
+                case .invalid(.tooLong):
+                    Text(TextKey.Onboarding.nameMaxLength)
+                        .font(TapZeroTypography.Caption.subtitle)
+                        .foregroundStyle(TapZeroDesign.Status.bad)
+                default:
+                    EmptyView()
+                }
             }
         }
 
@@ -61,8 +87,8 @@ extension OnboardingScreen {
                     .foregroundStyle(TapZeroDesign.Background.primary)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
-            .disabled(binding.inputText.trimmingCharacters(in: .whitespaces).isEmpty)
-            .opacity(binding.inputText.trimmingCharacters(in: .whitespaces).isEmpty ? 0.4 : 1)
+            .disabled(binding.validation != .valid)
+            .opacity(binding.validation == .valid ? 1 : 0.4)
             .padding(.bottom, 16)
         }
 
@@ -71,4 +97,54 @@ extension OnboardingScreen {
             && lhs.config == rhs.config
         }
     }
+}
+
+// MARK: - Preview
+
+private struct NameStepPreview: View {
+    let initialState: OnboardingScreen.NameStepEntity.ValidationState
+    let inputText: String
+
+    @State private var binding: OnboardingScreen.NameStepEntity.Binding
+
+    init(
+        inputText: String = "",
+        state: OnboardingScreen.NameStepEntity.ValidationState = .idle
+    ) {
+        self.inputText = inputText
+        self.initialState = state
+        _binding = State(initialValue: .init(inputText: inputText, validation: state))
+    }
+
+    var body: some View {
+        ZStack {
+            TapZeroDesign.Background.primary.ignoresSafeArea()
+            OnboardingScreen.NameStep(
+                binding: $binding,
+                config: .init(
+                    title: TextKey.Onboarding.nameTitle,
+                    subtitle: TextKey.Onboarding.nameSubtitle
+                )
+            ) { _ in }
+        }
+    }
+}
+
+#Preview("Idle") {
+    NameStepPreview()
+}
+
+#Preview("Too Short") {
+    NameStepPreview(inputText: "A", state: .invalid(.tooShort))
+}
+
+#Preview("Too Long") {
+    NameStepPreview(
+        inputText: String(repeating: "A", count: 80),
+        state: .invalid(.tooLong)
+    )
+}
+
+#Preview("Valid") {
+    NameStepPreview(inputText: "Burak", state: .valid)
 }

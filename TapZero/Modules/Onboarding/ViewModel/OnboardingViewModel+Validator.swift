@@ -3,19 +3,23 @@
 //  TapZero
 //
 
-import Combine
+import Foundation
 
 // MARK: - Validator
 extension OnboardingViewModel {
-    func enableValidationObserver() {
-    }
+    private static let nameMinLength = 2
+    private static let nameMaxLength = 75
 
-    func disableValidationObserver() {
-    }
+    func validateName() {
+        let trimmed = nameStep.binding.inputText.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
 
-    @discardableResult
-    func validate() -> Bool {
-        let result = true
-        return result
+        if trimmed.count < Self.nameMinLength {
+            nameStep.binding.validation = .invalid(.tooShort)
+        } else if trimmed.count > Self.nameMaxLength {
+            nameStep.binding.validation = .invalid(.tooLong)
+        } else {
+            nameStep.binding.validation = .valid
+        }
     }
 }

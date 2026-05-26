@@ -57,8 +57,10 @@ extension OnboardingViewModel {
     func onStepOneAction(_ action: OnboardingScreen.NameStep.Action) {
         switch action {
         case .didTapContinue:
-            sendEvent(type: .completedStep(step: 4))
             let name = nameStep.binding.inputText.trimmingCharacters(in: .whitespaces)
+            guard name.count >= 2 else { return }
+            nameStep.binding.inputText = name
+            sendEvent(type: .completedStep(step: 4))
             photoStep.binding.initial = String(name.prefix(1)).uppercased()
             currentStep = 5
         }

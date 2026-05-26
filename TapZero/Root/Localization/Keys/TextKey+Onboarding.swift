@@ -38,6 +38,8 @@ extension TextKey {
         // Step 1: Name
         static let nameTitle: LocalizedStringKey = "onboarding.name.title"
         static let nameSubtitle: LocalizedStringKey = "onboarding.name.subtitle"
+        static let nameMinLength: LocalizedStringKey = "onboarding.name.minLength"
+        static let nameMaxLength: LocalizedStringKey = "onboarding.name.maxLength"
 
         // Step 2: Photo
         static let photoTitle: LocalizedStringKey = "onboarding.photo.title"
