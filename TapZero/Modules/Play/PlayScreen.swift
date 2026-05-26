@@ -28,9 +28,76 @@ struct PlayScreen: View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
 
-            Text(TextKey.Play.title)
-                .foregroundStyle(TapZeroDesign.Foreground.primary)
+            VStack(spacing: 0) {
+                UserStrip(
+                    config: .init(
+                        initial: viewModel.userInitial,
+                        displayName: viewModel.userName,
+                        bestScore: viewModel.bestScore,
+                        avatarColor: viewModel.avatarColor
+                    )
+                )
+
+                centerStack
+
+                PlayButton(
+                    config: .init(buttonLabel: TextKey.Play.playButton)
+                ) { action in
+                    switch action {
+                    case .didTapPlay:
+                        viewModel.onPlayTapped()
+                    }
+                }
+            }
         }
+    }
+
+    // MARK: - Center Stack
+
+    private var centerStack: some View {
+        VStack(spacing: 0) {
+            Spacer()
+
+            targetLabel
+                .padding(.bottom, 18)
+
+            NumberPicker(
+                selectedTarget: $viewModel.selectedTarget,
+                config: .init(
+                    minTarget: constants.minTarget,
+                    maxTarget: constants.maxTarget
+                ),
+                constants: constants
+            )
+
+            secondsLabel
+                .padding(.top, 2)
+
+            swipeHint
+                .padding(.top, 28)
+
+            Spacer()
+        }
+    }
+
+    private var targetLabel: some View {
+        Text(TextKey.Play.target)
+            .font(TapZeroTypography.Caption.sectionHeader)
+            .tracking(1.4)
+            .foregroundStyle(TapZeroDesign.Foreground.secondary)
+    }
+
+    private var secondsLabel: some View {
+        Text(TextKey.Play.seconds)
+            .font(TapZeroTypography.Body.medium)
+            .foregroundStyle(TapZeroDesign.Foreground.secondary)
+    }
+
+    private var swipeHint: some View {
+        Text(TextKey.Play.swipeToSelect)
+            .font(TapZeroTypography.Caption.helper)
+            .tracking(0.1)
+            .foregroundStyle(TapZeroDesign.Foreground.tertiary)
     }
 }
 

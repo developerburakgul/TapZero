@@ -25,4 +25,14 @@ extension PlayViewModel {
             }
         }
     }
+
+    // MARK: - User Actions
+
+    func onTargetChanged(_ newTarget: Int) {
+        selectedTarget = newTarget
+    }
+
+    func onPlayTapped() {
+        sendEvent(type: .playTapped(target: selectedTarget))
+    }
 }
