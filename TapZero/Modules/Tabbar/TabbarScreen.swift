@@ -6,6 +6,16 @@
 import SwiftfulRouting
 import SwiftUI
 
+private struct TabBarMinimizeModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 26, *) {
+            content.tabBarMinimizeBehavior(.onScrollDown)
+        } else {
+            content
+        }
+    }
+}
+
 struct TabbarScreen: View {
     // MARK: - Private properties
     private let constants = Constants()
@@ -26,41 +36,78 @@ struct TabbarScreen: View {
 
     private var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
-            RouterView(id: "play", addModuleSupport: true) { router in
-                viewModel.buildPlayScreen(router: router)
-            }
-            .tabItem {
-                Label(TextKey.Tabbar.play, systemImage: "play.fill")
-            }
-            .tag(TabbarTab.play)
-
-            RouterView(id: "leaderboard", addModuleSupport: true) { router in
-                viewModel.buildLeaderBoardScreen(router: router)
-            }
-            .tabItem {
-                Label(TextKey.Tabbar.leaderBoard, systemImage: "trophy.fill")
-            }
-            .tag(TabbarTab.leaderBoard)
-
-            RouterView(id: "history", addModuleSupport: true) { router in
-                viewModel.buildHistoryScreen(router: router)
-            }
-            .tabItem {
-                Label(TextKey.Tabbar.history, systemImage: "clock.fill")
-            }
-            .tag(TabbarTab.history)
-
-            RouterView(id: "settings", addModuleSupport: true) { router in
-                viewModel.buildSettingsScreen(router: router)
-            }
-            .tabItem {
-                Label(TextKey.Tabbar.settings, systemImage: "gearshape.fill")
-            }
-            .tag(TabbarTab.settings)
+            playTab
+            leaderBoardTab
+            historyTab
+            settingsTab
         }
+        .tint(TapZeroDesign.Foreground.primary)
+        .modifier(TabBarMinimizeModifier())
         .onChange(of: viewModel.selectedTab) { newTab in
             viewModel.onTabChanged(newTab)
         }
+    }
+
+    // MARK: - Tabs
+
+    private var playTab: some View {
+        RouterView(id: "play", addModuleSupport: true) { router in
+            viewModel.buildPlayScreen(router: router)
+        }
+        .tabItem {
+            Label(
+                TextKey.Tabbar.play,
+                systemImage: viewModel.selectedTab == .play
+                    ? "play.fill" : "play"
+            )
+            .environment(\.symbolVariants, .none)
+        }
+        .tag(TabbarTab.play)
+    }
+
+    private var leaderBoardTab: some View {
+        RouterView(id: "leaderboard", addModuleSupport: true) { router in
+            viewModel.buildLeaderBoardScreen(router: router)
+        }
+        .tabItem {
+            Label(
+                TextKey.Tabbar.leaderBoard,
+                systemImage: viewModel.selectedTab == .leaderBoard
+                    ? "trophy.fill" : "trophy"
+            )
+            .environment(\.symbolVariants, .none)
+        }
+        .tag(TabbarTab.leaderBoard)
+    }
+
+    private var historyTab: some View {
+        RouterView(id: "history", addModuleSupport: true) { router in
+            viewModel.buildHistoryScreen(router: router)
+        }
+        .tabItem {
+            Label(
+                TextKey.Tabbar.history,
+                systemImage: viewModel.selectedTab == .history
+                    ? "clock.fill" : "clock"
+            )
+            .environment(\.symbolVariants, .none)
+        }
+        .tag(TabbarTab.history)
+    }
+
+    private var settingsTab: some View {
+        RouterView(id: "settings", addModuleSupport: true) { router in
+            viewModel.buildSettingsScreen(router: router)
+        }
+        .tabItem {
+            Label(
+                TextKey.Tabbar.settings,
+                systemImage: viewModel.selectedTab == .settings
+                    ? "gearshape.fill" : "gearshape"
+            )
+            .environment(\.symbolVariants, .none)
+        }
+        .tag(TabbarTab.settings)
     }
 }
 
