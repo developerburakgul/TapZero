@@ -11,6 +11,7 @@ extension OnboardingScreen {
         let name: String
         let pts: Int
         let color: String
+        let imageURL: URL?
 
         var rank: Int { id }
     }
@@ -19,20 +20,20 @@ extension OnboardingScreen {
         @Binding var binding: IntroStepThreeEntity.Binding
         let config: IntroStepThreeEntity.Config
 
-        @State private var headerOpacity: Double = 0
-        @State private var podiumScale: CGFloat = 0.9
-        @State private var podiumOpacity: Double = 0
-        @State private var listOpacity: Double = 0
-
         private static let podiumUsers: [PreviewUser] = [
-            .init(id: 2, name: "Kenji", pts: 9710, color: TapZeroPalette.Pastel.PS2),
-            .init(id: 1, name: "Mira", pts: 9842, color: TapZeroPalette.Pastel.PS1),
-            .init(id: 3, name: "Yuna", pts: 9588, color: TapZeroPalette.Pastel.PS3)
+            .init(id: 2, name: "Kenji", pts: 9710, color: TapZeroPalette.Pastel.PS2,
+                  imageURL: URL(string: "https://randomuser.me/api/portraits/men/32.jpg")),
+            .init(id: 1, name: "Mira", pts: 9842, color: TapZeroPalette.Pastel.PS1,
+                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/44.jpg")),
+            .init(id: 3, name: "Yuna", pts: 9588, color: TapZeroPalette.Pastel.PS3,
+                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/68.jpg"))
         ]
 
         private static let listUsers: [PreviewUser] = [
-            .init(id: 4, name: "Aaron West", pts: 9421, color: TapZeroPalette.Pastel.PS4),
-            .init(id: 5, name: "Léa Marchand", pts: 9344, color: TapZeroPalette.Pastel.PS5)
+            .init(id: 4, name: "Aaron West", pts: 9421, color: TapZeroPalette.Pastel.PS4,
+                  imageURL: URL(string: "https://randomuser.me/api/portraits/men/75.jpg")),
+            .init(id: 5, name: "Léa Marchand", pts: 9344, color: TapZeroPalette.Pastel.PS5,
+                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/90.jpg"))
         ]
 
         var body: some View {
@@ -44,17 +45,22 @@ extension OnboardingScreen {
             }
             .padding(.horizontal, 28)
             .padding(.top, 12)
-            .onAppear { startAnimations() }
         }
 
         // MARK: - Header
 
         private var headerSection: some View {
-            Text(config.title)
-                .font(TapZeroTypography.Heading.pageHeader)
-                .tracking(-0.9)
-                .foregroundStyle(TapZeroDesign.Foreground.primary)
-                .opacity(headerOpacity)
+            VStack(alignment: .leading, spacing: 10) {
+                Text(config.title)
+                    .font(TapZeroTypography.Heading.pageHeader)
+                    .tracking(-0.9)
+                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+
+                Text(config.subtitle)
+                    .font(TapZeroTypography.Body.primary)
+                    .tracking(-0.1)
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
+            }
         }
 
         // MARK: - Podium
@@ -67,8 +73,6 @@ extension OnboardingScreen {
                 }
             }
             .padding(.top, 24)
-            .opacity(podiumOpacity)
-            .scaleEffect(podiumScale)
         }
 
         private func podiumItem(user: PreviewUser) -> some View {
@@ -76,6 +80,13 @@ extension OnboardingScreen {
             let size: CGFloat = isBig ? 64 : 50
 
             return VStack(spacing: 0) {
+                if isBig {
+                    Image(systemName: "crown.fill")
+                        .font(.system(size: 16))
+                        .foregroundStyle(TapZeroDesign.Medal.gold)
+                        .padding(.bottom, 4)
+                }
+
                 podiumAvatar(user: user, size: size, isBig: isBig)
                 podiumLabel(user: user, isBig: isBig)
             }
@@ -86,15 +97,27 @@ extension OnboardingScreen {
             size: CGFloat,
             isBig: Bool
         ) -> some View {
-            Circle()
-                .fill(Color(hex: user.color))
-                .frame(width: size - 6, height: size - 6)
-                .overlay(
-                    Circle()
-                        .stroke(medalColor(for: user.rank), lineWidth: 2)
-                        .frame(width: size, height: size)
-                )
-                .padding(.top, isBig ? 0 : 20)
+            AsyncImage(url: user.imageURL) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Circle()
+                    .fill(Color(hex: user.color))
+                    .overlay(
+                        Text(String(user.name.prefix(1)))
+                            .font(.system(size: isBig ? 22 : 17, weight: .bold))
+                            .foregroundStyle(TapZeroDesign.Foreground.primary)
+                    )
+            }
+            .frame(width: size - 6, height: size - 6)
+            .clipShape(Circle())
+            .overlay(
+                Circle()
+                    .stroke(medalColor(for: user.rank), lineWidth: 2)
+                    .frame(width: size, height: size)
+            )
+            .padding(.top, isBig ? 0 : 20)
         }
 
         private func podiumLabel(user: PreviewUser, isBig: Bool) -> some View {
@@ -138,7 +161,6 @@ extension OnboardingScreen {
                 yourSpotRow
             }
             .padding(.top, 6)
-            .opacity(listOpacity)
         }
 
         private func listRow(user: PreviewUser) -> some View {
@@ -149,9 +171,16 @@ extension OnboardingScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
                     .frame(width: 22)
 
-                Circle()
-                    .fill(Color(hex: user.color))
-                    .frame(width: 30, height: 30)
+                AsyncImage(url: user.imageURL) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    Circle()
+                        .fill(Color(hex: user.color))
+                }
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
 
                 Text(user.name)
                     .font(.system(size: 14, weight: .medium))
@@ -212,12 +241,12 @@ extension OnboardingScreen {
             }
         }
 
-        private func rankLabel(_ rank: Int) -> String {
+        private func rankLabel(_ rank: Int) -> LocalizedStringKey {
             switch rank {
-            case 1: "1st"
-            case 2: "2nd"
-            case 3: "3rd"
-            default: "\(rank)th"
+            case 1: TextKey.Onboarding.rankFirst
+            case 2: TextKey.Onboarding.rankSecond
+            case 3: TextKey.Onboarding.rankThird
+            default: TextKey.Onboarding.rankOther(rank)
             }
         }
 
@@ -225,21 +254,6 @@ extension OnboardingScreen {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             return formatter.string(from: NSNumber(value: pts)) ?? "\(pts)"
-        }
-
-        // MARK: - Animation
-
-        private func startAnimations() {
-            withAnimation(.easeOut(duration: 0.4)) {
-                headerOpacity = 1
-            }
-            withAnimation(.spring(duration: 0.6, bounce: 0.25).delay(0.2)) {
-                podiumOpacity = 1
-                podiumScale = 1
-            }
-            withAnimation(.easeOut(duration: 0.4).delay(0.5)) {
-                listOpacity = 1
-            }
         }
 
         static func == (lhs: Self, rhs: Self) -> Bool {

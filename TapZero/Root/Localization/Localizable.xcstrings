@@ -6227,6 +6227,46 @@
           }
         }
       }
+    },
+    "onboarding.intro3.rank.first": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1st"
+          }
+        }
+      }
+    },
+    "onboarding.intro3.rank.second": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2nd"
+          }
+        }
+      }
+    },
+    "onboarding.intro3.rank.third": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3rd"
+          }
+        }
+      }
+    },
+    "onboarding.intro3.rank.other %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lldth"
+          }
+        }
+      }
     }
   },
   "version": "1.1"

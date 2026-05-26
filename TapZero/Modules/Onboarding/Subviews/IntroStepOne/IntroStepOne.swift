@@ -12,12 +12,12 @@ extension OnboardingScreen {
 
         var body: some View {
             VStack(spacing: 0) {
-                // Copy — top
-                copySection
-
                 // Hero ring — centered, flex
                 heroRing
                     .frame(maxHeight: .infinity)
+
+                // Copy — bottom
+                copySection
             }
             .padding(.horizontal, 28)
         }
@@ -86,12 +86,20 @@ extension OnboardingScreen {
         // MARK: - Copy
 
         private var copySection: some View {
-            Text(config.title)
-                .font(TapZeroTypography.Heading.pageHeader)
-                .tracking(-0.9)
-                .foregroundStyle(TapZeroDesign.Foreground.primary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 12)
+            VStack(alignment: .leading, spacing: 12) {
+                Text(config.title)
+                    .font(TapZeroTypography.Heading.pageHeader)
+                    .tracking(-0.9)
+                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+
+                Text(config.subtitle)
+                    .font(TapZeroTypography.Body.primary)
+                    .tracking(-0.1)
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 24)
+            .padding(.bottom, 12)
         }
 
         static func == (lhs: Self, rhs: Self) -> Bool {

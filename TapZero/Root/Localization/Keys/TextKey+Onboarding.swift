@@ -28,6 +28,12 @@ extension TextKey {
         static let intro3Title: LocalizedStringKey = "onboarding.intro3.title"
         static let intro3Subtitle: LocalizedStringKey = "onboarding.intro3.subtitle"
         static let yourSpotWaiting: LocalizedStringKey = "onboarding.intro3.yourSpot"
+        static let rankFirst: LocalizedStringKey = "onboarding.intro3.rank.first"
+        static let rankSecond: LocalizedStringKey = "onboarding.intro3.rank.second"
+        static let rankThird: LocalizedStringKey = "onboarding.intro3.rank.third"
+        static func rankOther(_ rank: Int) -> LocalizedStringKey {
+            "onboarding.intro3.rank.other \(rank)"
+        }
 
         // Step 1: Name
         static let nameTitle: LocalizedStringKey = "onboarding.name.title"
