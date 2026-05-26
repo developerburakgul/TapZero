@@ -1348,66 +1348,130 @@
         }
       }
     },
-    "favorites.title": {
+    "history.title": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "المفضلة"
+            "value": "السجل"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoriten"
+            "value": "Verlauf"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favorites"
+            "value": "History"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoritos"
+            "value": "Historial"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoris"
+            "value": "Historique"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferiti"
+            "value": "Cronologia"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "お気に入り"
+            "value": "履歴"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "즐겨찾기"
+            "value": "기록"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoritos"
+            "value": "Histórico"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoriler"
+            "value": "Geçmiş"
+          }
+        }
+      }
+    },
+    "leaderBoard.title": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتصدرين"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bestenliste"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leaderboard"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clasificación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Classement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Classifica"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リーダーボード"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "리더보드"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Classificação"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıralama"
           }
         }
       }
@@ -1734,66 +1798,66 @@
         }
       }
     },
-    "home.title": {
+    "play.title": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الرئيسية"
+            "value": "العب"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Startseite"
+            "value": "Spielen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Home"
+            "value": "Play"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Inicio"
+            "value": "Jugar"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Accueil"
+            "value": "Jouer"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Home"
+            "value": "Gioca"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ホーム"
+            "value": "プレイ"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "홈"
+            "value": "플레이"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Início"
+            "value": "Jogar"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ana Sayfa"
+            "value": "Oyna"
           }
         }
       }
@@ -5768,130 +5832,194 @@
         }
       }
     },
-    "tabbar.favorites": {
+    "tabbar.history": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "المفضلة"
+            "value": "السجل"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoriten"
+            "value": "Verlauf"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favorites"
+            "value": "History"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoritos"
+            "value": "Historial"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoris"
+            "value": "Historique"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferiti"
+            "value": "Cronologia"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "お気に入り"
+            "value": "履歴"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "즐겨찾기"
+            "value": "기록"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoritos"
+            "value": "Histórico"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Favoriler"
+            "value": "Geçmiş"
           }
         }
       }
     },
-    "tabbar.home": {
+    "tabbar.leaderBoard": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الرئيسية"
+            "value": "المتصدرين"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Startseite"
+            "value": "Bestenliste"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Home"
+            "value": "Leaderboard"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Inicio"
+            "value": "Clasificación"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Accueil"
+            "value": "Classement"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Home"
+            "value": "Classifica"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ホーム"
+            "value": "リーダーボード"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "홈"
+            "value": "리더보드"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Início"
+            "value": "Classificação"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ana Sayfa"
+            "value": "Sıralama"
+          }
+        }
+      }
+    },
+    "tabbar.play": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العب"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spielen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jugar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jouer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gioca"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プレイ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "플레이"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jogar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyna"
           }
         }
       }

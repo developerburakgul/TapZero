@@ -1,6 +1,6 @@
 //
 //  TabbarViewModel+Action.swift
-//  Created by __Username__ on __Date__
+//  TapZero
 //
 
 import Foundation
@@ -62,12 +62,16 @@ extension TabbarViewModel {
 
     // MARK: - Tab Builders
 
-    func buildHomeScreen(router: Router) -> some View {
-        HomeBuilder.build(router: router)
+    func buildPlayScreen(router: Router) -> some View {
+        PlayBuilder.build(router: router)
     }
 
-    func buildFavoritesScreen(router: Router) -> some View {
-        FavoritesBuilder.build(router: router)
+    func buildLeaderBoardScreen(router: Router) -> some View {
+        LeaderBoardBuilder.build(router: router)
+    }
+
+    func buildHistoryScreen(router: Router) -> some View {
+        HistoryBuilder.build(router: router)
     }
 
     func buildSettingsScreen(router: Router) -> some View {
@@ -80,8 +84,9 @@ extension TabbarViewModel {
 extension DeepLink.Tab {
     var toTabbarTab: TabbarTab {
         switch self {
-        case .home: .home
-        case .favorites: .favorites
+        case .play: .play
+        case .leaderBoard: .leaderBoard
+        case .history: .history
         case .settings: .settings
         }
     }

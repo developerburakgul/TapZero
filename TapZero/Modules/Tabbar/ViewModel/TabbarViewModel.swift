@@ -1,13 +1,13 @@
 //
 //  TabbarViewModel.swift
-//  Created by __Username__ on __Date__
+//  TapZero
 //
 
 import SwiftfulRouting
 import SwiftUI
 
 enum TabbarTab: Int, CaseIterable {
-    case home, favorites, settings
+    case play, leaderBoard, history, settings
 }
 
 @MainActor
@@ -23,7 +23,7 @@ final class TabbarViewModel: ObservableObject {
     @Injected private(set) var eventManager: EventManager
 
     // MARK: - Published Properties
-    @Published var selectedTab: TabbarTab = .home
+    @Published var selectedTab: TabbarTab = .play
 
     // MARK: - Subview Entities
 

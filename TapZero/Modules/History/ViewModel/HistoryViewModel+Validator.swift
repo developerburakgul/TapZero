@@ -1,10 +1,10 @@
 //
-//  SplashViewModel+Validator.swift
+//  HistoryViewModel+Validator.swift
 //  TapZero
 //
 
 // MARK: - Validator
-extension SplashViewModel {
+extension HistoryViewModel {
     @discardableResult
     func validate() -> Bool {
         true

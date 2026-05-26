@@ -1,10 +1,10 @@
 //
-//  SplashViewModel+Validator.swift
+//  LeaderBoardViewModel+Validator.swift
 //  TapZero
 //
 
 // MARK: - Validator
-extension SplashViewModel {
+extension LeaderBoardViewModel {
     @discardableResult
     func validate() -> Bool {
         true

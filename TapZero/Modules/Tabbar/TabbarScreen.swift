@@ -1,6 +1,6 @@
 //
 //  TabbarScreen.swift
-//  Created by __Username__ on __Date__
+//  TapZero
 //
 
 import SwiftfulRouting
@@ -26,21 +26,29 @@ struct TabbarScreen: View {
 
     private var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
-            RouterView(id: "home", addModuleSupport: true) { router in
-                viewModel.buildHomeScreen(router: router)
+            RouterView(id: "play", addModuleSupport: true) { router in
+                viewModel.buildPlayScreen(router: router)
             }
             .tabItem {
-                Label(TextKey.Tabbar.home, systemImage: "house.fill")
+                Label(TextKey.Tabbar.play, systemImage: "play.fill")
             }
-            .tag(TabbarTab.home)
+            .tag(TabbarTab.play)
 
-            RouterView(id: "favorites", addModuleSupport: true) { router in
-                viewModel.buildFavoritesScreen(router: router)
+            RouterView(id: "leaderboard", addModuleSupport: true) { router in
+                viewModel.buildLeaderBoardScreen(router: router)
             }
             .tabItem {
-                Label(TextKey.Tabbar.favorites, systemImage: "heart.fill")
+                Label(TextKey.Tabbar.leaderBoard, systemImage: "trophy.fill")
             }
-            .tag(TabbarTab.favorites)
+            .tag(TabbarTab.leaderBoard)
+
+            RouterView(id: "history", addModuleSupport: true) { router in
+                viewModel.buildHistoryScreen(router: router)
+            }
+            .tabItem {
+                Label(TextKey.Tabbar.history, systemImage: "clock.fill")
+            }
+            .tag(TabbarTab.history)
 
             RouterView(id: "settings", addModuleSupport: true) { router in
                 viewModel.buildSettingsScreen(router: router)

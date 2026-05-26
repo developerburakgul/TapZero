@@ -14,18 +14,10 @@ final class DeepLinkManager {
         scheme: "tapzero",
         universalLinkPrefix: "tapzero",
         routes: [
-            DeepLinkRoute(
-                template: DeepLinkTemplate().term("home"),
-                handler: { _ in .tab(.home) }
-            ),
-            DeepLinkRoute(
-                template: DeepLinkTemplate().term("favorites"),
-                handler: { _ in .tab(.favorites) }
-            ),
-            DeepLinkRoute(
-                template: DeepLinkTemplate().term("settings"),
-                handler: { _ in .tab(.settings) }
-            )
+            DeepLinkRoute(template: DeepLinkTemplate().term("play")) { _ in .tab(.play) },
+            DeepLinkRoute(template: DeepLinkTemplate().term("leaderboard")) { _ in .tab(.leaderBoard) },
+            DeepLinkRoute(template: DeepLinkTemplate().term("history")) { _ in .tab(.history) },
+            DeepLinkRoute(template: DeepLinkTemplate().term("settings")) { _ in .tab(.settings) }
         ]
     )
 

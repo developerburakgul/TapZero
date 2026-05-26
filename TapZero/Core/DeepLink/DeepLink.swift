@@ -13,8 +13,9 @@ enum DeepLink: Equatable, Sendable {
 
 extension DeepLink {
     enum Tab: String, CaseIterable, Sendable {
-        case home
-        case favorites
+        case play
+        case leaderBoard
+        case history
         case settings
     }
 }
