@@ -19,19 +19,13 @@ extension PlayScreen {
                 let itemWidth = containerWidth * 0.38
                 let sideMargin = (containerWidth - itemWidth) / 2
 
-                VStack(spacing: 0) {
-                    NumberPickerTickRail(
-                        tickCount: constants.tickCount,
-                        centerHeight: constants.centerTickHeight,
-                        outerHeight: constants.outerTickHeight
-                    )
-                    .frame(height: 26)
-
-                    scrollContent(
+                ZStack(alignment: .top) {
+                    scrollView(
                         itemWidth: itemWidth,
                         sideMargin: sideMargin,
                         containerWidth: containerWidth
                     )
+                    fadeOverlay
                 }
             }
             .frame(height: constants.pickerHeight)
@@ -43,35 +37,31 @@ extension PlayScreen {
             }
         }
 
-        // MARK: - Scroll Content
+        // MARK: - Scroll View
 
-        private func scrollContent(
+        private func scrollView(
             itemWidth: CGFloat,
             sideMargin: CGFloat,
             containerWidth: CGFloat
         ) -> some View {
-            ZStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 0) {
-                        ForEach(config.minTarget...config.maxTarget, id: \.self) { number in
-                            numberCell(
-                                number: number,
-                                itemWidth: itemWidth,
-                                containerWidth: containerWidth
-                            )
-                            .frame(width: itemWidth)
-                            .id(number)
-                        }
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 0) {
+                    ForEach(config.minTarget...config.maxTarget, id: \.self) { number in
+                        numberCell(
+                            number: number,
+                            itemWidth: itemWidth,
+                            containerWidth: containerWidth
+                        )
+                        .frame(width: itemWidth)
+                        .id(number)
                     }
-                    .scrollTargetLayout()
                 }
-                .scrollTargetBehavior(.viewAligned)
-                .scrollPosition(id: $scrolledID)
-                .contentMargins(.horizontal, sideMargin)
-                .coordinateSpace(name: "picker")
-
-                fadeOverlay
+                .scrollTargetLayout()
             }
+            .scrollTargetBehavior(.viewAligned)
+            .scrollPosition(id: $scrolledID)
+            .contentMargins(.horizontal, sideMargin)
+            .coordinateSpace(name: "picker")
         }
 
         // MARK: - Number Cell
@@ -84,18 +74,74 @@ extension PlayScreen {
             GeometryReader { geo in
                 let midX = geo.frame(in: .named("picker")).midX
                 let centerX = containerWidth / 2
-                let distance = min(abs(midX - centerX) / itemWidth, 3.0)
+                let cellOffset = midX - centerX
+                let distance = min(abs(cellOffset) / itemWidth, 3.0)
                 let style = styleFor(distance: distance)
 
-                Text("\(number)")
-                    .font(.system(size: style.size, weight: style.weight).monospacedDigit())
-                    .tracking(-5)
-                    .lineLimit(1)
-                    .fixedSize()
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
-                    .opacity(style.opacity)
-                    .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                VStack(spacing: 0) {
+                    cellTickRail(
+                        cellOffset: cellOffset,
+                        cellWidth: geo.size.width,
+                        centerX: centerX
+                    )
+                    .padding(.top, 14)
+
+                    Spacer()
+
+                    Text("\(number)")
+                        .font(.system(size: style.size, weight: style.weight).monospacedDigit())
+                        .tracking(-5)
+                        .lineLimit(1)
+                        .fixedSize()
+                        .foregroundStyle(TapZeroDesign.Foreground.primary)
+                        .opacity(style.opacity)
+
+                    Spacer()
+                }
+                .frame(width: geo.size.width, height: geo.size.height)
             }
+        }
+
+        // MARK: - Cell Tick Rail
+
+        private func cellTickRail(
+            cellOffset: CGFloat,
+            cellWidth: CGFloat,
+            centerX: CGFloat
+        ) -> some View {
+            let step: CGFloat = 9
+            let count = max(1, Int(cellWidth / step)) | 1 // force odd
+            let halfCount = count / 2
+
+            return HStack(spacing: step - 1) {
+                ForEach(0..<count, id: \.self) { i in
+                    let tickLocalX = CGFloat(i - halfCount) * step
+                    let tickScreenDist = abs(cellOffset + tickLocalX)
+                    let normalizedDist = tickScreenDist / 80
+
+                    Capsule()
+                        .fill(TapZeroDesign.Foreground.primary)
+                        .frame(
+                            width: normalizedDist < 0.04 ? 1.5 : 1,
+                            height: tickHeightFor(normalizedDist: normalizedDist)
+                        )
+                        .opacity(tickOpacityFor(normalizedDist: normalizedDist))
+                }
+            }
+            .frame(height: 12)
+        }
+
+        private func tickHeightFor(normalizedDist: CGFloat) -> CGFloat {
+            if normalizedDist < 0.04 { return 12 }
+            if normalizedDist < 0.18 { return 8 + (1 - normalizedDist / 0.18) * 2 }
+            if normalizedDist < 0.38 { return 6 + (1 - normalizedDist / 0.38) * 2 }
+            return 5
+        }
+
+        private func tickOpacityFor(normalizedDist: CGFloat) -> Double {
+            if normalizedDist < 0.04 { return 1.0 }
+            if normalizedDist < 0.38 { return 0.5 - normalizedDist * 0.5 }
+            return max(0.06, 0.25 - normalizedDist * 0.08)
         }
 
         // MARK: - Style Interpolation
