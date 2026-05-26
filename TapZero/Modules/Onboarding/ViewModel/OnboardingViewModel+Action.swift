@@ -91,16 +91,24 @@ extension OnboardingViewModel {
                 notificationStep.binding.permissionGranted = granted
                 sendEvent(type: .completedNotificationPermission(granted: granted))
                 sendEvent(type: .completedStep(step: 6))
-                currentStep = 7
+                moveToGetStarted()
             }
         case .didTapSkip:
             sendEvent(type: .tappedSkipNotification)
             sendEvent(type: .completedStep(step: 6))
-            currentStep = 7
+            moveToGetStarted()
         case .didTapContinue:
             sendEvent(type: .completedStep(step: 6))
-            currentStep = 7
+            moveToGetStarted()
         }
+    }
+
+    private func moveToGetStarted() {
+        let name = nameStep.binding.inputText.trimmingCharacters(in: .whitespaces)
+        getStartedStep.config.name = name
+        getStartedStep.config.initial = String(name.prefix(1)).uppercased()
+        getStartedStep.config.selectedImage = photoStep.binding.selectedImage
+        currentStep = 7
     }
 
     func onStepFourAction(_ action: OnboardingScreen.GetStartedStep.Action) {

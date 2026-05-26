@@ -2054,6 +2054,56 @@
         }
       }
     },
+    "onboarding.getStarted.title.personalized %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You're all set, %@."
+          }
+        }
+      }
+    },
+    "onboarding.getStarted.profileLabel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YOUR PROFILE"
+          }
+        }
+      }
+    },
+    "onboarding.getStarted.benefit.stats": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your stats — every round, ever."
+          }
+        }
+      }
+    },
+    "onboarding.getStarted.benefit.leaderboard": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show up on the leaderboard."
+          }
+        }
+      }
+    },
+    "onboarding.getStarted.benefit.sync": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync across all your devices."
+          }
+        }
+      }
+    },
     "onboarding.getStarted.button": {
       "localizations": {
         "en": {
@@ -2888,6 +2938,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "İsteğe bağlı"
+          }
+        }
+      }
+    },
+    "onboarding.photo.remove": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove photo"
           }
         }
       }

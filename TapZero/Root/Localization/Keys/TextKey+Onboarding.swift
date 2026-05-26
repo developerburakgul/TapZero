@@ -44,6 +44,7 @@ extension TextKey {
         // Step 2: Photo
         static let photoTitle: LocalizedStringKey = "onboarding.photo.title"
         static let photoSubtitle: LocalizedStringKey = "onboarding.photo.subtitle"
+        static let photoRemove: LocalizedStringKey = "onboarding.photo.remove"
 
         // Step 3: Notification
         static let notificationTitle: LocalizedStringKey = "onboarding.notification.title"
@@ -56,8 +57,15 @@ extension TextKey {
 
         // Step 4: Get Started
         static let getStartedTitle: LocalizedStringKey = "onboarding.getStarted.title"
+        static func getStartedTitlePersonalized(_ name: String) -> LocalizedStringKey {
+            "onboarding.getStarted.title.personalized \(name)"
+        }
         static let getStartedSubtitle: LocalizedStringKey = "onboarding.getStarted.subtitle"
         static let getStartedButton: LocalizedStringKey = "onboarding.getStarted.button"
+        static let getStartedProfileLabel: LocalizedStringKey = "onboarding.getStarted.profileLabel"
+        static let getStartedBenefitStats: LocalizedStringKey = "onboarding.getStarted.benefit.stats"
+        static let getStartedBenefitLeaderboard: LocalizedStringKey = "onboarding.getStarted.benefit.leaderboard"
+        static let getStartedBenefitSync: LocalizedStringKey = "onboarding.getStarted.benefit.sync"
 
         // Step Header
         static func stepIndicator(current: Int, total: Int) -> LocalizedStringKey {

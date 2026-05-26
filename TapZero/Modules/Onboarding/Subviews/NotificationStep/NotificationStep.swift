@@ -168,3 +168,34 @@ extension OnboardingScreen {
         }
     }
 }
+
+// MARK: - Preview
+
+private struct NotificationStepPreview: View {
+    @State private var binding: OnboardingScreen.NotificationStepEntity.Binding
+
+    init(permissionGranted: Bool = false) {
+        _binding = State(initialValue: .init(permissionGranted: permissionGranted))
+    }
+
+    var body: some View {
+        ZStack {
+            TapZeroDesign.Background.primary.ignoresSafeArea()
+            OnboardingScreen.NotificationStep(
+                binding: $binding,
+                config: .init(
+                    title: TextKey.Onboarding.notificationTitle,
+                    subtitle: TextKey.Onboarding.notificationSubtitle
+                )
+            ) { _ in }
+        }
+    }
+}
+
+#Preview("Not Determined") {
+    NotificationStepPreview()
+}
+
+#Preview("Granted") {
+    NotificationStepPreview(permissionGranted: true)
+}

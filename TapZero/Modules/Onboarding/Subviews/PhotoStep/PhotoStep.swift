@@ -18,6 +18,10 @@ extension OnboardingScreen {
         let config: PhotoStepEntity.Config
         let onAction: (Action) -> Void
 
+        private var hasPhoto: Bool {
+            binding.selectedImage != nil
+        }
+
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
                 Text(config.title)
@@ -30,40 +34,33 @@ extension OnboardingScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
                     .padding(.top, 4)
 
-                avatarView
+                avatarSection
                     .frame(maxWidth: .infinity)
                     .padding(.top, 48)
 
                 Spacer()
 
-                continueButton
-                skipButton
+                if hasPhoto {
+                    continueButton
+                } else {
+                    skipButton
+                }
             }
             .padding(.horizontal, 24)
         }
 
-        private var avatarView: some View {
-            avatarContent
-                .overlay(alignment: .bottomTrailing) {
-                    cameraButton
-                }
-                .overlay(alignment: .topLeading) {
-                    if binding.selectedImage != nil {
-                        removePhotoButton
-                    }
-                }
-        }
+        // MARK: - Avatar
 
-        private var removePhotoButton: some View {
-            Button {
-                onAction(.didTapRemovePhoto)
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(TapZeroDesign.Background.primary)
-                    .frame(width: 28, height: 28)
-                    .background(TapZeroDesign.System.systemRed)
-                    .clipShape(Circle())
+        private var avatarSection: some View {
+            VStack(spacing: 16) {
+                avatarContent
+                    .overlay(alignment: .bottomTrailing) {
+                        cameraButton
+                    }
+
+                if hasPhoto {
+                    removeButton
+                }
             }
         }
 
@@ -107,6 +104,18 @@ extension OnboardingScreen {
             }
         }
 
+        private var removeButton: some View {
+            Button {
+                onAction(.didTapRemovePhoto)
+            } label: {
+                Text(TextKey.Onboarding.photoRemove)
+                    .font(TapZeroTypography.Caption.subtitle)
+                    .foregroundStyle(TapZeroDesign.Status.bad)
+            }
+        }
+
+        // MARK: - Actions
+
         private var continueButton: some View {
             Button {
                 onAction(.didTapContinue)
@@ -119,6 +128,7 @@ extension OnboardingScreen {
                     .foregroundStyle(TapZeroDesign.Background.primary)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
+            .padding(.bottom, 16)
         }
 
         private var skipButton: some View {
@@ -129,7 +139,7 @@ extension OnboardingScreen {
                     .font(TapZeroTypography.Label.medium)
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
+                    .padding(.vertical, 16)
             }
             .padding(.bottom, 4)
         }
@@ -139,4 +149,38 @@ extension OnboardingScreen {
             && lhs.config == rhs.config
         }
     }
+}
+
+// MARK: - Preview
+
+private struct PhotoStepPreview: View {
+    @State private var binding: OnboardingScreen.PhotoStepEntity.Binding
+
+    init(initial: String = "B", selectedImage: Image? = nil) {
+        _binding = State(initialValue: .init(
+            initial: initial,
+            selectedImage: selectedImage
+        ))
+    }
+
+    var body: some View {
+        ZStack {
+            TapZeroDesign.Background.primary.ignoresSafeArea()
+            OnboardingScreen.PhotoStep(
+                binding: $binding,
+                config: .init(
+                    title: TextKey.Onboarding.photoTitle,
+                    subtitle: TextKey.Onboarding.photoSubtitle
+                )
+            ) { _ in }
+        }
+    }
+}
+
+#Preview("Empty") {
+    PhotoStepPreview()
+}
+
+#Preview("With Photo") {
+    PhotoStepPreview(selectedImage: Image(systemName: "person.crop.circle.fill"))
 }
