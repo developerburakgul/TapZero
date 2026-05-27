@@ -3,7 +3,8 @@
 //  TapZero
 //
 
-import Foundation
+import SwiftfulRouting
+import SwiftUI
 
 // MARK: - Actions
 extension PlayViewModel {
@@ -34,5 +35,10 @@ extension PlayViewModel {
 
     func onPlayTapped() {
         sendEvent(type: .playTapped(target: selectedTarget))
+
+        let entity = GameSessionEntity(targetSeconds: selectedTarget)
+        router.showScreen(.fullScreenCover) { router in
+            GameSessionBuilder.build(router: router, entity: entity)
+        }
     }
 }
