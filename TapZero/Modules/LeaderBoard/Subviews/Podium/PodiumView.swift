@@ -7,6 +7,7 @@ import SwiftUI
 
 extension LeaderBoardScreen {
     struct PodiumView: View, Equatable {
+        @Binding var binding: PodiumEntity.Binding
         let config: PodiumEntity.Config
         let constants: Constants
 
@@ -17,15 +18,12 @@ extension LeaderBoardScreen {
         var body: some View {
             HStack(alignment: .bottom, spacing: 0) {
                 if config.entries.count >= 3 {
-                    // 2nd place (left)
                     podiumColumn(entry: config.entries[1], isFirst: false)
                         .frame(maxWidth: .infinity)
 
-                    // 1st place (center)
                     podiumColumn(entry: config.entries[0], isFirst: true)
                         .frame(maxWidth: .infinity)
 
-                    // 3rd place (right)
                     podiumColumn(entry: config.entries[2], isFirst: false)
                         .frame(maxWidth: .infinity)
                 }
@@ -57,10 +55,11 @@ extension LeaderBoardScreen {
                         weight: .bold
                     ))
                     .tracking(-0.2)
-                    .lineLimit(1)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: constants.podiumNameMaxWidth)
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
-                    .padding(.top, constants.podiumAvatarToNameSpacing)
+                    .padding(.top, constants.podiumAvatarToNameSpacing + 6)
 
                 Text("\(entry.score)")
                     .font(.system(size: constants.podiumPointsSize, weight: .semibold))
@@ -168,49 +167,58 @@ extension LeaderBoardScreen {
 
 // MARK: - Previews
 
-@MainActor
-private func mockPodiumEntry(
-    rank: Int, name: String, score: Int
-) -> LeaderBoardScreen.PodiumEntity.PodiumEntry {
-    let medalColor: Color = switch rank {
-    case 1: TapZeroDesign.Medal.gold
-    case 2: TapZeroDesign.Medal.silver
-    case 3: TapZeroDesign.Medal.bronze
-    default: TapZeroDesign.Foreground.tertiary
-    }
-    let ribbonText: Color = rank == 3
-        ? Color(hex: TapZeroPalette.Neutral.N50)
-        : TapZeroDesign.Foreground.primary
-    let pastel = TapZeroPalette.Pastel.all[rank % TapZeroPalette.Pastel.all.count]
+private struct PodiumPreview: View {
+    let names: [(String, Int)]
 
-    return .init(
-        rank: rank, name: name, score: score, avatarURL: nil,
-        avatarColor: Color(hex: pastel),
-        medalColor: medalColor,
-        ribbonTextColor: ribbonText
+    @State private var entity: LeaderBoardScreen.PodiumEntity = .init(
+        binding: .init(), config: .init(entries: [])
     )
+
+    var body: some View {
+        LeaderBoardScreen.PodiumView(
+            binding: $entity.binding,
+            config: entity.config,
+            constants: .init()
+        )
+        .background(TapZeroDesign.Background.primary)
+        .onAppear { buildEntries() }
+    }
+
+    private func buildEntries() {
+        entity.config = .init(entries: names.enumerated().map { idx, pair in
+            let rank = idx + 1
+            let medal: Color = switch rank {
+            case 1: TapZeroDesign.Medal.gold
+            case 2: TapZeroDesign.Medal.silver
+            default: TapZeroDesign.Medal.bronze
+            }
+            let ribbon: Color = rank == 3
+                ? Color(hex: TapZeroPalette.Neutral.N50)
+                : TapZeroDesign.Foreground.primary
+            let pastel = TapZeroPalette.Pastel.all[
+                rank % TapZeroPalette.Pastel.all.count
+            ]
+            return .init(
+                rank: rank, name: pair.0, score: pair.1,
+                avatarURL: nil, avatarColor: Color(hex: pastel),
+                medalColor: medal, ribbonTextColor: ribbon
+            )
+        })
+    }
 }
 
 #Preview("Podium — Monograms") {
-    LeaderBoardScreen.PodiumView(
-        config: .init(entries: [
-            mockPodiumEntry(rank: 1, name: "Mira Stone", score: 9842),
-            mockPodiumEntry(rank: 2, name: "Kenji Park", score: 9710),
-            mockPodiumEntry(rank: 3, name: "Yuna Choi", score: 9588)
-        ]),
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    PodiumPreview(names: [
+        ("Mira Stone", 984),
+        ("Kenji Park", 971),
+        ("Yuna Choi", 958)
+    ])
 }
 
 #Preview("Podium — Long Names") {
-    LeaderBoardScreen.PodiumView(
-        config: .init(entries: [
-            mockPodiumEntry(rank: 1, name: "Alexander Hamilton III", score: 9999),
-            mockPodiumEntry(rank: 2, name: "Elizabeth Bennet-Darcy", score: 9800),
-            mockPodiumEntry(rank: 3, name: "Jean-Pierre Dubois", score: 9650)
-        ]),
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    PodiumPreview(names: [
+        ("Alexander Hamilton III", 997),
+        ("Elizabeth Bennet-Darcy", 985),
+        ("Jean-Pierre Dubois", 963)
+    ])
 }

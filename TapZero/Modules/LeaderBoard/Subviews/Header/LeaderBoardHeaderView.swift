@@ -7,8 +7,8 @@ import SwiftUI
 
 extension LeaderBoardScreen {
     struct LeaderBoardHeaderView: View, Equatable {
+        @Binding var binding: LeaderBoardHeaderEntity.Binding
         let config: LeaderBoardHeaderEntity.Config
-        @Binding var selectedTab: LeaderBoardViewModel.LeaderBoardTab
         let constants: Constants
 
         static func == (lhs: Self, rhs: Self) -> Bool {
@@ -52,7 +52,7 @@ extension LeaderBoardScreen {
 
             return Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
-                    selectedTab = tab
+                    binding.selectedTab = tab
                 }
             } label: {
                 Text(tab == .global ? TextKey.LeaderBoard.tabGlobal : TextKey.LeaderBoard.tabDaily)
@@ -84,22 +84,33 @@ extension LeaderBoardScreen {
 
 // MARK: - Previews
 
+private struct HeaderPreview: View {
+    @State private var entity: LeaderBoardScreen.LeaderBoardHeaderEntity
+
+    init(tab: LeaderBoardViewModel.LeaderBoardTab = .global) {
+        _entity = State(initialValue: .init(
+            binding: .init(selectedTab: tab),
+            config: .init(selectedTab: tab)
+        ))
+    }
+
+    var body: some View {
+        LeaderBoardScreen.LeaderBoardHeaderView(
+            binding: $entity.binding,
+            config: entity.config,
+            constants: .init()
+        )
+        .onChange(of: entity.binding.selectedTab) { newTab in
+            entity.config = .init(selectedTab: newTab)
+        }
+        .background(TapZeroDesign.Background.primary)
+    }
+}
+
 #Preview("Global Selected") {
-    @Previewable @State var tab: LeaderBoardViewModel.LeaderBoardTab = .global
-    LeaderBoardScreen.LeaderBoardHeaderView(
-        config: .init(selectedTab: .global),
-        selectedTab: $tab,
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    HeaderPreview(tab: .global)
 }
 
 #Preview("Daily Selected") {
-    @Previewable @State var tab: LeaderBoardViewModel.LeaderBoardTab = .daily
-    LeaderBoardScreen.LeaderBoardHeaderView(
-        config: .init(selectedTab: .daily),
-        selectedTab: $tab,
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    HeaderPreview(tab: .daily)
 }

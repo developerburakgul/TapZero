@@ -7,9 +7,14 @@ import SwiftUI
 
 extension LeaderBoardScreen {
     struct LockedOverlayView: View, Equatable {
+        enum Action {
+            case didTapPlayGame
+        }
+
+        @Binding var binding: LockedOverlayEntity.Binding
         let config: LockedOverlayEntity.Config
         let constants: Constants
-        var onPlayGameTapped: (() -> Void)?
+        let onAction: (Action) -> Void
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -47,10 +52,7 @@ extension LeaderBoardScreen {
                         .tracking(-0.3)
                         .foregroundStyle(TapZeroDesign.Foreground.primary)
 
-                    Text(String(
-                        format: TextKey.LeaderBoard.lockedSubtitle,
-                        config.gamesRemaining
-                    ))
+                    Text(TextKey.LeaderBoard.lockedSubtitle(count: config.gamesRemaining))
                     .font(.system(size: 13, weight: .medium))
                     .tracking(-0.1)
                     .lineSpacing(2)
@@ -95,7 +97,7 @@ extension LeaderBoardScreen {
 
         private var ctaButton: some View {
             Button {
-                onPlayGameTapped?()
+                onAction(.didTapPlayGame)
             } label: {
                 Text(TextKey.LeaderBoard.lockedCta)
                     .font(TapZeroTypography.Label.button)
@@ -127,7 +129,10 @@ extension LeaderBoardScreen {
                     )
                     .rotationEffect(.degrees(-90))
 
-                Text("\(config.gamesPlayed)/\(config.gamesRequired)")
+                Text(TextKey.LeaderBoard.lockedProgress(
+                    played: config.gamesPlayed,
+                    required: config.gamesRequired
+                ))
                     .font(.system(size: 16, weight: .bold))
                     .tracking(-0.4)
                     .monospacedDigit()
@@ -143,41 +148,41 @@ extension LeaderBoardScreen {
 
 // MARK: - Previews
 
-#Preview("Locked — 4/10") {
-    ZStack {
-        TapZeroDesign.Background.primary.ignoresSafeArea()
-        LeaderBoardScreen.LockedOverlayView(
+private struct LockedPreview: View {
+    @State private var entity: LeaderBoardScreen.LockedOverlayEntity
+
+    init(played: Int) {
+        let remaining = max(0, 10 - played)
+        let progress = CGFloat(played) / 10.0
+        _entity = State(initialValue: .init(
+            binding: .init(),
             config: .init(
-                gamesPlayed: 4, gamesRequired: 10,
-                gamesRemaining: 6, progress: 0.4
-            ),
-            constants: .init()
-        )
+                gamesPlayed: played, gamesRequired: 10,
+                gamesRemaining: remaining, progress: progress
+            )
+        ))
     }
+
+    var body: some View {
+        ZStack {
+            TapZeroDesign.Background.primary.ignoresSafeArea()
+            LeaderBoardScreen.LockedOverlayView(
+                binding: $entity.binding,
+                config: entity.config,
+                constants: .init()
+            ) { _ in }
+        }
+    }
+}
+
+#Preview("Locked — 4/10") {
+    LockedPreview(played: 4)
 }
 
 #Preview("Locked — 9/10") {
-    ZStack {
-        TapZeroDesign.Background.primary.ignoresSafeArea()
-        LeaderBoardScreen.LockedOverlayView(
-            config: .init(
-                gamesPlayed: 9, gamesRequired: 10,
-                gamesRemaining: 1, progress: 0.9
-            ),
-            constants: .init()
-        )
-    }
+    LockedPreview(played: 9)
 }
 
 #Preview("Locked — 0/10") {
-    ZStack {
-        TapZeroDesign.Background.primary.ignoresSafeArea()
-        LeaderBoardScreen.LockedOverlayView(
-            config: .init(
-                gamesPlayed: 0, gamesRequired: 10,
-                gamesRemaining: 10, progress: 0
-            ),
-            constants: .init()
-        )
-    }
+    LockedPreview(played: 0)
 }

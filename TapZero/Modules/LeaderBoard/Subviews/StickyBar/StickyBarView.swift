@@ -7,6 +7,7 @@ import SwiftUI
 
 extension LeaderBoardScreen {
     struct StickyBarView: View, Equatable {
+        @Binding var binding: StickyBarEntity.Binding
         let config: StickyBarEntity.Config
         let constants: Constants
 
@@ -22,6 +23,7 @@ extension LeaderBoardScreen {
                     .padding(.bottom, constants.stickyHeaderBottomSpacing)
 
                 LeaderBoardRowView(
+                    binding: .constant(.init()),
                     config: .init(
                         rank: config.rank,
                         name: config.name,
@@ -61,11 +63,10 @@ extension LeaderBoardScreen {
 
                 Spacer()
 
-                if config.climbCount > 0 {
-                    Text("↑ " + String(
-                        format: TextKey.LeaderBoard.climbHint,
-                        config.climbCount,
-                        config.listLimit
+                if config.climbCount > 0, config.climbCount < 100 {
+                    Text("↑ " + TextKey.LeaderBoard.climbHint(
+                        climb: config.climbCount,
+                        limit: config.listLimit
                     ))
                     .font(.system(size: 11, weight: .semibold))
                     .tracking(0.4)
@@ -79,26 +80,35 @@ extension LeaderBoardScreen {
 
 // MARK: - Previews
 
+private struct StickyBarPreview: View {
+    @State private var entity: LeaderBoardScreen.StickyBarEntity
+
+    init(config: LeaderBoardScreen.StickyBarEntity.Config) {
+        _entity = State(initialValue: .init(binding: .init(), config: config))
+    }
+
+    var body: some View {
+        LeaderBoardScreen.StickyBarView(
+            binding: $entity.binding,
+            config: entity.config,
+            constants: .init()
+        )
+        .background(TapZeroDesign.Background.primary)
+    }
+}
+
 #Preview("Sticky Bar — Climb Hint") {
-    LeaderBoardScreen.StickyBarView(
-        config: .init(
-            rank: 147, score: 7200, name: "Burak",
-            avatarURL: nil, colorHex: "#007AFF",
-            climbCount: 97, listLimit: 50
-        ),
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    StickyBarPreview(config: .init(
+        rank: 147, score: 782, name: "Burak",
+        avatarURL: nil, colorHex: "#007AFF",
+        climbCount: 97, listLimit: 50
+    ))
 }
 
 #Preview("Sticky Bar — No Climb") {
-    LeaderBoardScreen.StickyBarView(
-        config: .init(
-            rank: 51, score: 8500, name: "Burak",
-            avatarURL: nil, colorHex: "#007AFF",
-            climbCount: 0, listLimit: 50
-        ),
-        constants: .init()
-    )
-    .background(TapZeroDesign.Background.primary)
+    StickyBarPreview(config: .init(
+        rank: 51, score: 850, name: "Burak",
+        avatarURL: nil, colorHex: "#007AFF",
+        climbCount: 0, listLimit: 50
+    ))
 }

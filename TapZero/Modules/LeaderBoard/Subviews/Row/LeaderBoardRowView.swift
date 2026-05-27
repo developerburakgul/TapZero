@@ -7,6 +7,7 @@ import SwiftUI
 
 extension LeaderBoardScreen {
     struct LeaderBoardRowView: View, Equatable {
+        @Binding var binding: LeaderBoardRowEntity.Binding
         let config: LeaderBoardRowEntity.Config
         let constants: Constants
 
@@ -48,7 +49,7 @@ extension LeaderBoardScreen {
                 .font(.system(size: 13, weight: .bold))
                 .tracking(constants.rowNameTracking)
                 .monospacedDigit()
-                .frame(width: constants.rowRankWidth)
+                .frame(minWidth: constants.rowRankWidth, alignment: .center)
                 .foregroundStyle(
                     config.isCurrentUser
                         ? accentColor
@@ -101,7 +102,7 @@ extension LeaderBoardScreen {
         // MARK: - Name
 
         private var nameLabel: some View {
-            Text(config.isCurrentUser ? TextKey.LeaderBoard.you : config.name)
+            Text(config.name)
                 .font(.system(size: 15, weight: config.isCurrentUser ? .bold : .medium))
                 .tracking(constants.rowNameTracking)
                 .lineLimit(1)
@@ -127,41 +128,44 @@ extension LeaderBoardScreen {
 
 // MARK: - Previews
 
+private struct RowPreview: View {
+    @State private var entity: LeaderBoardScreen.LeaderBoardRowEntity
+
+    init(config: LeaderBoardScreen.LeaderBoardRowEntity.Config) {
+        _entity = State(initialValue: .init(binding: .init(), config: config))
+    }
+
+    var body: some View {
+        LeaderBoardScreen.LeaderBoardRowView(
+            binding: $entity.binding,
+            config: entity.config,
+            constants: .init()
+        )
+        .padding(.horizontal, 8)
+        .background(TapZeroDesign.Background.primary)
+    }
+}
+
 #Preview("Normal Row") {
-    LeaderBoardScreen.LeaderBoardRowView(
-        config: .init(
-            rank: 4, name: "Liam Carter", score: 9320,
-            avatarURL: nil, colorHex: nil,
-            isCurrentUser: false, isDense: false
-        ),
-        constants: .init()
-    )
-    .padding(.horizontal, 8)
-    .background(TapZeroDesign.Background.primary)
+    RowPreview(config: .init(
+        rank: 4, name: "Liam Carter", score: 932,
+        avatarURL: nil, colorHex: nil,
+        isCurrentUser: false, isDense: false
+    ))
 }
 
 #Preview("Current User Row") {
-    LeaderBoardScreen.LeaderBoardRowView(
-        config: .init(
-            rank: 7, name: "Burak", score: 9182,
-            avatarURL: nil, colorHex: "#007AFF",
-            isCurrentUser: true, isDense: false
-        ),
-        constants: .init()
-    )
-    .padding(.horizontal, 8)
-    .background(TapZeroDesign.Background.primary)
+    RowPreview(config: .init(
+        rank: 7, name: "Burak", score: 891,
+        avatarURL: nil, colorHex: "#007AFF",
+        isCurrentUser: true, isDense: false
+    ))
 }
 
 #Preview("Dense Row") {
-    LeaderBoardScreen.LeaderBoardRowView(
-        config: .init(
-            rank: 147, name: "Burak", score: 7200,
-            avatarURL: nil, colorHex: "#007AFF",
-            isCurrentUser: true, isDense: true
-        ),
-        constants: .init()
-    )
-    .padding(.horizontal, 8)
-    .background(TapZeroDesign.Background.primary)
+    RowPreview(config: .init(
+        rank: 147, name: "Burak", score: 782,
+        avatarURL: nil, colorHex: "#007AFF",
+        isCurrentUser: true, isDense: true
+    ))
 }

@@ -26,6 +26,26 @@ final class LeaderBoardViewModel: ObservableObject {
     @Published var isLoading: Bool = false
 
     // MARK: - Subview Entities
+    @Published var headerEntity: LeaderBoardScreen.LeaderBoardHeaderEntity = .init(
+        binding: .init(),
+        config: .init(selectedTab: .global)
+    )
+    @Published var globalPodiumEntity: LeaderBoardScreen.PodiumEntity = .init(
+        binding: .init(),
+        config: .init(entries: [])
+    )
+    @Published var dailyPodiumEntity: LeaderBoardScreen.PodiumEntity = .init(
+        binding: .init(),
+        config: .init(entries: [])
+    )
+    @Published var stickyBarEntity: LeaderBoardScreen.StickyBarEntity = .init(
+        binding: .init(),
+        config: .init(rank: 0, score: 0, name: "", avatarURL: nil, colorHex: nil, climbCount: 0, listLimit: 0)
+    )
+    @Published var lockedOverlayEntity: LeaderBoardScreen.LockedOverlayEntity = .init(
+        binding: .init(),
+        config: .init(gamesPlayed: 0, gamesRequired: 10, gamesRemaining: 10, progress: 0)
+    )
 
     // MARK: - Init
     init(
@@ -55,8 +75,8 @@ extension LeaderBoardViewModel {
     var currentUserAvatar: String? { userManager.currentUser?.profileImageURL }
     var currentUserColorHex: String? { userManager.currentUser?.profileColorHex }
 
-    // MARK: - Locked State
-    var isLocked: Bool { (userStats?.totalGamesPlayed ?? 0) < unlockRequiredGames }
+    // MARK: - Locked State (only Global)
+    var isLocked: Bool { selectedTab == .global && (userStats?.totalGamesPlayed ?? 0) < unlockRequiredGames }
     var gamesPlayed: Int { userStats?.totalGamesPlayed ?? 0 }
     var unlockRequiredGames: Int { 10 }
     var gamesRemaining: Int { max(0, unlockRequiredGames - gamesPlayed) }

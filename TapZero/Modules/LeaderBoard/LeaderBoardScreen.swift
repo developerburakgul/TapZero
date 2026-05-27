@@ -22,17 +22,19 @@ struct LeaderBoardScreen: View {
                 }
                 await viewModel.viewWillAppear()
             }
+            .onChange(of: viewModel.headerEntity.binding.selectedTab) { newTab in
+                viewModel.onTabChanged(newTab)
+            }
+            .onChange(of: viewModel.selectedTab) { newTab in
+                viewModel.headerEntity.binding.selectedTab = newTab
+                viewModel.headerEntity.config = .init(selectedTab: newTab)
+            }
     }
 
     private var contentView: some View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
-
-            if viewModel.isLocked {
-                lockedView
-            } else {
-                leaderboardContent
-            }
+            leaderboardContent
         }
     }
 }
@@ -43,25 +45,23 @@ extension LeaderBoardScreen {
     private var leaderboardContent: some View {
         VStack(spacing: 0) {
             LeaderBoardHeaderView(
-                config: .init(selectedTab: viewModel.selectedTab),
-                selectedTab: $viewModel.selectedTab,
+                binding: $viewModel.headerEntity.binding,
+                config: viewModel.headerEntity.config,
                 constants: constants
             )
 
-            scrollableList
+            TabView(selection: $viewModel.headerEntity.binding.selectedTab) {
+                globalPage.tag(LeaderBoardViewModel.LeaderBoardTab.global)
+                dailyPage.tag(LeaderBoardViewModel.LeaderBoardTab.daily)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .animation(.easeInOut(duration: 0.25), value: viewModel.headerEntity.binding.selectedTab)
         }
         .overlay(alignment: .bottom) {
             if viewModel.showStickyBar {
                 StickyBarView(
-                    config: .init(
-                        rank: viewModel.stickyRank,
-                        score: viewModel.stickyScore,
-                        name: viewModel.currentUserName,
-                        avatarURL: viewModel.currentUserAvatar,
-                        colorHex: viewModel.currentUserColorHex,
-                        climbCount: viewModel.climbCount,
-                        listLimit: viewModel.listLimit
-                    ),
+                    binding: $viewModel.stickyBarEntity.binding,
+                    config: viewModel.stickyBarEntity.config,
                     constants: constants
                 )
             }
@@ -72,77 +72,64 @@ extension LeaderBoardScreen {
 // MARK: - Scrollable List
 
 extension LeaderBoardScreen {
-    private var scrollableList: some View {
+    private var globalPage: some View {
+        ZStack {
+            ScrollView {
+                VStack(spacing: 0) {
+                    globalPodium
+                    globalList
+
+                    if viewModel.showStickyBar {
+                        showingTopLabel
+                    }
+                }
+                .padding(.bottom, viewModel.showStickyBar ? 100 : 0)
+            }
+            .blur(radius: viewModel.isLocked ? 8 : 0)
+            .opacity(viewModel.isLocked ? 0.55 : 1)
+            .disabled(viewModel.isLocked)
+
+            if viewModel.isLocked {
+                LockedOverlayView(
+                    binding: $viewModel.lockedOverlayEntity.binding,
+                    config: viewModel.lockedOverlayEntity.config,
+                    constants: constants
+                ) { action in
+                    switch action {
+                    case .didTapPlayGame:
+                        viewModel.onPlayGameTapped()
+                    }
+                }
+            }
+        }
+    }
+
+    private var dailyPage: some View {
         ScrollView {
             VStack(spacing: 0) {
-                if viewModel.selectedTab == .daily {
-                    dailyResetTimer
-                }
-
-                podiumSection
-
-                listSection
-
-                if viewModel.showStickyBar {
-                    showingTopLabel
-                }
-            }
-            .padding(.bottom, viewModel.showStickyBar ? 100 : 0)
-        }
-    }
-
-    private var podiumSection: some View {
-        Group {
-            switch viewModel.selectedTab {
-            case .global:
-                PodiumView(
-                    config: .init(entries: viewModel.globalPodium.map { entry in
-                        podiumEntry(
-                            rank: entry.rank, name: entry.name,
-                            score: entry.top10Average, avatarURL: entry.avatar
-                        )
-                    }),
-                    constants: constants
-                )
-            case .daily:
-                PodiumView(
-                    config: .init(entries: viewModel.dailyPodium.map { entry in
-                        podiumEntry(
-                            rank: entry.rank, name: entry.name,
-                            score: entry.bestScore, avatarURL: entry.avatar
-                        )
-                    }),
-                    constants: constants
-                )
+                dailyResetTimer
+                dailyPodiumSection
+                dailyList
             }
         }
     }
+}
 
-    private func podiumEntry(
-        rank: Int, name: String, score: Int, avatarURL: String?
-    ) -> LeaderBoardScreen.PodiumEntity.PodiumEntry {
-        .init(
-            rank: rank,
-            name: name,
-            score: score,
-            avatarURL: avatarURL,
-            avatarColor: viewModel.avatarColor(for: name, colorHex: nil),
-            medalColor: viewModel.medalColor(for: rank),
-            ribbonTextColor: viewModel.ribbonTextColor(for: rank)
+// MARK: - Global Content
+
+extension LeaderBoardScreen {
+    private var globalPodium: some View {
+        PodiumView(
+            binding: $viewModel.globalPodiumEntity.binding,
+            config: viewModel.globalPodiumEntity.config,
+            constants: constants
         )
     }
 
-    private var listSection: some View {
+    private var globalList: some View {
         LazyVStack(spacing: constants.rowMarginBottom) {
-            switch viewModel.selectedTab {
-            case .global:
-                ForEach(viewModel.globalList) { entry in
-                    globalRow(entry: entry)
-                }
-            case .daily:
-                ForEach(viewModel.dailyList) { entry in
-                    dailyRow(entry: entry)
-                }
+            ForEach(viewModel.globalList) { entry in
+                globalRow(entry: entry)
             }
         }
         .padding(.horizontal, constants.listHorizontalPadding)
@@ -150,6 +137,7 @@ extension LeaderBoardScreen {
 
     private func globalRow(entry: GlobalLeaderboardEntry) -> some View {
         LeaderBoardRowView(
+            binding: .constant(.init()),
             config: .init(
                 rank: entry.rank,
                 name: entry.name,
@@ -162,9 +150,31 @@ extension LeaderBoardScreen {
             constants: constants
         )
     }
+}
+
+// MARK: - Daily Content
+
+extension LeaderBoardScreen {
+    private var dailyPodiumSection: some View {
+        PodiumView(
+            binding: $viewModel.dailyPodiumEntity.binding,
+            config: viewModel.dailyPodiumEntity.config,
+            constants: constants
+        )
+    }
+
+    private var dailyList: some View {
+        LazyVStack(spacing: constants.rowMarginBottom) {
+            ForEach(viewModel.dailyList) { entry in
+                dailyRow(entry: entry)
+            }
+        }
+        .padding(.horizontal, constants.listHorizontalPadding)
+    }
 
     private func dailyRow(entry: DailyLeaderboardEntry) -> some View {
         LeaderBoardRowView(
+            binding: .constant(.init()),
             config: .init(
                 rank: entry.rank,
                 name: entry.name,
@@ -199,10 +209,9 @@ extension LeaderBoardScreen {
     private var dailyTimerText: String {
         let remaining = viewModel.dailyResetTimeRemaining
         let resetsAt = TextKey.LeaderBoard.dailyResetsAt
-        let timeLeft = String(
-            format: TextKey.LeaderBoard.dailyTimeLeft,
-            remaining.hours,
-            remaining.minutes
+        let timeLeft = TextKey.LeaderBoard.dailyTimeLeft(
+            hours: remaining.hours,
+            minutes: remaining.minutes
         )
         return "\(resetsAt) · \(timeLeft)"
     }
@@ -212,10 +221,7 @@ extension LeaderBoardScreen {
 
 extension LeaderBoardScreen {
     private var showingTopLabel: some View {
-        Text(String(
-            format: TextKey.LeaderBoard.showingTop,
-            viewModel.listLimit
-        ))
+        Text(TextKey.LeaderBoard.showingTop(count: viewModel.listLimit))
         .font(TapZeroTypography.Caption.regular)
         .foregroundStyle(TapZeroDesign.Foreground.tertiary)
         .padding(.top, 16)
@@ -223,47 +229,21 @@ extension LeaderBoardScreen {
     }
 }
 
-// MARK: - Locked View
-
-extension LeaderBoardScreen {
-    private var lockedView: some View {
-        ZStack {
-            leaderboardContent
-                .blur(radius: 8)
-                .opacity(0.55)
-                .disabled(true)
-
-            LockedOverlayView(
-                config: .init(
-                    gamesPlayed: viewModel.gamesPlayed,
-                    gamesRequired: viewModel.unlockRequiredGames,
-                    gamesRemaining: viewModel.gamesRemaining,
-                    progress: viewModel.unlockProgress
-                ),
-                constants: constants,
-                onPlayGameTapped: viewModel.onPlayGameTapped
-            )
-        }
-    }
-}
-
 // MARK: - Preview Helpers
 
 private struct LeaderBoardPreview: View {
-    let tab: LeaderBoardViewModel.LeaderBoardTab
-    let isLocked: Bool
     let showSticky: Bool
+    let isGlobalLocked: Bool
 
     @State private var selectedTab: LeaderBoardViewModel.LeaderBoardTab
 
     init(
         tab: LeaderBoardViewModel.LeaderBoardTab = .global,
-        isLocked: Bool = false,
-        showSticky: Bool = false
+        showSticky: Bool = false,
+        isGlobalLocked: Bool = false
     ) {
-        self.tab = tab
-        self.isLocked = isLocked
         self.showSticky = showSticky
+        self.isGlobalLocked = isGlobalLocked
         _selectedTab = State(initialValue: tab)
     }
 
@@ -273,52 +253,122 @@ private struct LeaderBoardPreview: View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
 
-            if isLocked {
-                lockedView
-            } else {
-                normalView
+            VStack(spacing: 0) {
+                LeaderBoardScreen.LeaderBoardHeaderView(
+                    binding: .constant(.init(selectedTab: selectedTab)),
+                    config: .init(selectedTab: selectedTab),
+                    constants: constants
+                )
+
+                TabView(selection: $selectedTab) {
+                    previewGlobalPage
+                        .tag(LeaderBoardViewModel.LeaderBoardTab.global)
+                    previewDailyPage
+                        .tag(LeaderBoardViewModel.LeaderBoardTab.daily)
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .animation(.easeInOut(duration: 0.25), value: selectedTab)
+            }
+            .overlay(alignment: .bottom) {
+                if showSticky && selectedTab == .global {
+                    stickyBar
+                }
             }
         }
     }
 
-    private var normalView: some View {
-        VStack(spacing: 0) {
-            LeaderBoardScreen.LeaderBoardHeaderView(
-                config: .init(selectedTab: selectedTab),
-                selectedTab: $selectedTab,
-                constants: constants
-            )
+    // MARK: - Global Page
 
+    private var previewGlobalPage: some View {
+        ZStack {
             ScrollView {
                 VStack(spacing: 0) {
                     LeaderBoardScreen.PodiumView(
-                        config: .init(entries: mockPodiumEntries),
+                        binding: .constant(.init()),
+                        config: .init(entries: globalPodium),
                         constants: constants
                     )
+                    globalListRows
 
-                    listRows
+                    if showSticky { showingTop }
                 }
                 .padding(.bottom, showSticky ? 100 : 0)
             }
+            .blur(radius: isGlobalLocked ? 8 : 0)
+            .opacity(isGlobalLocked ? 0.55 : 1)
+            .disabled(isGlobalLocked)
+
+            if isGlobalLocked { lockedOverlay }
         }
-        .overlay(alignment: .bottom) {
-            if showSticky {
-                LeaderBoardScreen.StickyBarView(
-                    config: .init(
-                        rank: 147, score: 7200, name: "Burak",
-                        avatarURL: nil, colorHex: "#007AFF",
-                        climbCount: 97, listLimit: 50
-                    ),
+    }
+
+    // MARK: - Daily Page
+
+    private var previewDailyPage: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                dailyTimer
+                LeaderBoardScreen.PodiumView(
+                    binding: .constant(.init()),
+                    config: .init(entries: dailyPodium),
                     constants: constants
                 )
+                dailyListRows
             }
         }
     }
 
-    private var listRows: some View {
+    // MARK: - Shared Components
+
+    private var stickyBar: some View {
+        LeaderBoardScreen.StickyBarView(
+            binding: .constant(.init()),
+            config: .init(
+                rank: 147, score: 782, name: "Burak",
+                avatarURL: nil, colorHex: "#007AFF",
+                climbCount: 97, listLimit: 50
+            ),
+            constants: constants
+        )
+    }
+
+    private var lockedOverlay: some View {
+        LeaderBoardScreen.LockedOverlayView(
+            binding: .constant(.init()),
+            config: .init(
+                gamesPlayed: 4, gamesRequired: 10,
+                gamesRemaining: 6, progress: 0.4
+            ),
+            constants: constants
+        ) { _ in }
+    }
+
+    private var showingTop: some View {
+        Text(TextKey.LeaderBoard.showingTop(count: 50))
+            .font(TapZeroTypography.Caption.regular)
+            .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+            .padding(.top, 16).padding(.bottom, 8)
+    }
+
+    private var dailyTimer: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "clock")
+                .font(.system(size: 12))
+                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+            Text("Resets at 00:00 · 6h 42m left")
+                .font(TapZeroTypography.Caption.regular)
+                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+        }
+        .padding(.horizontal, 20).padding(.bottom, 10)
+    }
+
+    // MARK: - List Rows
+
+    private var globalListRows: some View {
         LazyVStack(spacing: constants.rowMarginBottom) {
-            ForEach(mockListEntries) { entry in
+            ForEach(globalRows) { entry in
                 LeaderBoardScreen.LeaderBoardRowView(
+                    binding: .constant(.init()),
                     config: entry, constants: constants
                 )
             }
@@ -326,26 +376,21 @@ private struct LeaderBoardPreview: View {
         .padding(.horizontal, constants.listHorizontalPadding)
     }
 
-    private var lockedView: some View {
-        ZStack {
-            normalView
-                .blur(radius: 8)
-                .opacity(0.55)
-                .disabled(true)
-
-            LeaderBoardScreen.LockedOverlayView(
-                config: .init(
-                    gamesPlayed: 4, gamesRequired: 10,
-                    gamesRemaining: 6, progress: 0.4
-                ),
-                constants: constants
-            )
+    private var dailyListRows: some View {
+        LazyVStack(spacing: constants.rowMarginBottom) {
+            ForEach(dailyRows) { entry in
+                LeaderBoardScreen.LeaderBoardRowView(
+                    binding: .constant(.init()),
+                    config: entry, constants: constants
+                )
+            }
         }
+        .padding(.horizontal, constants.listHorizontalPadding)
     }
 
-    // MARK: - Mock Data
+    // MARK: - Mock Data Helpers
 
-    private func mockPodiumEntry(
+    private func podium(
         rank: Int, name: String, score: Int
     ) -> LeaderBoardScreen.PodiumEntity.PodiumEntry {
         let medal: Color = switch rank {
@@ -362,22 +407,12 @@ private struct LeaderBoardPreview: View {
         ]
         return .init(
             rank: rank, name: name, score: score,
-            avatarURL: nil,
-            avatarColor: Color(hex: pastel),
-            medalColor: medal,
-            ribbonTextColor: ribbon
+            avatarURL: nil, avatarColor: Color(hex: pastel),
+            medalColor: medal, ribbonTextColor: ribbon
         )
     }
 
-    private var mockPodiumEntries: [LeaderBoardScreen.PodiumEntity.PodiumEntry] {
-        [
-            mockPodiumEntry(rank: 1, name: "Mira Stone", score: 9842),
-            mockPodiumEntry(rank: 2, name: "Kenji Park", score: 9710),
-            mockPodiumEntry(rank: 3, name: "Yuna Choi", score: 9588)
-        ]
-    }
-
-    private func mockRow(
+    private func row(
         rank: Int, name: String, score: Int,
         colorHex: String? = nil, isUser: Bool = false
     ) -> LeaderBoardScreen.LeaderBoardRowEntity.Config {
@@ -388,15 +423,47 @@ private struct LeaderBoardPreview: View {
         )
     }
 
-    private var mockListEntries: [LeaderBoardScreen.LeaderBoardRowEntity.Config] {
+    // MARK: - Global Mock (top10Average, max 1000)
+
+    private var globalPodium: [LeaderBoardScreen.PodiumEntity.PodiumEntry] {
         [
-            mockRow(rank: 4, name: "Liam Carter", score: 9320),
-            mockRow(rank: 5, name: "Sofia Rossi", score: 9185),
-            mockRow(rank: 6, name: "Noah Kim", score: 9044),
-            mockRow(rank: 7, name: "Burak", score: 9182, colorHex: "#007AFF", isUser: true),
-            mockRow(rank: 8, name: "Emma Liu", score: 8890),
-            mockRow(rank: 9, name: "Raj Patel", score: 8745),
-            mockRow(rank: 10, name: "Ava Chen", score: 8600)
+            podium(rank: 1, name: "Mira Stone", score: 984),
+            podium(rank: 2, name: "Kenji Park", score: 971),
+            podium(rank: 3, name: "Yuna Choi", score: 958)
+        ]
+    }
+
+    private var globalRows: [LeaderBoardScreen.LeaderBoardRowEntity.Config] {
+        [
+            row(rank: 4, name: "Liam Carter", score: 932),
+            row(rank: 5, name: "Sofia Rossi", score: 918),
+            row(rank: 6, name: "Noah Kim", score: 904),
+            row(rank: 7, name: "Burak", score: 891, colorHex: "#007AFF", isUser: true),
+            row(rank: 8, name: "Emma Liu", score: 876),
+            row(rank: 9, name: "Raj Patel", score: 854),
+            row(rank: 10, name: "Ava Chen", score: 837)
+        ]
+    }
+
+    // MARK: - Daily Mock (bestScore, max 1000)
+
+    private var dailyPodium: [LeaderBoardScreen.PodiumEntity.PodiumEntry] {
+        [
+            podium(rank: 1, name: "Kenji Park", score: 998),
+            podium(rank: 2, name: "Sofia Rossi", score: 994),
+            podium(rank: 3, name: "Liam Carter", score: 987)
+        ]
+    }
+
+    private var dailyRows: [LeaderBoardScreen.LeaderBoardRowEntity.Config] {
+        [
+            row(rank: 4, name: "Yuna Choi", score: 976),
+            row(rank: 5, name: "Mira Stone", score: 965),
+            row(rank: 6, name: "Emma Liu", score: 958),
+            row(rank: 7, name: "Noah Kim", score: 951),
+            row(rank: 8, name: "Raj Patel", score: 947),
+            row(rank: 9, name: "Burak", score: 942, colorHex: "#007AFF", isUser: true),
+            row(rank: 10, name: "Ava Chen", score: 931)
         ]
     }
 }
@@ -404,7 +471,7 @@ private struct LeaderBoardPreview: View {
 // MARK: - Screen Previews
 
 #Preview("6.1 — Global") {
-    LeaderBoardPreview(tab: .global)
+    LeaderBoardPreview()
 }
 
 #Preview("6.2 — Daily") {
@@ -412,9 +479,9 @@ private struct LeaderBoardPreview: View {
 }
 
 #Preview("6.3 — Sticky") {
-    LeaderBoardPreview(tab: .global, showSticky: true)
+    LeaderBoardPreview(showSticky: true)
 }
 
 #Preview("6.4 — Locked") {
-    LeaderBoardPreview(isLocked: true)
+    LeaderBoardPreview(isGlobalLocked: true)
 }

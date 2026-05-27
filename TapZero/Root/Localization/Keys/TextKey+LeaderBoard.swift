@@ -17,15 +17,32 @@ extension TextKey {
         static let lockedWhyBody: LocalizedStringKey = "leaderBoard.locked.whyBody"
         static let lockedCta: LocalizedStringKey = "leaderBoard.locked.cta"
 
-        // MARK: - String (format / computed)
+        // MARK: - String (computed)
         static var rankFirst: String { TextKey.localized("leaderBoard.rank.first") }
         static var rankSecond: String { TextKey.localized("leaderBoard.rank.second") }
         static var rankThird: String { TextKey.localized("leaderBoard.rank.third") }
-        static var showingTop: String { TextKey.localized("leaderBoard.showingTop") }
-        static var climbHint: String { TextKey.localized("leaderBoard.climbHint") }
         static var dailyResetsAt: String { TextKey.localized("leaderBoard.daily.resetsAt") }
-        static var dailyTimeLeft: String { TextKey.localized("leaderBoard.daily.timeLeft") }
-        static var lockedSubtitle: String { TextKey.localized("leaderBoard.locked.subtitle") }
         static var you: String { TextKey.localized("leaderBoard.you") }
+
+        // MARK: - String (format functions)
+        static func lockedSubtitle(count: Int) -> String {
+            TextKey.localized("leaderBoard.locked.subtitle \(count)")
+        }
+
+        static func showingTop(count: Int) -> String {
+            TextKey.localized("leaderBoard.showingTop \(count)")
+        }
+
+        static func climbHint(climb: Int, limit: Int) -> String {
+            TextKey.localized("leaderBoard.climbHint \(climb) \(limit)")
+        }
+
+        static func dailyTimeLeft(hours: Int, minutes: Int) -> String {
+            TextKey.localized("leaderBoard.daily.timeLeft \(hours) \(minutes)")
+        }
+
+        static func lockedProgress(played: Int, required: Int) -> String {
+            TextKey.localized("leaderBoard.locked.progress \(played) \(required)")
+        }
     }
 }

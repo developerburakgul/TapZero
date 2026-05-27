@@ -2526,66 +2526,66 @@
         }
       }
     },
-    "leaderBoard.climbHint" : {
+    "leaderBoard.climbHint %lld %lld" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ تسلق %lld للدخول إلى أفضل %lld"
+            "value" : "تسلق %1$lld للدخول إلى أفضل %2$lld"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ Klettere %lld, um in die Top %lld zu kommen"
+            "value" : "Klettere %1$lld, um in die Top %2$lld zu kommen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Climb %lld to enter top %lld"
+            "value" : "Climb %1$lld to enter top %2$lld"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ Sube %lld para entrar al top %lld"
+            "value" : "Sube %1$lld para entrar al top %2$lld"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ Grimpe de %lld pour entrer dans le top %lld"
+            "value" : "Grimpe de %1$lld pour entrer dans le top %2$lld"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ Scala %lld per entrare nella top %lld"
+            "value" : "Scala %1$lld per entrare nella top %2$lld"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ あと%lld上がるとトップ%lldに入ります"
+            "value" : "あと%1$lld上がるとトップ%2$lldに入ります"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ %lld 올라서 상위 %lld에 진입"
+            "value" : "%1$lld 올라서 상위 %2$lld에 진입"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ Suba %lld para entrar no top %lld"
+            "value" : "Suba %1$lld para entrar no top %2$lld"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "↑ İlk %2$lld'e girmek için %1$lld sıra yüksel"
+            "value" : "İlk %2$lld'e girmek için %1$lld sıra yüksel"
           }
         }
       }
@@ -2654,66 +2654,66 @@
         }
       }
     },
-    "leaderBoard.daily.timeLeft" : {
+    "leaderBoard.daily.timeLeft %lld %lld" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "متبقي %lldس %lldد"
+            "value" : "متبقي %1$lldس %2$lldد"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm übrig"
+            "value" : "%1$lldh %2$lldm übrig"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm left"
+            "value" : "%1$lldh %2$lldm left"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm restantes"
+            "value" : "%1$lldh %2$lldm restantes"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm restantes"
+            "value" : "%1$lldh %2$lldm restantes"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm rimanenti"
+            "value" : "%1$lldh %2$lldm rimanenti"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "残り%lld時間%lld分"
+            "value" : "残り%1$lld時間%2$lld分"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld시간 %lld분 남음"
+            "value" : "%1$lld시간 %2$lld분 남음"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldh %lldm restantes"
+            "value" : "%1$lldh %2$lldm restantes"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lldsa %lldd kaldı"
+            "value" : "%1$lldsa %2$lldd kaldı"
           }
         }
       }
@@ -2782,66 +2782,232 @@
         }
       }
     },
-    "leaderBoard.locked.subtitle" : {
+    "leaderBoard.locked.progress %lld %lld" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "العب %lld مباراة أخرى لفتح لوحة المتصدرين"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spiele noch %lld Runde(n), um die Bestenliste freizuschalten"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Play %lld more game(s) to unlock the leaderboard"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Juega %lld partida(s) más para desbloquear la clasificación"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Joue encore %lld partie(s) pour débloquer le classement"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gioca ancora %lld partita/e per sbloccare la classifica"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あと%lld回プレイするとリーダーボードが解除されます"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "리더보드를 잠금 해제하려면 %lld게임 더 플레이하세요"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jogue mais %lld partida(s) para desbloquear a classificação"
+            "value" : "%1$lld/%2$lld"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıralamayı açmak için %lld oyun daha oyna"
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "leaderBoard.locked.subtitle %lld" : {
+      "localizations" : {
+        "ar" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "العب مباراة واحدة أخرى لفتح لوحة المتصدرين"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "العب %lld مباراة أخرى لفتح لوحة المتصدرين"
+                }
+              }
+            }
+          }
+        },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Spiele noch %lld Runde, um die Bestenliste freizuschalten"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Spiele noch %lld Runden, um die Bestenliste freizuschalten"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Play %lld more game to unlock the leaderboard"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Play %lld more games to unlock the leaderboard"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Juega %lld partida más para desbloquear la clasificación"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Juega %lld partidas más para desbloquear la clasificación"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Joue encore %lld partie pour débloquer le classement"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Joue encore %lld parties pour débloquer le classement"
+                }
+              }
+            }
+          }
+        },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gioca ancora %lld partita per sbloccare la classifica"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gioca ancora %lld partite per sbloccare la classifica"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "あと%lld回プレイするとリーダーボードが解除されます"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "리더보드를 잠금 해제하려면 %lld게임 더 플레이하세요"
+                }
+              }
+            }
+          }
+        },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Jogue mais %lld partida para desbloquear a classificação"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Jogue mais %lld partidas para desbloquear a classificação"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Sıralamayı açmak için %lld oyun daha oyna"
+                }
+              }
+            }
           }
         }
       }
@@ -3230,7 +3396,7 @@
         }
       }
     },
-    "leaderBoard.showingTop" : {
+    "leaderBoard.showingTop %lld" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
