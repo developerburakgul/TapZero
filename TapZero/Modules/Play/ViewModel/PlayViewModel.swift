@@ -51,4 +51,9 @@ extension PlayViewModel {
     var bestScore: Int? {
         gameManager.userStats?.bestScore
     }
+
+    var profileImageURL: URL? {
+        guard let urlString = userManager.currentUser?.profileImageURL else { return nil }
+        return URL(string: urlString)
+    }
 }

@@ -23,9 +23,26 @@ extension PlayScreen {
         }
 
         private var avatarView: some View {
+            Group {
+                if let url = config.profileImageURL {
+                    CachedAsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        initialAvatar
+                    }
+                } else {
+                    initialAvatar
+                }
+            }
+            .frame(width: 34, height: 34)
+            .clipShape(Circle())
+        }
+
+        private var initialAvatar: some View {
             Circle()
                 .fill(config.avatarColor.opacity(0.15))
-                .frame(width: 34, height: 34)
                 .overlay(
                     Text(config.initial)
                         .font(.system(size: 15, weight: .semibold))

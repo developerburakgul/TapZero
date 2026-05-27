@@ -11,11 +11,13 @@ extension PlayScreen.UserStripEntity {
         let displayName: String
         let bestScore: Int?
         let avatarColor: Color
+        let profileImageURL: URL?
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.initial == rhs.initial
                 && lhs.displayName == rhs.displayName
                 && lhs.bestScore == rhs.bestScore
+                && lhs.profileImageURL == rhs.profileImageURL
         }
     }
 }

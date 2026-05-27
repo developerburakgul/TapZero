@@ -34,7 +34,8 @@ struct PlayScreen: View {
                         initial: viewModel.userInitial,
                         displayName: viewModel.userName,
                         bestScore: viewModel.bestScore,
-                        avatarColor: viewModel.avatarColor
+                        avatarColor: viewModel.avatarColor,
+                        profileImageURL: viewModel.profileImageURL
                     )
                 )
 
