@@ -89,7 +89,7 @@ struct PlayScreen: View {
     }
 
     private var secondsLabel: some View {
-        Text(TextKey.Play.seconds)
+        Text(TextKey.Play.secondsLabel(count: viewModel.selectedTarget))
             .font(TapZeroTypography.Body.medium)
             .foregroundStyle(TapZeroDesign.Foreground.secondary)
     }
