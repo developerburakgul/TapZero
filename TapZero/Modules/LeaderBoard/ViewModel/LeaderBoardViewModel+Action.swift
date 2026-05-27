@@ -19,10 +19,24 @@ extension LeaderBoardViewModel {
     }
 
     func sendInitialRequests() async {
-        await withTaskGroup { group in
-            group.addTask {
-                await self.fetchData()
-            }
+        isLoading = true
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { await self.fetchGlobalLeaderboard() }
+            group.addTask { await self.fetchDailyLeaderboard() }
+            group.addTask { await self.fetchUserStats() }
         }
+        isLoading = false
+    }
+
+    // MARK: - User Interactions
+
+    func onTabChanged(_ tab: LeaderBoardTab) {
+        selectedTab = tab
+        sendEvent(type: .tabSwitched(tab: tab))
+    }
+
+    func onPlayGameTapped() {
+        guard let url = URL(string: "tapzero://play") else { return }
+        deepLinkManager.handleURL(url)
     }
 }
