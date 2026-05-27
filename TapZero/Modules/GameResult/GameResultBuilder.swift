@@ -11,13 +11,15 @@ enum GameResultBuilder {
     static func build(
         router: Router,
         entity: GameResultEntity,
-        onPlayAgain: @escaping () -> Void = {}
+        onPlayAgain: @escaping () -> Void = {},
+        onClose: @escaping () -> Void = {}
     ) -> some View {
         GameResultScreen(
             viewModel: GameResultViewModel(
                 router: router,
                 entity: entity,
-                onPlayAgain: onPlayAgain
+                onPlayAgain: onPlayAgain,
+                onClose: onClose
             )
         )
     }

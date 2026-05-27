@@ -14,6 +14,7 @@ final class GameResultViewModel: ObservableObject {
     let router: Router
     let entity: GameResultEntity
     let onPlayAgain: () -> Void
+    let onClose: () -> Void
 
     // MARK: - Managers
     @Injected private(set) var eventManager: EventManager
@@ -24,11 +25,13 @@ final class GameResultViewModel: ObservableObject {
     init(
         router: Router,
         entity: GameResultEntity,
-        onPlayAgain: @escaping () -> Void
+        onPlayAgain: @escaping () -> Void,
+        onClose: @escaping () -> Void
     ) {
         self.router = router
         self.entity = entity
         self.onPlayAgain = onPlayAgain
+        self.onClose = onClose
     }
 }
 

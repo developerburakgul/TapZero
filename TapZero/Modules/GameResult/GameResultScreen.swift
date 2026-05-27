@@ -143,7 +143,7 @@ struct GameResultScreen: View {
                 delta: 0.08,
                 performanceRating: .good
             )
-        ) {}
+        )
     }
     .environment(\.locale, DevPreview.shared.locale)
 }

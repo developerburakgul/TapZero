@@ -119,10 +119,14 @@ extension GameSessionViewModel {
         router.showScreen(.sheetConfig(config: config)) { [weak self] router in
             GameResultBuilder.build(
                 router: router,
-                entity: resultEntity
-            ) {
-                self?.onPlayAgain()
-            }
+                entity: resultEntity,
+                onPlayAgain: {
+                    self?.onPlayAgain()
+                },
+                onClose: {
+                    self?.onClose()
+                }
+            )
             .interactiveDismissDisabled(true)
         }
     }

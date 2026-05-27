@@ -20,7 +20,7 @@ extension GameResultViewModel {
     func onCloseTapped() {
         sendEvent(type: .closeTapped)
         router.dismissScreen()
-        router.dismissScreen()
+        onClose()
     }
 
     func onPlayAgainTapped() {
