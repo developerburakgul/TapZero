@@ -33,7 +33,7 @@ extension PlayScreen {
             .onChange(of: scrolledID) { _, newID in
                 guard let id = newID, id != selectedTarget else { return }
                 selectedTarget = id
-                HapticManager.selection()
+                HapticManager.pickerTick()
             }
         }
 
