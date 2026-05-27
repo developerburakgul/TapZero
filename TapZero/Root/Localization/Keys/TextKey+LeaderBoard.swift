@@ -29,10 +29,6 @@ extension TextKey {
             TextKey.localized("leaderBoard.locked.subtitle \(count)")
         }
 
-        static func showingTop(count: Int) -> String {
-            TextKey.localized("leaderBoard.showingTop \(count)")
-        }
-
         static func climbHint(climb: Int, limit: Int) -> String {
             TextKey.localized("leaderBoard.climbHint \(climb) \(limit)")
         }

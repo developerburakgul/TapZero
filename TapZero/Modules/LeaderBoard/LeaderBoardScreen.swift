@@ -78,10 +78,6 @@ extension LeaderBoardScreen {
                 VStack(spacing: 0) {
                     globalPodium
                     globalList
-
-                    if viewModel.showStickyBar {
-                        showingTopLabel
-                    }
                 }
                 .padding(.bottom, viewModel.showStickyBar ? 100 : 0)
             }
@@ -217,18 +213,6 @@ extension LeaderBoardScreen {
     }
 }
 
-// MARK: - Showing Top Label
-
-extension LeaderBoardScreen {
-    private var showingTopLabel: some View {
-        Text(TextKey.LeaderBoard.showingTop(count: viewModel.listLimit))
-        .font(TapZeroTypography.Caption.regular)
-        .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-        .padding(.top, 16)
-        .padding(.bottom, 8)
-    }
-}
-
 // MARK: - Preview Helpers
 
 private struct LeaderBoardPreview: View {
@@ -289,8 +273,6 @@ private struct LeaderBoardPreview: View {
                         constants: constants
                     )
                     globalListRows
-
-                    if showSticky { showingTop }
                 }
                 .padding(.bottom, showSticky ? 100 : 0)
             }
@@ -341,13 +323,6 @@ private struct LeaderBoardPreview: View {
             ),
             constants: constants
         ) { _ in }
-    }
-
-    private var showingTop: some View {
-        Text(TextKey.LeaderBoard.showingTop(count: 50))
-            .font(TapZeroTypography.Caption.regular)
-            .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-            .padding(.top, 16).padding(.bottom, 8)
     }
 
     private var dailyTimer: some View {
