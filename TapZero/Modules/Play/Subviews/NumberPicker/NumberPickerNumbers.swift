@@ -22,7 +22,7 @@ extension PlayScreen {
                     let number = selectedTarget + offset
                     let valid = number >= minTarget && number <= maxTarget
                     let styleIndex = styleIndexFor(offset: offset)
-                    Text(valid ? "\(number)" : "")
+                    Text(valid ? TextKey.number(number) : "")
                         .font(.system(
                             size: sizes[styleIndex],
                             weight: weights[styleIndex]

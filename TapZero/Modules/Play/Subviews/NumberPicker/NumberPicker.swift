@@ -88,7 +88,7 @@ extension PlayScreen {
 
                     Spacer()
 
-                    Text("\(number)")
+                    Text(TextKey.number(number))
                         .font(.system(size: style.size, weight: style.weight).monospacedDigit())
                         .tracking(-5)
                         .lineLimit(1)

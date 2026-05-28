@@ -165,7 +165,7 @@ extension OnboardingScreen {
 
         private func listRow(user: PreviewUser) -> some View {
             HStack(spacing: 12) {
-                Text("\(user.rank)")
+                Text(TextKey.number(user.rank))
                     .font(.system(size: 13, weight: .bold))
                     .tracking(-0.2)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)

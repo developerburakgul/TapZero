@@ -57,8 +57,15 @@ final class LanguageManager: ObservableObject {
         }
     }
 
+    /// App language + device region.
+    /// e.g. language = ar, device region = SA → Locale("ar_SA")
     var locale: Locale {
-        Locale(identifier: currentLanguage.rawValue)
+        let lang = currentLanguage.rawValue
+        let region = Locale.current.region?.identifier ?? ""
+        if region.isEmpty {
+            return Locale(identifier: lang)
+        }
+        return Locale(identifier: "\(lang)_\(region)")
     }
 
     init() {

@@ -89,7 +89,7 @@ extension GameResultScreen {
         // MARK: - Hero Score
 
         private var heroScore: some View {
-            Text("\(config.score)")
+            Text(TextKey.number(config.score))
                 .font(TapZeroTypography.Display.score)
                 .tracking(constants.heroScoreTracking)
                 .monospacedDigit()

@@ -62,7 +62,7 @@ extension PlayScreen {
                     .font(TapZeroTypography.Caption.small)
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
 
-                Text("\(score)")
+                Text(TextKey.number(score))
                     .font(.system(size: 15, weight: .semibold).monospacedDigit())
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
             }

@@ -45,7 +45,7 @@ extension LeaderBoardScreen {
         // MARK: - Rank
 
         private var rankLabel: some View {
-            Text("\(config.rank)")
+            Text(TextKey.number(config.rank))
                 .font(.system(size: 13, weight: .bold))
                 .tracking(constants.nameTracking)
                 .monospacedDigit()
@@ -106,7 +106,7 @@ extension LeaderBoardScreen {
         // MARK: - Score
 
         private var scoreLabel: some View {
-            Text("\(config.score)")
+            Text(TextKey.number(config.score))
                 .font(.system(size: 15, weight: .bold))
                 .tracking(constants.scoreTracking)
                 .monospacedDigit()

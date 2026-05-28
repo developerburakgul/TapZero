@@ -88,7 +88,7 @@ extension LeaderBoardScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
                     .padding(.top, constants.avatarToNameSpacing + 6)
 
-                Text("\(entry.score)")
+                Text(TextKey.number(entry.score))
                     .font(.system(size: constants.pointsSize, weight: .semibold))
                     .tracking(-0.3)
                     .monospacedDigit()

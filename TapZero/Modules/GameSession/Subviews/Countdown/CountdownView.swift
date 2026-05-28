@@ -62,7 +62,7 @@ extension GameSessionScreen {
                         .tracking(constants.goTracking)
                         .transition(.scale.combined(with: .opacity))
                 } else {
-                    Text("\(config.countdownValue)")
+                    Text(TextKey.number(config.countdownValue))
                         .font(TapZeroTypography.Display.countdown)
                         .tracking(constants.countdownTracking)
                         .monospacedDigit()
