@@ -13,7 +13,7 @@ extension LeaderBoardScreen {
 
         @Binding var binding: LockedOverlayEntity.Binding
         let config: LockedOverlayEntity.Config
-        let constants: Constants
+        private let constants = Constants()
         let onAction: (Action) -> Void
 
         static func == (lhs: Self, rhs: Self) -> Bool {
@@ -27,12 +27,12 @@ extension LeaderBoardScreen {
                 whySection
                 ctaButton
             }
-            .padding(.horizontal, constants.lockedCardPaddingH)
-            .padding(.vertical, constants.lockedCardPaddingV)
+            .padding(.horizontal, constants.cardPaddingH)
+            .padding(.vertical, constants.cardPaddingV)
             .background(TapZeroDesign.Background.card)
-            .clipShape(RoundedRectangle(cornerRadius: constants.lockedCardRadius))
+            .clipShape(RoundedRectangle(cornerRadius: constants.cardRadius))
             .overlay(
-                RoundedRectangle(cornerRadius: constants.lockedCardRadius)
+                RoundedRectangle(cornerRadius: constants.cardRadius)
                     .stroke(TapZeroDesign.Hairline.default, lineWidth: 0.5)
             )
             .shadow(color: .black.opacity(0.03), radius: 1, y: 1)
@@ -69,7 +69,7 @@ extension LeaderBoardScreen {
             Rectangle()
                 .fill(TapZeroDesign.Hairline.default)
                 .frame(height: 0.5)
-                .padding(.horizontal, constants.lockedDividerMarginH)
+                .padding(.horizontal, constants.dividerMarginH)
                 .padding(.top, 18)
                 .padding(.bottom, 14)
         }
@@ -104,9 +104,9 @@ extension LeaderBoardScreen {
                     .tracking(-0.2)
                     .foregroundStyle(TapZeroDesign.Button.primaryForeground)
                     .frame(maxWidth: .infinity)
-                    .frame(height: constants.lockedCtaHeight)
+                    .frame(height: constants.ctaHeight)
                     .background(TapZeroDesign.Button.primaryBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: constants.lockedCtaRadius))
+                    .clipShape(RoundedRectangle(cornerRadius: constants.ctaRadius))
             }
             .padding(.top, 18)
         }
@@ -116,14 +116,14 @@ extension LeaderBoardScreen {
         private var progressRing: some View {
             ZStack {
                 Circle()
-                    .stroke(TapZeroDesign.Hairline.default, lineWidth: constants.lockedProgressStrokeWidth)
+                    .stroke(TapZeroDesign.Hairline.default, lineWidth: constants.progressStrokeWidth)
 
                 Circle()
                     .trim(from: 0, to: config.progress)
                     .stroke(
                         TapZeroDesign.Foreground.primary,
                         style: StrokeStyle(
-                            lineWidth: constants.lockedProgressStrokeWidth,
+                            lineWidth: constants.progressStrokeWidth,
                             lineCap: .round
                         )
                     )
@@ -139,8 +139,8 @@ extension LeaderBoardScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
             }
             .frame(
-                width: constants.lockedProgressSize,
-                height: constants.lockedProgressSize
+                width: constants.progressSize,
+                height: constants.progressSize
             )
         }
     }
@@ -168,8 +168,7 @@ private struct LockedPreview: View {
             TapZeroDesign.Background.primary.ignoresSafeArea()
             LeaderBoardScreen.LockedOverlayView(
                 binding: $entity.binding,
-                config: entity.config,
-                constants: .init()
+                config: entity.config
             ) { _ in }
         }
     }

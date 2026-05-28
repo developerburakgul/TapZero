@@ -9,17 +9,17 @@ extension LeaderBoardScreen {
     struct YourSpotRowView: View, Equatable {
         @Binding var binding: YourSpotRowEntity.Binding
         let config: YourSpotRowEntity.Config
-        let constants: Constants
+        private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
         }
 
         var body: some View {
-            HStack(spacing: constants.rowGap) {
+            HStack(spacing: constants.gap) {
                 Text("?")
                     .font(.system(size: 13, weight: .bold))
-                    .frame(minWidth: constants.rowRankWidth, alignment: .center)
+                    .frame(minWidth: constants.rankWidth, alignment: .center)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
 
                 Circle()
@@ -27,7 +27,7 @@ extension LeaderBoardScreen {
                         style: StrokeStyle(lineWidth: 1.5, dash: [4, 3])
                     )
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-                    .frame(width: constants.rowAvatarSize, height: constants.rowAvatarSize)
+                    .frame(width: constants.avatarSize, height: constants.avatarSize)
 
                 Text(TextKey.LeaderBoard.yourSpotWaiting)
                     .font(.system(size: 15, weight: .medium))
@@ -40,17 +40,17 @@ extension LeaderBoardScreen {
                     .font(.system(size: 15, weight: .bold))
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
             }
-            .padding(.horizontal, constants.rowPaddingH)
-            .padding(.vertical, constants.rowPaddingV)
+            .padding(.horizontal, constants.paddingH)
+            .padding(.vertical, constants.paddingV)
             .overlay(
-                RoundedRectangle(cornerRadius: constants.rowCornerRadius)
+                RoundedRectangle(cornerRadius: constants.cornerRadius)
                     .strokeBorder(
                         style: StrokeStyle(lineWidth: 1.5, dash: [6, 4])
                     )
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
                     .opacity(0.5)
             )
-            .padding(.horizontal, constants.listHorizontalPadding)
+            .padding(.horizontal, constants.horizontalPadding)
         }
     }
 }
@@ -65,8 +65,7 @@ private struct YourSpotPreview: View {
     var body: some View {
         LeaderBoardScreen.YourSpotRowView(
             binding: $entity.binding,
-            config: entity.config,
-            constants: .init()
+            config: entity.config
         )
         .background(TapZeroDesign.Background.primary)
     }

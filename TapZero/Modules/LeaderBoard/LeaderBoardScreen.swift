@@ -46,8 +46,7 @@ extension LeaderBoardScreen {
         VStack(spacing: 0) {
             LeaderBoardHeaderView(
                 binding: $viewModel.headerEntity.binding,
-                config: viewModel.headerEntity.config,
-                constants: constants
+                config: viewModel.headerEntity.config
             )
 
             TabView(selection: $viewModel.headerEntity.binding.selectedTab) {
@@ -61,8 +60,7 @@ extension LeaderBoardScreen {
             if viewModel.showStickyBar {
                 StickyBarView(
                     binding: $viewModel.stickyBarEntity.binding,
-                    config: viewModel.stickyBarEntity.config,
-                    constants: constants
+                    config: viewModel.stickyBarEntity.config
                 )
             }
         }
@@ -83,8 +81,7 @@ extension LeaderBoardScreen {
             if viewModel.isLocked {
                 LockedOverlayView(
                     binding: $viewModel.lockedOverlayEntity.binding,
-                    config: viewModel.lockedOverlayEntity.config,
-                    constants: constants
+                    config: viewModel.lockedOverlayEntity.config
                 ) { action in
                     switch action {
                     case .didTapPlayGame:
@@ -102,8 +99,7 @@ extension LeaderBoardScreen {
                 if viewModel.showYourSpotRow {
                     YourSpotRowView(
                         binding: $viewModel.yourSpotEntity.binding,
-                        config: viewModel.yourSpotEntity.config,
-                        constants: constants
+                        config: viewModel.yourSpotEntity.config
                     )
                 }
                 globalList
@@ -118,8 +114,7 @@ extension LeaderBoardScreen {
     private var globalEmptyView: some View {
         EmptyStateView(
             binding: $viewModel.globalEmptyEntity.binding,
-            config: viewModel.globalEmptyEntity.config,
-            constants: constants
+            config: viewModel.globalEmptyEntity.config
         ) { action in
             switch action {
             case .didTapPlayGame:
@@ -135,8 +130,7 @@ extension LeaderBoardScreen {
                 dailyResetTimer
                 EmptyStateView(
                     binding: $viewModel.dailyEmptyEntity.binding,
-                    config: viewModel.dailyEmptyEntity.config,
-                    constants: constants
+                    config: viewModel.dailyEmptyEntity.config
                 ) { action in
                     switch action {
                     case .didTapPlayGame:
@@ -152,8 +146,7 @@ extension LeaderBoardScreen {
                     if viewModel.showYourSpotRow {
                         YourSpotRowView(
                             binding: $viewModel.yourSpotEntity.binding,
-                            config: viewModel.yourSpotEntity.config,
-                            constants: constants
+                            config: viewModel.yourSpotEntity.config
                         )
                     }
                     dailyList
@@ -169,8 +162,7 @@ extension LeaderBoardScreen {
     private var globalPodium: some View {
         PodiumView(
             binding: $viewModel.globalPodiumEntity.binding,
-            config: viewModel.globalPodiumEntity.config,
-            constants: constants
+            config: viewModel.globalPodiumEntity.config
         )
     }
 
@@ -194,8 +186,7 @@ extension LeaderBoardScreen {
                 avatarColor: viewModel.avatarColor(colorHex: nil),
                 isCurrentUser: entry.userId == viewModel.currentUserId,
                 isDense: false
-            ),
-            constants: constants
+            )
         )
     }
 }
@@ -206,8 +197,7 @@ extension LeaderBoardScreen {
     private var dailyPodiumSection: some View {
         PodiumView(
             binding: $viewModel.dailyPodiumEntity.binding,
-            config: viewModel.dailyPodiumEntity.config,
-            constants: constants
+            config: viewModel.dailyPodiumEntity.config
         )
     }
 
@@ -231,8 +221,7 @@ extension LeaderBoardScreen {
                 avatarColor: viewModel.avatarColor(colorHex: nil),
                 isCurrentUser: entry.userId == viewModel.currentUserId,
                 isDense: false
-            ),
-            constants: constants
+            )
         )
     }
 }

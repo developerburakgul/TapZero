@@ -13,7 +13,7 @@ extension LeaderBoardScreen {
 
         @Binding var binding: EmptyStateEntity.Binding
         let config: EmptyStateEntity.Config
-        let constants: Constants
+        private let constants = Constants()
         let onAction: (Action) -> Void
 
         static func == (lhs: Self, rhs: Self) -> Bool {
@@ -25,8 +25,7 @@ extension LeaderBoardScreen {
                 ghostPodium
                 YourSpotRowView(
                     binding: .constant(.init()),
-                    config: .init(),
-                    constants: constants
+                    config: .init()
                 )
                 Spacer()
                 bottomCta
@@ -204,8 +203,7 @@ private struct EmptyStatePreview: View {
             TapZeroDesign.Background.primary.ignoresSafeArea()
             LeaderBoardScreen.EmptyStateView(
                 binding: $entity.binding,
-                config: entity.config,
-                constants: .init()
+                config: entity.config
             ) { _ in }
         }
     }

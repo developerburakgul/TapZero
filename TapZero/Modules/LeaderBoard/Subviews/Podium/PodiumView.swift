@@ -9,7 +9,7 @@ extension LeaderBoardScreen {
     struct PodiumView: View, Equatable {
         @Binding var binding: PodiumEntity.Binding
         let config: PodiumEntity.Config
-        let constants: Constants
+        private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -24,9 +24,9 @@ extension LeaderBoardScreen {
                 // 3rd place (right)
                 thirdPlace.frame(maxWidth: .infinity)
             }
-            .padding(.horizontal, constants.podiumHorizontalPadding)
-            .padding(.top, constants.podiumTopPadding)
-            .padding(.bottom, constants.podiumBottomPadding)
+            .padding(.horizontal, constants.horizontalPadding)
+            .padding(.top, constants.topPadding)
+            .padding(.bottom, constants.bottomPadding)
         }
 
         private func entry(at index: Int) -> PodiumEntity.PodiumEntry? {
@@ -38,7 +38,7 @@ extension LeaderBoardScreen {
             if let first = entry(at: 0) {
                 podiumColumn(entry: first, isFirst: true)
             } else {
-                ghostSpot(rank: 1, size: constants.podiumFirstAvatarSize)
+                ghostSpot(rank: 1, size: constants.firstAvatarSize)
             }
         }
 
@@ -47,7 +47,7 @@ extension LeaderBoardScreen {
             if let second = entry(at: 1) {
                 podiumColumn(entry: second, isFirst: false)
             } else {
-                ghostSpot(rank: 2, size: constants.podiumOtherAvatarSize)
+                ghostSpot(rank: 2, size: constants.otherAvatarSize)
             }
         }
 
@@ -56,7 +56,7 @@ extension LeaderBoardScreen {
             if let third = entry(at: 2) {
                 podiumColumn(entry: third, isFirst: false)
             } else {
-                ghostSpot(rank: 3, size: constants.podiumOtherAvatarSize)
+                ghostSpot(rank: 3, size: constants.otherAvatarSize)
             }
         }
 
@@ -77,25 +77,25 @@ extension LeaderBoardScreen {
                 Text(entry.name)
                     .font(.system(
                         size: isFirst
-                            ? constants.podiumFirstNameSize
-                            : constants.podiumOtherNameSize,
+                            ? constants.firstNameSize
+                            : constants.otherNameSize,
                         weight: .bold
                     ))
                     .tracking(-0.2)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: constants.podiumNameMaxWidth)
+                    .frame(maxWidth: constants.nameMaxWidth)
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
-                    .padding(.top, constants.podiumAvatarToNameSpacing + 6)
+                    .padding(.top, constants.avatarToNameSpacing + 6)
 
                 Text("\(entry.score)")
-                    .font(.system(size: constants.podiumPointsSize, weight: .semibold))
+                    .font(.system(size: constants.pointsSize, weight: .semibold))
                     .tracking(-0.3)
                     .monospacedDigit()
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
-                    .padding(.top, constants.podiumNameToPointsSpacing)
+                    .padding(.top, constants.nameToPointsSpacing)
             }
-            .padding(.top, isFirst ? 0 : constants.podiumOtherTopOffset)
+            .padding(.top, isFirst ? 0 : constants.otherTopOffset)
         }
 
         // MARK: - Avatar Section
@@ -105,8 +105,8 @@ extension LeaderBoardScreen {
             isFirst: Bool
         ) -> some View {
             let size = isFirst
-                ? constants.podiumFirstAvatarSize
-                : constants.podiumOtherAvatarSize
+                ? constants.firstAvatarSize
+                : constants.otherAvatarSize
 
             return ZStack(alignment: .bottom) {
                 avatarImage(entry: entry, size: size)
@@ -114,11 +114,11 @@ extension LeaderBoardScreen {
                     .clipShape(Circle())
                     .overlay(
                         Circle()
-                            .stroke(entry.medalColor, lineWidth: constants.podiumAvatarBorderWidth)
+                            .stroke(entry.medalColor, lineWidth: constants.avatarBorderWidth)
                     )
 
                 ribbonView(entry: entry)
-                    .offset(y: -constants.podiumRibbonOverlap)
+                    .offset(y: -constants.ribbonOverlap)
             }
         }
 
@@ -176,7 +176,7 @@ extension LeaderBoardScreen {
                 ghostBars(isFirst: rank == 1)
                     .padding(.top, 6)
             }
-            .padding(.top, rank == 1 ? 0 : constants.podiumOtherTopOffset)
+            .padding(.top, rank == 1 ? 0 : constants.otherTopOffset)
         }
 
         private var ghostCrown: some View {
@@ -233,7 +233,7 @@ extension LeaderBoardScreen {
             Image(systemName: "crown.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: constants.podiumCrownWidth, height: constants.podiumCrownHeight)
+                .frame(width: constants.crownWidth, height: constants.crownHeight)
                 .foregroundStyle(TapZeroDesign.Medal.gold)
                 .shadow(color: TapZeroDesign.Medal.goldAccent.opacity(0.4), radius: 2, y: 1)
         }
@@ -273,8 +273,7 @@ private struct PodiumPreview: View {
     var body: some View {
         LeaderBoardScreen.PodiumView(
             binding: $entity.binding,
-            config: entity.config,
-            constants: .init()
+            config: entity.config
         )
         .background(TapZeroDesign.Background.primary)
         .onAppear { buildEntries() }

@@ -9,7 +9,7 @@ extension LeaderBoardScreen {
     struct StickyBarView: View, Equatable {
         @Binding var binding: StickyBarEntity.Binding
         let config: StickyBarEntity.Config
-        let constants: Constants
+        private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -20,7 +20,7 @@ extension LeaderBoardScreen {
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
                 headerRow
-                    .padding(.bottom, constants.stickyHeaderBottomSpacing)
+                    .padding(.bottom, constants.headerBottomSpacing)
 
                 LeaderBoardRowView(
                     binding: .constant(.init()),
@@ -32,13 +32,12 @@ extension LeaderBoardScreen {
                         avatarColor: config.avatarColor,
                         isCurrentUser: true,
                         isDense: true
-                    ),
-                    constants: constants
+                    )
                 )
             }
-            .padding(.horizontal, constants.stickyPaddingH)
-            .padding(.top, constants.stickyPaddingTop)
-            .padding(.bottom, constants.stickyPaddingBottom)
+            .padding(.horizontal, constants.paddingH)
+            .padding(.top, constants.paddingTop)
+            .padding(.bottom, constants.paddingBottom)
             .background(
                 TapZeroDesign.Background.primary
                     .opacity(0.9)
@@ -57,7 +56,7 @@ extension LeaderBoardScreen {
             HStack {
                 Text(TextKey.LeaderBoard.yourRanking)
                     .font(TapZeroTypography.Caption.sectionHeader)
-                    .tracking(constants.stickyHeaderTracking)
+                    .tracking(constants.headerTracking)
                     .textCase(.uppercase)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
 
@@ -90,8 +89,7 @@ private struct StickyBarPreview: View {
     var body: some View {
         LeaderBoardScreen.StickyBarView(
             binding: $entity.binding,
-            config: entity.config,
-            constants: .init()
+            config: entity.config
         )
         .background(TapZeroDesign.Background.primary)
     }

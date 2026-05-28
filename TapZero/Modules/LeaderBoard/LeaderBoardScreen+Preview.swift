@@ -75,8 +75,7 @@ private struct LeaderBoardPreview: View {
     private var header: some View {
         LeaderBoardScreen.LeaderBoardHeaderView(
             binding: .constant(.init(selectedTab: selectedTab)),
-            config: .init(selectedTab: selectedTab),
-            constants: constants
+            config: .init(selectedTab: selectedTab)
         )
     }
 
@@ -127,7 +126,7 @@ private struct LeaderBoardPreview: View {
                 }
                 if !userInGlobalList {
                     LeaderBoardScreen.YourSpotRowView(
-                        binding: .constant(.init()), config: .init(), constants: constants
+                        binding: .constant(.init()), config: .init()
                     )
                 }
                 listView(rows: globalRowConfigs)
@@ -158,7 +157,7 @@ private struct LeaderBoardPreview: View {
                     }
                     if !userInDailyList {
                         LeaderBoardScreen.YourSpotRowView(
-                            binding: .constant(.init()), config: .init(), constants: constants
+                            binding: .constant(.init()), config: .init()
                         )
                     }
                     listView(rows: dailyRowConfigs)
@@ -173,8 +172,7 @@ private struct LeaderBoardPreview: View {
     ) -> some View {
         LeaderBoardScreen.EmptyStateView(
             binding: .constant(.init()),
-            config: .init(headline: headline, subtitle: subtitle),
-            constants: constants
+            config: .init(headline: headline, subtitle: subtitle)
         ) { _ in }
     }
 
@@ -185,8 +183,7 @@ private struct LeaderBoardPreview: View {
     ) -> some View {
         LeaderBoardScreen.PodiumView(
             binding: .constant(.init()),
-            config: .init(entries: entries),
-            constants: constants
+            config: .init(entries: entries)
         )
     }
 
@@ -197,7 +194,7 @@ private struct LeaderBoardPreview: View {
             ForEach(rows) { entry in
                 LeaderBoardScreen.LeaderBoardRowView(
                     binding: .constant(.init()),
-                    config: entry, constants: constants
+                    config: entry
                 )
             }
         }
@@ -212,8 +209,7 @@ private struct LeaderBoardPreview: View {
                 rank: cfg.rank, score: cfg.score, name: "Burak",
                 avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
                 climbCount: cfg.climb, listLimit: 50
-            ),
-            constants: constants
+            )
         )
     }
 
@@ -225,8 +221,7 @@ private struct LeaderBoardPreview: View {
                 gamesPlayed: lockedPlayed, gamesRequired: 10,
                 gamesRemaining: remaining,
                 progress: CGFloat(lockedPlayed) / 10.0
-            ),
-            constants: constants
+            )
         ) { _ in }
     }
 

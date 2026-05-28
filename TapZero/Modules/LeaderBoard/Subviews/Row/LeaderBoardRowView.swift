@@ -131,8 +131,7 @@ private struct RowPreview: View {
     var body: some View {
         LeaderBoardScreen.LeaderBoardRowView(
             binding: $entity.binding,
-            config: entity.config,
-            constants: .init()
+            config: entity.config
         )
         .padding(.horizontal, 8)
         .background(TapZeroDesign.Background.primary)
