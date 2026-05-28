@@ -27,7 +27,7 @@ struct FirebaseGameService: GameServiceProtocol {
     }
 
     private func dailyLeaderboardCollection(dateString: String) -> CollectionReference {
-        Firestore.firestore().collection("leaderboard/daily/\(dateString)/entries")
+        Firestore.firestore().collection("leaderboard/daily_\(dateString)/entries")
     }
 
     // MARK: - Cloud Functions

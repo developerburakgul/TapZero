@@ -27,7 +27,7 @@ extension LeaderBoardViewModel {
                     name: entry.name,
                     score: entry.top10Average,
                     avatarURL: entry.avatar,
-                    avatarColor: avatarColor(for: entry.name, colorHex: nil),
+                    avatarColor: avatarColor(colorHex: nil),
                     medalColor: medalColor(for: entry.rank),
                     ribbonTextColor: ribbonTextColor(for: entry.rank)
                 )
@@ -43,7 +43,7 @@ extension LeaderBoardViewModel {
                     name: entry.name,
                     score: entry.bestScore,
                     avatarURL: entry.avatar,
-                    avatarColor: avatarColor(for: entry.name, colorHex: nil),
+                    avatarColor: avatarColor(colorHex: nil),
                     medalColor: medalColor(for: entry.rank),
                     ribbonTextColor: ribbonTextColor(for: entry.rank)
                 )
@@ -57,7 +57,7 @@ extension LeaderBoardViewModel {
             score: stickyScore,
             name: currentUserName,
             avatarURL: currentUserAvatar,
-            colorHex: currentUserColorHex,
+            avatarColor: avatarColor(colorHex: currentUserColorHex),
             climbCount: climbCount,
             listLimit: listLimit
         )

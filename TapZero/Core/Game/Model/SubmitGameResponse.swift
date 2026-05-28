@@ -14,10 +14,10 @@ struct SubmitGameResponse: Sendable {
         let bestScore: Int
         let totalGamesPlayed: Int
         let top10Average: Int
-        let globalRank: Int
+        let globalRank: Int?
         let dailyBestScore: Int
         let dailyGamesPlayed: Int
-        let dailyRank: Int
+        let dailyRank: Int?
     }
 
     init(gameId: String, score: Int, stats: StatsSnapshot) {
@@ -39,13 +39,14 @@ struct SubmitGameResponse: Sendable {
             let bestScore = statsDict["bestScore"] as? Int,
             let totalGamesPlayed = statsDict["totalGamesPlayed"] as? Int,
             let top10Average = statsDict["top10Average"] as? Int,
-            let globalRank = statsDict["globalRank"] as? Int,
             let dailyBestScore = statsDict["dailyBestScore"] as? Int,
-            let dailyGamesPlayed = statsDict["dailyGamesPlayed"] as? Int,
-            let dailyRank = statsDict["dailyRank"] as? Int
+            let dailyGamesPlayed = statsDict["dailyGamesPlayed"] as? Int
         else {
             throw SubmitGameError.invalidStatsData
         }
+
+        let globalRank = statsDict["globalRank"] as? Int
+        let dailyRank = statsDict["dailyRank"] as? Int
 
         self.gameId = gameId
         self.score = score

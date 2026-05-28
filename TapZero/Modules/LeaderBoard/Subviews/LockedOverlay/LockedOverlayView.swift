@@ -175,14 +175,18 @@ private struct LockedPreview: View {
     }
 }
 
-#Preview("Locked — 4/10") {
-    LockedPreview(played: 4)
+#Preview("New User — 0/10") {
+    LockedPreview(played: 0)
 }
 
-#Preview("Locked — 9/10") {
+#Preview("Getting Started — 3/10") {
+    LockedPreview(played: 3)
+}
+
+#Preview("Almost There — 9/10") {
     LockedPreview(played: 9)
 }
 
-#Preview("Locked — 0/10") {
-    LockedPreview(played: 0)
+#Preview("Just One More — 1 game left") {
+    LockedPreview(played: 9)
 }

@@ -40,7 +40,7 @@ final class LeaderBoardViewModel: ObservableObject {
     )
     @Published var stickyBarEntity: LeaderBoardScreen.StickyBarEntity = .init(
         binding: .init(),
-        config: .init(rank: 0, score: 0, name: "", avatarURL: nil, colorHex: nil, climbCount: 0, listLimit: 0)
+        config: .init(rank: 0, score: 0, name: "", avatarURL: nil, avatarColor: .clear, climbCount: 0, listLimit: 0)
     )
     @Published var lockedOverlayEntity: LeaderBoardScreen.LockedOverlayEntity = .init(
         binding: .init(),
@@ -89,8 +89,8 @@ extension LeaderBoardViewModel {
     var dailyList: [DailyLeaderboardEntry] { Array(dailyEntries.dropFirst(3)) }
 
     // MARK: - Sticky Bar
-    var userGlobalRank: Int { userStats?.globalRank ?? 0 }
-    var userDailyRank: Int { userStats?.dailyRank ?? 0 }
+    var userGlobalRank: Int? { userStats?.globalRank }
+    var userDailyRank: Int? { userStats?.dailyRank }
 
     var isUserInGlobalList: Bool {
         guard let userId = currentUserId else { return false }
@@ -104,13 +104,13 @@ extension LeaderBoardViewModel {
 
     var showStickyBar: Bool {
         guard !isLocked else { return false }
-        let currentRank = selectedTab == .global ? userGlobalRank : userDailyRank
-        guard currentRank > 0 else { return false }
+        let rank: Int? = selectedTab == .global ? userGlobalRank : userDailyRank
+        guard let rank, rank > 0 else { return false }
         return selectedTab == .global ? !isUserInGlobalList : !isUserInDailyList
     }
 
     var stickyRank: Int {
-        selectedTab == .global ? userGlobalRank : userDailyRank
+        (selectedTab == .global ? userGlobalRank : userDailyRank) ?? 0
     }
 
     var stickyScore: Int {
@@ -157,12 +157,10 @@ extension LeaderBoardViewModel {
         }
     }
 
-    func avatarColor(for name: String, colorHex: String?) -> Color {
+    func avatarColor(colorHex: String?) -> Color {
         if let hex = colorHex {
             return Color(hex: hex)
         }
-        let pastelColors = TapZeroPalette.Pastel.all
-        let index = abs(name.hashValue) % pastelColors.count
-        return Color(hex: pastelColors[index])
+        return TapZeroDesign.Foreground.tertiary
     }
 }

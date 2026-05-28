@@ -10,10 +10,10 @@ struct UserStatsModel: Codable, Sendable {
     let bestScore: Int
     let totalGamesPlayed: Int
     let top10Average: Int
-    let globalRank: Int
+    let globalRank: Int?
     let dailyBestScore: Int
     let dailyGamesPlayed: Int
-    let dailyRank: Int
+    let dailyRank: Int?
     let lastPlayedAt: Date?
     let updatedAt: Date?
 
