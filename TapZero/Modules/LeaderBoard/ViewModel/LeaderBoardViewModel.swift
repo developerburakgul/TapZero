@@ -106,6 +106,8 @@ extension LeaderBoardViewModel {
     var isDailyEmpty: Bool { dailyEntries.isEmpty }
 
     var showYourSpotRow: Bool {
+        let count = selectedTab == .global ? globalEntries.count : dailyEntries.count
+        guard count > 0, count < 4 else { return false }
         guard let userId = currentUserId else { return true }
         let inList = selectedTab == .global
             ? globalEntries.contains { $0.userId == userId }

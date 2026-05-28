@@ -110,12 +110,14 @@ private struct LeaderBoardPreview: View {
         }
     }
 
-    private var userInGlobalList: Bool {
-        globalRowData.contains { $0.isUser }
+    private var showGlobalYourSpot: Bool {
+        let count = globalPodiumData.count + globalRowData.count
+        return count > 0 && count < 4 && !globalRowData.contains { $0.isUser }
     }
 
-    private var userInDailyList: Bool {
-        dailyRowData.contains { $0.isUser }
+    private var showDailyYourSpot: Bool {
+        let count = dailyPodiumData.count + dailyRowData.count
+        return count > 0 && count < 4 && !dailyRowData.contains { $0.isUser }
     }
 
     private var globalScrollContent: some View {
@@ -124,7 +126,7 @@ private struct LeaderBoardPreview: View {
                 if !globalPodiumEntries.isEmpty {
                     podiumView(entries: globalPodiumEntries)
                 }
-                if !userInGlobalList {
+                if showGlobalYourSpot {
                     LeaderBoardScreen.YourSpotRowView(
                         binding: .constant(.init()), config: .init()
                     )
@@ -155,7 +157,7 @@ private struct LeaderBoardPreview: View {
                     if !dailyPodiumEntries.isEmpty {
                         podiumView(entries: dailyPodiumEntries)
                     }
-                    if !userInDailyList {
+                    if showDailyYourSpot {
                         LeaderBoardScreen.YourSpotRowView(
                             binding: .constant(.init()), config: .init()
                         )
