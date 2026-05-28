@@ -96,10 +96,13 @@ extension LeaderBoardScreen {
         ScrollView {
             VStack(spacing: 0) {
                 globalPodium
-                if viewModel.showYourSpotRow {
+                if viewModel.showGlobalSpotRow {
                     YourSpotRowView(
                         binding: $viewModel.yourSpotEntity.binding,
-                        config: viewModel.yourSpotEntity.config
+                        config: .init(label: viewModel.isUserInGlobalPodium
+                            ? TextKey.LeaderBoard.waitingForChallengers
+                            : TextKey.LeaderBoard.yourSpotWaiting
+                        )
                     )
                 }
                 globalList
@@ -143,10 +146,13 @@ extension LeaderBoardScreen {
                 VStack(spacing: 0) {
                     dailyResetTimer
                     dailyPodiumSection
-                    if viewModel.showYourSpotRow {
+                    if viewModel.showDailySpotRow {
                         YourSpotRowView(
                             binding: $viewModel.yourSpotEntity.binding,
-                            config: viewModel.yourSpotEntity.config
+                            config: .init(label: viewModel.isUserInDailyPodium
+                                ? TextKey.LeaderBoard.waitingForChallengers
+                                : TextKey.LeaderBoard.yourSpotWaiting
+                            )
                         )
                     }
                     dailyList

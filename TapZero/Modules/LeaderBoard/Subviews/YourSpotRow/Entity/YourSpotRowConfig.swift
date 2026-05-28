@@ -3,9 +3,10 @@
 //  TapZero
 //
 
-import Foundation
+import SwiftUI
 
 extension LeaderBoardScreen.YourSpotRowEntity {
     struct Config: Equatable {
+        let label: LocalizedStringKey
     }
 }

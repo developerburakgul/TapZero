@@ -17,6 +17,7 @@ extension TextKey {
         static let lockedWhyBody: LocalizedStringKey = "leaderBoard.locked.whyBody"
         static let lockedCta: LocalizedStringKey = "leaderBoard.locked.cta"
         static let yourSpotWaiting: LocalizedStringKey = "leaderBoard.empty.yourSpot"
+        static let waitingForChallengers: LocalizedStringKey = "leaderBoard.empty.waitingForChallengers"
         static let emptyGlobalTitle: LocalizedStringKey = "leaderBoard.empty.global.title"
         static let emptyGlobalSubtitle: LocalizedStringKey = "leaderBoard.empty.global.subtitle"
         static let emptyDailyTitle: LocalizedStringKey = "leaderBoard.empty.daily.title"

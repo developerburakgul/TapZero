@@ -128,7 +128,7 @@ private struct LeaderBoardPreview: View {
                 }
                 if showGlobalYourSpot {
                     LeaderBoardScreen.YourSpotRowView(
-                        binding: .constant(.init()), config: .init()
+                        binding: .constant(.init()), config: .init(label: TextKey.LeaderBoard.yourSpotWaiting)
                     )
                 }
                 listView(rows: globalRowConfigs)
@@ -159,7 +159,7 @@ private struct LeaderBoardPreview: View {
                     }
                     if showDailyYourSpot {
                         LeaderBoardScreen.YourSpotRowView(
-                            binding: .constant(.init()), config: .init()
+                            binding: .constant(.init()), config: .init(label: TextKey.LeaderBoard.yourSpotWaiting)
                         )
                     }
                     listView(rows: dailyRowConfigs)

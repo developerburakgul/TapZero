@@ -25,7 +25,7 @@ extension LeaderBoardScreen {
                 ghostPodium
                 YourSpotRowView(
                     binding: .constant(.init()),
-                    config: .init()
+                    config: .init(label: TextKey.LeaderBoard.yourSpotWaiting)
                 )
                 Spacer()
                 bottomCta

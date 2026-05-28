@@ -29,7 +29,7 @@ extension LeaderBoardScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
                     .frame(width: constants.avatarSize, height: constants.avatarSize)
 
-                Text(TextKey.LeaderBoard.yourSpotWaiting)
+                Text(config.label)
                     .font(.system(size: 15, weight: .medium))
                     .italic()
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
@@ -59,7 +59,7 @@ extension LeaderBoardScreen {
 
 private struct YourSpotPreview: View {
     @State private var entity: LeaderBoardScreen.YourSpotRowEntity = .init(
-        binding: .init(), config: .init()
+        binding: .init(), config: .init(label: TextKey.LeaderBoard.yourSpotWaiting)
     )
 
     var body: some View {

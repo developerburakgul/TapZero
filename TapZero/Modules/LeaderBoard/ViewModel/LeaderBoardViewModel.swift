@@ -63,7 +63,7 @@ final class LeaderBoardViewModel: ObservableObject {
 
     @Published var yourSpotEntity: LeaderBoardScreen.YourSpotRowEntity = .init(
         binding: .init(),
-        config: .init()
+        config: .init(label: TextKey.LeaderBoard.yourSpotWaiting)
     )
 
     // MARK: - Init
@@ -105,14 +105,24 @@ extension LeaderBoardViewModel {
     var isGlobalEmpty: Bool { globalEntries.isEmpty }
     var isDailyEmpty: Bool { dailyEntries.isEmpty }
 
-    var showYourSpotRow: Bool {
-        let count = selectedTab == .global ? globalEntries.count : dailyEntries.count
-        guard count > 0, count < 4 else { return false }
-        guard let userId = currentUserId else { return true }
-        let inList = selectedTab == .global
-            ? globalEntries.contains { $0.userId == userId }
-            : dailyEntries.contains { $0.userId == userId }
-        return !inList
+    var showGlobalSpotRow: Bool {
+        let count = globalEntries.count
+        return count > 0 && count < 4
+    }
+
+    var showDailySpotRow: Bool {
+        let count = dailyEntries.count
+        return count > 0 && count < 4
+    }
+
+    var isUserInGlobalPodium: Bool {
+        guard let userId = currentUserId else { return false }
+        return globalEntries.contains { $0.userId == userId }
+    }
+
+    var isUserInDailyPodium: Bool {
+        guard let userId = currentUserId else { return false }
+        return dailyEntries.contains { $0.userId == userId }
     }
 
     // MARK: - Podium & List Split
