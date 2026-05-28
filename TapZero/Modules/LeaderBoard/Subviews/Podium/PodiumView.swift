@@ -118,17 +118,10 @@ extension LeaderBoardScreen {
             entry: PodiumEntity.PodiumEntry,
             size: CGFloat
         ) -> some View {
-            Circle()
-                .fill(entry.avatarColor)
-                .overlay(
-                    Text(entry.initials)
-                        .font(.system(
-                            size: size * constants.podiumMonogramFontRatio,
-                            weight: .bold
-                        ))
-                        .tracking(-0.4)
-                        .foregroundStyle(TapZeroDesign.Foreground.primary)
-                )
+            InitialAvatarView(
+                initial: entry.initials,
+                size: size
+            )
         }
 
         // MARK: - Crown (1st place only)
@@ -207,7 +200,7 @@ private struct PodiumPreview: View {
     }
 }
 
-#Preview("Podium — Monograms") {
+#Preview("Top Players — High Scores") {
     PodiumPreview(names: [
         ("Mira Stone", 984),
         ("Kenji Park", 971),
@@ -215,7 +208,15 @@ private struct PodiumPreview: View {
     ])
 }
 
-#Preview("Podium — Long Names") {
+#Preview("Close Competition") {
+    PodiumPreview(names: [
+        ("Noah Kim", 952),
+        ("Sofia Rossi", 950),
+        ("Liam Carter", 949)
+    ])
+}
+
+#Preview("Long Names") {
     PodiumPreview(names: [
         ("Alexander Hamilton III", 997),
         ("Elizabeth Bennet-Darcy", 985),

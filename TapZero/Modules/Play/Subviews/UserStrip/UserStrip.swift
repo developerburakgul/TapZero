@@ -41,13 +41,7 @@ extension PlayScreen {
         }
 
         private var initialAvatar: some View {
-            Circle()
-                .fill(config.avatarColor.opacity(0.15))
-                .overlay(
-                    Text(config.initial)
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(config.avatarColor)
-                )
+            InitialAvatarView(initial: config.initial, size: 34)
         }
 
         private var greetingView: some View {

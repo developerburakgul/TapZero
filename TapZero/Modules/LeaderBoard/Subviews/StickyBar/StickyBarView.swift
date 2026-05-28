@@ -29,7 +29,7 @@ extension LeaderBoardScreen {
                         name: config.name,
                         score: config.score,
                         avatarURL: config.avatarURL,
-                        colorHex: config.colorHex,
+                        avatarColor: config.avatarColor,
                         isCurrentUser: true,
                         isDense: true
                     ),
@@ -97,18 +97,26 @@ private struct StickyBarPreview: View {
     }
 }
 
-#Preview("Sticky Bar — Climb Hint") {
+#Preview("Close to List — Climb 12") {
     StickyBarPreview(config: .init(
-        rank: 147, score: 782, name: "Burak",
-        avatarURL: nil, colorHex: "#007AFF",
-        climbCount: 97, listLimit: 50
+        rank: 62, score: 834, name: "Burak",
+        avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
+        climbCount: 12, listLimit: 50
     ))
 }
 
-#Preview("Sticky Bar — No Climb") {
+#Preview("Far from List — No Hint") {
     StickyBarPreview(config: .init(
-        rank: 51, score: 850, name: "Burak",
-        avatarURL: nil, colorHex: "#007AFF",
-        climbCount: 0, listLimit: 50
+        rank: 230, score: 512, name: "Burak",
+        avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
+        climbCount: 180, listLimit: 50
+    ))
+}
+
+#Preview("Just Outside — Climb 1") {
+    StickyBarPreview(config: .init(
+        rank: 51, score: 890, name: "Burak",
+        avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
+        climbCount: 1, listLimit: 50
     ))
 }

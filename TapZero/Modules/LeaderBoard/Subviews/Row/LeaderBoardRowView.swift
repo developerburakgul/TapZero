@@ -86,17 +86,10 @@ extension LeaderBoardScreen {
         }
 
         private var monogramView: some View {
-            Circle()
-                .fill(config.avatarColor)
-                .overlay(
-                    Text(config.initials)
-                        .font(.system(
-                            size: constants.rowAvatarSize * 0.38,
-                            weight: .bold
-                        ))
-                        .tracking(-0.4)
-                        .foregroundStyle(TapZeroDesign.Foreground.primary)
-                )
+            InitialAvatarView(
+                initial: config.initials,
+                size: constants.rowAvatarSize
+            )
         }
 
         // MARK: - Name
@@ -146,26 +139,42 @@ private struct RowPreview: View {
     }
 }
 
-#Preview("Normal Row") {
+#Preview("Other Player") {
     RowPreview(config: .init(
         rank: 4, name: "Liam Carter", score: 932,
-        avatarURL: nil, colorHex: nil,
+        avatarURL: nil, avatarColor: TapZeroDesign.Foreground.tertiary,
         isCurrentUser: false, isDense: false
     ))
 }
 
-#Preview("Current User Row") {
+#Preview("Current User — In List") {
     RowPreview(config: .init(
         rank: 7, name: "Burak", score: 891,
-        avatarURL: nil, colorHex: "#007AFF",
+        avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
         isCurrentUser: true, isDense: false
     ))
 }
 
-#Preview("Dense Row") {
+#Preview("Current User — Sticky Bar") {
     RowPreview(config: .init(
-        rank: 147, name: "Burak", score: 782,
-        avatarURL: nil, colorHex: "#007AFF",
+        rank: 63, name: "Burak", score: 782,
+        avatarURL: nil, avatarColor: Color(hex: "#007AFF"),
         isCurrentUser: true, isDense: true
+    ))
+}
+
+#Preview("High Rank — Single Digit") {
+    RowPreview(config: .init(
+        rank: 4, name: "Sofia Rossi", score: 965,
+        avatarURL: nil, avatarColor: TapZeroDesign.Foreground.tertiary,
+        isCurrentUser: false, isDense: false
+    ))
+}
+
+#Preview("Low Score") {
+    RowPreview(config: .init(
+        rank: 48, name: "Raj Patel", score: 412,
+        avatarURL: nil, avatarColor: TapZeroDesign.Foreground.tertiary,
+        isCurrentUser: false, isDense: false
     ))
 }

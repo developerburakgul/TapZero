@@ -73,21 +73,11 @@ extension OnboardingScreen {
                     .frame(width: 180, height: 180)
                     .clipShape(Circle())
             } else {
-                Circle()
-                    .fill(TapZeroDesign.Background.secondary)
-                    .overlay(
-                        Circle()
-                            .strokeBorder(
-                                style: StrokeStyle(lineWidth: 1, dash: [6, 4])
-                            )
-                            .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-                    )
-                    .overlay(
-                        Text(binding.initial)
-                            .font(.system(size: 64, weight: .medium))
-                            .foregroundStyle(TapZeroDesign.Foreground.primary)
-                    )
-                    .frame(width: 180, height: 180)
+                InitialAvatarView(
+                    initial: binding.initial,
+                    size: 180,
+                    showDashedBorder: true
+                )
             }
         }
 

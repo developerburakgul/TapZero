@@ -11,7 +11,7 @@ extension LeaderBoardScreen.StickyBarEntity {
         let score: Int
         let name: String
         let avatarURL: String?
-        let colorHex: String?
+        let avatarColor: Color
         let climbCount: Int
         let listLimit: Int
     }

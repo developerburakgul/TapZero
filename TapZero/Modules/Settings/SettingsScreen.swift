@@ -73,20 +73,11 @@ struct SettingsScreen: View {
     }
 
     private var initialAvatar: some View {
-        Circle()
-            .fill(TapZeroDesign.Background.secondary)
-            .overlay(
-                Circle()
-                    .strokeBorder(
-                        style: StrokeStyle(lineWidth: 1, dash: [6, 4])
-                    )
-                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-            )
-            .overlay(
-                Text(viewModel.userInitial)
-                    .font(.system(size: constants.profileFontSize, weight: .medium))
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
-            )
+        InitialAvatarView(
+            initial: viewModel.userInitial,
+            size: constants.profileAvatarSize,
+            showDashedBorder: true
+        )
     }
 
     @ViewBuilder
