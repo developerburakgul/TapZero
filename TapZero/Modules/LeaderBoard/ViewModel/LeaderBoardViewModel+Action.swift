@@ -14,6 +14,7 @@ extension LeaderBoardViewModel {
 
     /// Called from .task modifier — every appear (viewWillAppear)
     func viewWillAppear() async {
+        await sendInitialRequests()
         configure()
         sendEvent(type: .pageAppear)
     }
