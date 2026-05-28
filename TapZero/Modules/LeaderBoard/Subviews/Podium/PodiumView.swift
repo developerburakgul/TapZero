@@ -17,20 +17,47 @@ extension LeaderBoardScreen {
 
         var body: some View {
             HStack(alignment: .bottom, spacing: 0) {
-                if config.entries.count >= 3 {
-                    podiumColumn(entry: config.entries[1], isFirst: false)
-                        .frame(maxWidth: .infinity)
-
-                    podiumColumn(entry: config.entries[0], isFirst: true)
-                        .frame(maxWidth: .infinity)
-
-                    podiumColumn(entry: config.entries[2], isFirst: false)
-                        .frame(maxWidth: .infinity)
-                }
+                // 2nd place (left)
+                secondPlace.frame(maxWidth: .infinity)
+                // 1st place (center)
+                firstPlace.frame(maxWidth: .infinity)
+                // 3rd place (right)
+                thirdPlace.frame(maxWidth: .infinity)
             }
             .padding(.horizontal, constants.podiumHorizontalPadding)
             .padding(.top, constants.podiumTopPadding)
             .padding(.bottom, constants.podiumBottomPadding)
+        }
+
+        private func entry(at index: Int) -> PodiumEntity.PodiumEntry? {
+            index < config.entries.count ? config.entries[index] : nil
+        }
+
+        @ViewBuilder
+        private var firstPlace: some View {
+            if let first = entry(at: 0) {
+                podiumColumn(entry: first, isFirst: true)
+            } else {
+                ghostSpot(rank: 1, size: constants.podiumFirstAvatarSize)
+            }
+        }
+
+        @ViewBuilder
+        private var secondPlace: some View {
+            if let second = entry(at: 1) {
+                podiumColumn(entry: second, isFirst: false)
+            } else {
+                ghostSpot(rank: 2, size: constants.podiumOtherAvatarSize)
+            }
+        }
+
+        @ViewBuilder
+        private var thirdPlace: some View {
+            if let third = entry(at: 2) {
+                podiumColumn(entry: third, isFirst: false)
+            } else {
+                ghostSpot(rank: 3, size: constants.podiumOtherAvatarSize)
+            }
         }
 
         // MARK: - Podium Column
@@ -122,6 +149,82 @@ extension LeaderBoardScreen {
                 initial: entry.initials,
                 size: size
             )
+        }
+
+        // MARK: - Ghost Spot (empty slot)
+
+        private func ghostSpot(rank: Int, size: CGFloat) -> some View {
+            let color = ghostColor(rank: rank)
+            return VStack(spacing: 0) {
+                if rank == 1 { ghostCrown }
+
+                Circle()
+                    .strokeBorder(
+                        style: StrokeStyle(lineWidth: 1.5, dash: [4, 3])
+                    )
+                    .foregroundStyle(color.opacity(0.6))
+                    .frame(width: size, height: size)
+                    .overlay(
+                        Text("?")
+                            .font(.system(size: size * 0.36, weight: .semibold))
+                            .foregroundStyle(color.opacity(0.7))
+                    )
+
+                ghostRibbon(rank: rank, color: color)
+                    .padding(.top, 4)
+
+                ghostBars(isFirst: rank == 1)
+                    .padding(.top, 6)
+            }
+            .padding(.top, rank == 1 ? 0 : constants.podiumOtherTopOffset)
+        }
+
+        private var ghostCrown: some View {
+            Image(systemName: "crown.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 22, height: 17)
+                .foregroundStyle(TapZeroDesign.Medal.gold)
+                .opacity(0.35)
+                .padding(.bottom, 4)
+        }
+
+        private func ghostRibbon(rank: Int, color: Color) -> some View {
+            let text: String = switch rank {
+            case 1: TextKey.LeaderBoard.rankFirst
+            case 2: TextKey.LeaderBoard.rankSecond
+            default: TextKey.LeaderBoard.rankThird
+            }
+            return Text(text)
+                .font(.system(size: 8, weight: .heavy))
+                .foregroundStyle(rank == 3
+                    ? Color(hex: TapZeroPalette.Neutral.N50)
+                    : TapZeroDesign.Foreground.primary
+                )
+                .padding(.horizontal, 8)
+                .padding(.vertical, 3)
+                .background(color)
+                .clipShape(Capsule())
+                .opacity(0.3)
+        }
+
+        private func ghostBars(isFirst: Bool) -> some View {
+            VStack(spacing: 4) {
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(TapZeroDesign.Foreground.tertiary.opacity(0.15))
+                    .frame(width: isFirst ? 40 : 32, height: 6)
+                RoundedRectangle(cornerRadius: 2.5)
+                    .fill(TapZeroDesign.Foreground.tertiary.opacity(0.1))
+                    .frame(width: isFirst ? 28 : 22, height: 5)
+            }
+        }
+
+        private func ghostColor(rank: Int) -> Color {
+            switch rank {
+            case 1: TapZeroDesign.Medal.gold
+            case 2: TapZeroDesign.Medal.silver
+            default: TapZeroDesign.Medal.bronze
+            }
         }
 
         // MARK: - Crown (1st place only)
@@ -221,5 +324,18 @@ private struct PodiumPreview: View {
         ("Alexander Hamilton III", 997),
         ("Elizabeth Bennet-Darcy", 985),
         ("Jean-Pierre Dubois", 963)
+    ])
+}
+
+#Preview("1 Player — Ghost 2nd & 3rd") {
+    PodiumPreview(names: [
+        ("Burak", 920)
+    ])
+}
+
+#Preview("2 Players — Ghost 3rd") {
+    PodiumPreview(names: [
+        ("Mira Stone", 984),
+        ("Burak", 920)
     ])
 }

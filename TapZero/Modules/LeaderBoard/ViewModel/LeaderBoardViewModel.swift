@@ -46,6 +46,25 @@ final class LeaderBoardViewModel: ObservableObject {
         binding: .init(),
         config: .init(gamesPlayed: 0, gamesRequired: 10, gamesRemaining: 10, progress: 0)
     )
+    @Published var globalEmptyEntity: LeaderBoardScreen.EmptyStateEntity = .init(
+        binding: .init(),
+        config: .init(
+            headline: TextKey.LeaderBoard.emptyGlobalTitle,
+            subtitle: TextKey.LeaderBoard.emptyGlobalSubtitle
+        )
+    )
+    @Published var dailyEmptyEntity: LeaderBoardScreen.EmptyStateEntity = .init(
+        binding: .init(),
+        config: .init(
+            headline: TextKey.LeaderBoard.emptyDailyTitle,
+            subtitle: TextKey.LeaderBoard.emptyDailySubtitle
+        )
+    )
+
+    @Published var yourSpotEntity: LeaderBoardScreen.YourSpotRowEntity = .init(
+        binding: .init(),
+        config: .init()
+    )
 
     // MARK: - Init
     init(
@@ -81,6 +100,18 @@ extension LeaderBoardViewModel {
     var unlockRequiredGames: Int { 10 }
     var gamesRemaining: Int { max(0, unlockRequiredGames - gamesPlayed) }
     var unlockProgress: CGFloat { CGFloat(gamesPlayed) / CGFloat(unlockRequiredGames) }
+
+    // MARK: - Empty State
+    var isGlobalEmpty: Bool { globalEntries.isEmpty }
+    var isDailyEmpty: Bool { dailyEntries.isEmpty }
+
+    var showYourSpotRow: Bool {
+        guard let userId = currentUserId else { return true }
+        let inList = selectedTab == .global
+            ? globalEntries.contains { $0.userId == userId }
+            : dailyEntries.contains { $0.userId == userId }
+        return !inList
+    }
 
     // MARK: - Podium & List Split
     var globalPodium: [GlobalLeaderboardEntry] { Array(globalEntries.prefix(3)) }

@@ -9,7 +9,7 @@ extension LeaderBoardScreen {
     struct LeaderBoardRowView: View, Equatable {
         @Binding var binding: LeaderBoardRowEntity.Binding
         let config: LeaderBoardRowEntity.Config
-        let constants: Constants
+        private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -18,28 +18,28 @@ extension LeaderBoardScreen {
         private var accentColor: Color { TapZeroDesign.Status.good }
 
         var body: some View {
-            HStack(spacing: constants.rowGap) {
+            HStack(spacing: constants.gap) {
                 rankLabel
                 avatarView
                 nameLabel
                 Spacer()
                 scoreLabel
             }
-            .padding(.horizontal, constants.rowPaddingH)
-            .padding(.vertical, config.isDense ? constants.rowDensePaddingV : constants.rowPaddingV)
+            .padding(.horizontal, constants.paddingH)
+            .padding(.vertical, config.isDense ? constants.densePaddingV : constants.paddingV)
             .background(
                 config.isCurrentUser
                     ? accentColor.opacity(0.06)
                     : Color.clear
             )
             .overlay(
-                RoundedRectangle(cornerRadius: constants.rowCornerRadius)
+                RoundedRectangle(cornerRadius: constants.cornerRadius)
                     .stroke(
                         config.isCurrentUser ? accentColor : Color.clear,
-                        lineWidth: config.isCurrentUser ? constants.rowUserBorderWidth : 0
+                        lineWidth: config.isCurrentUser ? constants.userBorderWidth : 0
                     )
             )
-            .clipShape(RoundedRectangle(cornerRadius: constants.rowCornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: constants.cornerRadius))
         }
 
         // MARK: - Rank
@@ -47,9 +47,9 @@ extension LeaderBoardScreen {
         private var rankLabel: some View {
             Text("\(config.rank)")
                 .font(.system(size: 13, weight: .bold))
-                .tracking(constants.rowNameTracking)
+                .tracking(constants.nameTracking)
                 .monospacedDigit()
-                .frame(minWidth: constants.rowRankWidth, alignment: .center)
+                .frame(minWidth: constants.rankWidth, alignment: .center)
                 .foregroundStyle(
                     config.isCurrentUser
                         ? accentColor
@@ -73,13 +73,13 @@ extension LeaderBoardScreen {
                     monogramView
                 }
             }
-            .frame(width: constants.rowAvatarSize, height: constants.rowAvatarSize)
+            .frame(width: constants.avatarSize, height: constants.avatarSize)
             .clipShape(Circle())
             .overlay(
                 Circle()
                     .stroke(
                         config.isCurrentUser ? accentColor : Color.clear,
-                        lineWidth: config.isCurrentUser ? constants.rowUserBorderWidth : 0
+                        lineWidth: config.isCurrentUser ? constants.userBorderWidth : 0
                     )
                     .padding(config.isCurrentUser ? -2 : 0)
             )
@@ -88,7 +88,7 @@ extension LeaderBoardScreen {
         private var monogramView: some View {
             InitialAvatarView(
                 initial: config.initials,
-                size: constants.rowAvatarSize
+                size: constants.avatarSize
             )
         }
 
@@ -97,7 +97,7 @@ extension LeaderBoardScreen {
         private var nameLabel: some View {
             Text(config.name)
                 .font(.system(size: 15, weight: config.isCurrentUser ? .bold : .medium))
-                .tracking(constants.rowNameTracking)
+                .tracking(constants.nameTracking)
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .foregroundStyle(TapZeroDesign.Foreground.primary)
@@ -108,7 +108,7 @@ extension LeaderBoardScreen {
         private var scoreLabel: some View {
             Text("\(config.score)")
                 .font(.system(size: 15, weight: .bold))
-                .tracking(constants.rowScoreTracking)
+                .tracking(constants.scoreTracking)
                 .monospacedDigit()
                 .foregroundStyle(
                     config.isCurrentUser

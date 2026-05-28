@@ -9,7 +9,7 @@ extension LeaderBoardScreen {
     struct LeaderBoardHeaderView: View, Equatable {
         @Binding var binding: LeaderBoardHeaderEntity.Binding
         let config: LeaderBoardHeaderEntity.Config
-        let constants: Constants
+        private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -25,9 +25,9 @@ extension LeaderBoardScreen {
                 segmentedControl
                     .padding(.top, constants.segmentedTopPadding)
             }
-            .padding(.horizontal, constants.headerHorizontalPadding)
-            .padding(.top, constants.headerTopPadding)
-            .padding(.bottom, constants.headerBottomPadding)
+            .padding(.horizontal, constants.horizontalPadding)
+            .padding(.top, constants.topPadding)
+            .padding(.bottom, constants.bottomPadding)
         }
 
         // MARK: - Segmented Control
@@ -57,9 +57,9 @@ extension LeaderBoardScreen {
             } label: {
                 Text(tab == .global ? TextKey.LeaderBoard.tabGlobal : TextKey.LeaderBoard.tabDaily)
                     .font(TapZeroTypography.Label.tab)
-                    .tracking(constants.segmentedTabTracking)
+                    .tracking(constants.tabTracking)
                     .frame(maxWidth: .infinity)
-                    .frame(height: constants.segmentedTabHeight)
+                    .frame(height: constants.tabHeight)
                     .foregroundStyle(
                         isActive
                             ? TapZeroDesign.SegmentedControl.activeForeground
@@ -70,7 +70,7 @@ extension LeaderBoardScreen {
                             ? TapZeroDesign.SegmentedControl.activeBackground
                             : Color.clear
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: constants.segmentedTabRadius))
+                    .clipShape(RoundedRectangle(cornerRadius: constants.tabRadius))
                     .shadow(
                         color: isActive ? .black.opacity(0.12) : .clear,
                         radius: 1,
@@ -97,8 +97,7 @@ private struct HeaderPreview: View {
     var body: some View {
         LeaderBoardScreen.LeaderBoardHeaderView(
             binding: $entity.binding,
-            config: entity.config,
-            constants: .init()
+            config: entity.config
         )
         .onChange(of: entity.binding.selectedTab) { newTab in
             entity.config = .init(selectedTab: newTab)
