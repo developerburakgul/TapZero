@@ -55,8 +55,10 @@ struct DeepLinkRecognizer<Destination> {
     /// - Returns: The matched destination, or `nil` if no route matches.
     func recognize(_ url: URL) -> Destination? {
         let segments = extractSegments(from: url)
+        let queryParams = extractQueryItems(from: url)
         for route in routes {
-            if let params = match(segments: segments, template: route.template) {
+            if var params = match(segments: segments, template: route.template) {
+                for item in queryParams { params[item.name] = item.value ?? "" }
                 return route.handler(params)
             }
         }
@@ -87,6 +89,10 @@ extension DeepLinkRecognizer {
             contentsOf: url.pathComponents.filter { $0 != "/" }
         )
         return segments
+    }
+
+    private func extractQueryItems(from url: URL) -> [URLQueryItem] {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
     }
 
     private func universalLinkSegments(from url: URL) -> [String] {

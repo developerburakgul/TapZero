@@ -57,6 +57,12 @@ extension TabbarViewModel {
         switch deepLink {
         case .tab(let tab):
             selectedTab = tab.toTabbarTab
+        case .game(let time):
+            selectedTab = .play
+            let entity = GameSessionEntity(targetSeconds: time.map { Int($0) } ?? 5)
+            router.showScreen(.fullScreenCover) { routerForScreen in
+                GameSessionBuilder.build(router: routerForScreen, entity: entity)
+            }
         }
     }
 

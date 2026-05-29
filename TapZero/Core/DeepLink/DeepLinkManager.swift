@@ -17,7 +17,11 @@ final class DeepLinkManager {
             DeepLinkRoute(template: DeepLinkTemplate().term("play")) { _ in .tab(.play) },
             DeepLinkRoute(template: DeepLinkTemplate().term("leaderboard")) { _ in .tab(.leaderBoard) },
             DeepLinkRoute(template: DeepLinkTemplate().term("history")) { _ in .tab(.history) },
-            DeepLinkRoute(template: DeepLinkTemplate().term("settings")) { _ in .tab(.settings) }
+            DeepLinkRoute(template: DeepLinkTemplate().term("settings")) { _ in .tab(.settings) },
+            DeepLinkRoute(template: DeepLinkTemplate().term("game")) { params in
+                let time = params["time"].flatMap(Double.init)
+                return .game(time: time)
+            }
         ]
     )
 
