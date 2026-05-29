@@ -32,7 +32,7 @@ extension GameResultScreen {
                 ZStack(alignment: .leading) {
                     // Track
                     Capsule()
-                        .fill(TapZeroDesign.Hairline.medium)
+                        .fill(config.hairlineOverride ?? TapZeroDesign.Hairline.medium)
                         .frame(height: constants.timelineTrackHeight)
                         .frame(maxWidth: .infinity)
 
@@ -49,8 +49,15 @@ extension GameResultScreen {
         }
 
         private var targetDot: some View {
-            Circle()
-                .fill(config.isPerfect ? config.scoreColor : TapZeroDesign.Background.primary)
+            let dotFill: Color = config.isPerfect
+                ? config.scoreColor
+                : (config.targetDotFillOverride ?? TapZeroDesign.Background.primary)
+            let dotStroke: Color = config.isPerfect
+                ? config.scoreColor
+                : (config.foregroundOverride ?? TapZeroDesign.Foreground.primary)
+
+            return Circle()
+                .fill(dotFill)
                 .frame(
                     width: constants.timelineDotSize,
                     height: constants.timelineDotSize
@@ -58,9 +65,7 @@ extension GameResultScreen {
                 .overlay(
                     Circle()
                         .stroke(
-                            config.isPerfect
-                                ? config.scoreColor
-                                : TapZeroDesign.Foreground.primary,
+                            dotStroke,
                             lineWidth: constants.timelineDotBorderWidth
                         )
                 )
@@ -86,11 +91,13 @@ extension GameResultScreen {
 
         private var labels: some View {
             HStack {
+                let labelColor = config.foregroundOverride?.opacity(0.35) ?? TapZeroDesign.Foreground.tertiary
+
                 Text(TextKey.GameResult.early)
                     .font(.system(size: 11, weight: .medium))
                     .tracking(0.6)
                     .textCase(.uppercase)
-                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    .foregroundStyle(labelColor)
 
                 Spacer()
 
@@ -98,7 +105,7 @@ extension GameResultScreen {
                     .font(.system(size: 11, weight: .medium))
                     .tracking(0.6)
                     .textCase(.uppercase)
-                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    .foregroundStyle(labelColor)
 
                 Spacer()
 
@@ -106,7 +113,7 @@ extension GameResultScreen {
                     .font(.system(size: 11, weight: .medium))
                     .tracking(0.6)
                     .textCase(.uppercase)
-                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    .foregroundStyle(labelColor)
             }
         }
     }

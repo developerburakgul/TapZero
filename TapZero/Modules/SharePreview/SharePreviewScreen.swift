@@ -168,7 +168,7 @@ struct SharePreviewScreen: View {
     // MARK: - Image Render
 
     private func renderShareImage() -> UIImage? {
-        let view = cardContent
+        let view = shareableCard
             .environment(\.colorScheme, .light)
 
         let renderer = ImageRenderer(content: view)

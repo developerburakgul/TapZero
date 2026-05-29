@@ -16,6 +16,10 @@ extension GameResultScreen {
 
         private var compact: Bool { config.isCompact }
 
+        private var shareTheme: ScoreCardEntity.ShareCardTheme? {
+            constants.shareCardTheme(for: config.cardBackground)
+        }
+
         var body: some View {
             VStack(spacing: 0) {
                 brandMark
@@ -32,13 +36,13 @@ extension GameResultScreen {
                 comparisonRow
                     .padding(.top, compact ? 14 : 22)
             }
-            .padding(compact ? 16 : 22)
-            .padding(.bottom, compact ? 2 : 0)
-            .background(config.cardBackground ?? TapZeroDesign.Score.cardBackground)
+            .padding(shareTheme != nil ? 22 : (compact ? 16 : 22))
+            .padding(.bottom, shareTheme != nil ? 0 : (compact ? 2 : 0))
+            .background(shareTheme?.cardBackground ?? AnyShapeStyle(TapZeroDesign.Score.cardBackground))
             .clipShape(RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius)
-                    .stroke(TapZeroDesign.Hairline.default, lineWidth: 0.5)
+                    .stroke(shareTheme?.hairline ?? TapZeroDesign.Hairline.default, lineWidth: 0.5)
             )
             .shadow(
                 color: .black.opacity(0.03),
@@ -61,7 +65,7 @@ extension GameResultScreen {
                 Text(TextKey.GameResult.brand)
                     .font(TapZeroTypography.Caption.appName)
                     .tracking(-0.3)
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+                    .foregroundStyle(shareTheme?.foreground ?? TapZeroDesign.Foreground.primary)
 
                 Spacer()
 
@@ -69,23 +73,26 @@ extension GameResultScreen {
                     HStack(spacing: 5) {
                         InitialAvatarView(
                             initial: String(name.prefix(1)).uppercased(),
-                            size: 20
+                            size: 20,
+                            foregroundColor: shareTheme?.foreground,
+                            backgroundColor: shareTheme?.avatarBackground
                         )
 
                         Text("@\(name)")
                             .font(.system(size: 12, weight: .semibold))
                             .tracking(-0.2)
-                            .foregroundStyle(TapZeroDesign.Foreground.secondary)
+                            .foregroundStyle(shareTheme?.secondaryForeground ?? TapZeroDesign.Foreground.secondary)
                     }
                 }
             }
         }
 
         private var brandLogo: some View {
-            ZStack {
+            let logoColor = shareTheme?.foreground ?? TapZeroDesign.Foreground.primary
+            return ZStack {
                 Circle()
                     .stroke(
-                        TapZeroDesign.Foreground.primary,
+                        logoColor,
                         lineWidth: 1.2
                     )
                     .frame(
@@ -94,7 +101,7 @@ extension GameResultScreen {
                     )
 
                 Circle()
-                    .fill(TapZeroDesign.Foreground.primary)
+                    .fill(logoColor)
                     .frame(
                         width: constants.brandDotSize,
                         height: constants.brandDotSize
@@ -133,7 +140,11 @@ extension GameResultScreen {
             .foregroundStyle(config.scoreColor)
             .padding(.horizontal, 11)
             .padding(.vertical, 4)
-            .background(config.offPillBackground)
+            .background(
+                shareTheme.flatMap { theme in
+                    theme.badgePillOpacity.map { config.scoreColor.opacity($0) }
+                } ?? config.offPillBackground
+            )
             .clipShape(Capsule())
         }
 
@@ -151,7 +162,10 @@ extension GameResultScreen {
                     userOffset: config.timelineUserOffset,
                     scoreColor: config.scoreColor,
                     isPerfect: config.isPerfect,
-                    targetLabel: targetLabel
+                    targetLabel: targetLabel,
+                    foregroundOverride: shareTheme?.foreground,
+                    hairlineOverride: shareTheme?.trackBackground,
+                    targetDotFillOverride: shareTheme?.targetDotFill
                 ),
                 constants: constants
             )
@@ -164,11 +178,11 @@ extension GameResultScreen {
                 comparisonColumn(
                     label: TextKey.GameResult.target,
                     value: config.targetTimeFormatted,
-                    color: TapZeroDesign.Foreground.primary
+                    color: shareTheme?.foreground ?? TapZeroDesign.Foreground.primary
                 )
 
                 Rectangle()
-                    .fill(TapZeroDesign.Hairline.default)
+                    .fill(shareTheme?.hairline ?? TapZeroDesign.Hairline.default)
                     .frame(width: 1)
                     .padding(.vertical, 4)
 
@@ -181,7 +195,7 @@ extension GameResultScreen {
             .padding(.top, compact ? 12 : 16)
             .overlay(alignment: .top) {
                 Rectangle()
-                    .fill(TapZeroDesign.Hairline.default)
+                    .fill(shareTheme?.hairline ?? TapZeroDesign.Hairline.default)
                     .frame(height: 0.5)
             }
         }
@@ -196,7 +210,7 @@ extension GameResultScreen {
                     .font(TapZeroTypography.Caption.sectionHeader)
                     .tracking(1.2)
                     .textCase(.uppercase)
-                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    .foregroundStyle(shareTheme?.tertiaryForeground ?? TapZeroDesign.Foreground.tertiary)
 
                 HStack(alignment: .firstTextBaseline, spacing: 1) {
                     Text(value)
@@ -217,7 +231,7 @@ extension GameResultScreen {
                                 weight: .regular
                             )
                         )
-                        .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                        .foregroundStyle(shareTheme?.tertiaryForeground ?? TapZeroDesign.Foreground.tertiary)
                 }
             }
             .frame(maxWidth: .infinity)

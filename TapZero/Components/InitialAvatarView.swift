@@ -10,15 +10,26 @@ struct InitialAvatarView: View {
     let size: CGFloat
     let showDashedBorder: Bool
 
-    init(initial: String, size: CGFloat, showDashedBorder: Bool = false) {
+    let foregroundColor: Color?
+    let backgroundColor: Color?
+
+    init(
+        initial: String,
+        size: CGFloat,
+        showDashedBorder: Bool = false,
+        foregroundColor: Color? = nil,
+        backgroundColor: Color? = nil
+    ) {
         self.initial = initial
         self.size = size
         self.showDashedBorder = showDashedBorder
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
     }
 
     var body: some View {
         Circle()
-            .fill(TapZeroDesign.Background.secondary)
+            .fill(backgroundColor ?? TapZeroDesign.Background.secondary)
             .overlay {
                 if showDashedBorder {
                     Circle()
@@ -31,7 +42,7 @@ struct InitialAvatarView: View {
             .overlay {
                 Text(initial)
                     .font(.system(size: size * 0.38, weight: .medium))
-                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+                    .foregroundStyle(foregroundColor ?? TapZeroDesign.Foreground.primary)
             }
             .frame(width: size, height: size)
     }
