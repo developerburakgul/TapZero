@@ -18,5 +18,6 @@ extension GameResultScreen.ScoreCardEntity {
         let targetSeconds: Int
         var isCompact: Bool = false
         var cardBackground: Color?
+        var userName: String?
     }
 }

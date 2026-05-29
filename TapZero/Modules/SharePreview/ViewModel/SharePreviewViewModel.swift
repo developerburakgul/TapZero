@@ -16,6 +16,7 @@ final class SharePreviewViewModel: ObservableObject {
 
     // MARK: - Managers
     @Injected private(set) var eventManager: EventManager
+    @Injected private(set) var userManager: UserManager
 
     // MARK: - Published Properties
     @Published var selectedColor: Color = TapZeroDesign.Share.bgDark
@@ -30,6 +31,11 @@ final class SharePreviewViewModel: ObservableObject {
 // MARK: - Computed Properties
 extension SharePreviewViewModel {
     var score: Int { entity.score }
+
+    var userName: String? {
+        let name = userManager.currentUser?.displayName ?? ""
+        return name.isEmpty ? nil : name
+    }
 
     var targetTimeFormatted: String {
         String(format: "%.2f", Double(entity.targetSeconds))

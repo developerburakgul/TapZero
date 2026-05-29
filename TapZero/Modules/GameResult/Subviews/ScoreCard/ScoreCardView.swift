@@ -64,6 +64,20 @@ extension GameResultScreen {
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
 
                 Spacer()
+
+                if let name = config.userName {
+                    HStack(spacing: 5) {
+                        InitialAvatarView(
+                            initial: String(name.prefix(1)).uppercased(),
+                            size: 20
+                        )
+
+                        Text("@\(name)")
+                            .font(.system(size: 12, weight: .semibold))
+                            .tracking(-0.2)
+                            .foregroundStyle(TapZeroDesign.Foreground.secondary)
+                    }
+                }
             }
         }
 
@@ -98,6 +112,7 @@ extension GameResultScreen {
                 .monospacedDigit()
                 .foregroundStyle(config.scoreColor)
                 .lineLimit(1)
+                .minimumScaleFactor(0.5)
         }
 
         // MARK: - Off Pill

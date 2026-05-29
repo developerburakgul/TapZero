@@ -27,13 +27,13 @@ private struct CardPreview: View {
                 targetTimeFormatted: String(format: "%.2f", Double(target)),
                 tappedTimeFormatted: String(format: "%.2f", tapped),
                 timelineUserOffset: timelineOffset(delta: delta),
-                targetSeconds: target
+                targetSeconds: target,
+                isCompact: true,
+                cardBackground: bgColor,
+                userName: "Burak"
             ),
             constants: GameResultScreen.Constants()
         )
-        .padding(24)
-        .background(bgColor)
-        .clipShape(RoundedRectangle(cornerRadius: 22))
     }
 
     private var scoreColor: Color {

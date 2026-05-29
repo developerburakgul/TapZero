@@ -84,7 +84,8 @@ struct SharePreviewScreen: View {
                 timelineUserOffset: viewModel.timelineUserOffset,
                 targetSeconds: viewModel.entity.targetSeconds,
                 isCompact: true,
-                cardBackground: viewModel.selectedColor
+                cardBackground: viewModel.selectedColor,
+                userName: viewModel.userName
             ),
             constants: GameResultScreen.Constants()
         )
