@@ -12,17 +12,24 @@ extension SharePreviewViewModel {
 
     func viewWillAppear() async {
         sendEvent(type: .pageAppear)
+        let name = userManager.currentUser?.displayName ?? ""
+        scoreCard.config.userName = name.isEmpty ? nil : name
+        if let urlString = userManager.currentUser?.profileImageURL {
+            scoreCard.config.profileImageURL = URL(string: urlString)
+        }
     }
 
     func onColorSelected(_ color: Color) {
         selectedColor = color
+        scoreCard.config.cardBackground = color
     }
 
     func onShareTapped(image: UIImage?) {
         sendEvent(type: .shareTapped)
         guard let image else { return }
+        let shareText = TextKey.SharePreview.shareText(score: entity.score)
         let activityVC = UIActivityViewController(
-            activityItems: [image],
+            activityItems: [image, shareText],
             applicationActivities: nil
         )
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

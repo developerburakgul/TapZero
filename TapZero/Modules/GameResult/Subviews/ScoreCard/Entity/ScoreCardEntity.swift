@@ -7,5 +7,6 @@ import Foundation
 
 extension GameResultScreen {
     struct ScoreCardEntity {
+        var config: Config
     }
 }

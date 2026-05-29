@@ -30,22 +30,30 @@ extension GameResultScreen {
                 let userX = centerX + config.userOffset * width
 
                 ZStack(alignment: .leading) {
-                    // Track
+                    // Track — gap at center dot so it doesn't bleed through
                     Capsule()
                         .fill(config.hairlineOverride ?? TapZeroDesign.Hairline.medium)
                         .frame(height: constants.timelineTrackHeight)
                         .frame(maxWidth: .infinity)
+                        .mask(
+                            HStack(spacing: 0) {
+                                Rectangle()
+                                Color.clear
+                                    .frame(width: constants.timelineDotSize + 2)
+                                Rectangle()
+                            }
+                        )
 
                     // Target dot (center)
                     targetDot
-                        .position(x: centerX, y: 22)
+                        .position(x: centerX, y: 16)
 
                     // User dot
                     userDot
-                        .position(x: userX, y: 22)
+                        .position(x: userX, y: 16)
                 }
             }
-            .frame(height: 44)
+            .frame(height: 32)
         }
 
         private var targetDot: some View {

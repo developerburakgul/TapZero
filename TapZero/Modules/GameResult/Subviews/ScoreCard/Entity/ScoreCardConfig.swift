@@ -16,8 +16,8 @@ extension GameResultScreen.ScoreCardEntity {
         let tappedTimeFormatted: String
         let timelineUserOffset: CGFloat
         let targetSeconds: Int
-        var isCompact: Bool = false
         var cardBackground: Color?
         var userName: String?
+        var profileImageURL: URL?
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 struct SharePreviewScreen: View {
     // MARK: - Private properties
     private let constants = Constants()
+    private let cardConstants = GameResultScreen.Constants()
 
     // MARK: - Observed properties
     @StateObject var viewModel: SharePreviewViewModel
@@ -73,21 +74,8 @@ struct SharePreviewScreen: View {
 
     private var cardContent: some View {
         GameResultScreen.ScoreCardView(
-            config: .init(
-                score: viewModel.score,
-                scoreColor: viewModel.scoreColor,
-                offLabelText: viewModel.offLabelText,
-                offPillBackground: viewModel.offPillBackground,
-                isPerfect: viewModel.entity.performanceRating == .perfect,
-                targetTimeFormatted: viewModel.targetTimeFormatted,
-                tappedTimeFormatted: viewModel.tappedTimeFormatted,
-                timelineUserOffset: viewModel.timelineUserOffset,
-                targetSeconds: viewModel.entity.targetSeconds,
-                isCompact: true,
-                cardBackground: viewModel.selectedColor,
-                userName: viewModel.userName
-            ),
-            constants: GameResultScreen.Constants()
+            config: viewModel.scoreCard.config,
+            constants: cardConstants
         )
     }
 
@@ -168,11 +156,13 @@ struct SharePreviewScreen: View {
     // MARK: - Image Render
 
     private func renderShareImage() -> UIImage? {
-        let view = shareableCard
+        let view = cardContent
+            .padding(28)
+            .background(viewModel.selectedColor)
             .environment(\.colorScheme, .light)
 
         let renderer = ImageRenderer(content: view)
-        renderer.scale = UIScreen.main.scale
+        renderer.scale = 3.0
         return renderer.uiImage
     }
 }

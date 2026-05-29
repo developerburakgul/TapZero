@@ -14,14 +14,9 @@ extension GameResultScreen {
         let headerIconSize: CGFloat = 36
 
         // ScoreCard
-        let cardCornerRadius: CGFloat = 22
-        let heroScoreTracking: CGFloat = -7
         let brandLogoSize: CGFloat = 16
         let brandDotSize: CGFloat = 3
-        let offPillCornerRadius: CGFloat = 999
         let offDotSize: CGFloat = 5
-        let comparisonFontSize: CGFloat = 22
-        let comparisonSuffixSize: CGFloat = 13
 
         // Timeline
         let timelineTrackHeight: CGFloat = 2

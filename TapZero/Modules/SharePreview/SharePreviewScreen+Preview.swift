@@ -28,7 +28,6 @@ private struct CardPreview: View {
                 tappedTimeFormatted: String(format: "%.2f", tapped),
                 timelineUserOffset: timelineOffset(delta: delta),
                 targetSeconds: target,
-                isCompact: true,
                 cardBackground: bgColor,
                 userName: "Burak"
             ),
