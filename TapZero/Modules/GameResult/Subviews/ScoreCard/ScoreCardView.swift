@@ -34,7 +34,7 @@ extension GameResultScreen {
             }
             .padding(compact ? 16 : 22)
             .padding(.bottom, compact ? 2 : 0)
-            .background(TapZeroDesign.Score.cardBackground)
+            .background(config.cardBackground ?? TapZeroDesign.Score.cardBackground)
             .clipShape(RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius)

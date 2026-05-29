@@ -17,5 +17,6 @@ extension GameResultScreen.ScoreCardEntity {
         let timelineUserOffset: CGFloat
         let targetSeconds: Int
         var isCompact: Bool = false
+        var cardBackground: Color?
     }
 }

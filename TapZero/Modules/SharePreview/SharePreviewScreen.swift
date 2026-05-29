@@ -44,7 +44,7 @@ struct SharePreviewScreen: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 16)
         }
-        .background(viewModel.selectedColor.ignoresSafeArea())
+        .background(TapZeroDesign.Background.primary.ignoresSafeArea())
     }
 
     // MARK: - Header
@@ -83,7 +83,8 @@ struct SharePreviewScreen: View {
                 tappedTimeFormatted: viewModel.tappedTimeFormatted,
                 timelineUserOffset: viewModel.timelineUserOffset,
                 targetSeconds: viewModel.entity.targetSeconds,
-                isCompact: true
+                isCompact: true,
+                cardBackground: viewModel.selectedColor
             ),
             constants: GameResultScreen.Constants()
         )
@@ -168,8 +169,6 @@ struct SharePreviewScreen: View {
     private func renderShareImage() -> UIImage? {
         let view = cardContent
             .environment(\.colorScheme, .light)
-            .padding(constants.cardPadding)
-            .background(viewModel.selectedColor)
 
         let renderer = ImageRenderer(content: view)
         renderer.scale = UIScreen.main.scale
