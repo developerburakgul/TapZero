@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftfulRouting
 
 // MARK: - Actions
 extension GameResultViewModel {
@@ -31,5 +32,15 @@ extension GameResultViewModel {
 
     func onShareTapped() {
         sendEvent(type: .shareTapped)
+        let shareEntity = SharePreviewEntity(
+            score: entity.score,
+            targetSeconds: entity.targetSeconds,
+            tappedSeconds: entity.tappedSeconds,
+            delta: entity.delta,
+            performanceRating: entity.performanceRating
+        )
+        router.showScreen(.sheet) { router in
+            SharePreviewBuilder.build(router: router, entity: shareEntity)
+        }
     }
 }
