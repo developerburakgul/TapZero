@@ -39,7 +39,8 @@ extension GameResultViewModel {
             delta: entity.delta,
             performanceRating: entity.performanceRating
         )
-        router.showScreen(.sheet) { router in
+        let config = ResizableSheetConfig(detents: [.large], dragIndicator: .hidden)
+        router.showScreen(.sheetConfig(config: config)) { router in
             SharePreviewBuilder.build(router: router, entity: shareEntity)
         }
     }
