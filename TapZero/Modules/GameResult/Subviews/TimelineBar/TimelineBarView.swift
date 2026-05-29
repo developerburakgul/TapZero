@@ -8,7 +8,7 @@ import SwiftUI
 extension GameResultScreen {
     struct TimelineBarView: View, Equatable {
         let config: TimelineBarEntity.Config
-        let constants: Constants
+        let constants: ScoreCardView.Constants
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.config == rhs.config
@@ -46,14 +46,14 @@ extension GameResultScreen {
 
                     // Target dot (center)
                     targetDot
-                        .position(x: centerX, y: 16)
+                        .position(x: centerX, y: 22)
 
                     // User dot
                     userDot
-                        .position(x: userX, y: 16)
+                        .position(x: userX, y: 22)
                 }
             }
-            .frame(height: 32)
+            .frame(height: 44)
         }
 
         private var targetDot: some View {
@@ -109,7 +109,7 @@ extension GameResultScreen {
 
                 Spacer()
 
-                Text(config.targetLabel)
+                Text(TextKey.GameResult.target)
                     .font(.system(size: 11, weight: .medium))
                     .tracking(0.6)
                     .textCase(.uppercase)

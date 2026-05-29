@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-extension GameResultScreen.ScoreCardEntity {
+extension ScoreCardEntity {
     struct ShareCardTheme {
         let cardBackground: AnyShapeStyle
         let foreground: Color

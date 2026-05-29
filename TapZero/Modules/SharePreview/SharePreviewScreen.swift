@@ -9,7 +9,7 @@ import SwiftUI
 struct SharePreviewScreen: View {
     // MARK: - Private properties
     private let constants = Constants()
-    private let cardConstants = GameResultScreen.Constants()
+    private let cardConstants = ScoreCardView.Constants()
 
     // MARK: - Observed properties
     @StateObject var viewModel: SharePreviewViewModel
@@ -73,7 +73,7 @@ struct SharePreviewScreen: View {
     }
 
     private var cardContent: some View {
-        GameResultScreen.ScoreCardView(
+        ScoreCardView(
             config: viewModel.scoreCard.config,
             constants: cardConstants
         )

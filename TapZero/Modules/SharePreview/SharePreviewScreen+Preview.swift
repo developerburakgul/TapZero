@@ -8,6 +8,8 @@ import SwiftUI
 
 // MARK: - Card Only Preview
 
+private let previewAvatarURL = URL(string: "https://avatars.githubusercontent.com/developerburakgul")
+
 private struct CardPreview: View {
     let score: Int
     let target: Int
@@ -17,7 +19,7 @@ private struct CardPreview: View {
 
     var body: some View {
         let delta = abs(tapped - Double(target))
-        GameResultScreen.ScoreCardView(
+        ScoreCardView(
             config: .init(
                 score: score,
                 scoreColor: scoreColor,
@@ -29,9 +31,10 @@ private struct CardPreview: View {
                 timelineUserOffset: timelineOffset(delta: delta),
                 targetSeconds: target,
                 cardBackground: bgColor,
-                userName: "Burak"
+                userName: "burak",
+                profileImageURL: previewAvatarURL
             ),
-            constants: GameResultScreen.Constants()
+            constants: ScoreCardView.Constants()
         )
     }
 

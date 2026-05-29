@@ -3,7 +3,7 @@
 //  TapZero
 //
 
-extension GameResultScreen.ScoreCardEntity {
+extension ScoreCardEntity {
     struct Binding: Equatable {
     }
 }

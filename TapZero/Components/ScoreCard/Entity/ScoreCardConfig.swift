@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-extension GameResultScreen.ScoreCardEntity {
+extension ScoreCardEntity {
     struct Config: Equatable {
         let score: Int
         let scoreColor: Color

@@ -9,6 +9,7 @@ import SwiftUI
 struct GameResultScreen: View {
     // MARK: - Private properties
     private let constants = Constants()
+    private let cardConstants = ScoreCardView.Constants()
 
     // MARK: - Observed properties
     @StateObject var viewModel: GameResultViewModel
@@ -104,7 +105,7 @@ struct GameResultScreen: View {
                 timelineUserOffset: viewModel.timelineUserOffset,
                 targetSeconds: viewModel.entity.targetSeconds
             ),
-            constants: constants
+            constants: cardConstants
         )
     }
 

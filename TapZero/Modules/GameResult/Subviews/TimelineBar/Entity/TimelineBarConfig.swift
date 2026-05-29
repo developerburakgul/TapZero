@@ -10,7 +10,6 @@ extension GameResultScreen.TimelineBarEntity {
         let userOffset: CGFloat
         let scoreColor: Color
         let isPerfect: Bool
-        let targetLabel: String
         var foregroundOverride: Color?
         var hairlineOverride: Color?
         var targetDotFillOverride: Color?

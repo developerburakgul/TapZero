@@ -20,13 +20,13 @@ final class SharePreviewViewModel: ObservableObject {
 
     // MARK: - Published Properties
     @Published var selectedColor: Color = TapZeroDesign.Share.bgDark
-    @Published var scoreCard: GameResultScreen.ScoreCardEntity
+    @Published var scoreCard: ScoreCardEntity
 
     // MARK: - Init
     init(router: Router, entity: SharePreviewEntity) {
         self.router = router
         self.entity = entity
-        self.scoreCard = .init(
+        self.scoreCard = ScoreCardEntity(
             config: Self.makeScoreCardConfig(
                 entity: entity,
                 cardBackground: TapZeroDesign.Share.bgDark
@@ -42,7 +42,7 @@ private extension SharePreviewViewModel {
         cardBackground: Color,
         userName: String? = nil,
         profileImageURL: URL? = nil
-    ) -> GameResultScreen.ScoreCardEntity.Config {
+    ) -> ScoreCardEntity.Config {
         .init(
             score: entity.score,
             scoreColor: scoreColor(for: entity.performanceRating),
