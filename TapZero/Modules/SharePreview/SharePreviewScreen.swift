@@ -44,7 +44,7 @@ struct SharePreviewScreen: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 16)
         }
-        .background(TapZeroDesign.Background.primary)
+        .background(viewModel.selectedColor.ignoresSafeArea())
     }
 
     // MARK: - Header
@@ -69,9 +69,6 @@ struct SharePreviewScreen: View {
 
     private var shareableCard: some View {
         cardContent
-            .padding(constants.cardPadding)
-            .background(viewModel.selectedColor)
-            .clipShape(RoundedRectangle(cornerRadius: 22))
     }
 
     private var cardContent: some View {
@@ -85,7 +82,8 @@ struct SharePreviewScreen: View {
                 targetTimeFormatted: viewModel.targetTimeFormatted,
                 tappedTimeFormatted: viewModel.tappedTimeFormatted,
                 timelineUserOffset: viewModel.timelineUserOffset,
-                targetSeconds: viewModel.entity.targetSeconds
+                targetSeconds: viewModel.entity.targetSeconds,
+                isCompact: true
             ),
             constants: GameResultScreen.Constants()
         )
@@ -93,12 +91,18 @@ struct SharePreviewScreen: View {
 
     // MARK: - Color Picker
 
+    private let shareColors: [Color] = [
+        TapZeroDesign.Share.bgDark,
+        TapZeroDesign.Share.bgLight,
+        TapZeroDesign.Share.bgGreen,
+        TapZeroDesign.Share.bgBlue,
+        TapZeroDesign.Share.bgOrange,
+        TapZeroDesign.Share.bgPurple
+    ]
+
     private var colorPicker: some View {
         HStack(spacing: constants.colorPickerSpacing) {
-            ForEach(
-                Array(viewModel.backgroundColors.enumerated()),
-                id: \.offset
-            ) { _, color in
+            ForEach(Array(shareColors.enumerated()), id: \.offset) { _, color in
                 colorDot(color: color)
             }
         }
@@ -124,7 +128,7 @@ struct SharePreviewScreen: View {
             .overlay(
                 Circle()
                     .stroke(
-                        color == Color(hex: TapZeroPalette.Neutral.N0)
+                        color == TapZeroDesign.Share.bgLight
                             ? TapZeroDesign.Hairline.medium
                             : Color.clear,
                         lineWidth: 1
@@ -163,9 +167,9 @@ struct SharePreviewScreen: View {
 
     private func renderShareImage() -> UIImage? {
         let view = cardContent
+            .environment(\.colorScheme, .light)
             .padding(constants.cardPadding)
             .background(viewModel.selectedColor)
-            .clipShape(RoundedRectangle(cornerRadius: 22))
 
         let renderer = ImageRenderer(content: view)
         renderer.scale = UIScreen.main.scale
@@ -173,74 +177,4 @@ struct SharePreviewScreen: View {
     }
 }
 
-#Preview("Good Score") {
-    let _ = DevPreview.shared // swiftlint:disable:this redundant_discardable_let
-
-    RouterView(id: "sharePreview", addModuleSupport: true) { router in
-        SharePreviewBuilder.build(
-            router: router,
-            entity: SharePreviewEntity(
-                score: 847,
-                targetSeconds: 5,
-                tappedSeconds: 5.08,
-                delta: 0.08,
-                performanceRating: .good
-            )
-        )
-    }
-    .environment(\.locale, DevPreview.shared.locale)
-}
-
-#Preview("Perfect Score") {
-    let _ = DevPreview.shared // swiftlint:disable:this redundant_discardable_let
-
-    RouterView(id: "sharePreview2", addModuleSupport: true) { router in
-        SharePreviewBuilder.build(
-            router: router,
-            entity: SharePreviewEntity(
-                score: 1000,
-                targetSeconds: 10,
-                tappedSeconds: 10.00,
-                delta: 0.0,
-                performanceRating: .perfect
-            )
-        )
-    }
-    .environment(\.locale, DevPreview.shared.locale)
-}
-
-#Preview("Bad Score") {
-    let _ = DevPreview.shared // swiftlint:disable:this redundant_discardable_let
-
-    RouterView(id: "sharePreview3", addModuleSupport: true) { router in
-        SharePreviewBuilder.build(
-            router: router,
-            entity: SharePreviewEntity(
-                score: 320,
-                targetSeconds: 5,
-                tappedSeconds: 6.12,
-                delta: 1.12,
-                performanceRating: .bad
-            )
-        )
-    }
-    .environment(\.locale, DevPreview.shared.locale)
-}
-
-#Preview("Mid Score") {
-    let _ = DevPreview.shared // swiftlint:disable:this redundant_discardable_let
-
-    RouterView(id: "sharePreview4", addModuleSupport: true) { router in
-        SharePreviewBuilder.build(
-            router: router,
-            entity: SharePreviewEntity(
-                score: 640,
-                targetSeconds: 5,
-                tappedSeconds: 4.50,
-                delta: 0.50,
-                performanceRating: .mid
-            )
-        )
-    }
-    .environment(\.locale, DevPreview.shared.locale)
-}
+// MARK: - Previews → SharePreviewScreen+Preview.swift

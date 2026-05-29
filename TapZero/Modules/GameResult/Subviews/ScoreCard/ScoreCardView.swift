@@ -14,27 +14,30 @@ extension GameResultScreen {
             lhs.config == rhs.config
         }
 
+        private var compact: Bool { config.isCompact }
+
         var body: some View {
             VStack(spacing: 0) {
                 brandMark
 
                 heroScore
-                    .padding(.top, 18)
+                    .padding(.top, compact ? 10 : 18)
 
                 offPill
                     .padding(.top, 4)
 
                 timelineSection
-                    .padding(.top, 22)
+                    .padding(.top, compact ? 14 : 22)
 
                 comparisonRow
-                    .padding(.top, 22)
+                    .padding(.top, compact ? 14 : 22)
             }
-            .padding(22)
+            .padding(compact ? 16 : 22)
+            .padding(.bottom, compact ? 2 : 0)
             .background(TapZeroDesign.Score.cardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: constants.cardCornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius))
             .overlay(
-                RoundedRectangle(cornerRadius: constants.cardCornerRadius)
+                RoundedRectangle(cornerRadius: compact ? 18 : constants.cardCornerRadius)
                     .stroke(TapZeroDesign.Hairline.default, lineWidth: 0.5)
             )
             .shadow(
@@ -90,8 +93,8 @@ extension GameResultScreen {
 
         private var heroScore: some View {
             Text(TextKey.number(config.score))
-                .font(TapZeroTypography.Display.score)
-                .tracking(constants.heroScoreTracking)
+                .font(compact ? TapZeroTypography.Display.scoreCompact : TapZeroTypography.Display.score)
+                .tracking(compact ? -4 : constants.heroScoreTracking)
                 .monospacedDigit()
                 .foregroundStyle(config.scoreColor)
                 .lineLimit(1)
@@ -160,7 +163,7 @@ extension GameResultScreen {
                     color: config.scoreColor
                 )
             }
-            .padding(.top, 16)
+            .padding(.top, compact ? 12 : 16)
             .overlay(alignment: .top) {
                 Rectangle()
                     .fill(TapZeroDesign.Hairline.default)
@@ -184,7 +187,7 @@ extension GameResultScreen {
                     Text(value)
                         .font(
                             .system(
-                                size: constants.comparisonFontSize,
+                                size: compact ? 18 : constants.comparisonFontSize,
                                 weight: .semibold
                             )
                         )

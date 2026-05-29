@@ -18,7 +18,7 @@ final class SharePreviewViewModel: ObservableObject {
     @Injected private(set) var eventManager: EventManager
 
     // MARK: - Published Properties
-    @Published var selectedColor: Color = Color(hex: TapZeroPalette.Neutral.N900)
+    @Published var selectedColor: Color = TapZeroDesign.Share.bgDark
 
     // MARK: - Init
     init(router: Router, entity: SharePreviewEntity) {
@@ -68,16 +68,5 @@ extension SharePreviewViewModel {
         let pct = min(1.0, entity.delta / maxOff)
         let sign: CGFloat = entity.tappedSeconds > Double(entity.targetSeconds) ? 1 : -1
         return sign * pct * 0.4
-    }
-
-    var backgroundColors: [Color] {
-        [
-            Color(hex: TapZeroPalette.Neutral.N900),
-            Color(hex: TapZeroPalette.Neutral.N0),
-            TapZeroDesign.Status.good,
-            Color(hex: "#3478F6"),
-            Color(hex: "#FF6B35"),
-            Color(hex: "#8B5CF6")
-        ]
     }
 }

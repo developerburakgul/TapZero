@@ -375,6 +375,28 @@ enum TapZeroDesign {
         static var sheetGradientEnd: Color
     }
 
+    // MARK: - Share
+
+    enum Share {
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N900, hexDark: TapZeroPalette.Neutral.N900)
+        static var bgDark: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N0, hexDark: TapZeroPalette.Neutral.N0)
+        static var bgLight: Color
+
+        @DynamicColor(hexLight: "#3478F6", hexDark: "#3478F6")
+        static var bgBlue: Color
+
+        @DynamicColor(hexLight: "#FF6B35", hexDark: "#FF6B35")
+        static var bgOrange: Color
+
+        @DynamicColor(hexLight: "#8B5CF6", hexDark: "#8B5CF6")
+        static var bgPurple: Color
+
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var bgGreen: Color
+    }
+
     // MARK: - Splash
 
     enum Splash {
