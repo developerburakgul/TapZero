@@ -3,7 +3,6 @@
 //  Created by __Username__ on __Date__
 //
 
-import Combine
 import SwiftfulRouting
 import SwiftUI
 
@@ -16,16 +15,13 @@ final class SettingsViewModel: ObservableObject {
     let entity: SettingsEntity
 
     // MARK: - Managers
-    @Injected private(set) var languageManager: LanguageManager
-    @Injected private(set) var authManager: AuthManager
-    @Injected private(set) var userManager: UserManager
+    @ObservedInjected private(set) var languageManager: LanguageManager
+    @ObservedInjected private(set) var authManager: AuthManager
+    @ObservedInjected private(set) var userManager: UserManager
     @Injected private(set) var crashReporter: CrashReporterProtocol
     @Injected private(set) var eventManager: EventManager
 
     // MARK: - Published Properties
-    @Published var selectedLanguage: AppLanguage = .english
-    @Published var isAnonymous: Bool = true
-    @Published var displayName: String = ""
     @Published var notificationEnabled: Bool = false
 
     // MARK: - Init
@@ -37,26 +33,22 @@ final class SettingsViewModel: ObservableObject {
         self.router = router
         self.appRouter = appRouter
         self.entity = entity
+    }
+}
 
-        selectedLanguage = languageManager.currentLanguage
-        isAnonymous = authManager.auth?.isAnonymous ?? true
-
-        languageManager.$currentLanguage
-            .receive(on: RunLoop.main)
-            .assign(to: &$selectedLanguage)
-
-        authManager.$auth
-            .receive(on: RunLoop.main)
-            .map { $0?.isAnonymous ?? true }
-            .assign(to: &$isAnonymous)
-
-        userManager.$currentUser
-            .receive(on: RunLoop.main)
-            .map { $0?.displayName ?? "" }
-            .assign(to: &$displayName)
+// MARK: - Computed Properties
+extension SettingsViewModel {
+    var selectedLanguage: AppLanguage {
+        languageManager.currentLanguage
     }
 
-    // MARK: - Computed Properties
+    var isAnonymous: Bool {
+        authManager.auth?.isAnonymous ?? true
+    }
+
+    var displayName: String {
+        userManager.currentUser?.displayName ?? ""
+    }
 
     var userInitial: String {
         if let first = displayName.first {
