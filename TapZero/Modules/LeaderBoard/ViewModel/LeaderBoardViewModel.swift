@@ -96,7 +96,7 @@ extension LeaderBoardViewModel {
 
     // MARK: - Locked State (only Global)
     var isLocked: Bool {
-        !isLoading && selectedTab == .global
+        selectedTab == .global
             && (userStats?.totalGamesPlayed ?? 0) < unlockRequiredGames
     }
     var gamesPlayed: Int { userStats?.totalGamesPlayed ?? 0 }
@@ -105,8 +105,8 @@ extension LeaderBoardViewModel {
     var unlockProgress: CGFloat { CGFloat(gamesPlayed) / CGFloat(unlockRequiredGames) }
 
     // MARK: - Empty State
-    var isGlobalEmpty: Bool { !isLoading && globalEntries.isEmpty }
-    var isDailyEmpty: Bool { !isLoading && dailyEntries.isEmpty }
+    var isGlobalEmpty: Bool { globalEntries.isEmpty }
+    var isDailyEmpty: Bool { dailyEntries.isEmpty }
 
     var showGlobalSpotRow: Bool {
         let count = globalEntries.count

@@ -90,6 +90,7 @@ extension LeaderBoardScreen {
                 }
             }
         }
+        .opacity(viewModel.isLoading ? 0 : 1)
     }
 
     private var globalScrollContent: some View {
@@ -129,36 +130,46 @@ extension LeaderBoardScreen {
     @ViewBuilder
     private var dailyPage: some View {
         if viewModel.isDailyEmpty {
-            VStack(spacing: 0) {
-                dailyResetTimer
-                EmptyStateView(
-                    binding: $viewModel.dailyEmptyEntity.binding,
-                    config: viewModel.dailyEmptyEntity.config
-                ) { action in
-                    switch action {
-                    case .didTapPlayGame:
-                        viewModel.onPlayGameTapped()
-                    }
-                }
-            }
+            dailyEmptyContent
         } else {
-            ScrollView {
-                VStack(spacing: 0) {
-                    dailyResetTimer
-                    dailyPodiumSection
-                    if viewModel.showDailySpotRow {
-                        YourSpotRowView(
-                            binding: $viewModel.yourSpotEntity.binding,
-                            config: .init(label: viewModel.isUserInDailyPodium
-                                ? TextKey.LeaderBoard.waitingForChallengers
-                                : TextKey.LeaderBoard.yourSpotWaiting
-                            )
-                        )
-                    }
-                    dailyList
+            dailyScrollContent
+        }
+    }
+
+    private var dailyEmptyContent: some View {
+        VStack(spacing: 0) {
+            dailyResetTimer
+            EmptyStateView(
+                binding: $viewModel.dailyEmptyEntity.binding,
+                config: viewModel.dailyEmptyEntity.config
+            ) { action in
+                switch action {
+                case .didTapPlayGame:
+                    viewModel.onPlayGameTapped()
                 }
             }
         }
+        .opacity(viewModel.isLoading ? 0 : 1)
+    }
+
+    private var dailyScrollContent: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                dailyResetTimer
+                dailyPodiumSection
+                if viewModel.showDailySpotRow {
+                    YourSpotRowView(
+                        binding: $viewModel.yourSpotEntity.binding,
+                        config: .init(label: viewModel.isUserInDailyPodium
+                            ? TextKey.LeaderBoard.waitingForChallengers
+                            : TextKey.LeaderBoard.yourSpotWaiting
+                        )
+                    )
+                }
+                dailyList
+            }
+        }
+        .opacity(viewModel.isLoading ? 0 : 1)
     }
 }
 

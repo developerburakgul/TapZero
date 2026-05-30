@@ -119,6 +119,7 @@ struct SharePreviewScreen: View {
                 Circle()
                     .stroke(
                         color == TapZeroDesign.Share.bgLight
+                            || color == TapZeroDesign.Share.bgDark
                             ? TapZeroDesign.Hairline.medium
                             : Color.clear,
                         lineWidth: 1

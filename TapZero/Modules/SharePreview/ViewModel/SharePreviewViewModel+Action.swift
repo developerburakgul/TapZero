@@ -28,8 +28,9 @@ extension SharePreviewViewModel {
         sendEvent(type: .shareTapped)
         guard let image else { return }
         let shareText = TextKey.SharePreview.shareText(score: entity.score)
+        let itemSource = ShareActivityItemSource(image: image, shareText: shareText)
         let activityVC = UIActivityViewController(
-            activityItems: [image, shareText],
+            activityItems: [itemSource],
             applicationActivities: nil
         )
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
