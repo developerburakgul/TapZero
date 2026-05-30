@@ -19,6 +19,7 @@ final class TabbarViewModel: ObservableObject {
 
     // MARK: - Managers
     @Injected private(set) var userManager: UserManager
+    @Injected private(set) var gameManager: GameManager
     @Injected private(set) var deepLinkManager: DeepLinkManager
     @Injected private(set) var eventManager: EventManager
 
