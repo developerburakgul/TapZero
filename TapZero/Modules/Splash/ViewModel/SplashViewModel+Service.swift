@@ -29,10 +29,16 @@ extension SplashViewModel {
         guard let auth = authManager.auth else { return }
         do {
             try await userManager.logIn(auth: auth, isNewUser: false)
+            await fetchUserStats()
         } catch {
             crashReporter.record(error: error)
             userLoadFailed = true
         }
+    }
+
+    func fetchUserStats() async {
+        guard let userId = userManager.currentUser?.userId else { return }
+        await gameManager.fetchUserStats(userId: userId)
     }
 
     func signInAnonymouslyAndNavigate() async {

@@ -13,9 +13,11 @@ extension GameSessionViewModel {
         tappedSeconds: Double,
         score: Int
     ) async {
-        // swiftlint:disable no_print
+        // swiftlint:disable:next no_print
         print("[GameSession] Auth UID: \(Auth.auth().currentUser?.uid ?? "nil")")
+        // swiftlint:disable:next no_print
         print("[GameSession] Is anonymous: \(Auth.auth().currentUser?.isAnonymous ?? true)")
+        // swiftlint:disable:next no_print
         print("[GameSession] Providers: \(Auth.auth().currentUser?.providerData.map(\.providerID) ?? [])")
 
         do {

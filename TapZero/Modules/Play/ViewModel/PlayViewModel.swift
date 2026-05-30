@@ -16,8 +16,8 @@ final class PlayViewModel: ObservableObject {
 
     // MARK: - Managers
     @Injected private(set) var eventManager: EventManager
-    @Injected private(set) var userManager: UserManager
-    @Injected private(set) var gameManager: GameManager
+    @ObservedInjected private(set) var userManager: UserManager
+    @ObservedInjected private(set) var gameManager: GameManager
 
     // MARK: - Published Properties
     @Published var selectedTarget: Int = 10

@@ -19,6 +19,7 @@ final class SplashViewModel: ObservableObject {
     @Injected private(set) var userManager: UserManager
     @Injected private(set) var remoteConfigManager: RemoteConfigManager
     @Injected private(set) var keychainManager: KeychainManagerProtocol
+    @Injected private(set) var gameManager: GameManager
     @Injected private(set) var crashReporter: CrashReporterProtocol
     @Injected private(set) var eventManager: EventManager
 

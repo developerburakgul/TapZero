@@ -46,9 +46,12 @@ extension SettingsViewModel {
             detents: [.large],
             dragIndicator: .visible
         )
-        router.showScreen(.sheetConfig(config: config)) { sheetRouter in
+        router.showScreen(.sheetConfig(config: config)) { [weak self] sheetRouter in
             NotificationPermissionScreen {
                 sheetRouter.dismissScreen()
+                Task { [weak self] in
+                    await self?.configure()
+                }
             }
         }
     }
