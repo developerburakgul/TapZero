@@ -16,9 +16,6 @@
     "·" : {
       "extractionState" : "manual"
     },
-    "@%@" : {
-
-    },
     "%lld" : {
       "extractionState" : "manual",
       "generatesSymbol" : false
