@@ -140,6 +140,7 @@ struct ScoreCardView: View, Equatable {
             .foregroundStyle(config.scoreColor)
             .lineLimit(1)
             .minimumScaleFactor(0.5)
+            .padding(.horizontal, 8)
     }
 
     // MARK: - Off Pill

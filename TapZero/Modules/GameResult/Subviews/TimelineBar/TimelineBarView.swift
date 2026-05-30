@@ -98,30 +98,30 @@ extension GameResultScreen {
         // MARK: - Labels
 
         private var labels: some View {
-            HStack {
-                let labelColor = config.foregroundOverride?.opacity(0.35) ?? TapZeroDesign.Foreground.tertiary
+            let labelColor = config.foregroundOverride?.opacity(0.35)
+                ?? TapZeroDesign.Foreground.tertiary
+            let labelFont = Font.system(size: 11, weight: .medium)
 
+            return HStack(spacing: 0) {
                 Text(TextKey.GameResult.early)
-                    .font(.system(size: 11, weight: .medium))
+                    .font(labelFont)
                     .tracking(0.6)
                     .textCase(.uppercase)
                     .foregroundStyle(labelColor)
-
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 Text(TextKey.GameResult.target)
-                    .font(.system(size: 11, weight: .medium))
+                    .font(labelFont)
                     .tracking(0.6)
                     .textCase(.uppercase)
                     .foregroundStyle(labelColor)
-
-                Spacer()
 
                 Text(TextKey.GameResult.late)
-                    .font(.system(size: 11, weight: .medium))
+                    .font(labelFont)
                     .tracking(0.6)
                     .textCase(.uppercase)
                     .foregroundStyle(labelColor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
     }

@@ -18,6 +18,7 @@ final class GameResultViewModel: ObservableObject {
 
     // MARK: - Managers
     @Injected private(set) var eventManager: EventManager
+    @Injected private(set) var userManager: UserManager
 
     // MARK: - Published Properties
 
@@ -75,6 +76,16 @@ extension GameResultViewModel {
         case .bad:
             TapZeroDesign.Score.badBackground
         }
+    }
+
+    var userName: String? {
+        let name = userManager.currentUser?.displayName ?? ""
+        return name.isEmpty ? nil : name
+    }
+
+    var profileImageURL: URL? {
+        guard let urlString = userManager.currentUser?.profileImageURL else { return nil }
+        return URL(string: urlString)
     }
 
     var timelineUserOffset: CGFloat {

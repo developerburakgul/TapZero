@@ -31,9 +31,10 @@ struct GameResultScreen: View {
                 .padding(.horizontal, constants.sheetPadding)
                 .padding(.top, 14)
 
+            Spacer()
+
             scoreCard
                 .padding(.horizontal, constants.sheetPadding)
-                .padding(.top, 14)
 
             Spacer()
 
@@ -103,7 +104,9 @@ struct GameResultScreen: View {
                 targetTimeFormatted: viewModel.targetTimeFormatted,
                 tappedTimeFormatted: viewModel.tappedTimeFormatted,
                 timelineUserOffset: viewModel.timelineUserOffset,
-                targetSeconds: viewModel.entity.targetSeconds
+                targetSeconds: viewModel.entity.targetSeconds,
+                userName: viewModel.userName,
+                profileImageURL: viewModel.profileImageURL
             ),
             constants: cardConstants
         )

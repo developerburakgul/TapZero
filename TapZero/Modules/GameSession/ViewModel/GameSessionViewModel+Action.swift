@@ -112,7 +112,7 @@ extension GameSessionViewModel {
         )
 
         let config = ResizableSheetConfig(
-            detents: [.fraction(0.75)],
+            detents: [.fraction(0.85)],
             dragIndicator: .hidden
         )
 
