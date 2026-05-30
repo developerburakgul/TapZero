@@ -95,15 +95,18 @@ extension LeaderBoardViewModel {
     var currentUserColorHex: String? { userManager.currentUser?.profileColorHex }
 
     // MARK: - Locked State (only Global)
-    var isLocked: Bool { selectedTab == .global && (userStats?.totalGamesPlayed ?? 0) < unlockRequiredGames }
+    var isLocked: Bool {
+        !isLoading && selectedTab == .global
+            && (userStats?.totalGamesPlayed ?? 0) < unlockRequiredGames
+    }
     var gamesPlayed: Int { userStats?.totalGamesPlayed ?? 0 }
     var unlockRequiredGames: Int { 10 }
     var gamesRemaining: Int { max(0, unlockRequiredGames - gamesPlayed) }
     var unlockProgress: CGFloat { CGFloat(gamesPlayed) / CGFloat(unlockRequiredGames) }
 
     // MARK: - Empty State
-    var isGlobalEmpty: Bool { globalEntries.isEmpty }
-    var isDailyEmpty: Bool { dailyEntries.isEmpty }
+    var isGlobalEmpty: Bool { !isLoading && globalEntries.isEmpty }
+    var isDailyEmpty: Bool { !isLoading && dailyEntries.isEmpty }
 
     var showGlobalSpotRow: Bool {
         let count = globalEntries.count
@@ -146,7 +149,7 @@ extension LeaderBoardViewModel {
     }
 
     var showStickyBar: Bool {
-        guard !isLocked else { return false }
+        guard !isLoading, !isLocked else { return false }
         let rank: Int? = selectedTab == .global ? userGlobalRank : userDailyRank
         guard let rank, rank > 0 else { return false }
         return selectedTab == .global ? !isUserInGlobalList : !isUserInDailyList
