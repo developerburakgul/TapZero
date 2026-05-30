@@ -133,4 +133,8 @@ final class UserManager: ObservableObject {
     func saveLastSelectedTab(_ tabIndex: Int) {
         UserDefaults.standard.set(tabIndex, forKey: lastTabKey)
     }
+
+    func clearLastSelectedTab() {
+        UserDefaults.standard.removeObject(forKey: lastTabKey)
+    }
 }

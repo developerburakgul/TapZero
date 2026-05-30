@@ -31,6 +31,7 @@ extension SettingsViewModel {
 
     func performSignOut() {
         do {
+            userManager.clearLastSelectedTab()
             try authManager.signOut()
             userManager.signOut()
             sendEvent(type: .completedSignOut)
@@ -43,6 +44,7 @@ extension SettingsViewModel {
 
     func performDeleteAccount() async {
         do {
+            userManager.clearLastSelectedTab()
             try await userManager.deleteCurrentUser()
             try await authManager.deleteAccount()
             sendEvent(type: .completedDeleteAccount)
