@@ -92,18 +92,18 @@ extension HistoryScreen {
                     }
                 }
 
-                daySections
+                scoreList
             }
         }
         .opacity(viewModel.isLoading ? 0 : 1)
     }
 
-    private var daySections: some View {
-        LazyVStack(spacing: 0) {
-            ForEach(viewModel.groupedByDay) { section in
-                DaySectionView(
+    private var scoreList: some View {
+        LazyVStack(spacing: 6) {
+            ForEach(viewModel.scoreRows) { row in
+                ScoreRowView(
                     binding: .constant(.init()),
-                    config: section
+                    config: row
                 )
             }
         }

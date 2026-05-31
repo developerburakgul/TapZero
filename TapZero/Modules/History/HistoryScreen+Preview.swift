@@ -69,7 +69,7 @@ extension HistoryPreview {
                         binding: .constant(.init()),
                         config: .init(availableTargets: mockTargets)
                     )
-                    daySections
+                    scoreList
                 }
             }
         }
@@ -126,7 +126,7 @@ extension HistoryPreview {
     }
 }
 
-// MARK: - Empty & Day Sections
+// MARK: - Empty & Score List
 
 extension HistoryPreview {
     private var emptyView: some View {
@@ -147,12 +147,12 @@ extension HistoryPreview {
         .padding(.horizontal, 20)
     }
 
-    private var daySections: some View {
-        LazyVStack(spacing: 0) {
-            ForEach(mockDaySections) { section in
-                HistoryScreen.DaySectionView(
+    private var scoreList: some View {
+        LazyVStack(spacing: 6) {
+            ForEach(mockRows) { row in
+                HistoryScreen.ScoreRowView(
                     binding: .constant(.init()),
-                    config: section
+                    config: row
                 )
             }
         }
@@ -176,15 +176,6 @@ extension HistoryPreview {
     private var mockAvgScore: Int {
         guard !games.isEmpty else { return 0 }
         return games.map(\.score).reduce(0, +) / games.count
-    }
-
-    private var mockDaySections: [HistoryScreen.DaySectionEntity.Config] {
-        let todayRows = Array(mockRows.prefix(3))
-        let yesterdayRows = Array(mockRows.dropFirst(3))
-        return [
-            .init(id: "today", dateLabel: "Today", gameCount: todayRows.count, rows: todayRows),
-            .init(id: "yesterday", dateLabel: "Yesterday", gameCount: yesterdayRows.count, rows: yesterdayRows)
-        ]
     }
 
     private var mockRows: [HistoryScreen.ScoreRowEntity.Config] {

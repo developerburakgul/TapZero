@@ -118,45 +118,9 @@ extension HistoryViewModel {
         }
     }
 
-    // MARK: - Day Grouping
-    var groupedByDay: [HistoryScreen.DaySectionEntity.Config] {
-        let calendar = Calendar.current
-        let now = Date()
-
-        let grouped = Dictionary(grouping: filteredGames) { game in
-            calendar.startOfDay(for: game.playedAt)
-        }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-
-        return grouped.keys.sorted(by: >).map { date in
-            let dateLabel = dayLabel(for: date, now: now, calendar: calendar, formatter: dateFormatter)
-            let dayGames = (grouped[date] ?? []).sorted { $0.playedAt > $1.playedAt }
-            let rows = dayGames.map { makeRowConfig(from: $0) }
-
-            return HistoryScreen.DaySectionEntity.Config(
-                id: dateFormatter.string(from: date),
-                dateLabel: dateLabel,
-                gameCount: dayGames.count,
-                rows: rows
-            )
-        }
-    }
-
-    private func dayLabel(for date: Date, now: Date, calendar: Calendar, formatter: DateFormatter) -> String {
-        if calendar.isDateInToday(date) {
-            return TextKey.History.dateTodayStr
-        } else if calendar.isDateInYesterday(date) {
-            return TextKey.History.dateYesterdayStr
-        } else {
-            let days = calendar.dateComponents([.day], from: date, to: now).day ?? 0
-            if days <= 6 {
-                return TextKey.History.rowDaysAgo(days)
-            }
-            return formatter.string(from: date)
-        }
+    // MARK: - Score Rows
+    var scoreRows: [HistoryScreen.ScoreRowEntity.Config] {
+        filteredGames.map { makeRowConfig(from: $0) }
     }
 
     private func makeRowConfig(from game: GameModel) -> HistoryScreen.ScoreRowEntity.Config {

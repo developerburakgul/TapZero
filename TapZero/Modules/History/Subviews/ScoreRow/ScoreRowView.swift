@@ -19,10 +19,13 @@ extension HistoryScreen {
             HStack(spacing: constants.rowSpacing) {
                 scoreGauge
                 metaSection
+                Spacer(minLength: 0)
             }
             .padding(.leading, constants.rowLeadingPadding)
             .padding(.trailing, constants.rowTrailingPadding)
             .padding(.vertical, constants.rowVerticalPadding)
+            .background(TapZeroDesign.Background.card)
+            .clipShape(RoundedRectangle(cornerRadius: constants.rowCornerRadius))
         }
 
         // MARK: - Score Gauge
