@@ -7,6 +7,13 @@ import Foundation
 
 // MARK: - Service
 extension HistoryViewModel {
-    func fetchData() async {
+    func fetchGameHistory() async {
+        guard let userId = currentUserId else { return }
+        await gameManager.fetchGameHistory(userId: userId, limit: 50)
+    }
+
+    func fetchUserStats() async {
+        guard let userId = currentUserId else { return }
+        await gameManager.fetchUserStats(userId: userId)
     }
 }

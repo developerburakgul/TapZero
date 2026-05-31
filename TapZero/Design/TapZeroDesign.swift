@@ -397,6 +397,50 @@ enum TapZeroDesign {
         static var bgGreen: Color
     }
 
+    // MARK: - History
+
+    enum History {
+        // Score disc fills (per rating)
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var perfectDisc: Color
+
+        @DynamicColor(hex: TapZeroPalette.Green.G400)
+        static var goodDisc: Color
+
+        @DynamicColor(hex: TapZeroPalette.Yellow.Y500)
+        static var midDisc: Color
+
+        @DynamicColor(hex: TapZeroPalette.Red.R500)
+        static var badDisc: Color
+
+        // Chart
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var chartLine: Color
+
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.06),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.06)
+        )
+        static var chartGrid: Color
+
+        // Heatmap intensities
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N250, hexDark: TapZeroPalette.Neutral.N820)
+        static var heatmapEmpty: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Green.G50, hexDark: TapZeroPalette.Green.G900)
+        static var heatmapLow: Color
+
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var heatmapHigh: Color
+
+        // Chip
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N250, hexDark: TapZeroPalette.Neutral.N820)
+        static var chipBackground: Color
+
+        @DynamicColor(hexLight: TapZeroPalette.Neutral.N700, hexDark: TapZeroPalette.Neutral.N400)
+        static var chipForeground: Color
+    }
+
     // MARK: - Splash
 
     enum Splash {
