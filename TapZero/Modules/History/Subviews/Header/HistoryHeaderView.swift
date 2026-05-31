@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {

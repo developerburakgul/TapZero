@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -34,7 +34,7 @@ extension HistoryScreen {
 
         private var headerRow: some View {
             HStack(alignment: .firstTextBaseline) {
-                Text("Last 14 days")
+                Text(TextKey.History.streakLast14Days)
                     .font(.system(size: 11, weight: .bold))
                     .tracking(1.2)
                     .textCase(.uppercase)
@@ -43,7 +43,7 @@ extension HistoryScreen {
                 Spacer()
 
                 if config.currentStreak > 0 {
-                    Text("\(config.currentStreak)-day streak")
+                    Text(TextKey.History.streakDays(config.currentStreak))
                         .font(.system(size: 12, weight: .bold))
                         .tracking(-0.1)
                         .foregroundStyle(TapZeroDesign.Status.good)

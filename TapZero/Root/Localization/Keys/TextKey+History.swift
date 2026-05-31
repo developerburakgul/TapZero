@@ -34,6 +34,48 @@ extension TextKey {
         static let statTargetsPlayed: LocalizedStringKey = "history.stat.targetsPlayed"
         static let statStreak: LocalizedStringKey = "history.stat.streak"
 
+        // KPI subtexts
+        static func kpiBestRoundSub(_ date: String) -> LocalizedStringKey {
+            "history.kpi.bestRound.sub \(date)"
+        }
+
+        static let kpiBestStreakSub: LocalizedStringKey = "history.kpi.bestStreak.sub"
+
+        static func kpiPerfectSub(total: Int, percentage: String) -> LocalizedStringKey {
+            "history.kpi.perfect.sub \(total) \(percentage)"
+        }
+
+        static let kpiAvgOffBySub: LocalizedStringKey = "history.kpi.avgOffBy.sub"
+
+        // Hero stat
+        static func heroAcrossGames(_ count: Int) -> LocalizedStringKey {
+            "history.hero.acrossGames \(count)"
+        }
+
+        static let heroTrend: LocalizedStringKey = "history.hero.trend"
+
+        static func heroTrendValue(arrow: String, percentage: String) -> LocalizedStringKey {
+            "history.hero.trendValue \(arrow) \(percentage)"
+        }
+
+        // Distribution
+        static let distributionByAccuracy: LocalizedStringKey = "history.distribution.byAccuracy"
+
+        // Targets
+        static let targetsTop5: LocalizedStringKey = "history.targets.top5"
+
+        // Streak
+        static let streakLast14Days: LocalizedStringKey = "history.streak.last14Days"
+
+        static func streakDays(_ count: Int) -> LocalizedStringKey {
+            "history.streak.days \(count)"
+        }
+
+        // Filter target option
+        static func filterTargetOption(_ seconds: Int) -> LocalizedStringKey {
+            "history.filter.targetOption \(seconds)"
+        }
+
         // Empty state
         static let emptyTitle: LocalizedStringKey = "history.empty.title"
         static let emptySubtitle: LocalizedStringKey = "history.empty.subtitle"
@@ -47,6 +89,32 @@ extension TextKey {
         static let ratingGood: LocalizedStringKey = "history.rating.good"
         static let ratingMid: LocalizedStringKey = "history.rating.mid"
         static let ratingOff: LocalizedStringKey = "history.rating.off"
+
+        // Chart pill
+        static func chartPillScore(_ score: Int) -> LocalizedStringKey {
+            "history.chart.pillScore \(score)"
+        }
+
+        static func chartPillGame(_ number: Int) -> LocalizedStringKey {
+            "history.chart.pillGame \(number)"
+        }
+
+        // MARK: - String (computed)
+        static var dateTodayStr: String { TextKey.localized("history.date.today") }
+        static var dateYesterdayStr: String { TextKey.localized("history.date.yesterday") }
+
+        // MARK: - String (format functions)
+        static func rowTitle(target: Int, tapped: String) -> String {
+            TextKey.localized("history.row.title \(target) \(tapped)")
+        }
+
+        static func rowOffset(sign: String, delta: String) -> String {
+            TextKey.localized("history.row.offset \(sign) \(delta)")
+        }
+
+        static func rowDaysAgo(_ days: Int) -> String {
+            TextKey.localized("history.row.daysAgo \(days)")
+        }
 
         // Dynamic
         static func gameCount(_ count: Int) -> LocalizedStringKey {

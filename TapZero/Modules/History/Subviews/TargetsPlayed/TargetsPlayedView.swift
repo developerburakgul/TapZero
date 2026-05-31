@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -34,13 +34,13 @@ extension HistoryScreen {
 
         private var headerRow: some View {
             HStack(alignment: .firstTextBaseline) {
-                Text("Targets played")
+                Text(TextKey.History.statTargetsPlayed)
                     .font(.system(size: 11, weight: .bold))
                     .tracking(1.2)
                     .textCase(.uppercase)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
                 Spacer()
-                Text("top 5")
+                Text(TextKey.History.targetsTop5)
                     .font(.system(size: 12, weight: .medium))
                     .tracking(-0.1)
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)

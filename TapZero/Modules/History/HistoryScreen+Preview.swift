@@ -45,9 +45,11 @@ private struct HistoryPreview: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         .animation(.easeInOut(duration: 0.25), value: selectedTab)
     }
+}
 
-    // MARK: - Scores Page
+// MARK: - Scores Page
 
+extension HistoryPreview {
     @ViewBuilder
     private var scoresPage: some View {
         if games.isEmpty {
@@ -56,32 +58,33 @@ private struct HistoryPreview: View {
             ScrollView {
                 VStack(spacing: 0) {
                     HistoryScreen.ScoreChartView(
-                        binding: .constant(.init()),
-                        config: .init(dataPoints: chartPoints, isEmpty: false)
+                        binding: .constant(.init(selectedGameId: games.count)),
+                        config: .init(
+                            dataPoints: chartPoints,
+                            isEmpty: false,
+                            averageScore: mockAvgScore
+                        )
                     )
                     HistoryScreen.FilterSortView(
                         binding: .constant(.init()),
-                        config: .init(
-                            availableTargets: mockTargets,
-                            gameCount: games.count
-                        )
+                        config: .init(availableTargets: mockTargets)
                     )
                     daySections
                 }
             }
         }
     }
+}
 
-    // MARK: - Stats Page
+// MARK: - Stats Page
 
+extension HistoryPreview {
     @ViewBuilder
     private var statsPage: some View {
         if games.isEmpty {
             emptyView
         } else {
-            ScrollView {
-                statsContent
-            }
+            ScrollView { statsContent }
         }
     }
 
@@ -121,7 +124,11 @@ private struct HistoryPreview: View {
         .padding(.horizontal, 20)
         .padding(.bottom, 20)
     }
+}
 
+// MARK: - Empty & Day Sections
+
+extension HistoryPreview {
     private var emptyView: some View {
         VStack(spacing: 12) {
             Spacer()
@@ -140,8 +147,6 @@ private struct HistoryPreview: View {
         .padding(.horizontal, 20)
     }
 
-    // MARK: - Day Sections
-
     private var daySections: some View {
         LazyVStack(spacing: 0) {
             ForEach(mockDaySections) { section in
@@ -153,9 +158,11 @@ private struct HistoryPreview: View {
         }
         .padding(.horizontal, 20)
     }
+}
 
-    // MARK: - Mock Builders
+// MARK: - Mock Builders
 
+extension HistoryPreview {
     private var chartPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] {
         games.enumerated().map { index, game in
             .init(id: index + 1, score: game.score, rating: game.rating)
@@ -183,6 +190,8 @@ private struct HistoryPreview: View {
     private var mockRows: [HistoryScreen.ScoreRowEntity.Config] {
         games.enumerated().map { index, game in
             let sign = game.tapped >= Double(game.target) ? "+" : "−"
+            let tapped = String(format: "%.2f", game.tapped)
+            let delta = String(format: "%.2f", game.delta)
             return .init(
                 id: "\(index)",
                 score: game.score,
@@ -192,18 +201,16 @@ private struct HistoryPreview: View {
                 rating: game.rating,
                 discColor: discColor(game.rating),
                 discSoftBackground: rowBg(game.rating),
-                dateFormatted: game.time,
-                subtitleFormatted: mockSubtitle(game: game, sign: sign)
+                dateFormatted: "\(game.target)s · \(tapped)s",
+                subtitleFormatted: "\(game.time) · \(sign)\(delta)s"
             )
         }
     }
+}
 
-    private func mockSubtitle(game: MockGame, sign: String) -> String {
-        let tapped = String(format: "%.2f", game.tapped)
-        let delta = String(format: "%.2f", game.delta)
-        return "\(game.target)s · \(tapped)s · \(sign)\(delta)s"
-    }
+// MARK: - Color Helpers
 
+extension HistoryPreview {
     private func discColor(_ rating: PerformanceRating) -> Color {
         switch rating {
         case .perfect: TapZeroDesign.History.perfectDisc
@@ -220,7 +227,11 @@ private struct HistoryPreview: View {
         case .bad: TapZeroDesign.Score.badBackground
         }
     }
+}
 
+// MARK: - Stats Mock Data
+
+extension HistoryPreview {
     private var mockDistribution: [HistoryScreen.DistributionEntity.DistributionSegment] {
         [
             .init(id: "perfect", rating: .perfect, count: 5, percentage: 25, color: TapZeroDesign.History.perfectDisc),
@@ -271,16 +282,16 @@ private struct MockGame {
 }
 
 private let fullGames: [MockGame] = [
-    .init(score: 998, target: 10, tapped: 10.01, delta: 0.01, rating: .perfect, time: "2:34 PM"),
-    .init(score: 870, target: 15, tapped: 14.78, delta: 0.22, rating: .good, time: "2:20 PM"),
-    .init(score: 935, target: 5, tapped: 4.93, delta: 0.07, rating: .good, time: "2:05 PM"),
-    .init(score: 720, target: 10, tapped: 9.45, delta: 0.55, rating: .mid, time: "11:30 AM"),
-    .init(score: 640, target: 20, tapped: 18.5, delta: 1.5, rating: .bad, time: "11:15 AM"),
-    .init(score: 950, target: 5, tapped: 5.05, delta: 0.05, rating: .good, time: "10:45 AM"),
-    .init(score: 995, target: 10, tapped: 9.99, delta: 0.01, rating: .perfect, time: "10:30 AM"),
-    .init(score: 810, target: 15, tapped: 14.62, delta: 0.38, rating: .mid, time: "9:00 AM"),
-    .init(score: 890, target: 10, tapped: 10.15, delta: 0.15, rating: .good, time: "8:45 AM"),
-    .init(score: 960, target: 5, tapped: 5.04, delta: 0.04, rating: .good, time: "8:30 AM")
+    .init(score: 998, target: 10, tapped: 10.01, delta: 0.01, rating: .perfect, time: "Today"),
+    .init(score: 870, target: 15, tapped: 14.78, delta: 0.22, rating: .good, time: "Today"),
+    .init(score: 935, target: 5, tapped: 4.93, delta: 0.07, rating: .good, time: "Today"),
+    .init(score: 720, target: 10, tapped: 9.45, delta: 0.55, rating: .mid, time: "Yesterday"),
+    .init(score: 640, target: 20, tapped: 18.5, delta: 1.5, rating: .bad, time: "Yesterday"),
+    .init(score: 950, target: 5, tapped: 5.05, delta: 0.05, rating: .good, time: "Yesterday"),
+    .init(score: 995, target: 10, tapped: 9.99, delta: 0.01, rating: .perfect, time: "Yesterday"),
+    .init(score: 810, target: 15, tapped: 14.62, delta: 0.38, rating: .mid, time: "Yesterday"),
+    .init(score: 890, target: 10, tapped: 10.15, delta: 0.15, rating: .good, time: "Yesterday"),
+    .init(score: 960, target: 5, tapped: 5.04, delta: 0.04, rating: .good, time: "Yesterday")
 ]
 
 // MARK: - Screen Previews
@@ -301,7 +312,7 @@ private let fullGames: [MockGame] = [
     HistoryPreview(
         tab: .scores,
         games: [
-            .init(score: 870, target: 10, tapped: 10.18, delta: 0.18, rating: .good, time: "3:00 PM")
+            .init(score: 870, target: 10, tapped: 10.18, delta: 0.18, rating: .good, time: "Today")
         ]
     )
 }

@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -24,33 +24,36 @@ extension HistoryScreen {
                 spacing: constants.gridSpacing
             ) {
                 kpiCard(
-                    label: "Best round",
+                    label: TextKey.History.statBestRound,
                     value: "\(config.bestRoundScore)",
-                    subtext: "pts · \(config.bestRoundDate)"
+                    subtext: TextKey.History.kpiBestRoundSub(config.bestRoundDate)
                 )
                 kpiCard(
-                    label: "Best streak",
+                    label: TextKey.History.statBestStreak,
                     value: "\(config.bestStreak)",
-                    subtext: "good rounds in a row"
+                    subtext: TextKey.History.kpiBestStreakSub
                 )
                 kpiCard(
-                    label: "Perfect",
+                    label: TextKey.History.statPerfectRounds,
                     value: "\(config.perfectCount)",
-                    subtext: "of \(config.totalGames) — \(String(format: "%.0f", config.perfectPercentage))%",
+                    subtext: TextKey.History.kpiPerfectSub(
+                        total: config.totalGames,
+                        percentage: String(format: "%.0f", config.perfectPercentage)
+                    ),
                     accentColor: TapZeroDesign.Status.good
                 )
                 kpiCard(
-                    label: "Avg off-by",
+                    label: TextKey.History.statAvgOffBy,
                     value: config.avgOffBy,
-                    subtext: "all games"
+                    subtext: TextKey.History.kpiAvgOffBySub
                 )
             }
         }
 
         private func kpiCard(
-            label: String,
+            label: LocalizedStringKey,
             value: String,
-            subtext: String,
+            subtext: LocalizedStringKey,
             accentColor: Color? = nil
         ) -> some View {
             VStack(alignment: .leading, spacing: constants.cardGap) {

@@ -16,6 +16,9 @@
     "·" : {
       "extractionState" : "manual"
     },
+    "#%lld" : {
+
+    },
     "%@ %@%%" : {
       "localizations" : {
         "en" : {
@@ -31,6 +34,9 @@
       "generatesSymbol" : false
     },
     "%lld games" : {
+
+    },
+    "%lld pts" : {
 
     },
     "%lld-day streak" : {
@@ -49,6 +55,9 @@
       "extractionState" : "manual"
     },
     "across %lld games" : {
+
+    },
+    "Average" : {
 
     },
     "by accuracy" : {
@@ -1787,6 +1796,9 @@
         }
       }
     },
+    "game #%lld" : {
+
+    },
     "gameResult.brand" : {
       "localizations" : {
         "ar" : {
@@ -2590,6 +2602,114 @@
         }
       }
     },
+    "history.chart.pillScore %lld" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "%lld نقطة" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%lld Pkt" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld pts" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%lld pts" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%lld pts" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "%lld pti" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%lld点" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%lld점" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%lld puan" } }
+      }
+    },
+    "history.chart.pillGame %lld" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "لعبة #%lld" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Spiel #%lld" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "game #%lld" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "juego #%lld" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "partie #%lld" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "partita #%lld" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ゲーム #%lld" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "게임 #%lld" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "oyun #%lld" } }
+      }
+    },
+    "history.row.title %lld %@" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "%1$lldث · %2$@ث" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%1$llds · %2$@s" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%1$llds · %2$@s" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%1$llds · %2$@s" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$llds · %2$@s" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "%1$llds · %2$@s" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%1$lld秒 · %2$@秒" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%1$lld초 · %2$@초" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%1$lldsn · %2$@sn" } }
+      }
+    },
+    "history.row.offset %@ %@" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@ث" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@s" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@s" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@s" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@s" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@s" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@秒" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@초" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@%2$@sn" } }
+      }
+    },
+    "history.row.daysAgo %lld" : {
+      "localizations" : {
+        "ar" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "قبل %lld يوم" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "قبل %lld أيام" } }
+          }}
+        },
+        "de" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "vor %lld Tag" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "vor %lld Tagen" } }
+          }}
+        },
+        "en" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "%lld day ago" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld days ago" } }
+          }}
+        },
+        "es" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "hace %lld día" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "hace %lld días" } }
+          }}
+        },
+        "fr" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "il y a %lld jour" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "il y a %lld jours" } }
+          }}
+        },
+        "it" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "%lld giorno fa" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld giorni fa" } }
+          }}
+        },
+        "ja" : {
+          "variations" : { "plural" : {
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld日前" } }
+          }}
+        },
+        "ko" : {
+          "variations" : { "plural" : {
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld일 전" } }
+          }}
+        },
+        "tr" : {
+          "variations" : { "plural" : {
+            "one"   : { "stringUnit" : { "state" : "translated", "value" : "%lld gün önce" } },
+            "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld gün önce" } }
+          }}
+        }
+      }
+    },
     "history.empty.subtitle" : {
       "localizations" : {
         "en" : {
@@ -2604,6 +2724,162 @@
             "value" : "Geçmişini görmek için ilk oyununu oyna."
           }
         }
+      }
+    },
+    "history.kpi.bestRound.sub %@" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "نقطة · %@" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Pkt · %@" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "pts · %@" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "pts · %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "pts · %@" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "pti · %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "点 · %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "점 · %@" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "puan · %@" } }
+      }
+    },
+    "history.kpi.bestStreak.sub" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "جولات جيدة متتالية" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "gute Runden in Folge" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "good rounds in a row" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "buenas rondas seguidas" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "bonnes manches d'affilée" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "turni buoni consecutivi" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "連続グッドラウンド" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "연속 좋은 라운드" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "ard arda iyi tur" } }
+      }
+    },
+    "history.kpi.perfect.sub %lld %@" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "من %1$lld — %2$@%%" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "von %1$lld — %2$@%%" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "of %1$lld — %2$@%%" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "de %1$lld — %2$@%%" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "sur %1$lld — %2$@%%" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "di %1$lld — %2$@%%" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%1$lld中 — %2$@%%" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%1$lld중 — %2$@%%" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%1$lld oyunun — %%%2$@" } }
+      }
+    },
+    "history.kpi.avgOffBy.sub" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "جميع الألعاب" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "alle Spiele" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "all games" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "todos los juegos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "toutes les parties" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "tutte le partite" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "全ゲーム" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "모든 게임" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "tüm oyunlar" } }
+      }
+    },
+    "history.hero.acrossGames %lld" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "عبر %lld لعبة" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "über %lld Spiele" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "across %lld games" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "en %lld juegos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "sur %lld parties" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "su %lld partite" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%lldゲーム中" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%lld게임 기준" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%lld oyun üzerinden" } }
+      }
+    },
+    "history.hero.trend" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "الاتجاه" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Trend" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Trend" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Tendencia" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tendance" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Trend" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "トレンド" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "추세" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Trend" } }
+      }
+    },
+    "history.hero.trendValue %@ %@" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ %2$@%%" } }
+      }
+    },
+    "history.distribution.byAccuracy" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "حسب الدقة" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "nach Genauigkeit" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "by accuracy" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "por precisión" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "par précision" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "per precisione" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "精度別" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "정확도별" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "doğruluğa göre" } }
+      }
+    },
+    "history.targets.top5" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "أعلى ٥" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Top 5" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "top 5" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "top 5" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "top 5" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "top 5" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "トップ5" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "상위 5개" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "ilk 5" } }
+      }
+    },
+    "history.streak.last14Days" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "آخر ١٤ يومًا" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Letzte 14 Tage" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Last 14 days" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Últimos 14 días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "14 derniers jours" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "Ultimi 14 giorni" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "過去14日間" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "최근 14일" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Son 14 gün" } }
+      }
+    },
+    "history.streak.days %lld" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "سلسلة %lld يوم" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%lld-Tage-Serie" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld-day streak" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "racha de %lld días" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "série de %lld jours" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "serie di %lld giorni" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%lld日連続" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%lld일 연속" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%lld günlük seri" } }
+      }
+    },
+    "history.filter.targetOption %lld" : {
+      "localizations" : {
+        "ar" : { "stringUnit" : { "state" : "translated", "value" : "%lldث" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "%llds" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%llds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "%llds" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%llds" } },
+        "it" : { "stringUnit" : { "state" : "translated", "value" : "%llds" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%lld秒" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "%lld초" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "%lldsn" } }
       }
     },
     "history.empty.title" : {
@@ -8356,6 +8632,9 @@
           }
         }
       }
+    },
+    "Selected" : {
+
     },
     "settings.about" : {
       "localizations" : {

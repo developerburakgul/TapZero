@@ -404,10 +404,13 @@ enum TapZeroDesign {
         @DynamicColor(hex: TapZeroPalette.Green.G600)
         static var perfectDisc: Color
 
-        @DynamicColor(hex: TapZeroPalette.Green.G400)
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
         static var goodDisc: Color
 
-        @DynamicColor(hex: TapZeroPalette.Yellow.Y500)
+        @DynamicColor(
+            uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N600),
+            uiColorDark: UIColor(hex: TapZeroPalette.Neutral.N50).withAlphaComponent(0.6)
+        )
         static var midDisc: Color
 
         @DynamicColor(hex: TapZeroPalette.Red.R500)
@@ -416,6 +419,9 @@ enum TapZeroDesign {
         // Chart
         @DynamicColor(hex: TapZeroPalette.Green.G600)
         static var chartLine: Color
+
+        @DynamicColor(hex: TapZeroPalette.Green.G600)
+        static var chartAverage: Color
 
         @DynamicColor(
             uiColorLight: UIColor(hex: TapZeroPalette.Neutral.N900).withAlphaComponent(0.06),

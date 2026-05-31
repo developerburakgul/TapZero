@@ -31,11 +31,11 @@ final class HistoryViewModel: ObservableObject {
     )
     @Published var scoreChartEntity: HistoryScreen.ScoreChartEntity = .init(
         binding: .init(),
-        config: .init(dataPoints: [], isEmpty: true)
+        config: .init(dataPoints: [], isEmpty: true, averageScore: 0)
     )
     @Published var filterSortEntity: HistoryScreen.FilterSortEntity = .init(
         binding: .init(),
-        config: .init(availableTargets: [], gameCount: 0)
+        config: .init(availableTargets: [])
     )
     @Published var heroStatEntity: HistoryScreen.HeroStatEntity = .init(
         binding: .init(),
@@ -149,19 +149,27 @@ extension HistoryViewModel {
 
     private func dayLabel(for date: Date, now: Date, calendar: Calendar, formatter: DateFormatter) -> String {
         if calendar.isDateInToday(date) {
-            return String(localized: "history.date.today")
+            return TextKey.History.dateTodayStr
         } else if calendar.isDateInYesterday(date) {
-            return String(localized: "history.date.yesterday")
+            return TextKey.History.dateYesterdayStr
         } else {
             let days = calendar.dateComponents([.day], from: date, to: now).day ?? 0
-            return days <= 6 ? "\(days) days ago" : formatter.string(from: date)
+            if days <= 6 {
+                return TextKey.History.rowDaysAgo(days)
+            }
+            return formatter.string(from: date)
         }
     }
 
     private func makeRowConfig(from game: GameModel) -> HistoryScreen.ScoreRowEntity.Config {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateStyle = .none
-        timeFormatter.timeStyle = .short
+        let tappedFormatted = String(format: "%.2f", game.tappedSeconds)
+        let title = TextKey.History.rowTitle(target: game.targetSeconds, tapped: tappedFormatted)
+
+        let sign = game.tappedSeconds >= Double(game.targetSeconds) ? "+" : "−"
+        let deltaFormatted = String(format: "%.2f", game.delta)
+        let relDate = relativeDate(for: game.playedAt)
+        let offset = TextKey.History.rowOffset(sign: sign, delta: deltaFormatted)
+        let subtitle = "\(relDate) · \(offset)"
 
         return HistoryScreen.ScoreRowEntity.Config(
             id: game.gameId,
@@ -172,8 +180,8 @@ extension HistoryViewModel {
             rating: game.performanceRating,
             discColor: discColor(for: game.performanceRating),
             discSoftBackground: discSoftBackground(for: game.performanceRating),
-            dateFormatted: timeFormatter.string(from: game.playedAt),
-            subtitleFormatted: subtitleText(for: game)
+            dateFormatted: title,
+            subtitleFormatted: subtitle
         )
     }
 
@@ -331,12 +339,23 @@ extension HistoryViewModel {
         }
     }
 
-    private func subtitleText(for game: GameModel) -> String {
-        let sign = game.tappedSeconds >= Double(game.targetSeconds) ? "+" : "−"
-        let target = "\(game.targetSeconds)s"
-        let tapped = String(format: "%.2fs", game.tappedSeconds)
-        let off = String(format: "%@%.2fs", sign, game.delta)
-        return "\(target) · \(tapped) · \(off)"
+    private func relativeDate(for date: Date) -> String {
+        let calendar = Calendar.current
+        if calendar.isDateInToday(date) {
+            return TextKey.History.dateTodayStr
+        } else if calendar.isDateInYesterday(date) {
+            return TextKey.History.dateYesterdayStr
+        } else {
+            let days = calendar.dateComponents([.day], from: date, to: Date()).day ?? 0
+            if days <= 6 {
+                return TextKey.History.rowDaysAgo(days)
+            } else {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                formatter.timeStyle = .none
+                return formatter.string(from: date)
+            }
+        }
     }
 
     private func weekdaySymbol(for date: Date, calendar: Calendar) -> String {

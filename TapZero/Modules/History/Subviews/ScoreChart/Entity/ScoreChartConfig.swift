@@ -9,6 +9,7 @@ extension HistoryScreen.ScoreChartEntity {
     struct Config: Equatable {
         let dataPoints: [ChartDataPoint]
         let isEmpty: Bool
+        let averageScore: Int
     }
 
     struct ChartDataPoint: Equatable, Identifiable {

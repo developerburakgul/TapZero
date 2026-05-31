@@ -21,7 +21,6 @@ extension HistoryScreen {
                 targetChip
                 sortChip
                 Spacer()
-                gameCountLabel
             }
             .padding(.horizontal, constants.horizontalPadding)
             .padding(.top, constants.topPadding)
@@ -37,7 +36,7 @@ extension HistoryScreen {
                     onAction?(.filterChanged(nil))
                 } label: {
                     HStack {
-                        Text(String(localized: "history.filter.all"))
+                        Text(TextKey.History.filterAll)
                         if binding.selectedTarget == nil {
                             Image(systemName: "checkmark")
                         }
@@ -48,7 +47,7 @@ extension HistoryScreen {
                         onAction?(.filterChanged(target))
                     } label: {
                         HStack {
-                            Text("\(target)s")
+                            Text(TextKey.History.filterTargetOption(target))
                             if binding.selectedTarget == target {
                                 Image(systemName: "checkmark")
                             }
@@ -69,41 +68,44 @@ extension HistoryScreen {
             if let target = binding.selectedTarget {
                 return "\(target)s"
             }
-            return String(localized: "history.label.target")
+            return TextKey.localized("history.label.target")
         }
 
         // MARK: - Sort Chip
 
         private var sortChip: some View {
-            Button {
-                let newOrder: FilterSortEntity.SortOrder =
-                    binding.sortOrder == .newest ? .best : .newest
-                onAction?(.sortChanged(newOrder))
+            Menu {
+                ForEach(FilterSortEntity.SortOrder.allCases, id: \.self) { order in
+                    Button {
+                        onAction?(.sortChanged(order))
+                    } label: {
+                        HStack {
+                            Text(sortLabel(for: order))
+                            if binding.sortOrder == order {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                }
             } label: {
                 chipLabel(
                     icon: "arrow.up.arrow.down",
                     text: sortChipText,
-                    showChevron: false,
+                    showChevron: true,
                     isActive: false
                 )
             }
-            .buttonStyle(.plain)
         }
 
         private var sortChipText: String {
-            binding.sortOrder == .newest
-                ? String(localized: "history.sort.newest")
-                : String(localized: "history.sort.best")
+            sortLabel(for: binding.sortOrder)
         }
 
-        // MARK: - Game Count
-
-        private var gameCountLabel: some View {
-            Text(TextKey.History.gameCount(config.gameCount))
-                .font(.system(size: 12, weight: .semibold))
-                .tracking(-0.1)
-                .monospacedDigit()
-                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+        private func sortLabel(for order: FilterSortEntity.SortOrder) -> String {
+            switch order {
+            case .newest: TextKey.localized("history.sort.newest")
+            case .best: TextKey.localized("history.sort.best")
+            }
         }
 
         // MARK: - Chip Label
@@ -131,7 +133,7 @@ extension HistoryScreen {
             }
             .foregroundStyle(
                 isActive
-                    ? Color(hex: TapZeroPalette.Neutral.N50)
+                    ? TapZeroDesign.Button.primaryForeground
                     : TapZeroDesign.Foreground.primary
             )
             .frame(height: constants.chipHeight)
@@ -177,7 +179,7 @@ private struct FilterSortPreview: View {
     ) {
         _entity = State(initialValue: .init(
             binding: .init(selectedTarget: selectedTarget, sortOrder: sortOrder),
-            config: .init(availableTargets: [3, 5, 7, 10, 15, 20, 30], gameCount: 60)
+            config: .init(availableTargets: [3, 5, 7, 10, 15, 20, 30])
         ))
     }
 

@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -42,7 +42,7 @@ extension HistoryScreen {
                     .foregroundStyle(TapZeroDesign.Background.primary)
                     .padding(.top, 4)
 
-                Text("across \(config.totalGames) games")
+                Text(TextKey.History.heroAcrossGames(config.totalGames))
                     .font(.system(size: 12, weight: .medium))
                     .tracking(-0.1)
                     .foregroundStyle(TapZeroDesign.Background.primary.opacity(0.7))
@@ -54,10 +54,12 @@ extension HistoryScreen {
 
         private var rightSection: some View {
             VStack(alignment: .trailing, spacing: 0) {
-                heroLabel("Trend")
+                heroLabel(TextKey.History.heroTrend)
 
                 if let trend = config.trendPercentage {
-                    Text("\(config.trendIsPositive ? "↑" : "↓") \(String(format: "%.0f", abs(trend)))%")
+                    let arrow = config.trendIsPositive ? "↑" : "↓"
+                    let pct = String(format: "%.0f", abs(trend))
+                    Text(TextKey.History.heroTrendValue(arrow: arrow, percentage: pct))
                         .font(.system(size: 18, weight: .bold))
                         .tracking(-0.4)
                         .foregroundStyle(

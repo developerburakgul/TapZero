@@ -12,12 +12,12 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
             HStack(spacing: constants.rowSpacing) {
-                scoreDisc
+                scoreGauge
                 metaSection
             }
             .padding(.leading, constants.rowLeadingPadding)
@@ -25,24 +25,43 @@ extension HistoryScreen {
             .padding(.vertical, constants.rowVerticalPadding)
         }
 
-        // MARK: - Score Disc
+        // MARK: - Score Gauge
 
-        private var scoreDisc: some View {
-            Text("\(config.score)")
-                .font(.system(size: constants.scoreFontSize, weight: .bold, design: .rounded))
-                .tracking(-0.3)
-                .monospacedDigit()
-                .foregroundStyle(config.discColor)
-                .frame(width: constants.discSize, height: constants.discSize)
-                .fixedSize()
-                .background(config.discSoftBackground)
-                .clipShape(Circle())
-                .overlay(
-                    Circle()
-                        .stroke(config.discColor.opacity(0.20), lineWidth: 1)
-                )
-                .shadow(color: config.discColor.opacity(0.10), radius: 1.5, x: 0, y: 0)
-                .shadow(color: config.discColor.opacity(0.22), radius: 2, x: 0, y: 0)
+        private var scoreGauge: some View {
+            let ringSize = constants.discSize - constants.trackWidth
+            return ZStack {
+                Circle()
+                    .fill(config.discSoftBackground)
+
+                Circle()
+                    .stroke(
+                        config.discColor.opacity(constants.trackOpacity),
+                        lineWidth: constants.trackWidth
+                    )
+                    .frame(width: ringSize, height: ringSize)
+
+                Circle()
+                    .trim(from: 0, to: CGFloat(config.score) / 1000.0)
+                    .stroke(
+                        config.discColor,
+                        style: StrokeStyle(lineWidth: constants.trackWidth, lineCap: .round)
+                    )
+                    .frame(width: ringSize, height: ringSize)
+                    .rotationEffect(.degrees(-90))
+
+                Text("\(config.score)")
+                    .font(.system(size: constants.scoreFontSize, weight: .bold))
+                    .tracking(-0.3)
+                    .monospacedDigit()
+                    .foregroundStyle(scoreTextColor)
+            }
+            .frame(width: constants.discSize, height: constants.discSize)
+        }
+
+        private var scoreTextColor: Color {
+            config.rating == .mid
+                ? TapZeroDesign.Foreground.primary
+                : config.discColor
         }
 
         // MARK: - Meta
@@ -52,11 +71,13 @@ extension HistoryScreen {
                 Text(config.dateFormatted)
                     .font(.system(size: 15, weight: .semibold))
                     .tracking(-0.2)
+                    .monospacedDigit()
                     .foregroundStyle(TapZeroDesign.Foreground.primary)
 
                 Text(config.subtitleFormatted)
                     .font(.system(size: 12, weight: .medium))
                     .tracking(-0.1)
+                    .monospacedDigit()
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
             }
         }
@@ -73,24 +94,24 @@ extension HistoryScreen {
             tappedSeconds: 5.01, delta: 0.01, rating: .perfect,
             discColor: TapZeroDesign.History.perfectDisc,
             discSoftBackground: TapZeroDesign.Score.goodBackground,
-            dateFormatted: "2:34 PM",
-            subtitleFormatted: "5s · 5.01s · +0.01s"
+            dateFormatted: "5s · 5.01s",
+            subtitleFormatted: "Today · +0.01s"
         )
     )
     .padding(.horizontal, 20)
     .background(TapZeroDesign.Background.primary)
 }
 
-#Preview("Row — Bad") {
+#Preview("Row — Good") {
     HistoryScreen.ScoreRowView(
         binding: .constant(.init()),
         config: .init(
-            id: "2", score: 640, targetSeconds: 5,
-            tappedSeconds: 4.0, delta: 1.0, rating: .bad,
-            discColor: TapZeroDesign.History.badDisc,
-            discSoftBackground: TapZeroDesign.Score.badBackground,
-            dateFormatted: "May 27",
-            subtitleFormatted: "5s · 4.00s · −1.00s"
+            id: "2", score: 870, targetSeconds: 15,
+            tappedSeconds: 14.78, delta: 0.22, rating: .good,
+            discColor: TapZeroDesign.History.goodDisc,
+            discSoftBackground: TapZeroDesign.Score.goodBackground,
+            dateFormatted: "15s · 14.78s",
+            subtitleFormatted: "Today · −0.22s"
         )
     )
     .padding(.horizontal, 20)
@@ -101,12 +122,28 @@ extension HistoryScreen {
     HistoryScreen.ScoreRowView(
         binding: .constant(.init()),
         config: .init(
-            id: "3", score: 780, targetSeconds: 10,
+            id: "3", score: 720, targetSeconds: 10,
             tappedSeconds: 9.55, delta: 0.45, rating: .mid,
-            discColor: TapZeroDesign.Foreground.secondary,
+            discColor: TapZeroDesign.History.midDisc,
             discSoftBackground: TapZeroDesign.Score.neutralBackground,
-            dateFormatted: "May 26",
-            subtitleFormatted: "10s · 9.55s · −0.45s"
+            dateFormatted: "10s · 9.55s",
+            subtitleFormatted: "Yesterday · −0.45s"
+        )
+    )
+    .padding(.horizontal, 20)
+    .background(TapZeroDesign.Background.primary)
+}
+
+#Preview("Row — Bad") {
+    HistoryScreen.ScoreRowView(
+        binding: .constant(.init()),
+        config: .init(
+            id: "4", score: 640, targetSeconds: 5,
+            tappedSeconds: 4.0, delta: 1.0, rating: .bad,
+            discColor: TapZeroDesign.History.badDisc,
+            discSoftBackground: TapZeroDesign.Score.badBackground,
+            dateFormatted: "5s · 4.00s",
+            subtitleFormatted: "2d ago · −1.00s"
         )
     )
     .padding(.horizontal, 20)

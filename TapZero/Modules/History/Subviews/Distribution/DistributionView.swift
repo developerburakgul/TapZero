@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -35,13 +35,13 @@ extension HistoryScreen {
 
         private var headerRow: some View {
             HStack(alignment: .firstTextBaseline) {
-                Text("Distribution")
+                Text(TextKey.History.statDistribution)
                     .font(.system(size: 11, weight: .bold))
                     .tracking(1.2)
                     .textCase(.uppercase)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
                 Spacer()
-                Text("by accuracy")
+                Text(TextKey.History.distributionByAccuracy)
                     .font(.system(size: 12, weight: .medium))
                     .tracking(-0.1)
                     .foregroundStyle(TapZeroDesign.Foreground.secondary)
@@ -127,10 +127,10 @@ extension HistoryScreen {
 
         private func ratingLabel(for rating: PerformanceRating) -> String {
             switch rating {
-            case .perfect: String(localized: "history.rating.perfect")
-            case .good: String(localized: "history.rating.good")
-            case .mid: String(localized: "history.rating.mid")
-            case .bad: String(localized: "history.rating.off")
+            case .perfect: TextKey.localized("history.rating.perfect")
+            case .good: TextKey.localized("history.rating.good")
+            case .mid: TextKey.localized("history.rating.mid")
+            case .bad: TextKey.localized("history.rating.off")
             }
         }
 

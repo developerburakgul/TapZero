@@ -12,7 +12,7 @@ extension HistoryScreen {
         private let constants = Constants()
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.config == rhs.config
+            lhs.config == rhs.config && lhs.binding == rhs.binding
         }
 
         var body: some View {
@@ -33,7 +33,7 @@ extension HistoryScreen {
 
                 Spacer()
 
-                Text("\(config.gameCount) games")
+                Text(TextKey.History.gameCount(config.gameCount))
                     .font(.system(size: 11, weight: .semibold))
                     .tracking(-0.1)
                     .foregroundStyle(TapZeroDesign.Foreground.tertiary)
@@ -60,30 +60,46 @@ extension HistoryScreen {
 
 // MARK: - Previews
 
-#Preview("Day Section — Today") {
-    let rows: [HistoryScreen.ScoreRowEntity.Config] = [
-        .init(
-            id: "1", score: 998, targetSeconds: 5,
-            tappedSeconds: 5.01, delta: 0.01, rating: .perfect,
-            discColor: TapZeroDesign.History.perfectDisc,
-            discSoftBackground: TapZeroDesign.Score.goodBackground,
-            dateFormatted: "2:34 PM",
-            subtitleFormatted: "5s · 5.01s · +0.01s"
-        ),
-        .init(
-            id: "2", score: 870, targetSeconds: 15,
-            tappedSeconds: 14.78, delta: 0.22, rating: .good,
-            discColor: TapZeroDesign.History.goodDisc,
-            discSoftBackground: TapZeroDesign.Score.goodBackground,
-            dateFormatted: "2:34 PM",
-            subtitleFormatted: "15s · 14.78s · −0.22s"
-        )
-    ]
+private struct DaySectionPreviewContainer: View {
+    var rows: [HistoryScreen.ScoreRowEntity.Config] {
+        [
+            .init(
+                id: "1", score: 998, targetSeconds: 5,
+                tappedSeconds: 5.01, delta: 0.01, rating: .perfect,
+                discColor: TapZeroDesign.History.perfectDisc,
+                discSoftBackground: TapZeroDesign.Score.goodBackground,
+                dateFormatted: "5s · 5.01s",
+                subtitleFormatted: "Today · +0.01s"
+            ),
+            .init(
+                id: "2", score: 870, targetSeconds: 15,
+                tappedSeconds: 14.78, delta: 0.22, rating: .good,
+                discColor: TapZeroDesign.History.goodDisc,
+                discSoftBackground: TapZeroDesign.Score.goodBackground,
+                dateFormatted: "15s · 14.78s",
+                subtitleFormatted: "Today · −0.22s"
+            ),
+            .init(
+                id: "3", score: 720, targetSeconds: 10,
+                tappedSeconds: 9.55, delta: 0.45, rating: .mid,
+                discColor: TapZeroDesign.History.midDisc,
+                discSoftBackground: TapZeroDesign.Score.neutralBackground,
+                dateFormatted: "10s · 9.55s",
+                subtitleFormatted: "Today · −0.45s"
+            )
+        ]
+    }
 
-    HistoryScreen.DaySectionView(
-        binding: .constant(.init()),
-        config: .init(id: "today", dateLabel: "Today", gameCount: 2, rows: rows)
-    )
-    .padding(.horizontal, 20)
-    .background(TapZeroDesign.Background.primary)
+    var body: some View {
+        HistoryScreen.DaySectionView(
+            binding: .constant(.init()),
+            config: .init(id: "today", dateLabel: "Today", gameCount: 3, rows: rows)
+        )
+        .padding(.horizontal, 20)
+        .background(TapZeroDesign.Background.primary)
+    }
+}
+
+#Preview("Day Section — Today") {
+    DaySectionPreviewContainer()
 }
