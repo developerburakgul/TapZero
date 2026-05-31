@@ -54,6 +54,7 @@ extension HistoryScreen {
                 statsPage.tag(HistoryViewModel.HistoryTab.stats)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
+            .scrollDisabled(true)
             .animation(.easeInOut(duration: 0.25), value: viewModel.headerEntity.binding.selectedTab)
         }
     }

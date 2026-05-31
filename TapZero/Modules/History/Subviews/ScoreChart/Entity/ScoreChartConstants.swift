@@ -7,14 +7,17 @@ import SwiftUI
 
 extension HistoryScreen.ScoreChartView {
     struct Constants {
-        let chartHeight: CGFloat = 132
-        let horizontalPadding: CGFloat = 20
+        let chartHeightRatio: CGFloat = 0.22
+        let chartMinHeight: CGFloat = 132
+        let chartMaxHeight: CGFloat = 240
+        let horizontalPadding: CGFloat = 12
         let topPadding: CGFloat = 4
         let bottomPadding: CGFloat = 8
         let lineWidth: CGFloat = 1.8
         let gridlines: [Int] = [250, 500, 750]
         let yAxisMin: Int = 0
         let yAxisMax: Int = 1000
+        let maxVisiblePoints: Int = 20
 
         // Average line
         let averageLineDash: [CGFloat] = [4, 3]
@@ -26,11 +29,16 @@ extension HistoryScreen.ScoreChartView {
         let guideDash: [CGFloat] = [2, 2]
         let guideOpacity: Double = 0.30
 
-        // Floating pill
+        // Floating pill (above chart)
+        let pillAreaHeight: CGFloat = 36
         let pillFontSize: CGFloat = 11
         let pillSubFontSize: CGFloat = 9
         let pillHPadding: CGFloat = 10
         let pillVPadding: CGFloat = 4
         let pillCornerRadius: CGFloat = 8
+
+        // Empty state
+        let emptyOpacity: Double = 0.15
+        let emptyAnimationDuration: Double = 2.5
     }
 }

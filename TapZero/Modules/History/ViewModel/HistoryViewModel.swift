@@ -111,11 +111,9 @@ extension HistoryViewModel {
 
     // MARK: - Chart Data
     var chartDataPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] {
-        let recent = Array(gameHistory
-            .sorted { $0.playedAt < $1.playedAt }
-            .suffix(20))
+        let sorted = gameHistory.sorted { $0.playedAt < $1.playedAt }
 
-        return recent.enumerated().map { index, game in
+        return sorted.enumerated().map { index, game in
             .init(id: index + 1, score: game.score, rating: game.performanceRating)
         }
     }

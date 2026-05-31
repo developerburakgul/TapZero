@@ -23,15 +23,11 @@ extension HistoryViewModel {
     }
 
     private func configureScoreChart() {
-        let points = chartDataPoints
         scoreChartEntity.config = .init(
-            dataPoints: points,
+            dataPoints: chartDataPoints,
             isEmpty: gameHistory.isEmpty,
             averageScore: averageScore
         )
-        if scoreChartEntity.binding.selectedGameId == nil, let last = points.last {
-            scoreChartEntity.binding.selectedGameId = last.id
-        }
     }
 
     private func configureFilterSort() {

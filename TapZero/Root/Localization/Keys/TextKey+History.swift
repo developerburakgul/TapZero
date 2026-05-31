@@ -90,6 +90,15 @@ extension TextKey {
         static let ratingMid: LocalizedStringKey = "history.rating.mid"
         static let ratingOff: LocalizedStringKey = "history.rating.off"
 
+        // Chart axis
+        static func chartGameNumber(_ number: Int) -> LocalizedStringKey {
+            "history.chart.gameNumber \(number)"
+        }
+
+        static func chartYAxisLabel(_ value: Int) -> LocalizedStringKey {
+            "history.chart.yAxisLabel \(value)"
+        }
+
         // Chart pill
         static func chartPillScore(_ score: Int) -> LocalizedStringKey {
             "history.chart.pillScore \(score)"

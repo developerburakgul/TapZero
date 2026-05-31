@@ -58,7 +58,7 @@ extension HistoryPreview {
             ScrollView {
                 VStack(spacing: 0) {
                     HistoryScreen.ScoreChartView(
-                        binding: .constant(.init(selectedGameId: games.count)),
+                        binding: .constant(.init()),
                         config: .init(
                             dataPoints: chartPoints,
                             isEmpty: false,
