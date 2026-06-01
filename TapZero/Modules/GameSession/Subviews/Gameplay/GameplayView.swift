@@ -50,7 +50,7 @@ extension GameSessionScreen {
                         .monospacedDigit()
                         .foregroundStyle(TapZeroDesign.Foreground.primary)
 
-                    Text("s")
+                    Text(TextKey.Common.secondsAbbr)
                         .font(.system(size: 22, weight: .semibold))
                         .foregroundStyle(TapZeroDesign.Foreground.secondary)
                 }

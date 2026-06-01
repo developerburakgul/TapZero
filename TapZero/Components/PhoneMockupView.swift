@@ -120,7 +120,7 @@ struct NotificationBannerView<Logo: View>: View {
 
                     Spacer(minLength: 0)
 
-                    Text("now")
+                    Text(TextKey.Common.notificationNow)
                         .font(.caption2)
                         .fontWeight(.medium)
                         .foregroundStyle(.gray)

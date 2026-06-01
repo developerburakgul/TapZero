@@ -232,7 +232,7 @@ struct ScoreCardView: View, Equatable {
                     .monospacedDigit()
                     .foregroundStyle(color)
 
-                Text("s")
+                Text(TextKey.Common.secondsAbbr)
                     .font(.system(size: 13, weight: .regular))
                     .foregroundStyle(shareTheme?.tertiaryForeground ?? TapZeroDesign.Foreground.tertiary)
             }

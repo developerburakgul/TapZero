@@ -81,7 +81,7 @@ struct SplashScreen: View {
     // MARK: - Title
 
     private var titleView: some View {
-        Text("TapZero")
+        Text(TextKey.Splash.brand)
             .font(TapZeroTypography.Display.brandLogo)
             .tracking(-1.6)
             .foregroundStyle(TapZeroDesign.Foreground.primary)
@@ -91,7 +91,7 @@ struct SplashScreen: View {
     // MARK: - Tagline
 
     private var taglineView: some View {
-        Text("Feel the time.")
+        Text(TextKey.Splash.tagline)
             .font(TapZeroTypography.Body.cardLabel)
             .tracking(-0.1)
             .foregroundStyle(TapZeroDesign.Foreground.secondary)

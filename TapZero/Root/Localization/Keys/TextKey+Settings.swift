@@ -17,6 +17,9 @@ extension TextKey {
         static let privacyPolicy: LocalizedStringKey = "settings.privacyPolicy"
         static let termsOfService: LocalizedStringKey = "settings.termsOfService"
 
+        // Provider
+        static var providerEmailValue: String { TextKey.localized("settings.provider.email") }
+
         // Notifications
         static let notifications: LocalizedStringKey = "settings.notifications"
         static let notificationEnabled: LocalizedStringKey = "settings.notifications.enabled"

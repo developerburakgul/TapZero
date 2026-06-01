@@ -7,6 +7,9 @@ import SwiftUI
 
 extension TextKey {
     enum Splash {
+        static let brand: LocalizedStringKey = "splash.brand"
+        static let tagline: LocalizedStringKey = "splash.tagline"
+
         static let forceUpdateTitle: LocalizedStringKey = "splash.forceUpdate.title"
         static let forceUpdateMessage: LocalizedStringKey = "splash.forceUpdate.message"
         static let forceUpdateButton: LocalizedStringKey = "splash.forceUpdate.button"

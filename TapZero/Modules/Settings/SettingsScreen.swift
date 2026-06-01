@@ -239,7 +239,7 @@ struct SettingsScreen: View {
         switch viewModel.authProvider {
         case .apple: "Apple"
         case .google: "Google"
-        case .email: "Email"
+        case .email: TextKey.Settings.providerEmailValue
         case .anonymous: ""
         }
     }
