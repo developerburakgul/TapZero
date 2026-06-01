@@ -10,6 +10,7 @@ import SwiftUI
 private struct HistoryPreview: View {
     let games: [MockGame]
     @State private var selectedTab: HistoryViewModel.HistoryTab
+    @State private var filterSortEntity: HistoryScreen.FilterSortEntity
 
     init(
         tab: HistoryViewModel.HistoryTab = .scores,
@@ -17,6 +18,10 @@ private struct HistoryPreview: View {
     ) {
         self.games = games
         _selectedTab = State(initialValue: tab)
+        _filterSortEntity = State(initialValue: .init(
+            binding: .init(),
+            config: .init(availableTargets: Array(1...30))
+        ))
     }
 
     var body: some View {
@@ -66,9 +71,16 @@ extension HistoryPreview {
                         )
                     )
                     HistoryScreen.FilterSortView(
-                        binding: .constant(.init()),
-                        config: .init(availableTargets: mockTargets)
-                    )
+                        binding: $filterSortEntity.binding,
+                        config: filterSortEntity.config
+                    ) { action in
+                        switch action {
+                        case .filterChanged(let target):
+                            filterSortEntity.binding.selectedTarget = target
+                        case .sortChanged(let order):
+                            filterSortEntity.binding.sortOrder = order
+                        }
+                    }
                     scoreList
                 }
             }
@@ -169,17 +181,34 @@ extension HistoryPreview {
         }
     }
 
-    private var mockTargets: [Int] {
-        Array(Set(games.map(\.target))).sorted()
-    }
-
     private var mockAvgScore: Int {
         guard !games.isEmpty else { return 0 }
         return games.map(\.score).reduce(0, +) / games.count
     }
 
+    private var filteredSortedGames: [MockGame] {
+        var result = games
+
+        if let target = filterSortEntity.binding.selectedTarget {
+            result = result.filter { $0.target == target }
+        }
+
+        switch filterSortEntity.binding.sortOrder {
+        case .newest:
+            break // default order
+        case .oldest:
+            result = result.reversed()
+        case .best:
+            result.sort { $0.score > $1.score }
+        case .worst:
+            result.sort { $0.score < $1.score }
+        }
+
+        return result
+    }
+
     private var mockRows: [HistoryScreen.ScoreRowEntity.Config] {
-        games.enumerated().map { index, game in
+        filteredSortedGames.enumerated().map { index, game in
             let sign = game.tapped >= Double(game.target) ? "+" : "−"
             let tapped = String(format: "%.2f", game.tapped)
             let delta = String(format: "%.2f", game.delta)

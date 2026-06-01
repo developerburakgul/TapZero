@@ -16,7 +16,9 @@ extension TextKey {
         // Filter / Sort
         static let filterAll: LocalizedStringKey = "history.filter.all"
         static let sortNewest: LocalizedStringKey = "history.sort.newest"
+        static let sortOldest: LocalizedStringKey = "history.sort.oldest"
         static let sortBest: LocalizedStringKey = "history.sort.best"
+        static let sortWorst: LocalizedStringKey = "history.sort.worst"
 
         // Labels
         static let labelTarget: LocalizedStringKey = "history.label.target"

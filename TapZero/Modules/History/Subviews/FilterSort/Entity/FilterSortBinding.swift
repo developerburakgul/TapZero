@@ -13,6 +13,8 @@ extension HistoryScreen.FilterSortEntity {
 
     enum SortOrder: String, Equatable, CaseIterable {
         case newest
+        case oldest
         case best
+        case worst
     }
 }

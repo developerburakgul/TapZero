@@ -56,7 +56,7 @@ extension HistoryScreen {
                 }
             } label: {
                 chipLabel(
-                    icon: "scope",
+                    icon: "clock",
                     text: targetChipText,
                     showChevron: true,
                     isActive: isActive
@@ -104,7 +104,9 @@ extension HistoryScreen {
         private func sortLabel(for order: FilterSortEntity.SortOrder) -> String {
             switch order {
             case .newest: TextKey.localized("history.sort.newest")
+            case .oldest: TextKey.localized("history.sort.oldest")
             case .best: TextKey.localized("history.sort.best")
+            case .worst: TextKey.localized("history.sort.worst")
             }
         }
 
@@ -179,7 +181,7 @@ private struct FilterSortPreview: View {
     ) {
         _entity = State(initialValue: .init(
             binding: .init(selectedTarget: selectedTarget, sortOrder: sortOrder),
-            config: .init(availableTargets: [3, 5, 7, 10, 15, 20, 30])
+            config: .init(availableTargets: Array(1...30))
         ))
     }
 

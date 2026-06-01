@@ -32,7 +32,7 @@ extension HistoryViewModel {
 
     private func configureFilterSort() {
         filterSortEntity.config = .init(
-            availableTargets: availableTargets
+            availableTargets: Array(1...30)
         )
     }
 

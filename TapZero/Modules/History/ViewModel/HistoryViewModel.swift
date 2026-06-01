@@ -97,8 +97,12 @@ extension HistoryViewModel {
         switch filterSortEntity.binding.sortOrder {
         case .newest:
             games.sort { $0.playedAt > $1.playedAt }
+        case .oldest:
+            games.sort { $0.playedAt < $1.playedAt }
         case .best:
             games.sort { $0.score > $1.score }
+        case .worst:
+            games.sort { $0.score < $1.score }
         }
 
         return games
