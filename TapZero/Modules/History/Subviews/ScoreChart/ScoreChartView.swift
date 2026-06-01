@@ -33,6 +33,11 @@ extension HistoryScreen {
                     .padding(.horizontal, constants.horizontalPadding)
                     .padding(.top, constants.topPadding)
                     .padding(.bottom, constants.bottomPadding)
+                    .onAppear {
+                        guard binding.selectedGameId == nil else { return }
+                        let best = config.dataPoints.max { $0.score < $1.score }
+                        binding.selectedGameId = best?.id
+                    }
             }
         }
     }
@@ -67,31 +72,32 @@ extension HistoryScreen.ScoreChartView {
             selectedGuideMarks
         }
         .chartYScale(domain: constants.yAxisMin...constants.yAxisMax)
-        .chartScrollableAxes(.horizontal)
-        .chartXVisibleDomain(length: min(config.dataPoints.count, constants.maxVisiblePoints))
         .chartXAxis { xAxis }
         .chartYAxis { yAxis }
         .chartOverlay { proxy in
             GeometryReader { geo in
-                Rectangle()
-                    .fill(Color.clear)
-                    .contentShape(Rectangle())
-                    .onTapGesture { location in
-                        guard let plotFrame = proxy.plotFrame else { return }
-                        let x = location.x - geo[plotFrame].origin.x
-                        if let gameId: Int = proxy.value(atX: x) {
-                            let nearest = config.dataPoints
-                                .min { abs($0.id - gameId) < abs($1.id - gameId) }
-                            if binding.selectedGameId == nearest?.id {
-                                binding.selectedGameId = nil
-                            } else {
-                                binding.selectedGameId = nearest?.id
-                            }
-                        }
-                    }
+                selectionOverlay(proxy: proxy, geo: geo)
             }
         }
         .frame(height: height)
+    }
+
+    private func selectionOverlay(proxy: ChartProxy, geo: GeometryProxy) -> some View {
+        Rectangle()
+            .fill(Color.clear)
+            .contentShape(Rectangle())
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        guard let plotFrame = proxy.plotFrame else { return }
+                        let x = value.location.x - geo[plotFrame].origin.x
+                        if let gameId: Int = proxy.value(atX: x) {
+                            let nearest = config.dataPoints
+                                .min { abs($0.id - gameId) < abs($1.id - gameId) }
+                            binding.selectedGameId = nearest?.id
+                        }
+                    }
+            )
     }
 }
 
@@ -135,12 +141,6 @@ extension HistoryScreen.ScoreChartView {
         RuleMark(y: .value("Average", config.averageScore))
             .foregroundStyle(TapZeroDesign.History.chartAverage.opacity(0.55))
             .lineStyle(StrokeStyle(lineWidth: 1, dash: constants.averageLineDash))
-            .annotation(position: .leading, spacing: 2) {
-                Text(verbatim: "\(config.averageScore)")
-                    .font(.system(size: 8, weight: .bold))
-                    .foregroundStyle(TapZeroDesign.History.chartAverage)
-                    .opacity(0.8)
-            }
     }
 }
 
@@ -154,12 +154,6 @@ extension HistoryScreen.ScoreChartView {
             RuleMark(x: .value("Selected", selected.id))
                 .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(constants.guideOpacity))
                 .lineStyle(StrokeStyle(lineWidth: 0.8, dash: constants.guideDash))
-                .annotation(position: .bottom, spacing: 2) {
-                    Text(TextKey.History.chartGameNumber(selected.id))
-                        .font(.system(size: 9, weight: .bold))
-                        .monospacedDigit()
-                        .foregroundStyle(TapZeroDesign.Foreground.primary)
-                }
 
             // Horizontal guide (y-axis → point)
             RuleMark(
@@ -237,27 +231,47 @@ extension HistoryScreen.ScoreChartView {
     }
 
     private var yAxis: some AxisContent {
-        AxisMarks(position: .leading, values: [0, 250, 500, 750, 1000]) { value in
+        AxisMarks(position: .leading, values: yAxisValues) { value in
             AxisGridLine()
                 .foregroundStyle(Color.clear)
             AxisTick()
                 .foregroundStyle(Color.clear)
             AxisValueLabel {
                 if let intValue = value.as(Int.self) {
-                    Text(verbatim: "\(intValue)")
-                        .font(.system(size: 9, weight: .semibold))
-                        .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    if intValue == config.averageScore {
+                        Text(TextKey.History.chartAvgLabel(intValue))
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundStyle(TapZeroDesign.History.chartAverage)
+                    } else {
+                        Text(verbatim: "\(intValue)")
+                            .font(.system(size: 9, weight: .semibold))
+                            .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+                    }
                 }
             }
         }
     }
 
+    private var yAxisValues: [Int] {
+        let base = [0, 250, 500, 750, 1000]
+        let avg = config.averageScore
+        let filtered = base.filter { abs($0 - avg) > 50 }
+        return (filtered + [avg]).sorted()
+    }
+
     private var xAxisValues: [Int] {
-        guard let first = config.dataPoints.first?.id,
-              let last = config.dataPoints.last?.id else { return [] }
-        if config.dataPoints.count <= 2 { return [first, last] }
-        let mid = (first + last) / 2
-        return [first, mid, last]
+        let ids = config.dataPoints.map(\.id)
+        guard let first = ids.first, let last = ids.last else { return [] }
+        if ids.count <= 5 { return ids }
+        let step = max(1, (last - first) / 4)
+        var values: [Int] = []
+        var current = first
+        while current <= last {
+            if ids.contains(current) { values.append(current) }
+            current += step
+        }
+        if values.last != last { values.append(last) }
+        return values
     }
 }
 
@@ -325,20 +339,36 @@ private struct ScoreChartPreview: View {
     let config: HistoryScreen.ScoreChartEntity.Config
 
     var body: some View {
-        VStack {
-            Spacer()
-            HistoryScreen.ScoreChartView(
-                binding: $binding,
-                config: config
-            )
-            Spacer()
+        ScrollView {
+            VStack(spacing: 0) {
+                HistoryScreen.ScoreChartView(
+                    binding: $binding,
+                    config: config
+                )
+
+                ForEach(0..<10, id: \.self) { _ in
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(TapZeroDesign.Foreground.primary.opacity(0.08))
+                        .frame(height: 64)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 6)
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(TapZeroDesign.Background.primary.ignoresSafeArea())
     }
 }
 
-private let previewPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] = [
+private let previewFewPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] = [
+    .init(id: 1, score: 720, rating: .mid),
+    .init(id: 2, score: 850, rating: .good),
+    .init(id: 3, score: 910, rating: .good),
+    .init(id: 4, score: 780, rating: .mid),
+    .init(id: 5, score: 995, rating: .perfect)
+]
+
+private let previewManyPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] = [
     .init(id: 1, score: 720, rating: .mid),
     .init(id: 2, score: 850, rating: .good),
     .init(id: 3, score: 910, rating: .good),
@@ -348,12 +378,28 @@ private let previewPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] = [
     .init(id: 7, score: 870, rating: .good),
     .init(id: 8, score: 930, rating: .good),
     .init(id: 9, score: 960, rating: .good),
-    .init(id: 10, score: 890, rating: .good)
+    .init(id: 10, score: 890, rating: .good),
+    .init(id: 11, score: 750, rating: .mid),
+    .init(id: 12, score: 820, rating: .good),
+    .init(id: 13, score: 940, rating: .good),
+    .init(id: 14, score: 680, rating: .mid),
+    .init(id: 15, score: 910, rating: .good),
+    .init(id: 16, score: 970, rating: .perfect),
+    .init(id: 17, score: 830, rating: .good),
+    .init(id: 18, score: 760, rating: .mid),
+    .init(id: 19, score: 900, rating: .good),
+    .init(id: 20, score: 950, rating: .perfect)
 ]
 
-#Preview("Chart — Interactive") {
+#Preview("Chart — 5 Points") {
     ScoreChartPreview(
-        config: .init(dataPoints: previewPoints, isEmpty: false, averageScore: 855)
+        config: .init(dataPoints: previewFewPoints, isEmpty: false, averageScore: 851)
+    )
+}
+
+#Preview("Chart — 20 Points") {
+    ScoreChartPreview(
+        config: .init(dataPoints: previewManyPoints, isEmpty: false, averageScore: 860)
     )
 }
 

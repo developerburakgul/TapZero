@@ -99,6 +99,11 @@ extension TextKey {
             "history.chart.yAxisLabel \(value)"
         }
 
+        // Chart average
+        static func chartAvgLabel(_ value: Int) -> LocalizedStringKey {
+            "history.chart.avgLabel \(value)"
+        }
+
         // Chart pill
         static func chartPillScore(_ score: Int) -> LocalizedStringKey {
             "history.chart.pillScore \(score)"

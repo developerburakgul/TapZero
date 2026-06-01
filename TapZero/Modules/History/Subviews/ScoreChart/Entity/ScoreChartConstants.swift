@@ -17,7 +17,7 @@ extension HistoryScreen.ScoreChartView {
         let gridlines: [Int] = [250, 500, 750]
         let yAxisMin: Int = 0
         let yAxisMax: Int = 1000
-        let maxVisiblePoints: Int = 20
+        let maxVisiblePoints: Int = 10
 
         // Average line
         let averageLineDash: [CGFloat] = [4, 3]
