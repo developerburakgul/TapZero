@@ -11,6 +11,7 @@ private struct HistoryPreview: View {
     let games: [MockGame]
     @State private var selectedTab: HistoryViewModel.HistoryTab
     @State private var filterSortEntity: HistoryScreen.FilterSortEntity
+    @State private var scoreChartBinding: HistoryScreen.ScoreChartEntity.Binding = .init()
 
     init(
         tab: HistoryViewModel.HistoryTab = .scores,
@@ -63,7 +64,7 @@ extension HistoryPreview {
             ScrollView {
                 VStack(spacing: 0) {
                     HistoryScreen.ScoreChartView(
-                        binding: .constant(.init()),
+                        binding: $scoreChartBinding,
                         config: .init(
                             dataPoints: chartPoints,
                             isEmpty: false,

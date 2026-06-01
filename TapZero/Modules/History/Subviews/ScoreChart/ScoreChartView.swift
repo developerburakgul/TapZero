@@ -34,6 +34,9 @@ extension HistoryScreen {
                     .padding(.top, constants.topPadding)
                     .padding(.bottom, constants.bottomPadding)
                     .onAppear {
+                        if config.dataPoints.count > constants.maxVisiblePoints {
+                            binding.scrollPosition = config.dataPoints.count - constants.maxVisiblePoints + 1
+                        }
                         guard binding.selectedGameId == nil else { return }
                         let best = config.dataPoints.max { $0.score < $1.score }
                         binding.selectedGameId = best?.id
@@ -64,6 +67,10 @@ extension HistoryScreen.ScoreChartView {
         .animation(.easeInOut(duration: 0.15), value: binding.selectedGameId)
     }
 
+    private var visibleDomainLength: Int {
+        min(max(config.dataPoints.count, 1), constants.maxVisiblePoints)
+    }
+
     private func chartBody(height: CGFloat) -> some View {
         Chart {
             scoreLine
@@ -74,30 +81,11 @@ extension HistoryScreen.ScoreChartView {
         .chartYScale(domain: constants.yAxisMin...constants.yAxisMax)
         .chartXAxis { xAxis }
         .chartYAxis { yAxis }
-        .chartOverlay { proxy in
-            GeometryReader { geo in
-                selectionOverlay(proxy: proxy, geo: geo)
-            }
-        }
+        .chartScrollableAxes(.horizontal)
+        .chartXVisibleDomain(length: visibleDomainLength)
+        .chartScrollPosition(x: $binding.scrollPosition)
+        .chartXSelection(value: $binding.selectedGameId)
         .frame(height: height)
-    }
-
-    private func selectionOverlay(proxy: ChartProxy, geo: GeometryProxy) -> some View {
-        Rectangle()
-            .fill(Color.clear)
-            .contentShape(Rectangle())
-            .gesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { value in
-                        guard let plotFrame = proxy.plotFrame else { return }
-                        let x = value.location.x - geo[plotFrame].origin.x
-                        if let gameId: Int = proxy.value(atX: x) {
-                            let nearest = config.dataPoints
-                                .min { abs($0.id - gameId) < abs($1.id - gameId) }
-                            binding.selectedGameId = nearest?.id
-                        }
-                    }
-            )
     }
 }
 

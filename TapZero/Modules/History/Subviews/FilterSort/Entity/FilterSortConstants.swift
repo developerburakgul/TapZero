@@ -8,8 +8,8 @@ import SwiftUI
 extension HistoryScreen.FilterSortView {
     struct Constants {
         let horizontalPadding: CGFloat = 20
-        let topPadding: CGFloat = 4
-        let bottomPadding: CGFloat = 10
+        let topPadding: CGFloat = 10
+        let bottomPadding: CGFloat = 14
         let chipSpacing: CGFloat = 8
         let chipHorizontalPadding: CGFloat = 12
         let chipTrailingPadding: CGFloat = 10

@@ -11,12 +11,12 @@ extension HistoryScreen.ScoreChartView {
         let chartMinHeight: CGFloat = 132
         let chartMaxHeight: CGFloat = 240
         let horizontalPadding: CGFloat = 12
-        let topPadding: CGFloat = 4
-        let bottomPadding: CGFloat = 8
+        let topPadding: CGFloat = 12
+        let bottomPadding: CGFloat = 14
         let lineWidth: CGFloat = 1.8
         let gridlines: [Int] = [250, 500, 750]
         let yAxisMin: Int = 0
-        let yAxisMax: Int = 1000
+        let yAxisMax: Int = 1040
         let maxVisiblePoints: Int = 10
 
         // Average line
@@ -30,7 +30,7 @@ extension HistoryScreen.ScoreChartView {
         let guideOpacity: Double = 0.30
 
         // Floating pill (above chart)
-        let pillAreaHeight: CGFloat = 36
+        let pillAreaHeight: CGFloat = 52
         let pillFontSize: CGFloat = 11
         let pillSubFontSize: CGFloat = 9
         let pillHPadding: CGFloat = 10
