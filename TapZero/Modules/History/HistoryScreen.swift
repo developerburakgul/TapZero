@@ -63,13 +63,26 @@ extension HistoryScreen {
 // MARK: - Scores Page
 
 extension HistoryScreen {
-    @ViewBuilder
     private var scoresPage: some View {
-        if viewModel.isEmpty {
-            emptyStateView
-        } else {
+        ZStack {
             scoresScrollContent
+                .blur(radius: viewModel.isEmpty ? 8 : 0)
+                .opacity(viewModel.isEmpty ? 0.55 : 1)
+                .disabled(viewModel.isEmpty)
+
+            if viewModel.isEmpty {
+                EmptyOverlayView(
+                    binding: $viewModel.emptyOverlayEntity.binding,
+                    config: viewModel.emptyOverlayEntity.config
+                ) { action in
+                    switch action {
+                    case .didTapPlayGame:
+                        viewModel.onPlayGameTapped()
+                    }
+                }
+            }
         }
+        .opacity(viewModel.isLoading ? 0 : 1)
     }
 
     private var scoresScrollContent: some View {
@@ -95,7 +108,6 @@ extension HistoryScreen {
                 scoreList
             }
         }
-        .opacity(viewModel.isLoading ? 0 : 1)
     }
 
     private var scoreList: some View {
@@ -114,13 +126,26 @@ extension HistoryScreen {
 // MARK: - Stats Page
 
 extension HistoryScreen {
-    @ViewBuilder
     private var statsPage: some View {
-        if viewModel.isEmpty {
-            emptyStateView
-        } else {
+        ZStack {
             statsScrollContent
+                .blur(radius: viewModel.isEmpty ? 8 : 0)
+                .opacity(viewModel.isEmpty ? 0.55 : 1)
+                .disabled(viewModel.isEmpty)
+
+            if viewModel.isEmpty {
+                EmptyOverlayView(
+                    binding: $viewModel.emptyOverlayEntity.binding,
+                    config: viewModel.emptyOverlayEntity.config
+                ) { action in
+                    switch action {
+                    case .didTapPlayGame:
+                        viewModel.onPlayGameTapped()
+                    }
+                }
+            }
         }
+        .opacity(viewModel.isLoading ? 0 : 1)
     }
 
     private var statsScrollContent: some View {
@@ -154,32 +179,5 @@ extension HistoryScreen {
             .padding(.horizontal, constants.horizontalPadding)
             .padding(.bottom, constants.bottomPadding)
         }
-        .opacity(viewModel.isLoading ? 0 : 1)
-    }
-}
-
-// MARK: - Empty State
-
-extension HistoryScreen {
-    private var emptyStateView: some View {
-        VStack(spacing: constants.emptySpacing) {
-            Spacer()
-
-            Image(systemName: "clock.arrow.circlepath")
-                .font(.system(size: constants.emptyIconSize))
-                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-
-            Text(TextKey.History.emptyTitle)
-                .font(TapZeroTypography.Heading.h3)
-                .foregroundStyle(TapZeroDesign.Foreground.primary)
-
-            Text(TextKey.History.emptySubtitle)
-                .font(TapZeroTypography.Body.medium)
-                .foregroundStyle(TapZeroDesign.Foreground.secondary)
-                .multilineTextAlignment(.center)
-
-            Spacer()
-        }
-        .padding(.horizontal, constants.horizontalPadding)
     }
 }

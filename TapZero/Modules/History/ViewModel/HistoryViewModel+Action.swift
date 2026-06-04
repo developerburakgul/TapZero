@@ -32,6 +32,7 @@ extension HistoryViewModel {
 
     func onTabChanged(_ tab: HistoryTab) {
         selectedTab = tab
+        configure()
         sendEvent(type: .tabSwitched(tab: tab))
     }
 
@@ -47,5 +48,12 @@ extension HistoryViewModel {
         filterSortEntity.binding.sortOrder = order
         configure()
         sendEvent(type: .sortChanged(order: order))
+    }
+
+    // MARK: - Play Game
+
+    func onPlayGameTapped() {
+        guard let url = URL(string: "tapzero://play") else { return }
+        deepLinkManager.handleURL(url)
     }
 }

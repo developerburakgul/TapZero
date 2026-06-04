@@ -19,6 +19,7 @@ final class HistoryViewModel: ObservableObject {
     @ObservedInjected private(set) var gameManager: GameManager
     @ObservedInjected private(set) var userManager: UserManager
     @Injected private(set) var crashReporter: CrashReporterProtocol
+    @Injected private(set) var deepLinkManager: DeepLinkManager
 
     // MARK: - Published Properties
     @Published var selectedTab: HistoryTab = .scores
@@ -60,6 +61,10 @@ final class HistoryViewModel: ObservableObject {
         binding: .init(),
         config: .init(days: [], currentStreak: 0, maxGamesInDay: 0)
     )
+    @Published var emptyOverlayEntity: HistoryScreen.EmptyOverlayEntity = .init(
+        binding: .init(),
+        config: .init(gamesPlayed: 0, gamesRequired: 1, gamesRemaining: 1, progress: 0, subtitle: "")
+    )
 
     // MARK: - Init
     init(
@@ -85,6 +90,12 @@ extension HistoryViewModel {
     var userStats: UserStatsModel? { gameManager.userStats }
     var currentUserId: String? { userManager.currentUser?.userId }
     var isEmpty: Bool { gameHistory.isEmpty }
+
+    // MARK: - Empty Overlay
+    var unlockRequiredGames: Int { 1 }
+    var gamesPlayed: Int { userStats?.totalGamesPlayed ?? 0 }
+    var gamesRemaining: Int { max(0, unlockRequiredGames - gamesPlayed) }
+    var unlockProgress: CGFloat { CGFloat(gamesPlayed) / CGFloat(unlockRequiredGames) }
 
     // MARK: - Filtered & Sorted Games
     var filteredGames: [GameModel] {

@@ -82,6 +82,22 @@ extension TextKey {
         static let emptyTitle: LocalizedStringKey = "history.empty.title"
         static let emptySubtitle: LocalizedStringKey = "history.empty.subtitle"
 
+        // Empty overlay
+        static let emptyOverlayTitle: LocalizedStringKey = "history.empty.overlay.title"
+        static let emptyOverlayCta: LocalizedStringKey = "history.empty.overlay.cta"
+
+        static func emptyOverlayScoresSubtitle(count: Int) -> LocalizedStringKey {
+            "history.empty.overlay.scoresSubtitle \(count)"
+        }
+
+        static func emptyOverlayStatsSubtitle(count: Int) -> LocalizedStringKey {
+            "history.empty.overlay.statsSubtitle \(count)"
+        }
+
+        static func emptyOverlayProgress(played: Int, required: Int) -> String {
+            TextKey.localized("history.empty.overlay.progress \(played) \(required)")
+        }
+
         // Date labels
         static let dateToday: LocalizedStringKey = "history.date.today"
         static let dateYesterday: LocalizedStringKey = "history.date.yesterday"

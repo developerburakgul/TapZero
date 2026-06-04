@@ -16,6 +16,7 @@ extension HistoryViewModel {
         configureDistribution()
         configureTargetsPlayed()
         configureStreakHeatmap()
+        configureEmptyOverlay()
     }
 
     private func configureHeader() {
@@ -77,6 +78,20 @@ extension HistoryViewModel {
             days: heatmapDays,
             currentStreak: currentStreak,
             maxGamesInDay: heatmapMaxGames
+        )
+    }
+
+    private func configureEmptyOverlay() {
+        let subtitle: LocalizedStringKey = selectedTab == .scores
+            ? TextKey.History.emptyOverlayScoresSubtitle(count: gamesRemaining)
+            : TextKey.History.emptyOverlayStatsSubtitle(count: gamesRemaining)
+
+        emptyOverlayEntity.config = .init(
+            gamesPlayed: gamesPlayed,
+            gamesRequired: unlockRequiredGames,
+            gamesRemaining: gamesRemaining,
+            progress: unlockProgress,
+            subtitle: subtitle
         )
     }
 }
