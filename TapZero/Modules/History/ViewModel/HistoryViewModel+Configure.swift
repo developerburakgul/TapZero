@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - Configure
 extension HistoryViewModel {
@@ -86,12 +87,17 @@ extension HistoryViewModel {
             ? TextKey.History.emptyOverlayScoresSubtitle(count: gamesRemaining)
             : TextKey.History.emptyOverlayStatsSubtitle(count: gamesRemaining)
 
+        let explanation: LocalizedStringKey = selectedTab == .scores
+            ? TextKey.History.emptyOverlayScoresExplanation
+            : TextKey.History.emptyOverlayStatsExplanation
+
         emptyOverlayEntity.config = .init(
             gamesPlayed: gamesPlayed,
             gamesRequired: unlockRequiredGames,
             gamesRemaining: gamesRemaining,
             progress: unlockProgress,
-            subtitle: subtitle
+            subtitle: subtitle,
+            explanation: explanation
         )
     }
 }

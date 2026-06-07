@@ -3502,6 +3502,134 @@
         }
       }
     },
+    "history.empty.overlay.scoresExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We need at least one game to track your progress."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelişimini takip edebilmemiz için en az bir oyun oynaman gerekiyor."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نحتاج لعبة واحدة على الأقل لتتبع تقدمك."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wir brauchen mindestens ein Spiel, um deinen Fortschritt zu verfolgen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Necesitamos al menos una partida para seguir tu progreso."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons besoin d'au moins une partie pour suivre ta progression."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ci serve almeno una partita per monitorare i tuoi progressi."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "進捗を追跡するには、少なくとも1ゲームのプレイが必要です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "진행 상황을 추적하려면 최소 1게임이 필요합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precisamos de pelo menos uma partida para acompanhar seu progresso."
+          }
+        }
+      }
+    },
+    "history.empty.overlay.statsExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detailed statistics require at least one game of data."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detaylı istatistikler için en az bir oyun verisi gerekiyor."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإحصائيات التفصيلية تتطلب بيانات لعبة واحدة على الأقل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für detaillierte Statistiken wird mindestens ein Spiel benötigt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las estadísticas detalladas requieren al menos una partida."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les statistiques détaillées nécessitent au moins une partie."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le statistiche dettagliate richiedono almeno una partita."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "詳細な統計情報には、少なくとも1ゲームのデータが必要です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상세 통계를 보려면 최소 1게임의 데이터가 필요합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estatísticas detalhadas requerem pelo menos uma partida."
+          }
+        }
+      }
+    },
     "history.empty.overlay.title": {
       "localizations": {
         "en": {
@@ -3562,6 +3690,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Primeiro passo"
+          }
+        }
+      }
+    },
+    "history.empty.overlay.whyTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neden?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لماذا؟"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warum?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Por qué?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pourquoi ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perché?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "なぜ？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "왜?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por quê?"
           }
         }
       }

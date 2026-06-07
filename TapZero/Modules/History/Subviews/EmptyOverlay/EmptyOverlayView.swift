@@ -23,6 +23,7 @@ extension HistoryScreen {
         var body: some View {
             VStack(spacing: 0) {
                 headerSection
+                whySection
                 ctaButton
             }
             .padding(.horizontal, constants.cardPaddingH)
@@ -58,6 +59,29 @@ extension HistoryScreen {
                 }
 
                 Spacer()
+            }
+        }
+
+        // MARK: - Why Section
+
+        private var whySection: some View {
+            VStack(alignment: .leading, spacing: 4) {
+                Divider()
+                    .padding(.horizontal, -constants.cardPaddingH)
+                    .padding(.top, 18)
+                    .padding(.bottom, 14)
+
+                Text(TextKey.History.emptyOverlayWhyTitle)
+                    .font(.system(size: 11, weight: .semibold))
+                    .tracking(1.2)
+                    .textCase(.uppercase)
+                    .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+
+                Text(config.explanation)
+                    .font(.system(size: 13, weight: .medium))
+                    .tracking(-0.1)
+                    .lineSpacing(3)
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
             }
         }
 

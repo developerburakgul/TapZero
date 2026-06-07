@@ -85,6 +85,9 @@ extension TextKey {
         // Empty overlay
         static let emptyOverlayTitle: LocalizedStringKey = "history.empty.overlay.title"
         static let emptyOverlayCta: LocalizedStringKey = "history.empty.overlay.cta"
+        static let emptyOverlayWhyTitle: LocalizedStringKey = "history.empty.overlay.whyTitle"
+        static let emptyOverlayScoresExplanation: LocalizedStringKey = "history.empty.overlay.scoresExplanation"
+        static let emptyOverlayStatsExplanation: LocalizedStringKey = "history.empty.overlay.statsExplanation"
 
         static func emptyOverlayScoresSubtitle(count: Int) -> LocalizedStringKey {
             "history.empty.overlay.scoresSubtitle \(count)"

@@ -12,6 +12,7 @@ extension HistoryScreen.EmptyOverlayEntity {
         let gamesRemaining: Int
         let progress: CGFloat
         let subtitle: LocalizedStringKey
+        let explanation: LocalizedStringKey
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.gamesPlayed == rhs.gamesPlayed

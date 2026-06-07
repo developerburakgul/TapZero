@@ -59,7 +59,24 @@ extension HistoryPreview {
     @ViewBuilder
     private var scoresPage: some View {
         if games.isEmpty {
-            emptyView
+            ZStack {
+                scoresBlurredPeek
+                    .blur(radius: 8)
+                    .opacity(0.55)
+                    .disabled(true)
+
+                HistoryScreen.EmptyOverlayView(
+                    binding: .constant(.init()),
+                    config: .init(
+                        gamesPlayed: 0,
+                        gamesRequired: 1,
+                        gamesRemaining: 1,
+                        progress: 0,
+                        subtitle: TextKey.History.emptyOverlayScoresSubtitle(count: 1),
+                        explanation: TextKey.History.emptyOverlayScoresExplanation
+                    )
+                ) { _ in }
+            }
         } else {
             ScrollView {
                 VStack(spacing: 0) {
@@ -87,6 +104,35 @@ extension HistoryPreview {
             }
         }
     }
+
+    private var scoresBlurredPeek: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                HistoryScreen.ScoreChartView(
+                    binding: .constant(.init()),
+                    config: .init(
+                        dataPoints: peekChartPoints,
+                        isEmpty: false,
+                        averageScore: peekAvgScore
+                    )
+                )
+                HistoryScreen.FilterSortView(
+                    binding: .constant(.init()),
+                    config: .init(availableTargets: Array(1...30))
+                ) { _ in }
+                LazyVStack(spacing: 6) {
+                    ForEach(peekRows) { row in
+                        HistoryScreen.ScoreRowView(
+                            binding: .constant(.init()),
+                            config: row
+                        )
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+        }
+        .scrollDisabled(true)
+    }
 }
 
 // MARK: - Stats Page
@@ -95,10 +141,59 @@ extension HistoryPreview {
     @ViewBuilder
     private var statsPage: some View {
         if games.isEmpty {
-            emptyView
+            ZStack {
+                statsBlurredPeek
+                    .blur(radius: 8)
+                    .opacity(0.55)
+                    .disabled(true)
+
+                HistoryScreen.EmptyOverlayView(
+                    binding: .constant(.init()),
+                    config: .init(
+                        gamesPlayed: 0,
+                        gamesRequired: 1,
+                        gamesRemaining: 1,
+                        progress: 0,
+                        subtitle: TextKey.History.emptyOverlayStatsSubtitle(count: 1),
+                        explanation: TextKey.History.emptyOverlayStatsExplanation
+                    )
+                ) { _ in }
+            }
         } else {
             ScrollView { statsContent }
         }
+    }
+
+    private var statsBlurredPeek: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                HistoryScreen.HeroStatView(
+                    binding: .constant(.init()),
+                    config: .init(
+                        averageScore: 724,
+                        totalGames: 42,
+                        trendPercentage: 12,
+                        trendIsPositive: true
+                    )
+                )
+                HistoryScreen.KPIGridView(
+                    binding: .constant(.init()),
+                    config: .init(
+                        bestRoundScore: 986, bestRoundDate: "2 days ago",
+                        bestStreak: 7, perfectCount: 12,
+                        totalGames: 42, perfectPercentage: 29,
+                        avgOffBy: "0.18s"
+                    )
+                )
+                HistoryScreen.DistributionView(
+                    binding: .constant(.init()),
+                    config: .init(segments: mockDistribution)
+                )
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 20)
+        }
+        .scrollDisabled(true)
     }
 
     private var statsContent: some View {
@@ -139,27 +234,9 @@ extension HistoryPreview {
     }
 }
 
-// MARK: - Empty & Score List
+// MARK: - Score List
 
 extension HistoryPreview {
-    private var emptyView: some View {
-        VStack(spacing: 12) {
-            Spacer()
-            Image(systemName: "clock.arrow.circlepath")
-                .font(.system(size: 48))
-                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-            Text(TextKey.History.emptyTitle)
-                .font(TapZeroTypography.Heading.h3)
-                .foregroundStyle(TapZeroDesign.Foreground.primary)
-            Text(TextKey.History.emptySubtitle)
-                .font(TapZeroTypography.Body.medium)
-                .foregroundStyle(TapZeroDesign.Foreground.secondary)
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
-        .padding(.horizontal, 20)
-    }
-
     private var scoreList: some View {
         LazyVStack(spacing: 6) {
             ForEach(mockRows) { row in
@@ -227,6 +304,43 @@ extension HistoryPreview {
             )
         }
     }
+}
+
+// MARK: - Peek Mock Data (blurred background for empty states)
+
+extension HistoryPreview {
+    private var peekChartPoints: [HistoryScreen.ScoreChartEntity.ChartDataPoint] {
+        peekGames.enumerated().map { index, game in
+            .init(id: index + 1, score: game.score, rating: game.rating)
+        }
+    }
+
+    private var peekAvgScore: Int {
+        let scores = peekGames.map(\.score)
+        return scores.reduce(0, +) / scores.count
+    }
+
+    private var peekRows: [HistoryScreen.ScoreRowEntity.Config] {
+        peekGames.prefix(6).enumerated().map { index, game in
+            let sign = game.tapped >= Double(game.target) ? "+" : "−"
+            let tapped = String(format: "%.2f", game.tapped)
+            let delta = String(format: "%.2f", game.delta)
+            return .init(
+                id: "peek-\(index)",
+                score: game.score,
+                targetSeconds: game.target,
+                tappedSeconds: game.tapped,
+                delta: game.delta,
+                rating: game.rating,
+                discColor: discColor(game.rating),
+                discSoftBackground: rowBg(game.rating),
+                dateFormatted: "\(game.target)s · \(tapped)s",
+                subtitleFormatted: "Today · \(sign)\(delta)s"
+            )
+        }
+    }
+
+    private var peekGames: [MockGame] { fullGames }
 }
 
 // MARK: - Color Helpers
@@ -325,8 +439,12 @@ private let fullGames: [MockGame] = [
     HistoryPreview(tab: .stats, games: fullGames)
 }
 
-#Preview("Empty — No Games") {
+#Preview("Empty — Scores") {
     HistoryPreview(tab: .scores, games: [])
+}
+
+#Preview("Empty — Stats") {
+    HistoryPreview(tab: .stats, games: [])
 }
 
 #Preview("Single Game") {

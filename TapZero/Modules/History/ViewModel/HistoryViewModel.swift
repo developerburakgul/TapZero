@@ -63,7 +63,7 @@ final class HistoryViewModel: ObservableObject {
     )
     @Published var emptyOverlayEntity: HistoryScreen.EmptyOverlayEntity = .init(
         binding: .init(),
-        config: .init(gamesPlayed: 0, gamesRequired: 1, gamesRemaining: 1, progress: 0, subtitle: "")
+        config: .init(gamesPlayed: 0, gamesRequired: 1, gamesRemaining: 1, progress: 0, subtitle: "", explanation: "")
     )
 
     // MARK: - Init
