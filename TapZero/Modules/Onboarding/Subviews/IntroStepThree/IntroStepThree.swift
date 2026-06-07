@@ -20,20 +20,99 @@ extension OnboardingScreen {
         @Binding var binding: IntroStepThreeEntity.Binding
         let config: IntroStepThreeEntity.Config
 
-        private static let podiumUsers: [PreviewUser] = [
-            .init(id: 2, name: "Kenji", pts: 9710, color: TapZeroPalette.Pastel.PS2,
-                  imageURL: URL(string: "https://randomuser.me/api/portraits/men/32.jpg")),
-            .init(id: 1, name: "Mira", pts: 9842, color: TapZeroPalette.Pastel.PS1,
-                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/44.jpg")),
-            .init(id: 3, name: "Yuna", pts: 9588, color: TapZeroPalette.Pastel.PS3,
-                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/68.jpg"))
-        ]
+        private static var podiumUsers: [PreviewUser] {
+            let lp = localeProfiles
+            return [
+                makeUser(id: 2, profile: lp[0], pts: 971, color: TapZeroPalette.Pastel.PS2),
+                makeUser(id: 1, profile: lp[1], pts: 984, color: TapZeroPalette.Pastel.PS1),
+                makeUser(id: 3, profile: lp[2], pts: 958, color: TapZeroPalette.Pastel.PS3)
+            ]
+        }
 
-        private static let listUsers: [PreviewUser] = [
-            .init(id: 4, name: "Aaron West", pts: 9421, color: TapZeroPalette.Pastel.PS4,
-                  imageURL: URL(string: "https://randomuser.me/api/portraits/men/75.jpg")),
-            .init(id: 5, name: "Léa Marchand", pts: 9344, color: TapZeroPalette.Pastel.PS5,
-                  imageURL: URL(string: "https://randomuser.me/api/portraits/women/90.jpg"))
+        private static var listUsers: [PreviewUser] {
+            let lp = localeProfiles
+            return [
+                makeUser(id: 4, profile: lp[3], pts: 942, color: TapZeroPalette.Pastel.PS4),
+                makeUser(id: 5, profile: lp[4], pts: 934, color: TapZeroPalette.Pastel.PS5)
+            ]
+        }
+
+        private static func makeUser(
+            id: Int,
+            profile: (name: String, url: URL?),
+            pts: Int,
+            color: String
+        ) -> PreviewUser {
+            .init(id: id, name: profile.name, pts: pts, color: color, imageURL: profile.url)
+        }
+
+        // MARK: - Locale Profiles
+
+        private static var localeProfiles: [(name: String, url: URL?)] {
+            let lang = Bundle.main.preferredLocalizations.first ?? "en"
+            switch lang {
+            case "tr": return trProfiles
+            case "ar": return arProfiles
+            case "de": return deProfiles
+            case "es": return esProfiles
+            case "fr": return frProfiles
+            case "it": return itProfiles
+            case "ja": return jaProfiles
+            case "ko": return koProfiles
+            case "pt-BR": return ptBRProfiles
+            default: return enProfiles
+            }
+        }
+
+        private static func men(_ id: Int) -> URL? {
+            URL(string: "https://randomuser.me/api/portraits/men/\(id).jpg")
+        }
+
+        private static func women(_ id: Int) -> URL? {
+            URL(string: "https://randomuser.me/api/portraits/women/\(id).jpg")
+        }
+
+        // Order: silver, gold, bronze, 4th, 5th
+        // Portrait IDs sourced from randomuser.me API with nat= filter
+        private static let enProfiles: [(name: String, url: URL?)] = [
+            ("Aaron", men(64)), ("Ashley", women(89)), ("Teresa", women(87)),
+            ("Ricky", men(11)), ("Sophie", women(88))
+        ]
+        private static let trProfiles: [(name: String, url: URL?)] = [
+            ("Elif", women(75)), ("Ahmet", men(49)), ("Zeynep", women(21)),
+            ("Burak", men(56)), ("Ayşe", women(82))
+        ]
+        private static let arProfiles: [(name: String, url: URL?)] = [
+            ("Omar", men(63)), ("Sara", women(72)), ("Layla", women(84)),
+            ("Hassan", men(10)), ("Noor", women(59))
+        ]
+        private static let deProfiles: [(name: String, url: URL?)] = [
+            ("Lukas", men(77)), ("Lena", women(20)), ("Sophie", women(93)),
+            ("Max", men(85)), ("Anna", women(61))
+        ]
+        private static let esProfiles: [(name: String, url: URL?)] = [
+            ("Carlos", men(72)), ("María", women(41)), ("Lucía", women(56)),
+            ("Diego", men(82)), ("Ana", women(93))
+        ]
+        private static let frProfiles: [(name: String, url: URL?)] = [
+            ("Lucas", men(42)), ("Léa", women(18)), ("Chloé", women(47)),
+            ("Antoine", men(30)), ("Camille", women(94))
+        ]
+        private static let itProfiles: [(name: String, url: URL?)] = [
+            ("Marco", men(59)), ("Giulia", women(24)), ("Sofia", women(70)),
+            ("Luca", men(30)), ("Elena", women(36))
+        ]
+        private static let jaProfiles: [(name: String, url: URL?)] = [
+            ("Kenji", men(32)), ("Sakura", women(44)), ("Yuna", women(68)),
+            ("Takeshi", men(75)), ("Hana", women(90))
+        ]
+        private static let koProfiles: [(name: String, url: URL?)] = [
+            ("Minjun", men(32)), ("Jisu", women(44)), ("Soyeon", women(68)),
+            ("Hyunwoo", men(75)), ("Yuna", women(90))
+        ]
+        private static let ptBRProfiles: [(name: String, url: URL?)] = [
+            ("Pedro", men(61)), ("Ana", women(54)), ("Beatriz", women(18)),
+            ("Lucas", men(36)), ("Julia", women(70))
         ]
 
         var body: some View {

@@ -51,8 +51,7 @@ extension OnboardingScreen {
                 Spacer()
 
                 PhoneMockupView(width: 240) {
-                    // TODO: Her kart için gerçek app ekranı eklenecek
-                    card.placeholder
+                    card.preview
                 }
                 .animation(.easeInOut(duration: 0.3), value: binding.currentCard)
             }
@@ -82,68 +81,167 @@ enum FeatureCard: String, CaseIterable, Identifiable {
         }
     }
 
-    // Placeholder — app ekranları hazır olunca gerçek content ile değiştirilecek
     @ViewBuilder
-    var placeholder: some View {
+    var preview: some View {
         switch self {
         case .pickTarget:
-            placeholderPickTarget
+            previewPickTarget
         case .gameplay:
-            placeholderGameplay
+            previewGameplay
         case .score:
-            placeholderScore
+            previewScore
         }
     }
 
-    private var placeholderPickTarget: some View {
-        VStack(spacing: 16) {
-            Spacer().frame(height: 40)
-            Text("5")
-                .font(.system(size: 72, weight: .bold, design: .rounded))
-                .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.12))
-            Text(TextKey.Onboarding.placeholderSeconds)
-                .font(TapZeroTypography.Caption.subtitle)
-                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
+    // MARK: - Pick Target Preview
+
+    private var previewPickTarget: some View {
+        VStack(spacing: 0) {
+            pickTargetUserStrip
             Spacer()
+            pickTargetCenter
+            Spacer()
+            pickTargetButton
         }
     }
 
-    private var placeholderGameplay: some View {
-        VStack(spacing: 16) {
+    private var previewName: String {
+        TextKey.localized("onboarding.preview.userName")
+    }
+
+    private var pickTargetUserStrip: some View {
+        HStack {
+            InitialAvatarView(initial: String(previewName.prefix(1)), size: 26)
+
+            VStack(alignment: .leading, spacing: 0) {
+                Text(TextKey.Play.greeting)
+                    .font(.system(size: 8, weight: .medium))
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
+                Text(previewName)
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+            }
+
             Spacer()
-            Circle()
-                .stroke(TapZeroDesign.Foreground.primary.opacity(0.06), lineWidth: 2)
-                .frame(width: 100, height: 100)
-                .overlay(
-                    Circle()
-                        .fill(TapZeroDesign.Foreground.primary.opacity(0.04))
-                        .frame(width: 40, height: 40)
-                )
-            Text(TextKey.Onboarding.placeholderTap)
-                .font(TapZeroTypography.Caption.subtitle)
-                .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-            Spacer()
+
+            VStack(alignment: .trailing, spacing: 0) {
+                Text(TextKey.Play.bestLabel)
+                    .font(.system(size: 8, weight: .medium))
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
+                Text(TextKey.number(847))
+                    .font(.system(size: 11, weight: .semibold).monospacedDigit())
+                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+            }
+        }
+        .padding(.horizontal, 18)
+        .padding(.top, 36)
+    }
+
+    private var pickTargetCenter: some View {
+        VStack(spacing: 0) {
+            Text(TextKey.Play.target)
+                .font(.system(size: 8, weight: .bold))
+                .tracking(1.2)
+                .textCase(.uppercase)
+                .foregroundStyle(TapZeroDesign.Foreground.secondary)
+
+            HStack(alignment: .center, spacing: 2) {
+                Text(TextKey.number(8))
+                    .font(.system(size: 18, weight: .regular).monospacedDigit())
+                    .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.08))
+                Text(TextKey.number(9))
+                    .font(.system(size: 26, weight: .medium).monospacedDigit())
+                    .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.20))
+                Text(TextKey.number(10))
+                    .font(.system(size: 52, weight: .bold).monospacedDigit())
+                    .tracking(-3)
+                    .foregroundStyle(TapZeroDesign.Foreground.primary)
+                    .lineLimit(1)
+                    .fixedSize()
+                Text(TextKey.number(11))
+                    .font(.system(size: 26, weight: .medium).monospacedDigit())
+                    .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.20))
+                Text(TextKey.number(12))
+                    .font(.system(size: 18, weight: .regular).monospacedDigit())
+                    .foregroundStyle(TapZeroDesign.Foreground.primary.opacity(0.08))
+            }
+            .padding(.vertical, 8)
+
+            Text(TextKey.Play.secondsLabel(count: 10))
+                .font(.system(size: 11, weight: .regular))
+                .foregroundStyle(TapZeroDesign.Foreground.secondary)
         }
     }
 
-    private var placeholderScore: some View {
-        VStack(spacing: 12) {
-            Spacer().frame(height: 40)
-            Text("0.03")
-                .font(.system(size: 48, weight: .bold, design: .rounded))
-                .foregroundStyle(TapZeroDesign.Status.good.opacity(0.2))
-            Text(TextKey.Onboarding.placeholderSecondsOff)
-                .font(TapZeroTypography.Caption.subtitle)
+    private var pickTargetButton: some View {
+        Text(TextKey.Play.playButton)
+            .font(.system(size: 12, weight: .semibold))
+            .tracking(-0.2)
+            .frame(maxWidth: .infinity)
+            .frame(height: 40)
+            .background(TapZeroDesign.Button.primaryBackground)
+            .foregroundStyle(TapZeroDesign.Button.primaryForeground)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal, 18)
+            .padding(.bottom, 14)
+    }
+
+    // MARK: - Gameplay Preview
+
+    private var previewGameplay: some View {
+        ZStack {
+            VStack(spacing: 4) {
+                Text(TextKey.GameSession.targetLabel)
+                    .font(.system(size: 9, weight: .semibold))
+                    .tracking(1.4)
+                    .textCase(.uppercase)
+                    .foregroundStyle(TapZeroDesign.Foreground.secondary)
+
+                HStack(alignment: .firstTextBaseline, spacing: 1) {
+                    Text(String(format: "%.2f", 5.0))
+                        .font(.system(size: 26, weight: .bold))
+                        .tracking(-0.8)
+                        .monospacedDigit()
+                        .foregroundStyle(TapZeroDesign.Foreground.primary)
+
+                    Text(TextKey.Common.secondsAbbr)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(TapZeroDesign.Foreground.secondary)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .padding(.top, 44)
+
+            Text(TextKey.GameSession.tapHint)
+                .font(.system(size: 9, weight: .regular))
+                .tracking(0.4)
                 .foregroundStyle(TapZeroDesign.Foreground.tertiary)
-            RoundedRectangle(cornerRadius: 8)
-                .fill(TapZeroDesign.Status.good.opacity(0.06))
-                .frame(width: 120, height: 32)
-                .overlay(
-                    Text(TextKey.Onboarding.placeholderPerfect)
-                        .font(TapZeroTypography.Caption.small)
-                        .foregroundStyle(TapZeroDesign.Status.good.opacity(0.3))
-                )
-            Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                .padding(.bottom, 36)
         }
+    }
+
+    // MARK: - Score Preview
+
+    private var previewScore: some View {
+        let offText = String(format: "%.2fs ", 0.08) + TextKey.localized("gameResult.offSuffix")
+
+        return ScoreCardView(
+            config: .init(
+                score: 847,
+                scoreColor: TapZeroDesign.Status.good,
+                offLabelText: offText,
+                offPillBackground: TapZeroDesign.Score.goodBackground,
+                isPerfect: false,
+                targetTimeFormatted: String(format: "%.2f", 5.0),
+                tappedTimeFormatted: String(format: "%.2f", 5.08),
+                timelineUserOffset: 0.08 * 0.4,
+                targetSeconds: 5,
+                userName: previewName
+            ),
+            constants: ScoreCardView.Constants()
+        )
+        .scaleEffect(0.6, anchor: .top)
+        .padding(.top, 34)
     }
 }

@@ -21,6 +21,7 @@ extension TextKey {
         static let placeholderSecondsOff: LocalizedStringKey = "onboarding.intro2.placeholder.secondsOff"
         static let placeholderPerfect: LocalizedStringKey = "onboarding.intro2.placeholder.perfect"
         static let intro2Subtitle: LocalizedStringKey = "onboarding.intro2.subtitle"
+        static let previewUserName: LocalizedStringKey = "onboarding.preview.userName"
         static let howStep1Title: LocalizedStringKey = "onboarding.intro2.step1.title"
         static let howStep1Body: LocalizedStringKey = "onboarding.intro2.step1.body"
         static let howStep2Title: LocalizedStringKey = "onboarding.intro2.step2.title"
