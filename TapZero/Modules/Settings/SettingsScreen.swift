@@ -325,10 +325,7 @@ extension SettingsScreen {
     }
 
     var appIconImage: some View {
-        let isDark = themeStore.theme == .dark
-            || (themeStore.theme == .system
-                && UITraitCollection.current.userInterfaceStyle == .dark)
-        return Image(isDark ? "AppIcon-Dark" : "AppIcon-Light")
+        Image("AppIconDisplay")
             .resizable()
             .scaledToFit()
             .frame(width: 48, height: 48)
