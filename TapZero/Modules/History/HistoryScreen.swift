@@ -54,7 +54,6 @@ extension HistoryScreen {
                 statsPage.tag(HistoryViewModel.HistoryTab.stats)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .scrollDisabled(true)
             .animation(.easeInOut(duration: 0.25), value: viewModel.headerEntity.binding.selectedTab)
         }
     }
@@ -108,7 +107,6 @@ extension HistoryScreen {
                 scoreList
             }
         }
-        .scrollDisabled(false)
     }
 
     private var scoreList: some View {
@@ -180,6 +178,5 @@ extension HistoryScreen {
             .padding(.horizontal, constants.horizontalPadding)
             .padding(.bottom, constants.bottomPadding)
         }
-        .scrollDisabled(false)
     }
 }

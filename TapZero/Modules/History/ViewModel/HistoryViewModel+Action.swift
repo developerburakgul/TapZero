@@ -14,6 +14,10 @@ extension HistoryViewModel {
 
     /// Called from .task modifier — every appear (viewWillAppear)
     func viewWillAppear() async {
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { await self.fetchGameHistory() }
+            group.addTask { await self.fetchUserStats() }
+        }
         configure()
         sendEvent(type: .pageAppear)
     }
