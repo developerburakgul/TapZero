@@ -3,6 +3,7 @@
 //  TapZero
 //
 
+import DynamicColor
 import SwiftfulRouting
 import SwiftUI
 
@@ -10,6 +11,7 @@ struct SplashScreen: View {
     // MARK: - Private properties
 
     private let constants = Constants()
+    @ObservedObject private var themeStore = ThemeStore.shared
 
     // MARK: - Observed properties
 
@@ -54,28 +56,18 @@ struct SplashScreen: View {
         .onAppear(perform: startAnimations)
     }
 
-    // MARK: - Logo (concentric rings + dot)
+    // MARK: - Logo
 
     private var logoView: some View {
-        ZStack {
-            // Outer ring
-            Circle()
-                .stroke(TapZeroDesign.Foreground.primary, lineWidth: 1.5)
-                .frame(width: 86, height: 86)
-
-            // Inner ring
-            Circle()
-                .stroke(TapZeroDesign.Foreground.primary.opacity(0.35), lineWidth: 1.5)
-                .frame(width: 50, height: 50)
-
-            // Dot at top
-            Circle()
-                .fill(TapZeroDesign.Foreground.primary)
-                .frame(width: 8, height: 8)
-                .offset(y: -43)
-        }
-        .opacity(logoOpacity)
-        .scaleEffect(logoScale)
+        let isDark = themeStore.theme == .dark
+            || (themeStore.theme == .system
+                && UITraitCollection.current.userInterfaceStyle == .dark)
+        return Image(isDark ? "tapzero-icon-tap-white" : "tapzero-icon-tap-black")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 86, height: 86)
+            .opacity(logoOpacity)
+            .scaleEffect(logoScale)
     }
 
     // MARK: - Title

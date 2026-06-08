@@ -3,11 +3,13 @@
 //  TapZero
 //
 
+import DynamicColor
 import SwiftUI
 
 struct ScoreCardView: View, Equatable {
     let config: ScoreCardEntity.Config
     let constants: Constants
+    @ObservedObject private var themeStore = ThemeStore.shared
 
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.config == rhs.config
@@ -108,11 +110,17 @@ struct ScoreCardView: View, Equatable {
     }
 
     private var brandLogo: some View {
-        Image("AppIconDisplay")
+        let isDark: Bool = if let shareTheme {
+            shareTheme.isDarkBackground
+        } else {
+            themeStore.theme == .dark
+                || (themeStore.theme == .system
+                    && UITraitCollection.current.userInterfaceStyle == .dark)
+        }
+        return Image(isDark ? "tapzero-icon-tap-white" : "tapzero-icon-tap-black")
             .resizable()
             .scaledToFit()
             .frame(width: constants.brandLogoSize, height: constants.brandLogoSize)
-            .clipShape(RoundedRectangle(cornerRadius: 4))
     }
 
     // MARK: - Hero Score

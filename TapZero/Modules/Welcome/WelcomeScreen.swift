@@ -3,11 +3,13 @@
 //  TapZero
 //
 
+import DynamicColor
 import SwiftfulRouting
 import SwiftUI
 
 struct WelcomeScreen: View {
     @StateObject var viewModel: WelcomeViewModel
+    @ObservedObject private var themeStore = ThemeStore.shared
 
     @State private var showLogo: Bool = false
     @State private var showTitle: Bool = false
@@ -42,24 +44,15 @@ struct WelcomeScreen: View {
     // MARK: - Logo
 
     private var logoSection: some View {
-        ZStack {
-            Circle()
-                .fill(TapZeroDesign.Accent.primary.opacity(0.08))
-                .frame(width: 140, height: 140)
-                .scaleEffect(showLogo ? 1.0 : 0.5)
-                .opacity(showLogo ? 1 : 0)
-
-            Circle()
-                .fill(TapZeroDesign.Accent.primary.opacity(0.15))
-                .frame(width: 100, height: 100)
-                .scaleEffect(showLogo ? 1.0 : 0.6)
-                .opacity(showLogo ? 1 : 0)
-
-            Image(systemName: "app.fill")
-                .font(.system(size: 48))
-                .foregroundStyle(TapZeroDesign.Accent.primary)
-                .scaleEffect(showLogo ? 1.0 : 0.01)
-        }
+        let isDark = themeStore.theme == .dark
+            || (themeStore.theme == .system
+                && UITraitCollection.current.userInterfaceStyle == .dark)
+        return Image(isDark ? "tapzero-icon-tap-white" : "tapzero-icon-tap-black")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 100, height: 100)
+            .scaleEffect(showLogo ? 1.0 : 0.5)
+            .opacity(showLogo ? 1 : 0)
     }
 
     // MARK: - Text
