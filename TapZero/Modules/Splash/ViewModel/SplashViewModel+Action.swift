@@ -44,29 +44,8 @@ extension SplashViewModel {
     // MARK: - Force Update
 
     private func showForceUpdateModal(entity: ForceUpdateEntity) {
+        forceUpdateEntity = entity
         isForceUpdatePresented = true
-
-        let gradient = LinearGradient(
-            colors: [
-                TapZeroDesign.ForceUpdate.sheetGradientStart,
-                TapZeroDesign.ForceUpdate.sheetGradientEnd
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-        let sheetConfig = ResizableSheetConfig(
-            detents: [.fraction(0.65)],
-            dragIndicator: .hidden,
-            background: .custom(gradient),
-            cornerRadius: 24
-        )
-        router.showScreen(
-            .sheetConfig(config: sheetConfig),
-            id: "forceUpdate"
-        ) { router in
-            ForceUpdateBuilder.build(router: router, entity: entity)
-                .interactiveDismissDisabled(true)
-        }
     }
 
     // MARK: - Error

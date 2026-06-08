@@ -36,6 +36,27 @@ struct SplashScreen: View {
                 }
                 await viewModel.viewWillAppear()
             }
+            .sheet(isPresented: $viewModel.isForceUpdatePresented) {
+                if let entity = viewModel.forceUpdateEntity {
+                    RouterView(id: "forceUpdate") { router in
+                        ForceUpdateBuilder.build(router: router, entity: entity)
+                    }
+                    .presentationDetents([.fraction(0.65)])
+                    .presentationDragIndicator(.hidden)
+                    .presentationCornerRadius(24)
+                    .presentationBackground(
+                        LinearGradient(
+                            colors: [
+                                TapZeroDesign.ForceUpdate.sheetGradientStart,
+                                TapZeroDesign.ForceUpdate.sheetGradientEnd
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .interactiveDismissDisabled(true)
+                }
+            }
     }
 
     private var contentView: some View {

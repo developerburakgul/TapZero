@@ -25,6 +25,7 @@ final class SplashViewModel: ObservableObject {
 
     // MARK: - Published Properties
     @Published var isForceUpdatePresented: Bool = false
+    @Published var forceUpdateEntity: ForceUpdateEntity?
     var userLoadFailed = false
 
     // MARK: - Subview Entities
