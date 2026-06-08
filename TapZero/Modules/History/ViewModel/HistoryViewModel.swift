@@ -20,6 +20,7 @@ final class HistoryViewModel: ObservableObject {
     @ObservedInjected private(set) var userManager: UserManager
     @Injected private(set) var crashReporter: CrashReporterProtocol
     @Injected private(set) var deepLinkManager: DeepLinkManager
+    @Injected private(set) var languageManager: LanguageManager
 
     // MARK: - Published Properties
     @Published var selectedTab: HistoryTab = .scores
@@ -63,7 +64,14 @@ final class HistoryViewModel: ObservableObject {
     )
     @Published var emptyOverlayEntity: HistoryScreen.EmptyOverlayEntity = .init(
         binding: .init(),
-        config: .init(gamesPlayed: 0, gamesRequired: 1, gamesRemaining: 1, progress: 0, subtitle: "", explanation: "")
+        config: .init(
+            gamesPlayed: 0,
+            gamesRequired: 1,
+            gamesRemaining: 1,
+            progress: 0,
+            subtitle: TextKey.History.emptyOverlayScoresSubtitle(count: 1),
+            explanation: TextKey.History.emptyOverlayScoresExplanation
+        )
     )
 
     // MARK: - Init
@@ -337,7 +345,8 @@ extension HistoryViewModel {
 
     private func weekdaySymbol(for date: Date, calendar: Calendar) -> String {
         let weekday = calendar.component(.weekday, from: date)
-        let symbols = ["S", "M", "T", "W", "T", "F", "S"]
-        return symbols[weekday - 1]
+        var localized = calendar
+        localized.locale = languageManager.locale
+        return localized.veryShortWeekdaySymbols[weekday - 1]
     }
 }
