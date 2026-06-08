@@ -30,7 +30,6 @@ struct TapZeroApp: App {
 private struct AppRootView: View {
     @StateObject private var languageManager: LanguageManager
     @StateObject private var networkMonitor: NetworkMonitorManager
-    @State private var isNetworkSheetPresented: Bool = false
 
     init() {
         // swiftlint:disable force_unwrapping
@@ -58,39 +57,27 @@ private struct AppRootView: View {
         .allowsHitTesting(networkMonitor.isConnected)
         .brightness(networkMonitor.isConnected ? 0 : 0.35)
         .animation(.easeInOut(duration: 0.4), value: networkMonitor.isConnected)
-        .onChange(of: networkMonitor.isConnected) { _, connected in
-            handleConnectionChange(connected)
-        }
-    }
-
-    private func handleConnectionChange(_ connected: Bool) {
-        guard let appRouter = Dependencies.shared.rootRouter else { return }
-        if !connected, !isNetworkSheetPresented {
-            isNetworkSheetPresented = true
-            let gradient = LinearGradient(
-                colors: [
-                    TapZeroDesign.NetworkStatus.sheetGradientStart,
-                    TapZeroDesign.NetworkStatus.sheetGradientEnd
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            let config = ResizableSheetConfig(
-                detents: [.fraction(0.55)],
-                dragIndicator: .hidden,
-                background: .custom(gradient),
-                cornerRadius: 24
-            )
-            appRouter.showScreen(
-                .sheetConfig(config: config),
-                id: "networkStatus"
-            ) { router in
+        .sheet(isPresented: Binding(
+            get: { !networkMonitor.isConnected },
+            set: { _ in }
+        )) {
+            RouterView(id: "networkStatus", addModuleSupport: true) { router in
                 NetworkStatusBuilder.build(router: router)
-                    .interactiveDismissDisabled(true)
             }
-        } else if connected, isNetworkSheetPresented {
-            appRouter.dismissScreen()
-            isNetworkSheetPresented = false
+            .presentationDetents([.fraction(0.55)])
+            .presentationDragIndicator(.hidden)
+            .presentationCornerRadius(24)
+            .presentationBackground(
+                LinearGradient(
+                    colors: [
+                        TapZeroDesign.NetworkStatus.sheetGradientStart,
+                        TapZeroDesign.NetworkStatus.sheetGradientEnd
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .interactiveDismissDisabled(true)
         }
     }
 }
