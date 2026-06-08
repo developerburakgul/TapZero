@@ -55,6 +55,7 @@ private struct AppRootView: View {
             networkMonitor.startMonitoring()
         }
         .blur(radius: networkMonitor.isConnected ? 0 : 20)
+        .allowsHitTesting(networkMonitor.isConnected)
         .brightness(networkMonitor.isConnected ? 0 : 0.35)
         .animation(.easeInOut(duration: 0.4), value: networkMonitor.isConnected)
         .onChange(of: networkMonitor.isConnected) { _, connected in
