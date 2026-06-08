@@ -108,6 +108,7 @@ extension HistoryScreen {
                 scoreList
             }
         }
+        .scrollDisabled(false)
     }
 
     private var scoreList: some View {
@@ -179,5 +180,6 @@ extension HistoryScreen {
             .padding(.horizontal, constants.horizontalPadding)
             .padding(.bottom, constants.bottomPadding)
         }
+        .scrollDisabled(false)
     }
 }
