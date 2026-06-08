@@ -3,14 +3,12 @@
 //  TapZero
 //
 
-import DynamicColor
 import SwiftUI
 
 extension OnboardingScreen {
     struct IntroStepOne: View, @MainActor Equatable {
         @Binding var binding: IntroStepOneEntity.Binding
         let config: IntroStepOneEntity.Config
-        @ObservedObject private var themeStore = ThemeStore.shared
 
         var body: some View {
             VStack(spacing: 0) {
@@ -25,10 +23,7 @@ extension OnboardingScreen {
         // MARK: - App Icon
 
         private var appIcon: some View {
-            let isDark = themeStore.theme == .dark
-                || (themeStore.theme == .system
-                    && UITraitCollection.current.userInterfaceStyle == .dark)
-            return Image(isDark ? "AppIcon-Dark" : "AppIcon-Light")
+            Image("AppIconDisplay")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 128, height: 128)
