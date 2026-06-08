@@ -266,6 +266,7 @@ struct SettingsScreen: View {
     private var footerSection: some View {
         Section {
             VStack(spacing: 12) {
+                appIconImage
                 rateShareLinks
                 aboutLinks
                 versionLabel
@@ -321,6 +322,17 @@ extension SettingsScreen {
         }
         .font(TapZeroTypography.Caption.regular)
         .foregroundStyle(TapZeroDesign.Foreground.secondary)
+    }
+
+    var appIconImage: some View {
+        let isDark = themeStore.theme == .dark
+            || (themeStore.theme == .system
+                && UITraitCollection.current.userInterfaceStyle == .dark)
+        return Image(isDark ? "AppIcon-Dark" : "AppIcon-Light")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 48, height: 48)
+            .clipShape(RoundedRectangle(cornerRadius: 11))
     }
 
     var versionLabel: some View {

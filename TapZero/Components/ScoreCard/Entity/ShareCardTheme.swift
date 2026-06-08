@@ -16,5 +16,6 @@ extension ScoreCardEntity {
         let targetDotFill: Color
         let badgePillOpacity: Double?
         let avatarBackground: Color
+        var isDarkBackground: Bool = true
     }
 }
