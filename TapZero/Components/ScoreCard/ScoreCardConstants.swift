@@ -68,8 +68,7 @@ extension ScoreCardView {
                 trackBackground: Color(hex: "#0B0B0C").opacity(0.08),
                 targetDotFill: Color(hex: "#FFFFFF"),
                 badgePillOpacity: nil,
-                avatarBackground: Color(hex: "#EFEEE8"),
-                isDarkBackground: false
+                avatarBackground: Color(hex: "#EFEEE8")
             )
         }
 
