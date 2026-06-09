@@ -5,27 +5,6 @@
 
 import SwiftUI
 
-// MARK: - Locale Data
-
-private struct StoreLocaleData {
-    let language: AppLanguage
-    let localeIdentifier: String
-    let userName: String
-}
-
-private let storeLocales: [StoreLocaleData] = [
-    .init(language: .english, localeIdentifier: "en_US", userName: "John"),
-    .init(language: .turkish, localeIdentifier: "tr_TR", userName: "Burak"),
-    .init(language: .arabic, localeIdentifier: "ar_SA", userName: "أحمد"),
-    .init(language: .german, localeIdentifier: "de_DE", userName: "Lukas"),
-    .init(language: .spanish, localeIdentifier: "es_ES", userName: "Carlos"),
-    .init(language: .french, localeIdentifier: "fr_FR", userName: "Pierre"),
-    .init(language: .italian, localeIdentifier: "it_IT", userName: "Marco"),
-    .init(language: .japanese, localeIdentifier: "ja_JP", userName: "ユウキ"),
-    .init(language: .korean, localeIdentifier: "ko_KR", userName: "지민"),
-    .init(language: .portugueseBrazil, localeIdentifier: "pt_BR", userName: "Lucas")
-]
-
 // MARK: - Store Share Screen
 
 private struct StoreShareShowcase: View {
@@ -199,28 +178,35 @@ private struct StoreShareShowcase: View {
     }
 }
 
-// MARK: - Preview Factory
-
-@MainActor
-private func storeSharePreview(for data: StoreLocaleData) -> some View {
-    let preview = DevPreview.shared
-    preview.languageManager.currentLanguage = data.language
-    preview.languageManager.localeOverride = Locale(identifier: data.localeIdentifier)
-
-    return StoreShareShowcase(localeData: data)
-        .environment(\.locale, Locale(identifier: data.localeIdentifier))
-        .environment(\.colorScheme, .light)
-}
-
 // MARK: - Previews (10 Locales)
 
-#Preview("Store Share — EN") { storeSharePreview(for: storeLocales[0]) }
-#Preview("Store Share — TR") { storeSharePreview(for: storeLocales[1]) }
-#Preview("Store Share — AR") { storeSharePreview(for: storeLocales[2]) }
-#Preview("Store Share — DE") { storeSharePreview(for: storeLocales[3]) }
-#Preview("Store Share — ES") { storeSharePreview(for: storeLocales[4]) }
-#Preview("Store Share — FR") { storeSharePreview(for: storeLocales[5]) }
-#Preview("Store Share — IT") { storeSharePreview(for: storeLocales[6]) }
-#Preview("Store Share — JA") { storeSharePreview(for: storeLocales[7]) }
-#Preview("Store Share — KO") { storeSharePreview(for: storeLocales[8]) }
-#Preview("Store Share — PT-BR") { storeSharePreview(for: storeLocales[9]) }
+#Preview("Store Share — EN") {
+    StoreLocalePreview(storeLocales[0]) { StoreShareShowcase(localeData: storeLocales[0]) }
+}
+#Preview("Store Share — TR") {
+    StoreLocalePreview(storeLocales[1]) { StoreShareShowcase(localeData: storeLocales[1]) }
+}
+#Preview("Store Share — AR") {
+    StoreLocalePreview(storeLocales[2]) { StoreShareShowcase(localeData: storeLocales[2]) }
+}
+#Preview("Store Share — DE") {
+    StoreLocalePreview(storeLocales[3]) { StoreShareShowcase(localeData: storeLocales[3]) }
+}
+#Preview("Store Share — ES") {
+    StoreLocalePreview(storeLocales[4]) { StoreShareShowcase(localeData: storeLocales[4]) }
+}
+#Preview("Store Share — FR") {
+    StoreLocalePreview(storeLocales[5]) { StoreShareShowcase(localeData: storeLocales[5]) }
+}
+#Preview("Store Share — IT") {
+    StoreLocalePreview(storeLocales[6]) { StoreShareShowcase(localeData: storeLocales[6]) }
+}
+#Preview("Store Share — JA") {
+    StoreLocalePreview(storeLocales[7]) { StoreShareShowcase(localeData: storeLocales[7]) }
+}
+#Preview("Store Share — KO") {
+    StoreLocalePreview(storeLocales[8]) { StoreShareShowcase(localeData: storeLocales[8]) }
+}
+#Preview("Store Share — PT-BR") {
+    StoreLocalePreview(storeLocales[9]) { StoreShareShowcase(localeData: storeLocales[9]) }
+}

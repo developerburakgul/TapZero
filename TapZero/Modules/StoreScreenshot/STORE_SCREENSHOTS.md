@@ -10,12 +10,12 @@ Ham ekran değil — her biri store için yaratıcı şekilde optimize edilmiş.
 
 | # | Ekran | Açıklama | Durum |
 |---|-------|----------|-------|
-| 1 | Gameplay | Countdown sekansı — 3→2→1→GO motion efekti | - |
-| 2 | Play (Home) | Number picker ile hedef seçme | - |
-| 3 | Scores | Farklı skorların üst üste fan'ı (perfect/good/mid) | - |
-| 4 | Stats | İstatistik ekranı (ortalama, en iyi skor, trendler) | - |
+| 1 | Gameplay | Countdown sekansı — 3→2→1→GO motion efekti | done |
+| 2 | Play (Home) | Number picker ile hedef seçme | done |
+| 3 | Scores | Farklı skorların üst üste fan'ı (perfect/good/mid) | done |
+| 4 | Stats | İstatistik ekranı (ortalama, en iyi skor, trendler) | done |
 | 5 | Share | Skor paylaşım kartı — 6 renk fan layout | done |
-| 6 | Leaderboard | Sıralama tablosu + podium | - |
+| 6 | Leaderboard | Sıralama tablosu + podium | done |
 
 ---
 
