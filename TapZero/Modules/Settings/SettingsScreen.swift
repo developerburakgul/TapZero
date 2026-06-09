@@ -266,7 +266,6 @@ struct SettingsScreen: View {
     private var footerSection: some View {
         Section {
             VStack(spacing: 12) {
-                appIconImage
                 rateShareLinks
                 aboutLinks
                 versionLabel
@@ -324,15 +323,7 @@ extension SettingsScreen {
         .foregroundStyle(TapZeroDesign.Foreground.secondary)
     }
 
-    var appIconImage: some View {
-        Image("AppIconDisplay")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 48, height: 48)
-            .clipShape(RoundedRectangle(cornerRadius: 11))
-    }
-
-    var versionLabel: some View {
+var versionLabel: some View {
         HStack(spacing: 4) {
             Text(TextKey.Settings.version)
             Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-")
