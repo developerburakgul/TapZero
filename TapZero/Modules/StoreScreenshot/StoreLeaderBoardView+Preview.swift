@@ -10,36 +10,20 @@ import SwiftUI
 private struct StoreLeaderBoardShowcase: View {
     let localeData: StoreLocaleData
 
-    @State private var selectedTab: LeaderBoardViewModel.LeaderBoardTab = .global
     private let constants = LeaderBoardScreen.Constants()
 
     var body: some View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                header
-                scrollContent
-            }
-        }
-    }
-
-    // MARK: - Header
-
-    private var header: some View {
-        LeaderBoardScreen.LeaderBoardHeaderView(
-            binding: .constant(.init(selectedTab: selectedTab)),
-            config: .init(selectedTab: selectedTab)
-        )
-    }
-
-    // MARK: - Content
-
-    private var scrollContent: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                podium
-                list
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    podium
+                        .scaleEffect(1.1)
+                        .padding(.top, 24)
+                        .padding(.bottom, 8)
+                    list
+                }
             }
         }
     }
@@ -101,12 +85,10 @@ private struct StoreLeaderBoardShowcase: View {
     private var listRows: [LeaderBoardScreen.LeaderBoardRowEntity.Config] {
         [
             makeRowConfig(rank: 4, name: "Liam Carter", score: 932, isUser: false),
-            makeRowConfig(rank: 5, name: "Sofia Rossi", score: 918, isUser: false),
-            makeRowConfig(rank: 6, name: "Noah Kim", score: 904, isUser: false),
-            makeRowConfig(rank: 7, name: localeData.userName, score: 891, isUser: true),
-            makeRowConfig(rank: 8, name: "Emma Liu", score: 876, isUser: false),
-            makeRowConfig(rank: 9, name: "Raj Patel", score: 854, isUser: false),
-            makeRowConfig(rank: 10, name: "Ava Chen", score: 837, isUser: false)
+            makeRowConfig(rank: 5, name: localeData.userName, score: 891, isUser: true),
+            makeRowConfig(rank: 6, name: "Sofia Rossi", score: 876, isUser: false),
+            makeRowConfig(rank: 7, name: "Noah Kim", score: 854, isUser: false),
+            makeRowConfig(rank: 8, name: "Emma Liu", score: 837, isUser: false)
         ]
     }
 

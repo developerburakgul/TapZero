@@ -10,39 +10,20 @@ import SwiftUI
 private struct StoreStatsShowcase: View {
     let localeData: StoreLocaleData
 
-    @State private var selectedTab: HistoryViewModel.HistoryTab = .stats
-
     var body: some View {
         ZStack {
             TapZeroDesign.Background.primary.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                header
-                statsContent
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 16) {
+                    heroStat
+                    kpiGrid
+                    distribution
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 32)
+                .padding(.bottom, 20)
             }
-        }
-    }
-
-    // MARK: - Header
-
-    private var header: some View {
-        HistoryScreen.HistoryHeaderView(
-            binding: .constant(.init(selectedTab: selectedTab)),
-            config: .init(selectedTab: selectedTab)
-        )
-    }
-
-    // MARK: - Stats Content
-
-    private var statsContent: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                heroStat
-                kpiGrid
-                distribution
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
         }
     }
 
@@ -58,6 +39,8 @@ private struct StoreStatsShowcase: View {
                 trendIsPositive: true
             )
         )
+        .scaleEffect(1.12)
+        .padding(.vertical, 8)
     }
 
     // MARK: - KPI Grid

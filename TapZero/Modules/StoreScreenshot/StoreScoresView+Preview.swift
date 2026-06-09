@@ -36,18 +36,11 @@ private struct StoreScoresShowcase: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
+        ZStack {
+            TapZeroDesign.Background.primary.ignoresSafeArea()
 
             cardFan
-
-            Spacer()
-
-            playAgainButton
-                .padding(.horizontal, 20)
-                .padding(.bottom, 16)
         }
-        .background(TapZeroDesign.Background.primary.ignoresSafeArea())
     }
 
     // MARK: - Card Fan
@@ -61,20 +54,7 @@ private struct StoreScoresShowcase: View {
             }
         }
         .frame(width: 340)
-        .scaleEffect(0.78)
-    }
-
-    // MARK: - Play Again Button
-
-    private var playAgainButton: some View {
-        Text(TextKey.GameResult.playAgain)
-            .font(TapZeroTypography.Label.button)
-            .tracking(-0.2)
-            .foregroundStyle(TapZeroDesign.Button.primaryForeground)
-            .frame(maxWidth: .infinity)
-            .frame(height: 56)
-            .background(TapZeroDesign.Button.primaryBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+        .scaleEffect(0.92)
     }
 
     // MARK: - Card Builder

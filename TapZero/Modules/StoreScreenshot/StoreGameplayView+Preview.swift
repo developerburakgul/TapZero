@@ -76,6 +76,7 @@ private struct StoreGameplayShowcase: View {
                 .font(TapZeroTypography.Display.countdownGo)
                 .tracking(8)
                 .foregroundStyle(TapZeroDesign.Foreground.primary)
+                .scaleEffect(1.2)
         }
     }
 }

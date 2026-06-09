@@ -52,7 +52,7 @@ private struct StoreShareShowcase: View {
             makeCard(bg: TapZeroDesign.Share.bgDark, score: 912, target: 5, tapped: 5.08, rating: .good)
         }
         .frame(width: 340)
-        .scaleEffect(0.78)
+        .scaleEffect(0.85)
     }
 
     // MARK: - Color Picker
