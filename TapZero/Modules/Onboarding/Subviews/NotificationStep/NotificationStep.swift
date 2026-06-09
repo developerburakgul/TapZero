@@ -64,10 +64,14 @@ extension OnboardingScreen {
         private var notificationOverlay: some View {
             NotificationBannerView(
                 title: TextKey.Onboarding.notificationMockTitle,
-                subtitle: TextKey.Onboarding.notificationMockSubtitle,
-                icon: "bell.fill",
-                iconColor: TapZeroDesign.Accent.primary
-            )
+                subtitle: TextKey.Onboarding.notificationMockSubtitle
+            ) {
+                Image("AppIconDisplay")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 34, height: 34)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
             .padding(.horizontal, 12)
             .padding(.top, 40)
             .offset(y: animateNotification ? 0 : -200)
