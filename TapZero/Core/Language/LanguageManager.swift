@@ -57,9 +57,13 @@ final class LanguageManager: ObservableObject {
         }
     }
 
+    /// Preview/test override — set to bypass device region detection.
+    var localeOverride: Locale?
+
     /// App language + device region.
     /// e.g. language = ar, device region = SA → Locale("ar_SA")
     var locale: Locale {
+        if let localeOverride { return localeOverride }
         let lang = currentLanguage.rawValue
         let region = Locale.current.region?.identifier ?? ""
         if region.isEmpty {
