@@ -157,9 +157,12 @@ struct SharePreviewScreen: View {
     // MARK: - Image Render
 
     private func renderShareImage() -> UIImage? {
+        let bg: AnyShapeStyle = cardConstants.shareCardTheme(for: viewModel.selectedColor)?.cardBackground
+            ?? AnyShapeStyle(viewModel.selectedColor)
+
         let view = cardContent
             .padding(28)
-            .background(viewModel.selectedColor)
+            .background(bg)
             .environment(\.colorScheme, .light)
 
         let renderer = ImageRenderer(content: view)

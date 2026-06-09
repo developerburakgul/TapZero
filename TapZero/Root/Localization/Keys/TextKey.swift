@@ -10,8 +10,12 @@ enum TextKey {
     /// Use this instead of `String(localized:)` so alerts respect in-app language.
     static func localized(_ key: String.LocalizationValue) -> String {
         MainActor.assumeIsolated {
-            let locale = Dependencies.shared.container.resolve(LanguageManager.self)?.locale ?? .current
-            return String(localized: key, locale: locale)
+            let manager = Dependencies.shared.container.resolve(LanguageManager.self)
+            let locale = manager?.locale ?? .current
+            let langCode = manager?.currentLanguage.rawValue ?? "en"
+            let bundle: Bundle = Bundle.main.path(forResource: langCode, ofType: "lproj")
+                .flatMap { Bundle(path: $0) } ?? .main
+            return String(localized: key, bundle: bundle, locale: locale)
         }
     }
 
