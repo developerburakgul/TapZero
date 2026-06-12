@@ -218,9 +218,26 @@ Podium + madalyalar + highlight yeterli.
 
 ---
 
+## Dil Sırası (Figma ile eşleşik)
+
+| # | Dil | Locale | userName |
+|---|-----|--------|----------|
+| 1 | EN | en_US | John |
+| 2 | DE | de_DE | Lukas |
+| 3 | FR | fr_FR | Pierre |
+| 4 | ES | es_ES | Carlos |
+| 5 | IT | it_IT | Marco |
+| 6 | JA | ja_JP | ユウキ |
+| 7 | KO | ko_KR | 지민 |
+| 8 | TR | tr_TR | Burak |
+| 9 | AR | ar_SA | أحمد |
+| 10 | PT-BR | pt_BR | Lucas |
+
+---
+
 ## Kurallar
 
-- Her ekran 10 locale için preview içerir (EN, TR, AR, DE, ES, FR, IT, JA, KO, PT-BR)
+- Her ekran 10 locale için preview içerir (yukarıdaki sırayla)
 - Tüm textler `TextKey` üzerinden — hardcoded string yasak
 - Sayılar locale-aware formatlanır (`localeOverride` ile tam locale: `ar_SA`, `de_DE` vs.)
 - Her locale'de farklı userName + InitialAvatarView

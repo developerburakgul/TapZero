@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - LeaderBoard Showcase
 
-private struct StoreLeaderBoardShowcase: View {
+struct StoreLeaderBoardShowcase: View {
     let localeData: StoreLocaleData
 
     private let constants = LeaderBoardScreen.Constants()
@@ -110,28 +110,28 @@ private struct StoreLeaderBoardShowcase: View {
 #Preview("Store LeaderBoard — EN") {
     StoreLocalePreview(storeLocales[0]) { StoreLeaderBoardShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store LeaderBoard — TR") {
+#Preview("Store LeaderBoard — DE") {
     StoreLocalePreview(storeLocales[1]) { StoreLeaderBoardShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store LeaderBoard — AR") {
+#Preview("Store LeaderBoard — FR") {
     StoreLocalePreview(storeLocales[2]) { StoreLeaderBoardShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store LeaderBoard — DE") {
+#Preview("Store LeaderBoard — ES") {
     StoreLocalePreview(storeLocales[3]) { StoreLeaderBoardShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store LeaderBoard — ES") {
+#Preview("Store LeaderBoard — IT") {
     StoreLocalePreview(storeLocales[4]) { StoreLeaderBoardShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store LeaderBoard — FR") {
+#Preview("Store LeaderBoard — JA") {
     StoreLocalePreview(storeLocales[5]) { StoreLeaderBoardShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store LeaderBoard — IT") {
+#Preview("Store LeaderBoard — KO") {
     StoreLocalePreview(storeLocales[6]) { StoreLeaderBoardShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store LeaderBoard — JA") {
+#Preview("Store LeaderBoard — TR") {
     StoreLocalePreview(storeLocales[7]) { StoreLeaderBoardShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store LeaderBoard — KO") {
+#Preview("Store LeaderBoard — AR") {
     StoreLocalePreview(storeLocales[8]) { StoreLeaderBoardShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store LeaderBoard — PT-BR") {

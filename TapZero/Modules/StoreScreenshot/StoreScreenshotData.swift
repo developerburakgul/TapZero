@@ -15,14 +15,14 @@ struct StoreLocaleData {
 
 let storeLocales: [StoreLocaleData] = [
     .init(language: .english, localeIdentifier: "en_US", userName: "John"),
-    .init(language: .turkish, localeIdentifier: "tr_TR", userName: "Burak"),
-    .init(language: .arabic, localeIdentifier: "ar_SA", userName: "أحمد"),
     .init(language: .german, localeIdentifier: "de_DE", userName: "Lukas"),
-    .init(language: .spanish, localeIdentifier: "es_ES", userName: "Carlos"),
     .init(language: .french, localeIdentifier: "fr_FR", userName: "Pierre"),
+    .init(language: .spanish, localeIdentifier: "es_ES", userName: "Carlos"),
     .init(language: .italian, localeIdentifier: "it_IT", userName: "Marco"),
     .init(language: .japanese, localeIdentifier: "ja_JP", userName: "ユウキ"),
     .init(language: .korean, localeIdentifier: "ko_KR", userName: "지민"),
+    .init(language: .turkish, localeIdentifier: "tr_TR", userName: "Burak"),
+    .init(language: .arabic, localeIdentifier: "ar_SA", userName: "أحمد"),
     .init(language: .portugueseBrazil, localeIdentifier: "pt_BR", userName: "Lucas")
 ]
 
@@ -42,6 +42,7 @@ struct StoreLocalePreview<Content: View>: View {
 
     var body: some View {
         content
+            .statusBarHidden(true)
             .environment(\.locale, Locale(identifier: data.localeIdentifier))
             .environment(\.colorScheme, .light)
     }

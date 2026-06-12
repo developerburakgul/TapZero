@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Store Share Screen
 
-private struct StoreShareShowcase: View {
+struct StoreShareShowcase: View {
     let localeData: StoreLocaleData
 
     private let constants = ScoreCardView.Constants()
@@ -183,28 +183,28 @@ private struct StoreShareShowcase: View {
 #Preview("Store Share — EN") {
     StoreLocalePreview(storeLocales[0]) { StoreShareShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store Share — TR") {
+#Preview("Store Share — DE") {
     StoreLocalePreview(storeLocales[1]) { StoreShareShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store Share — AR") {
+#Preview("Store Share — FR") {
     StoreLocalePreview(storeLocales[2]) { StoreShareShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store Share — DE") {
+#Preview("Store Share — ES") {
     StoreLocalePreview(storeLocales[3]) { StoreShareShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store Share — ES") {
+#Preview("Store Share — IT") {
     StoreLocalePreview(storeLocales[4]) { StoreShareShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store Share — FR") {
+#Preview("Store Share — JA") {
     StoreLocalePreview(storeLocales[5]) { StoreShareShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store Share — IT") {
+#Preview("Store Share — KO") {
     StoreLocalePreview(storeLocales[6]) { StoreShareShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store Share — JA") {
+#Preview("Store Share — TR") {
     StoreLocalePreview(storeLocales[7]) { StoreShareShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store Share — KO") {
+#Preview("Store Share — AR") {
     StoreLocalePreview(storeLocales[8]) { StoreShareShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store Share — PT-BR") {

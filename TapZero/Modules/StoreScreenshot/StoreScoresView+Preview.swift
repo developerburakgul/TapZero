@@ -24,7 +24,7 @@ private let scoreSteps: [ScoreStep] = [
 
 // MARK: - Scores Fan Showcase
 
-private struct StoreScoresShowcase: View {
+struct StoreScoresShowcase: View {
     let localeData: StoreLocaleData
 
     private let cardConstants = ScoreCardView.Constants()
@@ -114,28 +114,28 @@ private struct StoreScoresShowcase: View {
 #Preview("Store Scores — EN") {
     StoreLocalePreview(storeLocales[0]) { StoreScoresShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store Scores — TR") {
+#Preview("Store Scores — DE") {
     StoreLocalePreview(storeLocales[1]) { StoreScoresShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store Scores — AR") {
+#Preview("Store Scores — FR") {
     StoreLocalePreview(storeLocales[2]) { StoreScoresShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store Scores — DE") {
+#Preview("Store Scores — ES") {
     StoreLocalePreview(storeLocales[3]) { StoreScoresShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store Scores — ES") {
+#Preview("Store Scores — IT") {
     StoreLocalePreview(storeLocales[4]) { StoreScoresShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store Scores — FR") {
+#Preview("Store Scores — JA") {
     StoreLocalePreview(storeLocales[5]) { StoreScoresShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store Scores — IT") {
+#Preview("Store Scores — KO") {
     StoreLocalePreview(storeLocales[6]) { StoreScoresShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store Scores — JA") {
+#Preview("Store Scores — TR") {
     StoreLocalePreview(storeLocales[7]) { StoreScoresShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store Scores — KO") {
+#Preview("Store Scores — AR") {
     StoreLocalePreview(storeLocales[8]) { StoreScoresShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store Scores — PT-BR") {

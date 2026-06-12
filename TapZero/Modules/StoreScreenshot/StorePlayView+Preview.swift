@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Play Screen Showcase
 
-private struct StorePlayShowcase: View {
+struct StorePlayShowcase: View {
     let localeData: StoreLocaleData
 
     private let constants = PlayScreen.Constants()
@@ -105,28 +105,28 @@ private struct StorePlayShowcase: View {
 #Preview("Store Play — EN") {
     StoreLocalePreview(storeLocales[0]) { StorePlayShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store Play — TR") {
+#Preview("Store Play — DE") {
     StoreLocalePreview(storeLocales[1]) { StorePlayShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store Play — AR") {
+#Preview("Store Play — FR") {
     StoreLocalePreview(storeLocales[2]) { StorePlayShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store Play — DE") {
+#Preview("Store Play — ES") {
     StoreLocalePreview(storeLocales[3]) { StorePlayShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store Play — ES") {
+#Preview("Store Play — IT") {
     StoreLocalePreview(storeLocales[4]) { StorePlayShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store Play — FR") {
+#Preview("Store Play — JA") {
     StoreLocalePreview(storeLocales[5]) { StorePlayShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store Play — IT") {
+#Preview("Store Play — KO") {
     StoreLocalePreview(storeLocales[6]) { StorePlayShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store Play — JA") {
+#Preview("Store Play — TR") {
     StoreLocalePreview(storeLocales[7]) { StorePlayShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store Play — KO") {
+#Preview("Store Play — AR") {
     StoreLocalePreview(storeLocales[8]) { StorePlayShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store Play — PT-BR") {

@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Stats Showcase
 
-private struct StoreStatsShowcase: View {
+struct StoreStatsShowcase: View {
     let localeData: StoreLocaleData
 
     var body: some View {
@@ -92,28 +92,28 @@ private struct StoreStatsShowcase: View {
 #Preview("Store Stats — EN") {
     StoreLocalePreview(storeLocales[0]) { StoreStatsShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store Stats — TR") {
+#Preview("Store Stats — DE") {
     StoreLocalePreview(storeLocales[1]) { StoreStatsShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store Stats — AR") {
+#Preview("Store Stats — FR") {
     StoreLocalePreview(storeLocales[2]) { StoreStatsShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store Stats — DE") {
+#Preview("Store Stats — ES") {
     StoreLocalePreview(storeLocales[3]) { StoreStatsShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store Stats — ES") {
+#Preview("Store Stats — IT") {
     StoreLocalePreview(storeLocales[4]) { StoreStatsShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store Stats — FR") {
+#Preview("Store Stats — JA") {
     StoreLocalePreview(storeLocales[5]) { StoreStatsShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store Stats — IT") {
+#Preview("Store Stats — KO") {
     StoreLocalePreview(storeLocales[6]) { StoreStatsShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store Stats — JA") {
+#Preview("Store Stats — TR") {
     StoreLocalePreview(storeLocales[7]) { StoreStatsShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store Stats — KO") {
+#Preview("Store Stats — AR") {
     StoreLocalePreview(storeLocales[8]) { StoreStatsShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store Stats — PT-BR") {

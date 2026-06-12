@@ -23,7 +23,7 @@ private let countdownSteps: [CountdownStep] = [
 
 // MARK: - Gameplay Countdown Showcase
 
-private struct StoreGameplayShowcase: View {
+struct StoreGameplayShowcase: View {
     let localeData: StoreLocaleData
 
     var body: some View {
@@ -86,28 +86,28 @@ private struct StoreGameplayShowcase: View {
 #Preview("Store Gameplay — EN") {
     StoreLocalePreview(storeLocales[0]) { StoreGameplayShowcase(localeData: storeLocales[0]) }
 }
-#Preview("Store Gameplay — TR") {
+#Preview("Store Gameplay — DE") {
     StoreLocalePreview(storeLocales[1]) { StoreGameplayShowcase(localeData: storeLocales[1]) }
 }
-#Preview("Store Gameplay — AR") {
+#Preview("Store Gameplay — FR") {
     StoreLocalePreview(storeLocales[2]) { StoreGameplayShowcase(localeData: storeLocales[2]) }
 }
-#Preview("Store Gameplay — DE") {
+#Preview("Store Gameplay — ES") {
     StoreLocalePreview(storeLocales[3]) { StoreGameplayShowcase(localeData: storeLocales[3]) }
 }
-#Preview("Store Gameplay — ES") {
+#Preview("Store Gameplay — IT") {
     StoreLocalePreview(storeLocales[4]) { StoreGameplayShowcase(localeData: storeLocales[4]) }
 }
-#Preview("Store Gameplay — FR") {
+#Preview("Store Gameplay — JA") {
     StoreLocalePreview(storeLocales[5]) { StoreGameplayShowcase(localeData: storeLocales[5]) }
 }
-#Preview("Store Gameplay — IT") {
+#Preview("Store Gameplay — KO") {
     StoreLocalePreview(storeLocales[6]) { StoreGameplayShowcase(localeData: storeLocales[6]) }
 }
-#Preview("Store Gameplay — JA") {
+#Preview("Store Gameplay — TR") {
     StoreLocalePreview(storeLocales[7]) { StoreGameplayShowcase(localeData: storeLocales[7]) }
 }
-#Preview("Store Gameplay — KO") {
+#Preview("Store Gameplay — AR") {
     StoreLocalePreview(storeLocales[8]) { StoreGameplayShowcase(localeData: storeLocales[8]) }
 }
 #Preview("Store Gameplay — PT-BR") {

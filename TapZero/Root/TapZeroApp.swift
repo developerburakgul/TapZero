@@ -20,9 +20,17 @@ struct AppEntryPoint {
 struct TapZeroApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
+    private var isStoreScreenshotMode: Bool {
+        ProcessInfo.processInfo.arguments.contains("-store-screenshots")
+    }
+
     var body: some Scene {
         WindowGroup {
-            AppRootView()
+            if isStoreScreenshotMode {
+                StoreScreenshotCarousel()
+            } else {
+                AppRootView()
+            }
         }
     }
 }
